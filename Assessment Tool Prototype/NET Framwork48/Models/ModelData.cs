@@ -1,0 +1,14 @@
+﻿using NET_Framwork48.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NET_Framwork48.Models
+{
+    class ModelData
+    {
+        
+    }
+}
