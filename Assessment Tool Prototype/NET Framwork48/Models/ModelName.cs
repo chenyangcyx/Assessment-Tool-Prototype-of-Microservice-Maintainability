@@ -69,7 +69,7 @@ namespace NET_Framwork48.Models
 
         List<string> level1_names, level2_names, level3_names, level4_names;
 
-        ModelName()
+        public ModelName()
         {
             level1_names = new List<string>()
             {
