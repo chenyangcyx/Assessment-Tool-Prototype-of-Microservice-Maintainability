@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NET_Framwork48.Models
 {
-    public class ModelData
+    public class ModelLink
     {
         public const int LEVEL1_UNITNUM = 1;           //层1的数量
         public const int LEVEL2_UNITNUM = 4;           //层2的数量

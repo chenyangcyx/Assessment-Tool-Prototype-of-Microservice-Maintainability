@@ -15,9 +15,9 @@ namespace NET_Framwork48.Models.Tests
             ModelName modelName = new ModelName();
             Dictionary<string, string> level4_metric_detail = new Dictionary<string, string>();
             modelName.CreateModelDictionary(level4_metric_detail);
-            Assert.AreEqual(ModelData.LEVEL4_UNITNUM, level4_metric_detail.Count);
+            Assert.AreEqual(ModelLink.LEVEL4_UNITNUM, level4_metric_detail.Count);
             string str_get;
-            for (int i = 0; i < ModelData.LEVEL4_UNITNUM; i++)
+            for (int i = 0; i < ModelLink.LEVEL4_UNITNUM; i++)
                 Assert.IsTrue(level4_metric_detail.TryGetValue(modelName.level4_names[i], out _));
 
             level4_metric_detail.TryGetValue(ModelName.LEVELNAME_METRIC_1, out str_get);
@@ -42,12 +42,12 @@ namespace NET_Framwork48.Models.Tests
         public void SetNodeNameTest()
         {
             ModelName mn = new ModelName();
-            ModelNode[] node1 = new ModelNode[ModelData.LEVEL1_UNITNUM];
-            ModelNode[] node2 = new ModelNode[ModelData.LEVEL2_UNITNUM];
-            ModelNode[] node3 = new ModelNode[ModelData.LEVEL3_UNITNUM];
-            ModelNode[] node4 = new ModelNode[ModelData.LEVEL4_UNITNUM];
+            ModelNode[] node1 = new ModelNode[ModelLink.LEVEL1_UNITNUM];
+            ModelNode[] node2 = new ModelNode[ModelLink.LEVEL2_UNITNUM];
+            ModelNode[] node3 = new ModelNode[ModelLink.LEVEL3_UNITNUM];
+            ModelNode[] node4 = new ModelNode[ModelLink.LEVEL4_UNITNUM];
             //第一层
-            for (int i = 0; i < ModelData.LEVEL1_UNITNUM; i++)
+            for (int i = 0; i < ModelLink.LEVEL1_UNITNUM; i++)
             {
                 node1[i] = new ModelNode();
                 mn.SetNodeName(node1[i], mn.level1_names[i]);
@@ -57,7 +57,7 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual(1, node1[0].NodeLevel);
             Assert.AreEqual(ModelName.LEVEL1_NAME, node1[0].NodeLevelName);
             //第二层
-            for (int i = 0; i < ModelData.LEVEL2_UNITNUM; i++)
+            for (int i = 0; i < ModelLink.LEVEL2_UNITNUM; i++)
             {
                 node2[i] = new ModelNode();
                 mn.SetNodeName(node2[i], mn.level2_names[i]);
@@ -79,7 +79,7 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual(2, node2[3].NodeLevel);
             Assert.AreEqual(ModelName.LEVEL2_NAME, node2[3].NodeLevelName);
             //第三层
-            for (int i = 0; i < ModelData.LEVEL3_UNITNUM; i++)
+            for (int i = 0; i < ModelLink.LEVEL3_UNITNUM; i++)
             {
                 node3[i] = new ModelNode();
                 mn.SetNodeName(node3[i], mn.level3_names[i]);
@@ -113,7 +113,7 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual(3, node3[6].NodeLevel);
             Assert.AreEqual(ModelName.LEVEL3_NAME, node3[6].NodeLevelName);
             //第四层
-            for (int i = 0; i < ModelData.LEVEL4_UNITNUM; i++)
+            for (int i = 0; i < ModelLink.LEVEL4_UNITNUM; i++)
             {
                 node4[i] = new ModelNode();
                 mn.SetNodeName(node4[i], mn.level4_names[i]);
@@ -156,26 +156,26 @@ namespace NET_Framwork48.Models.Tests
         public void SetLevelNodeNameTest()
         {
             ModelName mn = new ModelName();
-            ModelNode[] node1 = new ModelNode[ModelData.LEVEL1_UNITNUM];
-            ModelNode[] node2 = new ModelNode[ModelData.LEVEL2_UNITNUM];
-            ModelNode[] node3 = new ModelNode[ModelData.LEVEL3_UNITNUM];
-            ModelNode[] node4 = new ModelNode[ModelData.LEVEL4_UNITNUM];
-            for (int i = 0; i < ModelData.LEVEL1_UNITNUM; i++)
+            ModelNode[] node1 = new ModelNode[ModelLink.LEVEL1_UNITNUM];
+            ModelNode[] node2 = new ModelNode[ModelLink.LEVEL2_UNITNUM];
+            ModelNode[] node3 = new ModelNode[ModelLink.LEVEL3_UNITNUM];
+            ModelNode[] node4 = new ModelNode[ModelLink.LEVEL4_UNITNUM];
+            for (int i = 0; i < ModelLink.LEVEL1_UNITNUM; i++)
             {
                 node1[i] = new ModelNode();
                 mn.SetNodeName(node1[i], mn.level1_names[i]);
             }
-            for (int i = 0; i < ModelData.LEVEL2_UNITNUM; i++)
+            for (int i = 0; i < ModelLink.LEVEL2_UNITNUM; i++)
             {
                 node2[i] = new ModelNode();
                 mn.SetNodeName(node2[i], mn.level2_names[i]);
             }
-            for (int i = 0; i < ModelData.LEVEL3_UNITNUM; i++)
+            for (int i = 0; i < ModelLink.LEVEL3_UNITNUM; i++)
             {
                 node3[i] = new ModelNode();
                 mn.SetNodeName(node3[i], mn.level3_names[i]);
             }
-            for (int i = 0; i < ModelData.LEVEL4_UNITNUM; i++)
+            for (int i = 0; i < ModelLink.LEVEL4_UNITNUM; i++)
             {
                 node4[i] = new ModelNode();
                 mn.SetNodeName(node4[i], mn.level4_names[i]);

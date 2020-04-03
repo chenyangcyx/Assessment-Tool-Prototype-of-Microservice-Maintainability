@@ -250,19 +250,19 @@ namespace NET_Framwork48.Models
             switch (level)
             {
                 case 1:
-                    for (int i = 0; i < ModelData.LEVEL1_UNITNUM; i++)
+                    for (int i = 0; i < ModelLink.LEVEL1_UNITNUM; i++)
                         SetNodeName(nodelist[i], level1_names[i]);
                     break;
                 case 2:
-                    for (int i = 0; i < ModelData.LEVEL2_UNITNUM; i++)
+                    for (int i = 0; i < ModelLink.LEVEL2_UNITNUM; i++)
                         SetNodeName(nodelist[i], level2_names[i]);
                     break;
                 case 3:
-                    for (int i = 0; i < ModelData.LEVEL3_UNITNUM; i++)
+                    for (int i = 0; i < ModelLink.LEVEL3_UNITNUM; i++)
                         SetNodeName(nodelist[i], level3_names[i]);
                     break;
                 case 4:
-                    for (int i = 0; i < ModelData.LEVEL4_UNITNUM; i++)
+                    for (int i = 0; i < ModelLink.LEVEL4_UNITNUM; i++)
                         SetNodeName(nodelist[i], level4_names[i]);
                     break;
             }
