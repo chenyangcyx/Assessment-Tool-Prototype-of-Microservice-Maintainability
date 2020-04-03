@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NET_Framwork48.Utils
 {
-    class OverAllData
+    public class OverAllData
     {
         public static OverAllData allData = new OverAllData();
 

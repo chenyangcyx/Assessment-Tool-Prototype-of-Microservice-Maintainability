@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace NET_Framwork48.Models
 {
-    class ModelData
+    public class ModelName
     {
-        public static ModelData modelData = new ModelData();
         OverAllData all = OverAllData.allData;
 
         /********模型层级名字********/
         //第一层
         public string model_levelname_level1;
-        string MODEL_LEVELNAME_LEVEL1_INIT = "Maintainability";
+        public string MODEL_LEVELNAME_LEVEL1_INIT = "Maintainability";
         //第二层
         public List<string> model_levelname_level2 = new List<string>();
-        string MODEL_LEVELNAME_LEVEL2_OPTIONAL = "Modularity";
-        List<string> MODEL_LEVELNAME_LEVEL2_INIT = new List<string>()
+        public string MODEL_LEVELNAME_LEVEL2_OPTIONAL = "Modularity";
+        public List<string> MODEL_LEVELNAME_LEVEL2_INIT = new List<string>()
         {
             "Analyzability"
             ,"Changeability"
@@ -28,7 +27,7 @@ namespace NET_Framwork48.Models
         };
         //第三层
         public List<List<string>> model_levelname_level3 = new List<List<string>>();
-        List<List<string>> MODEL_LEVELNAME_LEVEL3_INIT = new List<List<string>>()
+        public List<List<string>> MODEL_LEVELNAME_LEVEL3_INIT = new List<List<string>>()
         {
             new List<string>{"Coupling","Cohesion","Design Complexity","System Size"},
             new List<string>{"Coupling","Cohesion","Service Granularity","Parameter Granularity","Service Loopback" },
@@ -37,7 +36,7 @@ namespace NET_Framwork48.Models
         };
         //第四层
         public List<List<List<string>>> model_levelname_level4 = new List<List<List<string>>>();
-        List<List<List<string>>> MODEL_LEVELNAME_LEVEL4_INIT = new List<List<List<string>>>()
+        public List<List<List<string>>> MODEL_LEVELNAME_LEVEL4_INIT = new List<List<List<string>>>()
         {
             new List<List<string>>
             {
@@ -66,6 +65,15 @@ namespace NET_Framwork48.Models
             }
         };
 
+        //清除层1、层2、层3、层4 的内容
+        public void ReSetLevelName()
+        {
+            model_levelname_level1 = "";
+            model_levelname_level2.Clear();
+            model_levelname_level3.Clear();
+            model_levelname_level4.Clear();
+        }
+
         //设置层1的名字
         public void SetLevel1Name()
         {
@@ -86,6 +94,7 @@ namespace NET_Framwork48.Models
         //设置层3的名字
         public void SetLevel3Name()
         {
+            model_levelname_level3.Clear();
             foreach(List<string> list in MODEL_LEVELNAME_LEVEL3_INIT)
             {
                 List<string> new_list = new List<string>();
@@ -98,6 +107,7 @@ namespace NET_Framwork48.Models
         //设置层4的名字
         public void SetLevel4Name()
         {
+            model_levelname_level4.Clear();
             foreach(List<List<string>> list_list in MODEL_LEVELNAME_LEVEL4_INIT)
             {
                 List<List<string>> new_list_list = new List<List<string>>();
