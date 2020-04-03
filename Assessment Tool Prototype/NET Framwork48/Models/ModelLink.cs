@@ -14,11 +14,11 @@ namespace NET_Framwork48.Models
         public const int LEVEL4_UNITNUM = 8;           //层4的元素数量（不重复）
 
         //层1连接到层2的元素个数
-        public const int LEVEL1_LINK_2_NUM = 4;
+        public int LEVEL1_LINK_2_NUM = 4;
         //层2连接到层3的元素个数
-        public int[] LEVEL2_1_LINK_3_NUM = new int[4]{ 4, 5, 2, 2 };
+        public int[] LEVEL2_LINK_3_NUM = new int[4]{ 4, 5, 2, 2 };
         //层3连接到层4的元素个数
-        public int[][] LEVEL3_1_LINK_4_NUM = { 
+        public int[][] LEVEL3_LINK_4_NUM = { 
             new int[4]{ 2, 2, 2, 3 }, 
             new int[5]{ 2, 2, 3, 3, 2 },
             new int[2]{ 3, 2 },
@@ -29,8 +29,11 @@ namespace NET_Framwork48.Models
         public const int LEVEL3_TOTAL_NUM = 13;         //层3的节点个数（重复）
         public const int LEVEL4_TOTAL_NUM = 31;         //层4的节点个数（重复）
 
+        //层1的元素名称
+        public string LEVEL1_UNITS = ModelName.LEVELNAME_QUALITYATTribute_1;
+
         //层1下面涉及的第2层元素名称列表
-        List<string> LEVEL1_LINK_2_UNITS = new List<string>()
+        public List<string> LEVEL1_LINK_2_UNITS = new List<string>()
         {
             ModelName.LEVELNAME_ATTRIBUTE_1,
             ModelName.LEVELNAME_ATTRIBUTE_2,
@@ -38,7 +41,7 @@ namespace NET_Framwork48.Models
             ModelName.LEVELNAME_ATTRIBUTE_4
         };
         //层2下面涉及的第3层元素名称列表
-        List<List<string>> LEVEL2_LINK_3_UNITS = new List<List<string>>()
+        public List<List<string>> LEVEL2_LINK_3_UNITS = new List<List<string>>()
         {
             new List<string>()
             {
@@ -67,7 +70,7 @@ namespace NET_Framwork48.Models
             }
         };
         //层3下面涉及的第4层元素名称列表
-        List<List<List<string>>> LEVEL3_LINK_4_UNITS = new List<List<List<string>>>()
+        public List<List<List<string>>> LEVEL3_LINK_4_UNITS = new List<List<List<string>>>()
         {
             new List<List<string>>()
             {
