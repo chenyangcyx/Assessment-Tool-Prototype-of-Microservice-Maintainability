@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Model.cs" />
+    <Compile Include="Models\ModelData.cs" />
     <Compile Include="Models\ModelName.cs" />
     <Compile Include="Models\ModelNode.cs" />
     <Compile Include="Models\ModelWeight.cs" />

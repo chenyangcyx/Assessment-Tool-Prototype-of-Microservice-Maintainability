@@ -30,11 +30,6 @@ namespace NET_Framwork48.Models
         public const string LEVEL3_NAME = "Property";
         public const string LEVEL4_NAME = "Metric";
 
-        public const int LEVEL1_NUM = 1;           //层1的数量
-        public const int LEVEL2_NUM = 4;           //层2的数量
-        public const int LEVEL3_NUM = 7;           //层3的数量
-        public const int LEVEL4_NUM = 8;           //层4的数量
-
         public const string LEVELNAME_QUALITYATTribute_1 = "Maintainability";        //可维护性
 
         public const string LEVELNAME_ATTRIBUTE_1 = "Analyzability";                 //可分析性
@@ -255,19 +250,19 @@ namespace NET_Framwork48.Models
             switch (level)
             {
                 case 1:
-                    for (int i = 0; i < LEVEL1_NUM; i++)
+                    for (int i = 0; i < ModelData.LEVEL1_UNITNUM; i++)
                         SetNodeName(nodelist[i], level1_names[i]);
                     break;
                 case 2:
-                    for (int i = 0; i < LEVEL2_NUM; i++)
+                    for (int i = 0; i < ModelData.LEVEL2_UNITNUM; i++)
                         SetNodeName(nodelist[i], level2_names[i]);
                     break;
                 case 3:
-                    for (int i = 0; i < LEVEL3_NUM; i++)
+                    for (int i = 0; i < ModelData.LEVEL3_UNITNUM; i++)
                         SetNodeName(nodelist[i], level3_names[i]);
                     break;
                 case 4:
-                    for (int i = 0; i < LEVEL4_NUM; i++)
+                    for (int i = 0; i < ModelData.LEVEL4_UNITNUM; i++)
                         SetNodeName(nodelist[i], level4_names[i]);
                     break;
             }
