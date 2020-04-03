@@ -62,44 +62,6 @@ namespace NET_Framwork48.Models
         public const string LEVELNAME_METRIC_8 = "WISL()";
         public const string LEVELNAME_METRIC_8_DETAIL = "Whether Service s In a Service Loopback";
 
-        public List<string> level1_names, level2_names, level3_names, level4_names;
-
-        public ModelName()
-        {
-            level1_names = new List<string>()
-            {
-                LEVELNAME_QUALITYATTribute_1
-            };
-            level2_names = new List<string>()
-            {
-                LEVELNAME_ATTRIBUTE_1,
-                LEVELNAME_ATTRIBUTE_2,
-                LEVELNAME_ATTRIBUTE_3,
-                LEVELNAME_ATTRIBUTE_4
-            };
-            level3_names = new List<string>()
-            {
-                LEVELNAME_PROPERTY_1,
-                LEVELNAME_PROPERTY_2,
-                LEVELNAME_PROPERTY_3,
-                LEVELNAME_PROPERTY_4,
-                LEVELNAME_PROPERTY_5,
-                LEVELNAME_PROPERTY_6,
-                LEVELNAME_PROPERTY_7,
-            };
-            level4_names = new List<string>()
-            {
-                LEVELNAME_METRIC_1,
-                LEVELNAME_METRIC_2,
-                LEVELNAME_METRIC_3,
-                LEVELNAME_METRIC_4,
-                LEVELNAME_METRIC_5,
-                LEVELNAME_METRIC_6,
-                LEVELNAME_METRIC_7,
-                LEVELNAME_METRIC_8
-            };
-        }
-
         //创建模型Metric层的名字-描述对应细节
         public void CreateModelDictionary(Dictionary<string, string> dic)
         {
@@ -240,30 +202,6 @@ namespace NET_Framwork48.Models
                     mn.NodeName_Detail = LEVELNAME_METRIC_8_DETAIL;
                     mn.NodeLevel = 4;
                     mn.NodeLevelName = LEVEL4_NAME;
-                    break;
-            }
-        }
-
-        //设置某一层的节点名字信息
-        public void SetLevelNodeName(List<ModelNode> nodelist,int level)
-        {
-            switch (level)
-            {
-                case 1:
-                    for (int i = 0; i < ModelLink.LEVEL1_UNITNUM; i++)
-                        SetNodeName(nodelist[i], level1_names[i]);
-                    break;
-                case 2:
-                    for (int i = 0; i < ModelLink.LEVEL2_UNITNUM; i++)
-                        SetNodeName(nodelist[i], level2_names[i]);
-                    break;
-                case 3:
-                    for (int i = 0; i < ModelLink.LEVEL3_UNITNUM; i++)
-                        SetNodeName(nodelist[i], level3_names[i]);
-                    break;
-                case 4:
-                    for (int i = 0; i < ModelLink.LEVEL4_UNITNUM; i++)
-                        SetNodeName(nodelist[i], level4_names[i]);
                     break;
             }
         }

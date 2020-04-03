@@ -32,8 +32,6 @@ namespace NET_Framwork48.Models
         //创建模型
         public void CreateModel()
         {
-            //设置层1的名字
-            ModelName mn = new ModelName();
         }
     }
 }
