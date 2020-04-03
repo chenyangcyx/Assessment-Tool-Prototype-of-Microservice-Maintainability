@@ -12,6 +12,7 @@ namespace NET_Framwork48.Models
         public List<ModelNode> nextlevel;                               //下一层的节点引用
         public ModelNode prelevel;                                      //上一层的相连节点
         public Decimal weight { get; set; }                             //权值
+        public Decimal value { get; set; }                              //计算数值
 
         public ModelNode()
         {
@@ -27,6 +28,7 @@ namespace NET_Framwork48.Models
             nextlevel = new List<ModelNode>();
             prelevel = null;
             weight = 0;
+            value = 0;
         }
 
         public ModelNode(string nodename, string nodename_detail, int nodelevel, string nodelevelname)
