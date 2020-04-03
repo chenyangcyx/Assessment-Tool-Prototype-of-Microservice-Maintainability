@@ -13,7 +13,12 @@ namespace NET_Framwork48.Models
         public ModelNode prelevel;                                      //上一层的相连节点
         public Decimal weight { get; set; }                             //权值
 
-        ModelNode()
+        public ModelNode()
+        {
+            ResetNode();
+        }
+
+        public void ResetNode()
         {
             NodeName = "";
             NodeName_Detail = "";
