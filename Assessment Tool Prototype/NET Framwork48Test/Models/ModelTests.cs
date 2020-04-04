@@ -13,48 +13,6 @@ namespace NET_Framwork48.Models.Tests
     public class ModelTests
     {
         [TestMethod()]
-        public void CreateLevel4MetricDictionaryTest()
-        {
-            List<string> level4_names;
-            level4_names = new List<string>()
-            {
-                ModelName.LEVELNAME_METRIC_1,
-                ModelName.LEVELNAME_METRIC_2,
-                ModelName.LEVELNAME_METRIC_3,
-                ModelName.LEVELNAME_METRIC_4,
-                ModelName.LEVELNAME_METRIC_5,
-                ModelName.LEVELNAME_METRIC_6,
-                ModelName.LEVELNAME_METRIC_7,
-                ModelName.LEVELNAME_METRIC_8
-            };
-
-            ModelName modelName = new ModelName();
-            Dictionary<string, string> level4_metric_detail = new Dictionary<string, string>();
-            modelName.CreateModelDictionary(level4_metric_detail);
-            Assert.AreEqual(ModelLink.LEVEL4_UNITNUM, level4_metric_detail.Count);
-            string str_get;
-            for (int i = 0; i < ModelLink.LEVEL4_UNITNUM; i++)
-                Assert.IsTrue(level4_metric_detail.TryGetValue(level4_names[i], out _));
-
-            level4_metric_detail.TryGetValue(ModelName.LEVELNAME_METRIC_1, out str_get);
-            Assert.AreEqual(ModelName.LEVELNAME_METRIC_1_DETAIL, str_get);
-            level4_metric_detail.TryGetValue(ModelName.LEVELNAME_METRIC_2, out str_get);
-            Assert.AreEqual(ModelName.LEVELNAME_METRIC_2_DETAIL, str_get);
-            level4_metric_detail.TryGetValue(ModelName.LEVELNAME_METRIC_3, out str_get);
-            Assert.AreEqual(ModelName.LEVELNAME_METRIC_3_DETAIL, str_get);
-            level4_metric_detail.TryGetValue(ModelName.LEVELNAME_METRIC_4, out str_get);
-            Assert.AreEqual(ModelName.LEVELNAME_METRIC_4_DETAIL, str_get);
-            level4_metric_detail.TryGetValue(ModelName.LEVELNAME_METRIC_5, out str_get);
-            Assert.AreEqual(ModelName.LEVELNAME_METRIC_5_DETAIL, str_get);
-            level4_metric_detail.TryGetValue(ModelName.LEVELNAME_METRIC_6, out str_get);
-            Assert.AreEqual(ModelName.LEVELNAME_METRIC_6_DETAIL, str_get);
-            level4_metric_detail.TryGetValue(ModelName.LEVELNAME_METRIC_7, out str_get);
-            Assert.AreEqual(ModelName.LEVELNAME_METRIC_7_DETAIL, str_get);
-            level4_metric_detail.TryGetValue(ModelName.LEVELNAME_METRIC_8, out str_get);
-            Assert.AreEqual(ModelName.LEVELNAME_METRIC_8_DETAIL, str_get);
-        }
-
-        [TestMethod()]
         public void CreateModelTest()
         {
             //测试模型层级数量

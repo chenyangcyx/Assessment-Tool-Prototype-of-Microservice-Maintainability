@@ -64,17 +64,26 @@ namespace NET_Framwork48.Models
         public const string LEVELNAME_METRIC_8 = "WISL()";
         public const string LEVELNAME_METRIC_8_DETAIL = "Whether Service s In a Service Loopback";
 
-        //创建模型Metric层的名字-描述对应细节
-        public void CreateModelDictionary(Dictionary<string, string> dic)
+        //Level4的Metric备注字典
+        public Dictionary<string, string> level4_metric_detail;
+
+        public ModelName()
         {
-            dic.Add(LEVELNAME_METRIC_1, LEVELNAME_METRIC_1_DETAIL);
-            dic.Add(LEVELNAME_METRIC_2, LEVELNAME_METRIC_2_DETAIL);
-            dic.Add(LEVELNAME_METRIC_3, LEVELNAME_METRIC_3_DETAIL);
-            dic.Add(LEVELNAME_METRIC_4, LEVELNAME_METRIC_4_DETAIL);
-            dic.Add(LEVELNAME_METRIC_5, LEVELNAME_METRIC_5_DETAIL);
-            dic.Add(LEVELNAME_METRIC_6, LEVELNAME_METRIC_6_DETAIL);
-            dic.Add(LEVELNAME_METRIC_7, LEVELNAME_METRIC_7_DETAIL);
-            dic.Add(LEVELNAME_METRIC_8, LEVELNAME_METRIC_8_DETAIL);
+            CreateModelDictionary();
+        }
+
+        //创建模型Metric层的名字-描述对应细节
+        public void CreateModelDictionary()
+        {
+            level4_metric_detail = new Dictionary<string, string>();
+            level4_metric_detail.Add(LEVELNAME_METRIC_1, LEVELNAME_METRIC_1_DETAIL);
+            level4_metric_detail.Add(LEVELNAME_METRIC_2, LEVELNAME_METRIC_2_DETAIL);
+            level4_metric_detail.Add(LEVELNAME_METRIC_3, LEVELNAME_METRIC_3_DETAIL);
+            level4_metric_detail.Add(LEVELNAME_METRIC_4, LEVELNAME_METRIC_4_DETAIL);
+            level4_metric_detail.Add(LEVELNAME_METRIC_5, LEVELNAME_METRIC_5_DETAIL);
+            level4_metric_detail.Add(LEVELNAME_METRIC_6, LEVELNAME_METRIC_6_DETAIL);
+            level4_metric_detail.Add(LEVELNAME_METRIC_7, LEVELNAME_METRIC_7_DETAIL);
+            level4_metric_detail.Add(LEVELNAME_METRIC_8, LEVELNAME_METRIC_8_DETAIL);
         }
 
         public void SetNodeName(ModelNode mn,string name)

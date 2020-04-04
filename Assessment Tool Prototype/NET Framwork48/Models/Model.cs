@@ -9,25 +9,10 @@ namespace NET_Framwork48.Models
 {
     public class Model
     {
-        //Level4的Metric备注字典
-        public Dictionary<string, string> level4_metric_detail;
         //模型的根节点
         public ModelNode root_node;
         //模型的各层节点列表
         public List<ModelNode> level1_nodes, level2_nodes, level3_nodes, level4_nodes;
-
-
-        public Model()
-        {
-            CreateLevel4MetricDictionary();
-        }
-
-        //创建Metric备注字典
-        public void CreateLevel4MetricDictionary()
-        {
-            level4_metric_detail = new Dictionary<string, string>();
-            new ModelName().CreateModelDictionary(level4_metric_detail);
-        }
 
         //创建模型
         public void CreateModel()
@@ -111,6 +96,12 @@ namespace NET_Framwork48.Models
                 foreach (ModelNode node in delete_level4_nodes)
                     level4_nodes.Remove(node);
             }
+        }
+
+        //模型的权值计算
+        public void CalculateModelWeight()
+        {
+
         }
     }
 }
