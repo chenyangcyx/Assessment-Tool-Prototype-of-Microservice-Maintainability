@@ -52,7 +52,7 @@ namespace NET_Framwork48.Models
         }
 
         //获取某一个节点下属的所有节点的增益/损害数
-        public void CollectNodeGainORDamageNum(ModelNode node, out decimal gain_num, out decimal damage_num)
+        public void CollectNodeGainORDamageNum(ModelNode node, out int gain_num, out int damage_num)
         {
             gain_num = 0;
             damage_num = 0;
