@@ -46,10 +46,10 @@ namespace NET_Framwork48.Models
         }
 
         //写入节点的增益/损害属性
-        public void SetNodeGainORDamage(ModelNode node, Dictionary<string, int> dic)
+        public void SetNodeGainORDamage(ModelNode node)
         {
             int result;
-            dic.TryGetValue(node.NodeName, out result);
+            node_affect_dictionary.TryGetValue(node.NodeName, out result);
             node.gain_or_damage = result;
         }
 
