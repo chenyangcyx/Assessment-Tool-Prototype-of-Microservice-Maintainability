@@ -28,22 +28,26 @@ namespace NET_Framwork48.Models
             root_node = new ModelNode();     //第1层节点
             level1_nodes.Add(root_node);
             mn.SetNodeName(root_node, ml.LEVEL1_UNITS);     //设置节点名称
+            mw.SetNodeGainORDamage(root_node);
             //创建第二层
             for(int i=0;i<ml.LEVEL1_LINK_2_NUM;i++)
             {
                 ModelNode node_temp2 = new ModelNode();     //第2层节点
                 level2_nodes.Add(node_temp2);
                 mn.SetNodeName(node_temp2, ml.LEVEL1_LINK_2_UNITS[i]);
+                mw.SetNodeGainORDamage(node_temp2);
                 for(int j = 0; j < ml.LEVEL2_LINK_3_NUM[i]; j++)
                 {
                     ModelNode node_temp3 = new ModelNode();     //第3层节点
                     level3_nodes.Add(node_temp3);
                     mn.SetNodeName(node_temp3, ml.LEVEL2_LINK_3_UNITS[i][j]);
+                    mw.SetNodeGainORDamage(node_temp3);
                     for(int k=0;k<ml.LEVEL3_LINK_4_NUM[i][j];k++)
                     {
                         ModelNode node_temp4 = new ModelNode();     //第4层节点
                         level4_nodes.Add(node_temp4);
                         mn.SetNodeName(node_temp4, ml.LEVEL3_LINK_4_UNITS[i][j][k]);
+                        mw.SetNodeGainORDamage(node_temp4);
                         node_temp4.prelevel = node_temp3;
                         node_temp3.nextlevel.Add(node_temp4);
                     }
