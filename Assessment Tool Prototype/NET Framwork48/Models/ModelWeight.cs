@@ -11,6 +11,8 @@ namespace NET_Framwork48.Models
         public const int NODE_AFFECT_GAIN = 1;              //增益效果标记常量
         public const int NODE_AFFECT_DAMAGE = 2;            //损害效果标记常量
 
+        public const int WEIGHT_VALUE_ROUND = 5;            //权值计算的保留小数
+
         //节点增益/损害效果字典
         public Dictionary<string, int> node_affect_dictionary = new Dictionary<string, int>();
 
@@ -97,9 +99,9 @@ namespace NET_Framwork48.Models
             foreach(ModelNode tmp in node.nextlevel)
             {
                 if (tmp.gain_or_damage == NODE_AFFECT_GAIN)
-                    tmp.weight = gew;
+                    tmp.weight = Math.Round(gew, WEIGHT_VALUE_ROUND);
                 else
-                    tmp.weight = dew;
+                    tmp.weight = Math.Round(dew, WEIGHT_VALUE_ROUND);
             }
         }
     }
