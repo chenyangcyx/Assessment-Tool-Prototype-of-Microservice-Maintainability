@@ -9,9 +9,9 @@ namespace NET_Framwork48.Models
     public class Model
     {
         //Level4的Metric备注字典
-        Dictionary<string, string> level4_metric_detail;
+        public Dictionary<string, string> level4_metric_detail;
         //模型的根节点
-        public static ModelNode root_node;
+        public ModelNode root_node;
         //模型的各层节点列表
         public List<ModelNode> level1_nodes, level2_nodes, level3_nodes, level4_nodes;
 
@@ -33,6 +33,10 @@ namespace NET_Framwork48.Models
         {
             ModelLink ml = new ModelLink();
             ModelName mn = new ModelName();
+            level1_nodes = new List<ModelNode>();
+            level2_nodes = new List<ModelNode>();
+            level3_nodes = new List<ModelNode>();
+            level4_nodes = new List<ModelNode>();
             //创建第一层
             root_node = new ModelNode();     //第1层节点
             level1_nodes.Add(root_node);

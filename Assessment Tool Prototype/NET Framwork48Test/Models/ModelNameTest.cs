@@ -12,28 +12,7 @@ namespace NET_Framwork48.Models.Tests
         [TestMethod()]
         public void CreateModelDictionaryTest()
         {
-            List<string> level1_names, level2_names, level3_names, level4_names;
-            level1_names = new List<string>()
-            {
-                ModelName.LEVELNAME_QUALITYATTribute_1
-            };
-            level2_names = new List<string>()
-            {
-                ModelName.LEVELNAME_ATTRIBUTE_1,
-                ModelName.LEVELNAME_ATTRIBUTE_2,
-                ModelName.LEVELNAME_ATTRIBUTE_3,
-                ModelName.LEVELNAME_ATTRIBUTE_4
-            };
-            level3_names = new List<string>()
-            {
-                ModelName.LEVELNAME_PROPERTY_1,
-                ModelName.LEVELNAME_PROPERTY_2,
-                ModelName.LEVELNAME_PROPERTY_3,
-                ModelName.LEVELNAME_PROPERTY_4,
-                ModelName.LEVELNAME_PROPERTY_5,
-                ModelName.LEVELNAME_PROPERTY_6,
-                ModelName.LEVELNAME_PROPERTY_7,
-            };
+            List<string> level4_names;
             level4_names = new List<string>()
             {
                 ModelName.LEVELNAME_METRIC_1,
