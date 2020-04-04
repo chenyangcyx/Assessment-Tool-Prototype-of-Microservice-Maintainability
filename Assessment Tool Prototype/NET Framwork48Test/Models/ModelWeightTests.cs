@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NET_Framwork48.Models;
+using NET_Framwork48.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -152,6 +153,83 @@ namespace NET_Framwork48.Models.Tests
             {
                 mw.node_affect_dictionary.TryGetValue(l4n[i].NodeName, out result);
                 Assert.AreEqual(result, l4n[i].gain_or_damage);
+            }
+        }
+
+        [TestMethod()]
+        public void CollectNodeNextLevelGainORDamageNumTest()
+        {
+            OverAllData all = OverAllData.allData;
+            int gain_num, damage_num;
+            ModelWeight mw = new ModelWeight();
+            //未经过修剪的模型
+            Model model = new Model();
+            model.CreateModel();
+            all.if_assess_modularity = true;
+            model.TrimModel();
+
+            mw.CollectNodeNextLevelGainORDamageNum(model.level1_nodes[0], out gain_num, out damage_num);
+            Assert.AreEqual(4, gain_num);
+            Assert.AreEqual(0, damage_num);
+
+            mw.CollectNodeNextLevelGainORDamageNum(model.level2_nodes[0], out gain_num, out damage_num);
+            Assert.AreEqual(1, gain_num);
+            Assert.AreEqual(3, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level2_nodes[1], out gain_num, out damage_num);
+            Assert.AreEqual(3, gain_num);
+            Assert.AreEqual(2, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level2_nodes[2], out gain_num, out damage_num);
+            Assert.AreEqual(1, gain_num);
+            Assert.AreEqual(1, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level2_nodes[3], out gain_num, out damage_num);
+            Assert.AreEqual(2, gain_num);
+            Assert.AreEqual(0, damage_num);
+
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[0], out gain_num, out damage_num);
+            Assert.AreEqual(2, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[1], out gain_num, out damage_num);
+            Assert.AreEqual(2, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[2], out gain_num, out damage_num);
+            Assert.AreEqual(2, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[3], out gain_num, out damage_num);
+            Assert.AreEqual(3, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[4], out gain_num, out damage_num);
+            Assert.AreEqual(2, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[5], out gain_num, out damage_num);
+            Assert.AreEqual(2, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[6], out gain_num, out damage_num);
+            Assert.AreEqual(3, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[7], out gain_num, out damage_num);
+            Assert.AreEqual(3, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[8], out gain_num, out damage_num);
+            Assert.AreEqual(2, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[9], out gain_num, out damage_num);
+            Assert.AreEqual(3, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[10], out gain_num, out damage_num);
+            Assert.AreEqual(2, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[11], out gain_num, out damage_num);
+            Assert.AreEqual(2, gain_num);
+            Assert.AreEqual(0, damage_num);
+            mw.CollectNodeNextLevelGainORDamageNum(model.level3_nodes[12], out gain_num, out damage_num);
+            Assert.AreEqual(3, gain_num);
+            Assert.AreEqual(0, damage_num);
+
+            foreach(ModelNode node in model.level4_nodes)
+            {
+                mw.CollectNodeNextLevelGainORDamageNum(node, out gain_num, out damage_num);
+                Assert.AreEqual(0, gain_num);
+                Assert.AreEqual(0, damage_num);
             }
         }
     }
