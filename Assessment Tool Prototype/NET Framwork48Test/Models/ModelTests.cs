@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NET_Framwork48.Models;
+using NET_Framwork48.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -367,7 +368,76 @@ namespace NET_Framwork48.Models.Tests
         [TestMethod()]
         public void TrimModelTest()
         {
+            OverAllData all = OverAllData.allData;
+            all.if_assess_modularity = false;
 
+            //测试模型层级数量
+            Model model = new Model();
+            model.CreateModel();
+            model.TrimModel();
+            string model_str1 = "";
+            Queue<ModelNode> node_queue = new Queue<ModelNode>();
+            node_queue.Enqueue(model.root_node);
+            while (node_queue.Count > 0)
+            {
+                ModelNode now_node = node_queue.Dequeue();
+                foreach (ModelNode node in now_node.nextlevel)
+                    node_queue.Enqueue(node);
+                model_str1 += now_node.NodeLevel;
+            }
+            Assert.AreEqual("1" + "222" + "33333333333" + "44444444444444444444444444", model_str1);
+
+            //测试模型的层级命名
+            string model_str2 = "";
+            node_queue.Clear();
+            node_queue.Enqueue(model.root_node);
+            while (node_queue.Count > 0)
+            {
+                ModelNode now_node = node_queue.Dequeue();
+                foreach (ModelNode node in now_node.nextlevel)
+                    node_queue.Enqueue(node);
+                model_str2 += now_node.NodeLevelName;
+            }
+            Assert.AreEqual("Quality Attribute"
+                + "AttributeAttributeAttribute"
+                + "PropertyPropertyPropertyPropertyPropertyPropertyPropertyPropertyPropertyPropertyProperty"
+                + "MetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetric"
+                , model_str2);
+
+            //测试模型的节点名称
+            string model_str3 = "";
+            node_queue.Clear();
+            node_queue.Enqueue(model.root_node);
+            while (node_queue.Count > 0)
+            {
+                ModelNode now_node = node_queue.Dequeue();
+                foreach (ModelNode node in now_node.nextlevel)
+                    node_queue.Enqueue(node);
+                model_str3 += now_node.NodeName;
+            }
+            Assert.AreEqual("Maintainability"
+                            + "AnalyzabilityChangeabilityStability"
+                            + "CouplingCohesionDesign ComplexitySystem SizeCouplingCohesionService GranularityParameter GranularityService LoopbackParameter GranularityService Loopback"
+                            + "NSNDCS()NSNMNSNIS()NSNPI()NII()NSNDCS()NSNMNSNMNPI()NMNMP()NPI()NSWISL()NMNMP()NPI()NSWISL()"
+                            , model_str3);
+
+            //测试level1_nodes,level2_nodes,level3_nodes,level4_nodes
+            string level1_nodes_str = "";
+            string level2_nodes_str = "";
+            string level3_nodes_str = "";
+            string level4_nodes_str = "";
+            foreach (ModelNode node in model.level1_nodes)
+                level1_nodes_str += node.NodeName;
+            foreach (ModelNode node in model.level2_nodes)
+                level2_nodes_str += node.NodeName;
+            foreach (ModelNode node in model.level3_nodes)
+                level3_nodes_str += node.NodeName;
+            foreach (ModelNode node in model.level4_nodes)
+                level4_nodes_str += node.NodeName;
+            Assert.AreEqual("Maintainability", level1_nodes_str);
+            Assert.AreEqual("AnalyzabilityChangeabilityStability", level2_nodes_str);
+            Assert.AreEqual("CouplingCohesionDesign ComplexitySystem SizeCouplingCohesionService GranularityParameter GranularityService LoopbackParameter GranularityService Loopback", level3_nodes_str);
+            Assert.AreEqual("NSNDCS()NSNMNSNIS()NSNPI()NII()NSNDCS()NSNMNSNMNPI()NMNMP()NPI()NSWISL()NMNMP()NPI()NSWISL()", level4_nodes_str);
         }
     }
 }

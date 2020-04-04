@@ -78,12 +78,38 @@ namespace NET_Framwork48.Models
             //如果不评估
             if (!all.if_assess_modularity)
             {
-                //删除level2的可选attribute
-                ModelNode delete_node = null;
+                List<ModelNode> delete_level2_nodes = new List<ModelNode>();
+                List<ModelNode> delete_level3_nodes = new List<ModelNode>();
+                List<ModelNode> delete_level4_nodes = new List<ModelNode>();
+                Queue<ModelNode> all_delete_nodes_queue = new Queue<ModelNode>();
+                //寻找level2的可选attribute
+                ModelNode delete2 = null;
                 foreach (ModelNode node in level2_nodes)
                     if (node.NodeName.Equals(ModelName.LEVELNAME_ATTRIBUTE_OPTIONAL))
-                        delete_node = node;
-                level2_nodes.Remove(delete_node);
+                        delete2 = node;
+                //记录所有的与删除节点相关的节点
+                all_delete_nodes_queue.Enqueue(delete2);
+                while (all_delete_nodes_queue.Count > 0)
+                {
+                    ModelNode tmp = all_delete_nodes_queue.Dequeue();
+                    //将相关的节点的引用放入相应的列表
+                    if (tmp.NodeLevel == 2)
+                        delete_level2_nodes.Add(tmp);
+                    if (tmp.NodeLevel == 3)
+                        delete_level3_nodes.Add(tmp);
+                    if (tmp.NodeLevel == 4)
+                        delete_level4_nodes.Add(tmp);
+                    foreach (ModelNode node in tmp.nextlevel)
+                        all_delete_nodes_queue.Enqueue(node);
+                }
+                //从模型中删除相应的节点
+                root_node.nextlevel.Remove(delete2);
+                foreach (ModelNode node in delete_level2_nodes)
+                    level2_nodes.Remove(node);
+                foreach (ModelNode node in delete_level3_nodes)
+                    level3_nodes.Remove(node);
+                foreach (ModelNode node in delete_level4_nodes)
+                    level4_nodes.Remove(node);
             }
         }
     }
