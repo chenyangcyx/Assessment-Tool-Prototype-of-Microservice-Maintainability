@@ -57,7 +57,7 @@ namespace NET_Framwork48.Models.Tests
             List<string> level1_names, level2_names, level3_names, level4_names;
             level1_names = new List<string>()
             {
-                ModelName.LEVELNAME_QUALITYATTribute_1
+                ModelName.LEVELNAME_QUALITYATTRIBUTE_1
             };
             level2_names = new List<string>()
             {
@@ -99,7 +99,7 @@ namespace NET_Framwork48.Models.Tests
                 node1[i] = new ModelNode();
                 mn.SetNodeName(node1[i], level1_names[i]);
             }
-            Assert.AreEqual(ModelName.LEVELNAME_QUALITYATTribute_1, node1[0].NodeName);
+            Assert.AreEqual(ModelName.LEVELNAME_QUALITYATTRIBUTE_1, node1[0].NodeName);
             Assert.AreEqual("", node1[0].NodeName_Detail);
             Assert.AreEqual(1, node1[0].NodeLevel);
             Assert.AreEqual(ModelName.LEVEL1_NAME, node1[0].NodeLevelName);

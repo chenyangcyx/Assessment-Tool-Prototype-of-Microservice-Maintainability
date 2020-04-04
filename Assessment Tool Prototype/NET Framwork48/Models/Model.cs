@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NET_Framwork48.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,6 +67,23 @@ namespace NET_Framwork48.Models
                 }
                 node_temp2.prelevel = root_node;
                 root_node.nextlevel.Add(node_temp2);
+            }
+        }
+
+        //模型的修剪
+        public void TrimModel()
+        {
+            //判断是否评估Modularity
+            OverAllData all = OverAllData.allData;
+            //如果不评估
+            if (!all.if_assess_modularity)
+            {
+                //删除level2的可选attribute
+                ModelNode delete_node = null;
+                foreach (ModelNode node in level2_nodes)
+                    if (node.NodeName.Equals(ModelName.LEVELNAME_ATTRIBUTE_OPTIONAL))
+                        delete_node = node;
+                level2_nodes.Remove(delete_node);
             }
         }
     }

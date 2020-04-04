@@ -30,12 +30,14 @@ namespace NET_Framwork48.Models
         public const string LEVEL3_NAME = "Property";
         public const string LEVEL4_NAME = "Metric";
 
-        public const string LEVELNAME_QUALITYATTribute_1 = "Maintainability";        //可维护性
+        public const string LEVELNAME_QUALITYATTRIBUTE_1 = "Maintainability";        //可维护性
 
         public const string LEVELNAME_ATTRIBUTE_1 = "Analyzability";                 //可分析性
         public const string LEVELNAME_ATTRIBUTE_2 = "Changeability";                 //可修改性
         public const string LEVELNAME_ATTRIBUTE_3 = "Stability";                     //稳定性
         public const string LEVELNAME_ATTRIBUTE_4 = "Modularity";                    //模块化
+
+        public const string LEVELNAME_ATTRIBUTE_OPTIONAL= "Modularity";             //可选择评估项目名称
 
         public const string LEVELNAME_PROPERTY_1 = "Coupling";                      //耦合
         public const string LEVELNAME_PROPERTY_2 = "Cohesion";                      //内聚
@@ -80,8 +82,8 @@ namespace NET_Framwork48.Models
             switch (name)
             {
                 //第一层
-                case LEVELNAME_QUALITYATTribute_1:
-                    mn.NodeName = LEVELNAME_QUALITYATTribute_1;
+                case LEVELNAME_QUALITYATTRIBUTE_1:
+                    mn.NodeName = LEVELNAME_QUALITYATTRIBUTE_1;
                     mn.NodeName_Detail = "";
                     mn.NodeLevel = 1;
                     mn.NodeLevelName = LEVEL1_NAME;

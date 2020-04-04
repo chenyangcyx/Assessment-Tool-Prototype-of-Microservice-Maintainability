@@ -13,7 +13,7 @@ namespace NET_Framwork48.Models
 
         public void CreateModelNodeAffectDictionary(Dictionary<string,int> dic)
         {
-            dic.Add(ModelName.LEVELNAME_QUALITYATTribute_1, NODE_AFFECT_GAIN);      //层1 Maintainability
+            dic.Add(ModelName.LEVELNAME_QUALITYATTRIBUTE_1, NODE_AFFECT_GAIN);      //层1 Maintainability
             dic.Add(ModelName.LEVELNAME_ATTRIBUTE_1, NODE_AFFECT_GAIN);             //层2 Analyzability
             dic.Add(ModelName.LEVELNAME_ATTRIBUTE_2, NODE_AFFECT_GAIN);             //层2 Changeability
             dic.Add(ModelName.LEVELNAME_ATTRIBUTE_3, NODE_AFFECT_GAIN);             //层2 Stability

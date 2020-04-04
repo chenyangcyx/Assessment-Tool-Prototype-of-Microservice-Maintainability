@@ -59,7 +59,7 @@ namespace NET_Framwork48.Models.Tests
             //测试模型层级数量
             Model model = new Model();
             model.CreateModel();
-            string model_str1="";
+            string model_str1 = "";
             Queue<ModelNode> node_queue = new Queue<ModelNode>();
             node_queue.Enqueue(model.root_node);
             while (node_queue.Count > 0)
@@ -126,11 +126,11 @@ namespace NET_Framwork48.Models.Tests
             //测试节点的上层节点
             foreach (ModelNode node1 in model.level1_nodes)
             {
-                foreach(ModelNode node2 in node1.nextlevel)
+                foreach (ModelNode node2 in node1.nextlevel)
                 {
-                    foreach(ModelNode node3 in node2.nextlevel)
+                    foreach (ModelNode node3 in node2.nextlevel)
                     {
-                        foreach(ModelNode node4 in node3.nextlevel)
+                        foreach (ModelNode node4 in node3.nextlevel)
                             Assert.AreEqual(node3, node4.prelevel);
                         Assert.AreEqual(node2, node3.prelevel);
                     }
@@ -147,22 +147,22 @@ namespace NET_Framwork48.Models.Tests
             for (int i = 0; i < ml.LEVEL1_LINK_2_NUM; i++)
                 Assert.AreEqual(model.level1_nodes[ml.LEVEL1_LINK_1_NUM - 1], model.level2_nodes[i].prelevel);
 
-            for(int i = 0; i < ml.LEVEL2_LINK_3_NUM[0]; i++)
+            for (int i = 0; i < ml.LEVEL2_LINK_3_NUM[0]; i++)
                 Assert.AreEqual(model.level2_nodes[0], model.level3_nodes[i].prelevel);
             for (int i = ml.LEVEL2_LINK_3_NUM[0]; i < ml.LEVEL2_LINK_3_NUM[0] + ml.LEVEL2_LINK_3_NUM[1]; i++)
                 Assert.AreEqual(model.level2_nodes[1], model.level3_nodes[i].prelevel);
-            for (int i = ml.LEVEL2_LINK_3_NUM[0] 
-                + ml.LEVEL2_LINK_3_NUM[1]; 
-                i < ml.LEVEL2_LINK_3_NUM[0] 
-                + ml.LEVEL2_LINK_3_NUM[1] 
+            for (int i = ml.LEVEL2_LINK_3_NUM[0]
+                + ml.LEVEL2_LINK_3_NUM[1];
+                i < ml.LEVEL2_LINK_3_NUM[0]
+                + ml.LEVEL2_LINK_3_NUM[1]
                 + ml.LEVEL2_LINK_3_NUM[2]; i++)
                 Assert.AreEqual(model.level2_nodes[2], model.level3_nodes[i].prelevel);
-            for (int i = ml.LEVEL2_LINK_3_NUM[0] 
-                + ml.LEVEL2_LINK_3_NUM[1] 
-                + ml.LEVEL2_LINK_3_NUM[2]; 
-                i < ml.LEVEL2_LINK_3_NUM[0] 
-                + ml.LEVEL2_LINK_3_NUM[1] 
-                + ml.LEVEL2_LINK_3_NUM[2] 
+            for (int i = ml.LEVEL2_LINK_3_NUM[0]
+                + ml.LEVEL2_LINK_3_NUM[1]
+                + ml.LEVEL2_LINK_3_NUM[2];
+                i < ml.LEVEL2_LINK_3_NUM[0]
+                + ml.LEVEL2_LINK_3_NUM[1]
+                + ml.LEVEL2_LINK_3_NUM[2]
                 + ml.LEVEL2_LINK_3_NUM[3]; i++)
                 Assert.AreEqual(model.level2_nodes[3], model.level3_nodes[i].prelevel);
 
@@ -336,17 +336,17 @@ namespace NET_Framwork48.Models.Tests
                 ; i++)
                 Assert.AreEqual(model.level3_nodes[11], model.level4_nodes[i].prelevel);
             for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
-                +ml.LEVEL3_LINK_4_NUM[0][1]
-                +ml.LEVEL3_LINK_4_NUM[0][2]
-                +ml.LEVEL3_LINK_4_NUM[0][3]
-                +ml.LEVEL3_LINK_4_NUM[1][0]
-                +ml.LEVEL3_LINK_4_NUM[1][1]
-                +ml.LEVEL3_LINK_4_NUM[1][2]
-                +ml.LEVEL3_LINK_4_NUM[1][3]
-                +ml.LEVEL3_LINK_4_NUM[1][4]
-                +ml.LEVEL3_LINK_4_NUM[2][0]
-                +ml.LEVEL3_LINK_4_NUM[2][1]
-                +ml.LEVEL3_LINK_4_NUM[3][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                + ml.LEVEL3_LINK_4_NUM[1][4]
+                + ml.LEVEL3_LINK_4_NUM[2][0]
+                + ml.LEVEL3_LINK_4_NUM[2][1]
+                + ml.LEVEL3_LINK_4_NUM[3][0]
                 ; i < ml.LEVEL3_LINK_4_NUM[0][0]
                 + ml.LEVEL3_LINK_4_NUM[0][1]
                 + ml.LEVEL3_LINK_4_NUM[0][2]
@@ -362,6 +362,12 @@ namespace NET_Framwork48.Models.Tests
                 + ml.LEVEL3_LINK_4_NUM[3][1]
                 ; i++)
                 Assert.AreEqual(model.level3_nodes[12], model.level4_nodes[i].prelevel);
+        }
+
+        [TestMethod()]
+        public void TrimModelTest()
+        {
+
         }
     }
 }
