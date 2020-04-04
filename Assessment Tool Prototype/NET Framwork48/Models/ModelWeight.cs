@@ -52,7 +52,7 @@ namespace NET_Framwork48.Models
         }
 
         //获取某一个节点下属的所有节点的增益/损害数
-        public void CollectNodeGainORDamageNum(ModelNode node, out int gain_num, out int damage_num)
+        public void CollectNodeNextLevelGainORDamageNum(ModelNode node, out int gain_num, out int damage_num)
         {
             gain_num = 0;
             damage_num = 0;
@@ -65,32 +65,41 @@ namespace NET_Framwork48.Models
             }
         }
 
-        //根据增益/损害数计算某一节点的权值
-        public void CalculateWeight(ModelNode node, int gain_num, int damage_num, out decimal weight)
+        //设置某一节点下属节点的权值
+        public void CalculateNodeNextLevelWeight(ModelNode node)
         {
+            int gain_num, damage_num;
+            CollectNodeNextLevelGainORDamageNum(node, out gain_num, out damage_num);
             decimal ten = gain_num + damage_num;
             decimal gen = gain_num;
             decimal den = damage_num;
-            weight = 0;
-            //该节点为增益节点，计算GEW（Gain Elements' Weight）
-            if (node.gain_or_damage == NODE_AFFECT_GAIN)
+            decimal gew = 0, dew = 0;
+            if (gain_num == 0 && damage_num == 0)
             {
-                if (gain_num != 0 && damage_num == 0)
-                    weight = 1 / gen;
-                if (gain_num == 0 && damage_num != 0)
-                    weight = 0;
-                if (gain_num != 0 && damage_num != 0)
-                    weight = (ten + 1) / (ten * gen);
+                gew = 0;
+                dew = 0;
             }
-            //该结点为损害节点，计算DEW（Damage Elements' Weight）
-            else
+            if (gain_num != 0 && damage_num == 0)
             {
-                if (gain_num != 0 && damage_num == 0)
-                    weight = -0;
-                if (gain_num == 0 && damage_num != 0)
-                    weight = -1 / (2 * den);
-                if (gain_num != 0 && damage_num != 0)
-                    weight = -1 / (ten * den);
+                gew = 1 / gen;
+                dew = -0;
+            }
+            if (gain_num == 0 && damage_num != 0)
+            {
+                gew = 0;
+                dew = -1 / (2 * den);
+            }
+            if (gain_num != 0 && damage_num != 0)
+            {
+                gew = (ten + 1) / (ten * gen);
+                dew = -1 / (ten * den);
+            }
+            foreach(ModelNode tmp in node.nextlevel)
+            {
+                if (tmp.gain_or_damage == NODE_AFFECT_GAIN)
+                    tmp.weight = gew;
+                else
+                    tmp.weight = dew;
             }
         }
     }
