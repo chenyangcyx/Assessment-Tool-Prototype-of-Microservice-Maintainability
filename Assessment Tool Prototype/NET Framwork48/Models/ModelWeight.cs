@@ -6,33 +6,41 @@ using System.Threading.Tasks;
 
 namespace NET_Framwork48.Models
 {
-    class ModelWeight
+    public class ModelWeight
     {
-        public const int NODE_AFFECT_GAIN = 1;
-        public const int NODE_AFFECT_DAMAGE = 2;
+        public const int NODE_AFFECT_GAIN = 1;              //增益效果标记常量
+        public const int NODE_AFFECT_DAMAGE = 2;            //损害效果标记常量
 
-        public void CreateModelNodeAffectDictionary(Dictionary<string,int> dic)
+        //节点增益/损害效果字典
+        public Dictionary<string, int> node_affect_dictionary = new Dictionary<string, int>();
+
+        public ModelWeight()
         {
-            dic.Add(ModelName.LEVELNAME_QUALITYATTRIBUTE_1, NODE_AFFECT_GAIN);      //层1 Maintainability
-            dic.Add(ModelName.LEVELNAME_ATTRIBUTE_1, NODE_AFFECT_GAIN);             //层2 Analyzability
-            dic.Add(ModelName.LEVELNAME_ATTRIBUTE_2, NODE_AFFECT_GAIN);             //层2 Changeability
-            dic.Add(ModelName.LEVELNAME_ATTRIBUTE_3, NODE_AFFECT_GAIN);             //层2 Stability
-            dic.Add(ModelName.LEVELNAME_ATTRIBUTE_4, NODE_AFFECT_GAIN);             //层2 Modularity
-            dic.Add(ModelName.LEVELNAME_PROPERTY_1, NODE_AFFECT_DAMAGE);            //层3 Coupling
-            dic.Add(ModelName.LEVELNAME_PROPERTY_2, NODE_AFFECT_GAIN);              //层3 Cohesion
-            dic.Add(ModelName.LEVELNAME_PROPERTY_3, NODE_AFFECT_DAMAGE);            //层3 Design Complexity
-            dic.Add(ModelName.LEVELNAME_PROPERTY_4, NODE_AFFECT_DAMAGE);            //层3 System Size
-            dic.Add(ModelName.LEVELNAME_PROPERTY_5, NODE_AFFECT_GAIN);              //层3 Service Granularity
-            dic.Add(ModelName.LEVELNAME_PROPERTY_6, NODE_AFFECT_GAIN);              //层3 Parameter Granularity
-            dic.Add(ModelName.LEVELNAME_PROPERTY_7, NODE_AFFECT_DAMAGE);            //层3 Service Loopback
-            dic.Add(ModelName.LEVELNAME_METRIC_1, NODE_AFFECT_GAIN);                //层4 NS
-            dic.Add(ModelName.LEVELNAME_METRIC_2, NODE_AFFECT_GAIN);                //层4 NDCS()
-            dic.Add(ModelName.LEVELNAME_METRIC_3, NODE_AFFECT_GAIN);                //层4 NM
-            dic.Add(ModelName.LEVELNAME_METRIC_4, NODE_AFFECT_GAIN);                //层4 NIS()
-            dic.Add(ModelName.LEVELNAME_METRIC_5, NODE_AFFECT_GAIN);                //层4 NPI()
-            dic.Add(ModelName.LEVELNAME_METRIC_6, NODE_AFFECT_GAIN);                //层4 NII()
-            dic.Add(ModelName.LEVELNAME_METRIC_7, NODE_AFFECT_GAIN);                //层4 NMP()
-            dic.Add(ModelName.LEVELNAME_METRIC_8, NODE_AFFECT_GAIN);                //层4 WISL()
+            CreateModelNodeAffectDictionary();
+        }
+
+        public void CreateModelNodeAffectDictionary()
+        {
+            node_affect_dictionary.Add(ModelName.LEVELNAME_QUALITYATTRIBUTE_1, NODE_AFFECT_GAIN);      //层1 Maintainability
+            node_affect_dictionary.Add(ModelName.LEVELNAME_ATTRIBUTE_1, NODE_AFFECT_GAIN);             //层2 Analyzability
+            node_affect_dictionary.Add(ModelName.LEVELNAME_ATTRIBUTE_2, NODE_AFFECT_GAIN);             //层2 Changeability
+            node_affect_dictionary.Add(ModelName.LEVELNAME_ATTRIBUTE_3, NODE_AFFECT_GAIN);             //层2 Stability
+            node_affect_dictionary.Add(ModelName.LEVELNAME_ATTRIBUTE_4, NODE_AFFECT_GAIN);             //层2 Modularity
+            node_affect_dictionary.Add(ModelName.LEVELNAME_PROPERTY_1, NODE_AFFECT_DAMAGE);            //层3 Coupling
+            node_affect_dictionary.Add(ModelName.LEVELNAME_PROPERTY_2, NODE_AFFECT_GAIN);              //层3 Cohesion
+            node_affect_dictionary.Add(ModelName.LEVELNAME_PROPERTY_3, NODE_AFFECT_DAMAGE);            //层3 Design Complexity
+            node_affect_dictionary.Add(ModelName.LEVELNAME_PROPERTY_4, NODE_AFFECT_DAMAGE);            //层3 System Size
+            node_affect_dictionary.Add(ModelName.LEVELNAME_PROPERTY_5, NODE_AFFECT_GAIN);              //层3 Service Granularity
+            node_affect_dictionary.Add(ModelName.LEVELNAME_PROPERTY_6, NODE_AFFECT_GAIN);              //层3 Parameter Granularity
+            node_affect_dictionary.Add(ModelName.LEVELNAME_PROPERTY_7, NODE_AFFECT_DAMAGE);            //层3 Service Loopback
+            node_affect_dictionary.Add(ModelName.LEVELNAME_METRIC_1, NODE_AFFECT_GAIN);                //层4 NS
+            node_affect_dictionary.Add(ModelName.LEVELNAME_METRIC_2, NODE_AFFECT_GAIN);                //层4 NDCS()
+            node_affect_dictionary.Add(ModelName.LEVELNAME_METRIC_3, NODE_AFFECT_GAIN);                //层4 NM
+            node_affect_dictionary.Add(ModelName.LEVELNAME_METRIC_4, NODE_AFFECT_GAIN);                //层4 NIS()
+            node_affect_dictionary.Add(ModelName.LEVELNAME_METRIC_5, NODE_AFFECT_GAIN);                //层4 NPI()
+            node_affect_dictionary.Add(ModelName.LEVELNAME_METRIC_6, NODE_AFFECT_GAIN);                //层4 NII()
+            node_affect_dictionary.Add(ModelName.LEVELNAME_METRIC_7, NODE_AFFECT_GAIN);                //层4 NMP()
+            node_affect_dictionary.Add(ModelName.LEVELNAME_METRIC_8, NODE_AFFECT_GAIN);                //层4 WISL()
         }
 
         //写入节点的增益/损害属性
