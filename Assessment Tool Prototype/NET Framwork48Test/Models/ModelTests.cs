@@ -122,6 +122,22 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual("AnalyzabilityChangeabilityStabilityModularity", level2_nodes_str);
             Assert.AreEqual("CouplingCohesionDesign ComplexitySystem SizeCouplingCohesionService GranularityParameter GranularityService LoopbackParameter GranularityService LoopbackCohesionService Granularity", level3_nodes_str);
             Assert.AreEqual("NSNDCS()NSNMNSNIS()NSNPI()NII()NSNDCS()NSNMNSNMNPI()NMNMP()NPI()NSWISL()NMNMP()NPI()NSWISL()NSNMNSNMNPI()", level4_nodes_str);
+
+            //测试节点的上层节点
+            foreach (ModelNode node1 in model.level1_nodes)
+            {
+                foreach(ModelNode node2 in node1.nextlevel)
+                {
+                    foreach(ModelNode node3 in node2.nextlevel)
+                    {
+                        foreach(ModelNode node4 in node3.nextlevel)
+                            Assert.AreEqual(node3, node4.prelevel);
+                        Assert.AreEqual(node2, node3.prelevel);
+                    }
+                    Assert.AreEqual(node1, node2.prelevel);
+                }
+                Assert.AreEqual(null, node1.prelevel);
+            }
         }
     }
 }
