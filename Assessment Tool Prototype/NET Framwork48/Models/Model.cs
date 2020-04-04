@@ -33,6 +33,7 @@ namespace NET_Framwork48.Models
         {
             ModelLink ml = new ModelLink();
             ModelName mn = new ModelName();
+            ModelWeight mw = new ModelWeight();
             level1_nodes = new List<ModelNode>();
             level2_nodes = new List<ModelNode>();
             level3_nodes = new List<ModelNode>();
@@ -40,7 +41,7 @@ namespace NET_Framwork48.Models
             //创建第一层
             root_node = new ModelNode();     //第1层节点
             level1_nodes.Add(root_node);
-            mn.SetNodeName(root_node, ml.LEVEL1_UNITS);
+            mn.SetNodeName(root_node, ml.LEVEL1_UNITS);     //设置节点名称
             //创建第二层
             for(int i=0;i<ml.LEVEL1_LINK_2_NUM;i++)
             {
@@ -57,10 +58,13 @@ namespace NET_Framwork48.Models
                         ModelNode node_temp4 = new ModelNode();     //第4层节点
                         level4_nodes.Add(node_temp4);
                         mn.SetNodeName(node_temp4, ml.LEVEL3_LINK_4_UNITS[i][j][k]);
+                        node_temp4.prelevel = node_temp3;
                         node_temp3.nextlevel.Add(node_temp4);
                     }
+                    node_temp3.prelevel = node_temp2;
                     node_temp2.nextlevel.Add(node_temp3);
                 }
+                node_temp2.prelevel = root_node;
                 root_node.nextlevel.Add(node_temp2);
             }
         }
