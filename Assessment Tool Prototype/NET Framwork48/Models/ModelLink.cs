@@ -13,6 +13,8 @@ namespace NET_Framwork48.Models
         public const int LEVEL3_UNITNUM = 7;           //层3的元素数量（不重复）
         public const int LEVEL4_UNITNUM = 8;           //层4的元素数量（不重复）
 
+        //层1的元素个数
+        public int LEVEL1_LINK_1_NUM = 1;
         //层1连接到层2的元素个数
         public int LEVEL1_LINK_2_NUM = 4;
         //层2连接到层3的元素个数

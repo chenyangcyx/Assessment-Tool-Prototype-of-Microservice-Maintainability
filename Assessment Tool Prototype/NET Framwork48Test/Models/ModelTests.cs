@@ -138,6 +138,230 @@ namespace NET_Framwork48.Models.Tests
                 }
                 Assert.AreEqual(null, node1.prelevel);
             }
+
+            //测试节点的上层节点 方法2
+            ModelLink ml = new ModelLink();
+            for (int i = 0; i < ml.LEVEL1_LINK_1_NUM; i++)
+                Assert.AreEqual(model.root_node.prelevel, model.level1_nodes[i].prelevel);
+
+            for (int i = 0; i < ml.LEVEL1_LINK_2_NUM; i++)
+                Assert.AreEqual(model.level1_nodes[ml.LEVEL1_LINK_1_NUM - 1], model.level2_nodes[i].prelevel);
+
+            for(int i = 0; i < ml.LEVEL2_LINK_3_NUM[0]; i++)
+                Assert.AreEqual(model.level2_nodes[0], model.level3_nodes[i].prelevel);
+            for (int i = ml.LEVEL2_LINK_3_NUM[0]; i < ml.LEVEL2_LINK_3_NUM[0] + ml.LEVEL2_LINK_3_NUM[1]; i++)
+                Assert.AreEqual(model.level2_nodes[1], model.level3_nodes[i].prelevel);
+            for (int i = ml.LEVEL2_LINK_3_NUM[0] 
+                + ml.LEVEL2_LINK_3_NUM[1]; 
+                i < ml.LEVEL2_LINK_3_NUM[0] 
+                + ml.LEVEL2_LINK_3_NUM[1] 
+                + ml.LEVEL2_LINK_3_NUM[2]; i++)
+                Assert.AreEqual(model.level2_nodes[2], model.level3_nodes[i].prelevel);
+            for (int i = ml.LEVEL2_LINK_3_NUM[0] 
+                + ml.LEVEL2_LINK_3_NUM[1] 
+                + ml.LEVEL2_LINK_3_NUM[2]; 
+                i < ml.LEVEL2_LINK_3_NUM[0] 
+                + ml.LEVEL2_LINK_3_NUM[1] 
+                + ml.LEVEL2_LINK_3_NUM[2] 
+                + ml.LEVEL2_LINK_3_NUM[3]; i++)
+                Assert.AreEqual(model.level2_nodes[3], model.level3_nodes[i].prelevel);
+
+            for (int i = 0
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[0], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[1], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[2], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[3], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[4], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[5], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[6], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[7], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                + ml.LEVEL3_LINK_4_NUM[1][4]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[8], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                + ml.LEVEL3_LINK_4_NUM[1][4]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                + ml.LEVEL3_LINK_4_NUM[1][4]
+                + ml.LEVEL3_LINK_4_NUM[2][0]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[9], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                + ml.LEVEL3_LINK_4_NUM[1][4]
+                + ml.LEVEL3_LINK_4_NUM[2][0]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                + ml.LEVEL3_LINK_4_NUM[1][4]
+                + ml.LEVEL3_LINK_4_NUM[2][0]
+                + ml.LEVEL3_LINK_4_NUM[2][1]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[10], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                + ml.LEVEL3_LINK_4_NUM[1][4]
+                + ml.LEVEL3_LINK_4_NUM[2][0]
+                + ml.LEVEL3_LINK_4_NUM[2][1]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                + ml.LEVEL3_LINK_4_NUM[1][4]
+                + ml.LEVEL3_LINK_4_NUM[2][0]
+                + ml.LEVEL3_LINK_4_NUM[2][1]
+                + ml.LEVEL3_LINK_4_NUM[3][0]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[11], model.level4_nodes[i].prelevel);
+            for (int i = ml.LEVEL3_LINK_4_NUM[0][0]
+                +ml.LEVEL3_LINK_4_NUM[0][1]
+                +ml.LEVEL3_LINK_4_NUM[0][2]
+                +ml.LEVEL3_LINK_4_NUM[0][3]
+                +ml.LEVEL3_LINK_4_NUM[1][0]
+                +ml.LEVEL3_LINK_4_NUM[1][1]
+                +ml.LEVEL3_LINK_4_NUM[1][2]
+                +ml.LEVEL3_LINK_4_NUM[1][3]
+                +ml.LEVEL3_LINK_4_NUM[1][4]
+                +ml.LEVEL3_LINK_4_NUM[2][0]
+                +ml.LEVEL3_LINK_4_NUM[2][1]
+                +ml.LEVEL3_LINK_4_NUM[3][0]
+                ; i < ml.LEVEL3_LINK_4_NUM[0][0]
+                + ml.LEVEL3_LINK_4_NUM[0][1]
+                + ml.LEVEL3_LINK_4_NUM[0][2]
+                + ml.LEVEL3_LINK_4_NUM[0][3]
+                + ml.LEVEL3_LINK_4_NUM[1][0]
+                + ml.LEVEL3_LINK_4_NUM[1][1]
+                + ml.LEVEL3_LINK_4_NUM[1][2]
+                + ml.LEVEL3_LINK_4_NUM[1][3]
+                + ml.LEVEL3_LINK_4_NUM[1][4]
+                + ml.LEVEL3_LINK_4_NUM[2][0]
+                + ml.LEVEL3_LINK_4_NUM[2][1]
+                + ml.LEVEL3_LINK_4_NUM[3][0]
+                + ml.LEVEL3_LINK_4_NUM[3][1]
+                ; i++)
+                Assert.AreEqual(model.level3_nodes[12], model.level4_nodes[i].prelevel);
         }
     }
 }
