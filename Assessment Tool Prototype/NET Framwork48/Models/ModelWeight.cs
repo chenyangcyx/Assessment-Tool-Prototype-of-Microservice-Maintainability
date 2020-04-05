@@ -70,6 +70,8 @@ namespace NET_Framwork48.Models
         //设置某一节点下属节点的权值
         public void CalculateNodeNextLevelWeight(ModelNode node)
         {
+            if (node.NodeLevel >= 3)
+                return;
             int gain_num, damage_num;
             CollectNodeNextLevelGainORDamageNum(node, out gain_num, out damage_num);
             decimal ten = gain_num + damage_num;
