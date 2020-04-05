@@ -14,6 +14,13 @@ namespace NET_Framwork48.Models
         //模型的各层节点列表
         public List<ModelNode> level1_nodes, level2_nodes, level3_nodes, level4_nodes;
 
+        public Model()
+        {
+            CreateModel();          //创建模型结构
+            TrimModel();            //修剪模型
+            CalculateModelWeight(); //计算模型权值
+        }
+
         //创建模型
         public void CreateModel()
         {
@@ -105,7 +112,19 @@ namespace NET_Framwork48.Models
         //模型的权值计算
         public void CalculateModelWeight()
         {
-
+            ModelWeight mw = new ModelWeight();
+            //计算第一层的权值
+            for (int i = 0; i < ModelLink.LEVEL1_TOTAL_NUM; i++)
+                mw.CalculateNodeNextLevelWeight(level1_nodes[i]);
+            //计算第二层的权值
+            for (int i = 0; i < ModelLink.LEVEL2_TOTAL_NUM; i++)
+                mw.CalculateNodeNextLevelWeight(level2_nodes[i]);
+            //计算第三层的权值
+            for (int i = 0; i < ModelLink.LEVEL3_TOTAL_NUM; i++)
+                mw.CalculateNodeNextLevelWeight(level3_nodes[i]);
+            //计算第四层的权值
+            for (int i = 0; i < ModelLink.LEVEL4_TOTAL_NUM; i++)
+                mw.CalculateNodeNextLevelWeight(level4_nodes[i]);
         }
     }
 }

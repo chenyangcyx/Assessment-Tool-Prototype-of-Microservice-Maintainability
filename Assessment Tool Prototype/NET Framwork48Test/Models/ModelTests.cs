@@ -397,5 +397,176 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual("CouplingCohesionDesign ComplexitySystem SizeCouplingCohesionService GranularityParameter GranularityService LoopbackParameter GranularityService Loopback", level3_nodes_str);
             Assert.AreEqual("NSNDCS()NSNMNSNIS()NSNPI()NII()NSNDCS()NSNMNSNMNPI()NMNMP()NPI()NSWISL()NMNMP()NPI()NSWISL()", level4_nodes_str);
         }
+
+        [TestMethod()]
+        public void CalculateModelWeightTest()
+        {
+            OverAllData all = OverAllData.allData;
+            ModelWeight mw = new ModelWeight();
+            //未经过修剪的模型
+            Model model1 = new Model();
+            model1.CreateModel();
+            all.if_assess_modularity = true;
+            model1.TrimModel();
+
+            mw.CalculateNodeNextLevelWeight(model1.level1_nodes[0]);
+            Assert.AreEqual(0.25000m, model1.level1_nodes[0].nextlevel[0].weight);
+            Assert.AreEqual(0.25000m, model1.level1_nodes[0].nextlevel[1].weight);
+            Assert.AreEqual(0.25000m, model1.level1_nodes[0].nextlevel[2].weight);
+            Assert.AreEqual(0.25000m, model1.level1_nodes[0].nextlevel[3].weight);
+            Assert.AreEqual(0.25000m, model1.level2_nodes[0].weight);
+            Assert.AreEqual(0.25000m, model1.level2_nodes[1].weight);
+            Assert.AreEqual(0.25000m, model1.level2_nodes[2].weight);
+            Assert.AreEqual(0.25000m, model1.level2_nodes[3].weight);
+
+            mw.CalculateNodeNextLevelWeight(model1.level2_nodes[0]);
+            Assert.AreEqual(-0.08333m, model1.level2_nodes[0].nextlevel[0].weight);
+            Assert.AreEqual(1.25000m, model1.level2_nodes[0].nextlevel[1].weight);
+            Assert.AreEqual(-0.08333m, model1.level2_nodes[0].nextlevel[2].weight);
+            Assert.AreEqual(-0.08333m, model1.level2_nodes[0].nextlevel[3].weight);
+            Assert.AreEqual(-0.08333m, model1.level3_nodes[0].weight);
+            Assert.AreEqual(1.25000m, model1.level3_nodes[1].weight);
+            Assert.AreEqual(-0.08333m, model1.level3_nodes[2].weight);
+            Assert.AreEqual(-0.08333m, model1.level3_nodes[3].weight);
+
+            mw.CalculateNodeNextLevelWeight(model1.level2_nodes[1]);
+            Assert.AreEqual(-0.10000m, model1.level2_nodes[1].nextlevel[0].weight);
+            Assert.AreEqual(0.40000m, model1.level2_nodes[1].nextlevel[1].weight);
+            Assert.AreEqual(0.40000m, model1.level2_nodes[1].nextlevel[2].weight);
+            Assert.AreEqual(0.40000m, model1.level2_nodes[1].nextlevel[3].weight);
+            Assert.AreEqual(-0.10000m, model1.level2_nodes[1].nextlevel[4].weight);
+            Assert.AreEqual(-0.10000m, model1.level3_nodes[4].weight);
+            Assert.AreEqual(0.40000m, model1.level3_nodes[5].weight);
+            Assert.AreEqual(0.40000m, model1.level3_nodes[6].weight);
+            Assert.AreEqual(0.40000m, model1.level3_nodes[7].weight);
+            Assert.AreEqual(-0.10000m, model1.level3_nodes[8].weight);
+
+            mw.CalculateNodeNextLevelWeight(model1.level2_nodes[2]);
+            Assert.AreEqual(1.50000m, model1.level2_nodes[2].nextlevel[0].weight);
+            Assert.AreEqual(-0.50000m, model1.level2_nodes[2].nextlevel[1].weight);
+            Assert.AreEqual(1.50000m, model1.level3_nodes[9].weight);
+            Assert.AreEqual(-0.50000m, model1.level3_nodes[10].weight);
+
+            mw.CalculateNodeNextLevelWeight(model1.level2_nodes[3]);
+            Assert.AreEqual(0.50000m, model1.level2_nodes[3].nextlevel[0].weight);
+            Assert.AreEqual(0.50000m, model1.level2_nodes[3].nextlevel[1].weight);
+            Assert.AreEqual(0.50000m, model1.level3_nodes[11].weight);
+            Assert.AreEqual(0.50000m, model1.level3_nodes[12].weight);
+
+            for (int i = 0; i < ModelLink.LEVEL3_TOTAL_NUM; i++)
+                mw.CalculateNodeNextLevelWeight(model1.level3_nodes[i]);
+            for (int i = 0; i < ModelLink.LEVEL4_TOTAL_NUM; i++)
+                mw.CalculateNodeNextLevelWeight(model1.level4_nodes[i]);
+
+            Assert.AreEqual(0, model1.level3_nodes[0].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[0].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[1].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[1].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[2].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[2].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[3].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[3].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[3].nextlevel[2].weight);
+            Assert.AreEqual(0, model1.level3_nodes[4].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[4].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[5].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[5].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[6].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[6].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[6].nextlevel[2].weight);
+            Assert.AreEqual(0, model1.level3_nodes[7].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[7].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[7].nextlevel[2].weight);
+            Assert.AreEqual(0, model1.level3_nodes[8].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[8].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[9].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[9].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[9].nextlevel[2].weight);
+            Assert.AreEqual(0, model1.level3_nodes[10].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[10].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[11].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[11].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[12].nextlevel[0].weight);
+            Assert.AreEqual(0, model1.level3_nodes[12].nextlevel[1].weight);
+            Assert.AreEqual(0, model1.level3_nodes[12].nextlevel[2].weight);
+            for (int i = 0; i < ModelLink.LEVEL4_TOTAL_NUM; i++)
+                Assert.AreEqual(0, model1.level4_nodes[i].weight);
+
+            //经过修剪的模型
+            Model model2 = new Model();
+            model2.CreateModel();
+            all.if_assess_modularity = false;
+            model2.TrimModel();
+
+            mw.CalculateNodeNextLevelWeight(model2.level1_nodes[0]);
+            Assert.AreEqual(0.33333m, model2.level1_nodes[0].nextlevel[0].weight);
+            Assert.AreEqual(0.33333m, model2.level1_nodes[0].nextlevel[1].weight);
+            Assert.AreEqual(0.33333m, model2.level1_nodes[0].nextlevel[2].weight);
+            Assert.AreEqual(0.33333m, model2.level2_nodes[0].weight);
+            Assert.AreEqual(0.33333m, model2.level2_nodes[1].weight);
+            Assert.AreEqual(0.33333m, model2.level2_nodes[2].weight);
+
+            mw.CalculateNodeNextLevelWeight(model2.level2_nodes[0]);
+            Assert.AreEqual(-0.08333m, model2.level2_nodes[0].nextlevel[0].weight);
+            Assert.AreEqual(1.25000m, model2.level2_nodes[0].nextlevel[1].weight);
+            Assert.AreEqual(-0.08333m, model2.level2_nodes[0].nextlevel[2].weight);
+            Assert.AreEqual(-0.08333m, model2.level2_nodes[0].nextlevel[3].weight);
+            Assert.AreEqual(-0.08333m, model2.level3_nodes[0].weight);
+            Assert.AreEqual(1.25000m, model2.level3_nodes[1].weight);
+            Assert.AreEqual(-0.08333m, model2.level3_nodes[2].weight);
+            Assert.AreEqual(-0.08333m, model2.level3_nodes[3].weight);
+
+            mw.CalculateNodeNextLevelWeight(model2.level2_nodes[1]);
+            Assert.AreEqual(-0.10000m, model2.level2_nodes[1].nextlevel[0].weight);
+            Assert.AreEqual(0.40000m, model2.level2_nodes[1].nextlevel[1].weight);
+            Assert.AreEqual(0.40000m, model2.level2_nodes[1].nextlevel[2].weight);
+            Assert.AreEqual(0.40000m, model2.level2_nodes[1].nextlevel[3].weight);
+            Assert.AreEqual(-0.10000m, model2.level2_nodes[1].nextlevel[4].weight);
+            Assert.AreEqual(-0.10000m, model2.level3_nodes[4].weight);
+            Assert.AreEqual(0.40000m, model2.level3_nodes[5].weight);
+            Assert.AreEqual(0.40000m, model2.level3_nodes[6].weight);
+            Assert.AreEqual(0.40000m, model2.level3_nodes[7].weight);
+            Assert.AreEqual(-0.10000m, model2.level3_nodes[8].weight);
+
+            mw.CalculateNodeNextLevelWeight(model2.level2_nodes[2]);
+            Assert.AreEqual(1.50000m, model2.level2_nodes[2].nextlevel[0].weight);
+            Assert.AreEqual(-0.50000m, model2.level2_nodes[2].nextlevel[1].weight);
+            Assert.AreEqual(1.50000m, model2.level3_nodes[9].weight);
+            Assert.AreEqual(-0.50000m, model2.level3_nodes[10].weight);
+
+            for (int i = 0; i < ModelLink.LEVEL3_TOTAL_NUM - 2; i++)
+                mw.CalculateNodeNextLevelWeight(model2.level3_nodes[i]);
+            for (int i = 0; i < ModelLink.LEVEL4_TOTAL_NUM - 5; i++)
+                mw.CalculateNodeNextLevelWeight(model2.level4_nodes[i]);
+
+            Assert.AreEqual(0, model2.level3_nodes[0].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[0].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[1].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[1].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[2].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[2].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[3].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[3].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[3].nextlevel[2].weight);
+            Assert.AreEqual(0, model2.level3_nodes[4].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[4].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[5].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[5].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[6].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[6].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[6].nextlevel[2].weight);
+            Assert.AreEqual(0, model2.level3_nodes[7].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[7].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[7].nextlevel[2].weight);
+            Assert.AreEqual(0, model2.level3_nodes[8].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[8].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[9].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[9].nextlevel[1].weight);
+            Assert.AreEqual(0, model2.level3_nodes[9].nextlevel[2].weight);
+            Assert.AreEqual(0, model2.level3_nodes[10].nextlevel[0].weight);
+            Assert.AreEqual(0, model2.level3_nodes[10].nextlevel[1].weight);
+            for (int i = 0; i < ModelLink.LEVEL4_TOTAL_NUM - 5; i++)
+                Assert.AreEqual(0, model2.level4_nodes[i].weight);
+        }
     }
 }

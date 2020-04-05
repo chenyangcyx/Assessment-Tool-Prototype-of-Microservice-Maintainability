@@ -298,7 +298,6 @@ namespace NET_Framwork48.Models.Tests
         public void CalculateNodeNextLevelWeightTest()
         {
             OverAllData all = OverAllData.allData;
-            int gain_num, damage_num;
             ModelWeight mw = new ModelWeight();
             //未经过修剪的模型
             Model model1 = new Model();
