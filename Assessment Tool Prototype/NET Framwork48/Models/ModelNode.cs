@@ -12,6 +12,7 @@ namespace NET_Framwork48.Models
         public List<ModelNode> nextlevel;                               //下一层的节点引用
         public ModelNode prelevel;                                      //上一层的相连节点
         public decimal weight { get; set; }                             //权值
+        public const int WEIGHT_NONE = 1;                               //初始化权值数值
         public decimal value { get; set; }                              //计算数值
         public int gain_or_damage { get; set; }                         //增益/损害属性
 
@@ -28,7 +29,7 @@ namespace NET_Framwork48.Models
             NodeLevelName = "";
             nextlevel = new List<ModelNode>();
             prelevel = null;
-            weight = 1;
+            weight = WEIGHT_NONE;
             value = 0;
             gain_or_damage = ModelWeight.NODE_AFFECT_GAIN + ModelWeight.NODE_AFFECT_DAMAGE;
         }

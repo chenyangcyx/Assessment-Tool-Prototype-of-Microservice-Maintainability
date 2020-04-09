@@ -72,6 +72,7 @@ namespace NET_Framwork48.Models
         {
             if (node.NodeLevel >= 3)
                 return;
+
             int gain_num, damage_num;
             CollectNodeNextLevelGainORDamageNum(node, out gain_num, out damage_num);
             decimal ten = gain_num + damage_num;

@@ -14,13 +14,6 @@ namespace NET_Framwork48.Models
         //模型的各层节点列表
         public List<ModelNode> level1_nodes, level2_nodes, level3_nodes, level4_nodes;
 
-        public Model()
-        {
-            CreateModel();          //创建模型结构
-            TrimModel();            //修剪模型
-            CalculateModelWeight(); //计算模型权值
-        }
-
         //创建模型
         public void CreateModel()
         {
