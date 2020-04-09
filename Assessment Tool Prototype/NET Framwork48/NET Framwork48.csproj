@@ -54,6 +54,7 @@
     <Compile Include="Models\ModelLink.cs" />
     <Compile Include="Models\ModelName.cs" />
     <Compile Include="Models\ModelNode.cs" />
+    <Compile Include="Models\ModelValue.cs" />
     <Compile Include="Models\ModelWeight.cs" />
     <Compile Include="UIDesign\MainForm.cs">
       <SubType>Form</SubType>

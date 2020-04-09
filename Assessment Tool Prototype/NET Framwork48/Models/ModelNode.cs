@@ -28,7 +28,7 @@ namespace NET_Framwork48.Models
             NodeLevelName = "";
             nextlevel = new List<ModelNode>();
             prelevel = null;
-            weight = 0;
+            weight = 1;
             value = 0;
             gain_or_damage = ModelWeight.NODE_AFFECT_GAIN + ModelWeight.NODE_AFFECT_DAMAGE;
         }
