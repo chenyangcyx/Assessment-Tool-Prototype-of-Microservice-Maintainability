@@ -155,7 +155,7 @@ namespace NET_Framwork48.Models
         //计算Service Loopback的值
         public void CalculateService_Loopback()
         {
-
+            Service_Loopback = WISL_TOTAL / NS;
         }
 
         //计算第3层所有值
