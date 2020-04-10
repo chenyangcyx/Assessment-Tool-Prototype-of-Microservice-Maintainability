@@ -64,7 +64,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\MathCalculate.cs" />
     <Compile Include="Utils\OverAllData.cs" />
     <EmbeddedResource Include="UIDesign\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -12,5 +12,7 @@ namespace NET_Framwork48.Utils
 
         //是否评估 Modularity
         public bool if_assess_modularity = true;
+
+
     }
 }

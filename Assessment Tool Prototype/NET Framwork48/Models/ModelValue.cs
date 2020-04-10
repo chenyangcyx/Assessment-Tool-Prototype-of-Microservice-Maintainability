@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NET_Framwork48.Models
 {
-    class ModelValue
+    public class ModelValue
     {
         //**第4层**//
         public Dictionary<int, string> ServiceNames;        //所有的服务的名称列表
