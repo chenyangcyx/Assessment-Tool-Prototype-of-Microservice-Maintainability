@@ -107,17 +107,17 @@ namespace NET_Framwork48.Models
         {
             ModelWeight mw = new ModelWeight();
             //计算第一层的权值
-            for (int i = 0; i < ModelLink.LEVEL1_TOTAL_NUM; i++)
-                mw.CalculateNodeNextLevelWeight(level1_nodes[i]);
+            foreach (var node in level1_nodes)
+                mw.CalculateNodeNextLevelWeight(node);
             //计算第二层的权值
-            for (int i = 0; i < ModelLink.LEVEL2_TOTAL_NUM; i++)
-                mw.CalculateNodeNextLevelWeight(level2_nodes[i]);
+            foreach (var node in level2_nodes)
+                mw.CalculateNodeNextLevelWeight(node);
             //计算第三层的权值
-            for (int i = 0; i < ModelLink.LEVEL3_TOTAL_NUM; i++)
-                mw.CalculateNodeNextLevelWeight(level3_nodes[i]);
+            foreach (var node in level3_nodes)
+                mw.CalculateNodeNextLevelWeight(node);
             //计算第四层的权值
-            for (int i = 0; i < ModelLink.LEVEL4_TOTAL_NUM; i++)
-                mw.CalculateNodeNextLevelWeight(level4_nodes[i]);
+            foreach (var node in level4_nodes)
+                mw.CalculateNodeNextLevelWeight(node);
         }
     }
 }
