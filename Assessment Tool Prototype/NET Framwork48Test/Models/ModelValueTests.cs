@@ -326,7 +326,8 @@ namespace NET_Framwork48.Models.Tests
             //计算第4层数值
             mv.CalculateLevel4Values();
             mv.CalculateLevel3Values();
-
+            
+            //未裁剪模型的情况
             model.CreateModel();
             OverAllData.allData.if_assess_modularity = true;
             model.TrimModel();
@@ -349,6 +350,34 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual(3 / 12.23456m, model.level3_nodes[10].value);
             Assert.AreEqual(12.23456m / 23.45678m, model.level3_nodes[11].value);
             Assert.AreEqual((67.28380m * 67.28380m) / (23.45678m * 23.45678m), model.level3_nodes[12].value);
+            //验证第2层的值
+            foreach (var node in model.level2_nodes)
+                Assert.AreEqual(0, node.value);
+            //验证第1层的值
+            foreach (var node in model.level1_nodes)
+                Assert.AreEqual(0, node.value);
+
+            //裁剪模型的情况
+            model.CreateModel();
+            OverAllData.allData.if_assess_modularity = false;
+            model.TrimModel();
+            model.CalculateModelWeight();
+            mv.SetLevel4UnitValue(model.level4_nodes);
+            mv.SetLevel3UnitValue(model.level3_nodes);
+            mv.SetLevel3UnitValue(model.level2_nodes);
+            mv.SetLevel3UnitValue(model.level1_nodes);
+            //验证第3层的值
+            Assert.AreEqual(17.28380m / 12.23456m, model.level3_nodes[0].value);
+            Assert.AreEqual(12.23456m / 23.45678m, model.level3_nodes[1].value);
+            Assert.AreEqual(42.71615m / (12.23456m * 12.23456m - 12.23456m), model.level3_nodes[2].value);
+            Assert.AreEqual((67.28380m + 92.71615m) / 12.23456m, model.level3_nodes[3].value);
+            Assert.AreEqual(17.28380m / 12.23456m, model.level3_nodes[4].value);
+            Assert.AreEqual(12.23456m / 23.45678m, model.level3_nodes[5].value);
+            Assert.AreEqual((67.28380m * 67.28380m) / (23.45678m * 23.45678m), model.level3_nodes[6].value);
+            Assert.AreEqual((117.28380m * 117.28380m) / (67.28380m * 67.28380m), model.level3_nodes[7].value);
+            Assert.AreEqual(3 / 12.23456m, model.level3_nodes[8].value);
+            Assert.AreEqual((117.28380m * 117.28380m) / (67.28380m * 67.28380m), model.level3_nodes[9].value);
+            Assert.AreEqual(3 / 12.23456m, model.level3_nodes[10].value);
             //验证第2层的值
             foreach (var node in model.level2_nodes)
                 Assert.AreEqual(0, node.value);
