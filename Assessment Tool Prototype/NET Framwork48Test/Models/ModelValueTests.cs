@@ -12,11 +12,8 @@ namespace NET_Framwork48.Models.Tests
     [TestClass()]
     public class ModelValueTests
     {
-        [TestMethod()]
-        public void CalculateLevel4ValuesTest()
+        public void SetModelValueSample(ModelValue mv)
         {
-            //构建Model的Dictionary
-            ModelValue mv = new ModelValue();
             //添加服务名字
             mv.ServiceNames.Add(1, "Service 1");
             mv.ServiceNames.Add(2, "Service 2");
@@ -56,6 +53,14 @@ namespace NET_Framwork48.Models.Tests
             mv.WISL_NO_VALUE.Add(3, 1);
             mv.WISL_NO_VALUE.Add(4, 1);
             mv.WISL_NO_VALUE.Add(5, 0);
+        }
+
+        [TestMethod()]
+        public void CalculateLevel4ValuesTest()
+        {
+            //构建Model的Dictionary
+            ModelValue mv = new ModelValue();
+            SetModelValueSample(mv);
             //计算第4层数值
             mv.CalculateLevel4Values();
             //验证计算结果
@@ -74,45 +79,7 @@ namespace NET_Framwork48.Models.Tests
         {
             //构建Model的Dictionary
             ModelValue mv = new ModelValue();
-            //添加服务名字
-            mv.ServiceNames.Add(1, "Service 1");
-            mv.ServiceNames.Add(2, "Service 2");
-            mv.ServiceNames.Add(3, "Service 3");
-            mv.ServiceNames.Add(4, "Service 4");
-            mv.ServiceNames.Add(5, "Service 5");
-            //添加数值
-            mv.NS = 12.23456m;
-            mv.NDCS_NO_VALUE.Add(1, 1.23456m);
-            mv.NDCS_NO_VALUE.Add(2, 2.34567m);
-            mv.NDCS_NO_VALUE.Add(3, 3.45678m);
-            mv.NDCS_NO_VALUE.Add(4, 4.56789m);
-            mv.NDCS_NO_VALUE.Add(5, 5.67890m);
-            mv.NM = 23.45678m;
-            mv.NIS_NO_VALUE.Add(1, 6.78901m);
-            mv.NIS_NO_VALUE.Add(2, 7.89012m);
-            mv.NIS_NO_VALUE.Add(3, 8.90123m);
-            mv.NIS_NO_VALUE.Add(4, 9.01234m);
-            mv.NIS_NO_VALUE.Add(5, 10.12345m);
-            mv.NPI_NO_VALUE.Add(1, 11.23456m);
-            mv.NPI_NO_VALUE.Add(2, 12.34567m);
-            mv.NPI_NO_VALUE.Add(3, 13.45678m);
-            mv.NPI_NO_VALUE.Add(4, 14.56789m);
-            mv.NPI_NO_VALUE.Add(5, 15.67890m);
-            mv.NII_NO_VALUE.Add(1, 16.78901m);
-            mv.NII_NO_VALUE.Add(2, 17.89012m);
-            mv.NII_NO_VALUE.Add(3, 18.90123m);
-            mv.NII_NO_VALUE.Add(4, 19.01234m);
-            mv.NII_NO_VALUE.Add(5, 20.12345m);
-            mv.NMP_NO_VALUE.Add(1, 21.23456m);
-            mv.NMP_NO_VALUE.Add(2, 22.34567m);
-            mv.NMP_NO_VALUE.Add(3, 23.45678m);
-            mv.NMP_NO_VALUE.Add(4, 24.56789m);
-            mv.NMP_NO_VALUE.Add(5, 25.67890m);
-            mv.WISL_NO_VALUE.Add(1, 1);
-            mv.WISL_NO_VALUE.Add(2, 0);
-            mv.WISL_NO_VALUE.Add(3, 1);
-            mv.WISL_NO_VALUE.Add(4, 1);
-            mv.WISL_NO_VALUE.Add(5, 0);
+            SetModelValueSample(mv);
             //计算第3层数值
             mv.CalculateLevel4Values();
             mv.CalculateLevel3Values();
@@ -139,45 +106,7 @@ namespace NET_Framwork48.Models.Tests
         {
             Model model = new Model();
             ModelValue mv = new ModelValue();
-            //添加服务名字
-            mv.ServiceNames.Add(1, "Service 1");
-            mv.ServiceNames.Add(2, "Service 2");
-            mv.ServiceNames.Add(3, "Service 3");
-            mv.ServiceNames.Add(4, "Service 4");
-            mv.ServiceNames.Add(5, "Service 5");
-            //添加数值
-            mv.NS = 12.23456m;
-            mv.NDCS_NO_VALUE.Add(1, 1.23456m);
-            mv.NDCS_NO_VALUE.Add(2, 2.34567m);
-            mv.NDCS_NO_VALUE.Add(3, 3.45678m);
-            mv.NDCS_NO_VALUE.Add(4, 4.56789m);
-            mv.NDCS_NO_VALUE.Add(5, 5.67890m);
-            mv.NM = 23.45678m;
-            mv.NIS_NO_VALUE.Add(1, 6.78901m);
-            mv.NIS_NO_VALUE.Add(2, 7.89012m);
-            mv.NIS_NO_VALUE.Add(3, 8.90123m);
-            mv.NIS_NO_VALUE.Add(4, 9.01234m);
-            mv.NIS_NO_VALUE.Add(5, 10.12345m);
-            mv.NPI_NO_VALUE.Add(1, 11.23456m);
-            mv.NPI_NO_VALUE.Add(2, 12.34567m);
-            mv.NPI_NO_VALUE.Add(3, 13.45678m);
-            mv.NPI_NO_VALUE.Add(4, 14.56789m);
-            mv.NPI_NO_VALUE.Add(5, 15.67890m);
-            mv.NII_NO_VALUE.Add(1, 16.78901m);
-            mv.NII_NO_VALUE.Add(2, 17.89012m);
-            mv.NII_NO_VALUE.Add(3, 18.90123m);
-            mv.NII_NO_VALUE.Add(4, 19.01234m);
-            mv.NII_NO_VALUE.Add(5, 20.12345m);
-            mv.NMP_NO_VALUE.Add(1, 21.23456m);
-            mv.NMP_NO_VALUE.Add(2, 22.34567m);
-            mv.NMP_NO_VALUE.Add(3, 23.45678m);
-            mv.NMP_NO_VALUE.Add(4, 24.56789m);
-            mv.NMP_NO_VALUE.Add(5, 25.67890m);
-            mv.WISL_NO_VALUE.Add(1, 1);
-            mv.WISL_NO_VALUE.Add(2, 0);
-            mv.WISL_NO_VALUE.Add(3, 1);
-            mv.WISL_NO_VALUE.Add(4, 1);
-            mv.WISL_NO_VALUE.Add(5, 0);
+            SetModelValueSample(mv);
             //计算第4层数值
             mv.CalculateLevel4Values();
 
@@ -284,46 +213,8 @@ namespace NET_Framwork48.Models.Tests
         {
             Model model = new Model();
             ModelValue mv = new ModelValue();
-            //添加服务名字
-            mv.ServiceNames.Add(1, "Service 1");
-            mv.ServiceNames.Add(2, "Service 2");
-            mv.ServiceNames.Add(3, "Service 3");
-            mv.ServiceNames.Add(4, "Service 4");
-            mv.ServiceNames.Add(5, "Service 5");
-            //添加数值
-            mv.NS = 12.23456m;
-            mv.NDCS_NO_VALUE.Add(1, 1.23456m);
-            mv.NDCS_NO_VALUE.Add(2, 2.34567m);
-            mv.NDCS_NO_VALUE.Add(3, 3.45678m);
-            mv.NDCS_NO_VALUE.Add(4, 4.56789m);
-            mv.NDCS_NO_VALUE.Add(5, 5.67890m);
-            mv.NM = 23.45678m;
-            mv.NIS_NO_VALUE.Add(1, 6.78901m);
-            mv.NIS_NO_VALUE.Add(2, 7.89012m);
-            mv.NIS_NO_VALUE.Add(3, 8.90123m);
-            mv.NIS_NO_VALUE.Add(4, 9.01234m);
-            mv.NIS_NO_VALUE.Add(5, 10.12345m);
-            mv.NPI_NO_VALUE.Add(1, 11.23456m);
-            mv.NPI_NO_VALUE.Add(2, 12.34567m);
-            mv.NPI_NO_VALUE.Add(3, 13.45678m);
-            mv.NPI_NO_VALUE.Add(4, 14.56789m);
-            mv.NPI_NO_VALUE.Add(5, 15.67890m);
-            mv.NII_NO_VALUE.Add(1, 16.78901m);
-            mv.NII_NO_VALUE.Add(2, 17.89012m);
-            mv.NII_NO_VALUE.Add(3, 18.90123m);
-            mv.NII_NO_VALUE.Add(4, 19.01234m);
-            mv.NII_NO_VALUE.Add(5, 20.12345m);
-            mv.NMP_NO_VALUE.Add(1, 21.23456m);
-            mv.NMP_NO_VALUE.Add(2, 22.34567m);
-            mv.NMP_NO_VALUE.Add(3, 23.45678m);
-            mv.NMP_NO_VALUE.Add(4, 24.56789m);
-            mv.NMP_NO_VALUE.Add(5, 25.67890m);
-            mv.WISL_NO_VALUE.Add(1, 1);
-            mv.WISL_NO_VALUE.Add(2, 0);
-            mv.WISL_NO_VALUE.Add(3, 1);
-            mv.WISL_NO_VALUE.Add(4, 1);
-            mv.WISL_NO_VALUE.Add(5, 0);
-            //计算第4层数值
+            SetModelValueSample(mv);
+            //计算第3层数值
             mv.CalculateLevel4Values();
             mv.CalculateLevel3Values();
             
@@ -384,15 +275,6 @@ namespace NET_Framwork48.Models.Tests
             //验证第1层的值
             foreach (var node in model.level1_nodes)
                 Assert.AreEqual(0, node.value);
-        }
-
-        [TestMethod()]
-        public void SetLevel2And1UnitValueTest()
-        {
-            //测试第2层
-
-
-            //测试第1层
         }
     }
 }
