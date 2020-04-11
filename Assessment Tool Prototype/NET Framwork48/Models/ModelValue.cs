@@ -243,11 +243,11 @@ namespace NET_Framwork48.Models
             }
         }
 
-        //设置第2、1层的所有元素值
+        //设置第2层的所有元素值
         //使用第3层节点的权值与值进行加权计算
-        public void SetLevel2And1UnitValue(List<ModelNode> level_node)
+        public void SetLevel2UnitValue(List<ModelNode> level_node)
         {
-            if (level_node[0].NodeLevel != 2 || level_node[0].NodeLevel != 1)
+            if (level_node[0].NodeLevel != 2)
                 return;
             foreach (ModelNode node in level_node)
             {
@@ -256,6 +256,18 @@ namespace NET_Framwork48.Models
                     sum += node_next.weight * node_next.value;
                 node.value = sum;
             }
+        }
+
+        //设置第1层的所有元素值
+        //使用第2层节点的权值与值进行加权计算
+        public void SetLevel1UnitValue(List<ModelNode> level_node)
+        {
+            if (level_node[0].NodeLevel != 1)
+                return;
+            decimal sum = 0;
+            foreach (ModelNode node_next in level_node[0].nextlevel)
+                sum += node_next.weight * node_next.value;
+            level_node[0].value = sum;
         }
         //**其他功能**//
     }

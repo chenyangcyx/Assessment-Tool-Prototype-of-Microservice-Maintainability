@@ -278,7 +278,7 @@ namespace NET_Framwork48.Models.Tests
         }
 
         [TestMethod()]
-        public void SetLevel2And1UnitValueTest_Level2()
+        public void SetLevel2UnitValueTest()
         {
 
             //测试第2层
@@ -296,10 +296,62 @@ namespace NET_Framwork48.Models.Tests
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
             mv.SetLevel3UnitValue(model.level3_nodes);
-            mv.SetLevel3UnitValue(model.level2_nodes);
-            mv.SetLevel3UnitValue(model.level1_nodes);
+            mv.SetLevel2UnitValue(model.level2_nodes);
             //验证数值
+            Assert.AreEqual(-0.5814090208767396425967497017122, (double)model.level2_nodes[0].value, 0.0001);
+            Assert.AreEqual(4.5493525993415009929712588253279, (double)model.level2_nodes[1].value, 0.0001);
+            Assert.AreEqual(4.435102352522840320814015528183, (double)model.level2_nodes[2].value, 0.0001);
+            Assert.AreEqual(4.37469421809111477997698989807, (double)model.level2_nodes[3].value, 0.0001);
+
             //修剪模型的情况
+            model.CreateModel();
+            OverAllData.allData.if_assess_modularity = false;
+            model.TrimModel();
+            model.CalculateModelWeight();
+            mv.SetLevel4UnitValue(model.level4_nodes);
+            mv.SetLevel3UnitValue(model.level3_nodes);
+            mv.SetLevel2UnitValue(model.level2_nodes);
+            //验证数值
+            Assert.AreEqual(-0.5814090208767396425967497017122, (double)model.level2_nodes[0].value, 0.0001);
+            Assert.AreEqual(4.5493525993415009929712588253279, (double)model.level2_nodes[1].value, 0.0001);
+            Assert.AreEqual(4.435102352522840320814015528183, (double)model.level2_nodes[2].value, 0.0001);
+        }
+
+        [TestMethod()]
+        public void SetLevel1UnitValueTest()
+        {
+
+            //测试第2层
+            //未修剪模型的情况
+            Model model = new Model();
+            ModelValue mv = new ModelValue();
+            SetModelValueSample(mv);
+            //计算第3层数值
+            mv.CalculateLevel4Values();
+            mv.CalculateLevel3Values();
+            //创建模型
+            model.CreateModel();
+            OverAllData.allData.if_assess_modularity = true;
+            model.TrimModel();
+            model.CalculateModelWeight();
+            mv.SetLevel4UnitValue(model.level4_nodes);
+            mv.SetLevel3UnitValue(model.level3_nodes);
+            mv.SetLevel2UnitValue(model.level2_nodes);
+            mv.SetLevel1UnitValue(model.level1_nodes);
+            //验证数值
+            Assert.AreEqual(3.1944350372696791127913786374672, (double)model.level1_nodes[0].value, 0.0001);
+
+            //修剪模型的情况
+            model.CreateModel();
+            OverAllData.allData.if_assess_modularity = false;
+            model.TrimModel();
+            model.CalculateModelWeight();
+            mv.SetLevel4UnitValue(model.level4_nodes);
+            mv.SetLevel3UnitValue(model.level3_nodes);
+            mv.SetLevel2UnitValue(model.level2_nodes);
+            mv.SetLevel1UnitValue(model.level1_nodes);
+            //验证数值
+            Assert.AreEqual(2.8009873001760972650572709221841, (double)model.level1_nodes[0].value, 0.0001);
         }
     }
 }
