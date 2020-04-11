@@ -102,9 +102,9 @@ namespace NET_Framwork48.Models
             foreach(ModelNode tmp in node.nextlevel)
             {
                 if (tmp.gain_or_damage == NODE_AFFECT_GAIN)
-                    tmp.weight = Math.Round(gew, WEIGHT_VALUE_ROUND);
+                    tmp.weight = gew;
                 else
-                    tmp.weight = Math.Round(dew, WEIGHT_VALUE_ROUND);
+                    tmp.weight = dew;
             }
         }
     }

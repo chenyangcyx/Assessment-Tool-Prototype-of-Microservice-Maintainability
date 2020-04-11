@@ -276,5 +276,30 @@ namespace NET_Framwork48.Models.Tests
             foreach (var node in model.level1_nodes)
                 Assert.AreEqual(0, node.value);
         }
+
+        [TestMethod()]
+        public void SetLevel2And1UnitValueTest_Level2()
+        {
+
+            //测试第2层
+            //未修剪模型的情况
+            Model model = new Model();
+            ModelValue mv = new ModelValue();
+            SetModelValueSample(mv);
+            //计算第3层数值
+            mv.CalculateLevel4Values();
+            mv.CalculateLevel3Values();
+            //创建模型
+            model.CreateModel();
+            OverAllData.allData.if_assess_modularity = true;
+            model.TrimModel();
+            model.CalculateModelWeight();
+            mv.SetLevel4UnitValue(model.level4_nodes);
+            mv.SetLevel3UnitValue(model.level3_nodes);
+            mv.SetLevel3UnitValue(model.level2_nodes);
+            mv.SetLevel3UnitValue(model.level1_nodes);
+            //验证数值
+            //修剪模型的情况
+        }
     }
 }
