@@ -14,7 +14,7 @@ namespace NET_Framwork48.Models
         //模型的各层节点列表
         public List<ModelNode> level1_nodes, level2_nodes, level3_nodes, level4_nodes;
         //模型的必用操作项
-        GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
+        GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
         public ModelLink modelLink;
         public ModelName modelName;
         public ModelWeight modelWeight;
@@ -68,7 +68,7 @@ namespace NET_Framwork48.Models
         {
             //判断是否评估Modularity
             //如果不评估
-            if (!all.if_assess_modularity)
+            if (!global.if_assess_modularity)
             {
                 List<ModelNode> delete_level2_nodes = new List<ModelNode>();
                 List<ModelNode> delete_level3_nodes = new List<ModelNode>();
