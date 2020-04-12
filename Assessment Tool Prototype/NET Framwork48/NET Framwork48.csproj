@@ -54,7 +54,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataHandle\DataAnalyze.cs" />
+    <Compile Include="DataHandle\DataInput.cs" />
     <Compile Include="DataHandle\JSONDataStruct.cs" />
+    <Compile Include="DataHandle\JSONDecoder.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\ModelLink.cs" />
     <Compile Include="Models\ModelName.cs" />
