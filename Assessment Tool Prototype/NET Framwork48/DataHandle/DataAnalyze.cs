@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NET_Framwork48.DataHandle
 {
-    class DataAnalyze
+    public class DataAnalyze
     {
     }
 }

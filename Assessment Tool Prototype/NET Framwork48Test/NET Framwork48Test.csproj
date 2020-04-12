@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataHandle\JSONDecoderTests.cs" />
     <Compile Include="Models\ModelNameTest.cs" />
     <Compile Include="Models\ModelTests.cs" />
     <Compile Include="Models\ModelValueTests.cs" />

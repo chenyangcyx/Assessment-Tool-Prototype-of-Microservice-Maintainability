@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NET_Framwork48.DataHandle
 {
-    class DataInput
+    public class DataInput
     {
         Encoding FILE_ENCODING = Encoding.UTF8;
         public string InputDataFromFile(string path)

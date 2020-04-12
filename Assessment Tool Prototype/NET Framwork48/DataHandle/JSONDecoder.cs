@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NET_Framwork48.DataHandle
 {
-    class JSONDecoder
+    public class JSONDecoder
     {
         public JSONDataStruct.Root GetJSONObject(string content)
         {
