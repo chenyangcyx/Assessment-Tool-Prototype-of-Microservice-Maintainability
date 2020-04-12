@@ -41,7 +41,7 @@ namespace NET_Framwork48.DataHandle.JSONDataStruct
     public class MessagesItem
     {
         public string messageName { get; set; }
-        public string parameterNumber { get; set; }
+        public int parameterNumber { get; set; }
         public List<string> elements { get; set; }
     }
 
