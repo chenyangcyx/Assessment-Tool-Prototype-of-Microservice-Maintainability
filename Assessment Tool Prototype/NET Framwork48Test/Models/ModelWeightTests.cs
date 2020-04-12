@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NET_Framwork48.Models;
-using NET_Framwork48.Utils;
+using NET_Framwork48.GlobalData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -159,7 +159,7 @@ namespace NET_Framwork48.Models.Tests
         [TestMethod()]
         public void CollectNodeNextLevelGainORDamageNumTest()
         {
-            OverAllData all = OverAllData.allData;
+            GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
             int gain_num, damage_num;
             ModelWeight mw = new ModelWeight();
             //未经过修剪的模型
@@ -297,7 +297,7 @@ namespace NET_Framwork48.Models.Tests
         [TestMethod()]
         public void CalculateNodeNextLevelWeightTest()
         {
-            OverAllData all = OverAllData.allData;
+            GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
             ModelWeight mw = new ModelWeight();
             //未经过修剪的模型
             Model model1 = new Model();

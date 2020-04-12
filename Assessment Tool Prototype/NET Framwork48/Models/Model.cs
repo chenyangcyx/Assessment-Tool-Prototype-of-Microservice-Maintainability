@@ -1,4 +1,4 @@
-﻿using NET_Framwork48.Utils;
+﻿using NET_Framwork48.GlobalData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace NET_Framwork48.Models
         //模型的各层节点列表
         public List<ModelNode> level1_nodes, level2_nodes, level3_nodes, level4_nodes;
         //模型的必用操作项
-        OverAllData all = OverAllData.allData;
+        GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
         public ModelLink modelLink;
         public ModelName modelName;
         public ModelWeight modelWeight;

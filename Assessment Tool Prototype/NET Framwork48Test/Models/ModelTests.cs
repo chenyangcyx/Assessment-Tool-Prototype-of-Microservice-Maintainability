@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NET_Framwork48.Models;
-using NET_Framwork48.Utils;
+using NET_Framwork48.GlobalData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -326,7 +326,7 @@ namespace NET_Framwork48.Models.Tests
         [TestMethod()]
         public void TrimModelTest()
         {
-            OverAllData all = OverAllData.allData;
+            GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
             all.if_assess_modularity = false;
 
             //测试模型层级数量
@@ -401,7 +401,7 @@ namespace NET_Framwork48.Models.Tests
         [TestMethod()]
         public void CalculateModelWeightTest()
         {
-            OverAllData all = OverAllData.allData;
+            GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
             ModelWeight mw = new ModelWeight();
             //未经过修剪的模型
             Model model1 = new Model();

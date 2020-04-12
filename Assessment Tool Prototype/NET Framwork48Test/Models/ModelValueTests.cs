@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NET_Framwork48.Models;
-using NET_Framwork48.Utils;
+using NET_Framwork48.GlobalData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -112,7 +112,7 @@ namespace NET_Framwork48.Models.Tests
 
             //未裁剪模型的情况
             model.CreateModel();
-            OverAllData.allData.if_assess_modularity = true;
+            GlobalData.GlobalData.globalData.if_assess_modularity = true;
             model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
@@ -163,7 +163,7 @@ namespace NET_Framwork48.Models.Tests
 
             //裁剪模型的情况
             model.CreateModel();
-            OverAllData.allData.if_assess_modularity = false;
+            GlobalData.GlobalData.globalData.if_assess_modularity = false;
             model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
@@ -220,7 +220,7 @@ namespace NET_Framwork48.Models.Tests
             
             //未裁剪模型的情况
             model.CreateModel();
-            OverAllData.allData.if_assess_modularity = true;
+            GlobalData.GlobalData.globalData.if_assess_modularity = true;
             model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
@@ -250,7 +250,7 @@ namespace NET_Framwork48.Models.Tests
 
             //裁剪模型的情况
             model.CreateModel();
-            OverAllData.allData.if_assess_modularity = false;
+            GlobalData.GlobalData.globalData.if_assess_modularity = false;
             model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
@@ -291,7 +291,7 @@ namespace NET_Framwork48.Models.Tests
             mv.CalculateLevel3Values();
             //创建模型
             model.CreateModel();
-            OverAllData.allData.if_assess_modularity = true;
+            GlobalData.GlobalData.globalData.if_assess_modularity = true;
             model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
@@ -305,7 +305,7 @@ namespace NET_Framwork48.Models.Tests
 
             //修剪模型的情况
             model.CreateModel();
-            OverAllData.allData.if_assess_modularity = false;
+            GlobalData.GlobalData.globalData.if_assess_modularity = false;
             model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
@@ -331,7 +331,7 @@ namespace NET_Framwork48.Models.Tests
             mv.CalculateLevel3Values();
             //创建模型
             model.CreateModel();
-            OverAllData.allData.if_assess_modularity = true;
+            GlobalData.GlobalData.globalData.if_assess_modularity = true;
             model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
@@ -343,7 +343,7 @@ namespace NET_Framwork48.Models.Tests
 
             //修剪模型的情况
             model.CreateModel();
-            OverAllData.allData.if_assess_modularity = false;
+            GlobalData.GlobalData.globalData.if_assess_modularity = false;
             model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);

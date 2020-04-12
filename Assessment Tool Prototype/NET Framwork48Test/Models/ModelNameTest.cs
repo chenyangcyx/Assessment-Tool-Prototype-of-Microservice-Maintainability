@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NET_Framwork48.Utils;
+using NET_Framwork48.GlobalData;
 
 namespace NET_Framwork48.Models.Tests
 {

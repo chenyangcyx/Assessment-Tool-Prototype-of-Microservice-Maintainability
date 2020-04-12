@@ -1,4 +1,4 @@
-﻿using NET_Framwork48.Utils;
+﻿using NET_Framwork48.GlobalData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
