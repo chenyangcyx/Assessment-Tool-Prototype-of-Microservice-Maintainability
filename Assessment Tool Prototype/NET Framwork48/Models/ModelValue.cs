@@ -11,6 +11,8 @@ namespace NET_Framwork48.Models
         //**第4层**//
         public Dictionary<int, string> Dic_NO_ServiceName;          //字典：序号-微服务名字
         public Dictionary<string, int> Dic_ServiceName_NO;          //字典：微服务名字-序号
+        public Dictionary<int, string> Dic_NO_MessageName;          //字典：序号-消息名字
+        public Dictionary<string, int> Dic_MessageName_NO;          //字典：消息名字-序号
 
         public decimal NS { get; set; }
         public decimal NDCS_TOTAL { get; set; }
@@ -31,6 +33,8 @@ namespace NET_Framwork48.Models
         {
             Dic_NO_ServiceName = new Dictionary<int, string>();
             Dic_ServiceName_NO = new Dictionary<string, int>();
+            Dic_NO_MessageName = new Dictionary<int, string>();
+            Dic_MessageName_NO = new Dictionary<string, int>();
             NDCS_NO_VALUE = new Dictionary<int, decimal>();
             NIS_NO_VALUE = new Dictionary<int, decimal>();
             NPI_NO_VALUE = new Dictionary<int, decimal>();
