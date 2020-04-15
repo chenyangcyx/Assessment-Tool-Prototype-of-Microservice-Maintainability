@@ -9,7 +9,8 @@ namespace NET_Framwork48.Models
     public class ModelValue
     {
         //**第4层**//
-        public Dictionary<int, string> ServiceNames;        //所有的服务的名称列表
+        public Dictionary<int, string> Dic_NO_ServiceName;          //字典：序号-微服务名字
+        public Dictionary<string, int> Dic_ServiceName_NO;          //字典：微服务名字-序号
 
         public decimal NS { get; set; }
         public decimal NDCS_TOTAL { get; set; }
@@ -28,7 +29,8 @@ namespace NET_Framwork48.Models
 
         public ModelValue()
         {
-            ServiceNames = new Dictionary<int, string>();
+            Dic_NO_ServiceName = new Dictionary<int, string>();
+            Dic_ServiceName_NO = new Dictionary<string, int>();
             NDCS_NO_VALUE = new Dictionary<int, decimal>();
             NIS_NO_VALUE = new Dictionary<int, decimal>();
             NPI_NO_VALUE = new Dictionary<int, decimal>();
@@ -55,7 +57,7 @@ namespace NET_Framwork48.Models
         //获取总的Service的数量
         public int GetTotalServiceNumber()
         {
-            return ServiceNames.Count;
+            return Dic_NO_ServiceName.Count;
         }
 
         //计算NDCS_TOTAL

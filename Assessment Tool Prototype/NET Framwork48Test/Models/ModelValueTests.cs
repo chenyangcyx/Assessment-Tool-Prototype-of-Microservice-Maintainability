@@ -15,44 +15,44 @@ namespace NET_Framwork48.Models.Tests
         public void SetModelValueSample(ModelValue mv)
         {
             //添加服务名字
-            mv.ServiceNames.Add(1, "Service 1");
-            mv.ServiceNames.Add(2, "Service 2");
-            mv.ServiceNames.Add(3, "Service 3");
-            mv.ServiceNames.Add(4, "Service 4");
-            mv.ServiceNames.Add(5, "Service 5");
+            mv.Dic_NO_ServiceName.Add(0, "Service 1");
+            mv.Dic_NO_ServiceName.Add(1, "Service 2");
+            mv.Dic_NO_ServiceName.Add(2, "Service 3");
+            mv.Dic_NO_ServiceName.Add(3, "Service 4");
+            mv.Dic_NO_ServiceName.Add(4, "Service 5");
             //添加数值
             mv.NS = 12.23456m;
-            mv.NDCS_NO_VALUE.Add(1, 1.23456m);
-            mv.NDCS_NO_VALUE.Add(2, 2.34567m);
-            mv.NDCS_NO_VALUE.Add(3, 3.45678m);
-            mv.NDCS_NO_VALUE.Add(4, 4.56789m);
-            mv.NDCS_NO_VALUE.Add(5, 5.67890m);
+            mv.NDCS_NO_VALUE.Add(0, 1.23456m);
+            mv.NDCS_NO_VALUE.Add(1, 2.34567m);
+            mv.NDCS_NO_VALUE.Add(2, 3.45678m);
+            mv.NDCS_NO_VALUE.Add(3, 4.56789m);
+            mv.NDCS_NO_VALUE.Add(4, 5.67890m);
             mv.NM = 23.45678m;
-            mv.NIS_NO_VALUE.Add(1, 6.78901m);
-            mv.NIS_NO_VALUE.Add(2, 7.89012m);
-            mv.NIS_NO_VALUE.Add(3, 8.90123m);
-            mv.NIS_NO_VALUE.Add(4, 9.01234m);
-            mv.NIS_NO_VALUE.Add(5, 10.12345m);
-            mv.NPI_NO_VALUE.Add(1, 11.23456m);
-            mv.NPI_NO_VALUE.Add(2, 12.34567m);
-            mv.NPI_NO_VALUE.Add(3, 13.45678m);
-            mv.NPI_NO_VALUE.Add(4, 14.56789m);
-            mv.NPI_NO_VALUE.Add(5, 15.67890m);
-            mv.NII_NO_VALUE.Add(1, 16.78901m);
-            mv.NII_NO_VALUE.Add(2, 17.89012m);
-            mv.NII_NO_VALUE.Add(3, 18.90123m);
-            mv.NII_NO_VALUE.Add(4, 19.01234m);
-            mv.NII_NO_VALUE.Add(5, 20.12345m);
-            mv.NMP_NO_VALUE.Add(1, 21.23456m);
-            mv.NMP_NO_VALUE.Add(2, 22.34567m);
-            mv.NMP_NO_VALUE.Add(3, 23.45678m);
-            mv.NMP_NO_VALUE.Add(4, 24.56789m);
-            mv.NMP_NO_VALUE.Add(5, 25.67890m);
-            mv.WISL_NO_VALUE.Add(1, 1);
-            mv.WISL_NO_VALUE.Add(2, 0);
+            mv.NIS_NO_VALUE.Add(0, 6.78901m);
+            mv.NIS_NO_VALUE.Add(1, 7.89012m);
+            mv.NIS_NO_VALUE.Add(2, 8.90123m);
+            mv.NIS_NO_VALUE.Add(3, 9.01234m);
+            mv.NIS_NO_VALUE.Add(4, 10.12345m);
+            mv.NPI_NO_VALUE.Add(0, 11.23456m);
+            mv.NPI_NO_VALUE.Add(1, 12.34567m);
+            mv.NPI_NO_VALUE.Add(2, 13.45678m);
+            mv.NPI_NO_VALUE.Add(3, 14.56789m);
+            mv.NPI_NO_VALUE.Add(4, 15.67890m);
+            mv.NII_NO_VALUE.Add(0, 16.78901m);
+            mv.NII_NO_VALUE.Add(1, 17.89012m);
+            mv.NII_NO_VALUE.Add(2, 18.90123m);
+            mv.NII_NO_VALUE.Add(3, 19.01234m);
+            mv.NII_NO_VALUE.Add(4, 20.12345m);
+            mv.NMP_NO_VALUE.Add(0, 21.23456m);
+            mv.NMP_NO_VALUE.Add(1, 22.34567m);
+            mv.NMP_NO_VALUE.Add(2, 23.45678m);
+            mv.NMP_NO_VALUE.Add(3, 24.56789m);
+            mv.NMP_NO_VALUE.Add(4, 25.67890m);
+            mv.WISL_NO_VALUE.Add(0, 1);
+            mv.WISL_NO_VALUE.Add(1, 0);
+            mv.WISL_NO_VALUE.Add(2, 1);
             mv.WISL_NO_VALUE.Add(3, 1);
-            mv.WISL_NO_VALUE.Add(4, 1);
-            mv.WISL_NO_VALUE.Add(5, 0);
+            mv.WISL_NO_VALUE.Add(4, 0);
         }
 
         [TestMethod()]
