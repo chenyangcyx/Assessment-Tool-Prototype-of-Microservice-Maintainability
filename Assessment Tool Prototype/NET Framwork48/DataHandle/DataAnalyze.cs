@@ -92,6 +92,7 @@ namespace NET_Framwork48.DataHandle
                     int num = 0;
                     modelValue.Dic_ServiceName_NO.TryGetValue(call_service.serviceName, out num);
                     if_connect[i, num] = 1;
+                    if_connect[num, i] = 1;
                 }
             }
             for(int i = 0; i < microservice_number; i++)
@@ -142,6 +143,12 @@ namespace NET_Framwork48.DataHandle
             }
             for(int i = 0; i < data.messages.Count; i++)
                 modelValue.NMP_NO_VALUE.Add(i, data.messages[i].parameterNumber);
+        }
+
+        //设置WISL()
+        public void SetWISL()
+        {
+
         }
     }
 }
