@@ -86,7 +86,6 @@ namespace NET_Framwork48.DataHandle
                 for (int j = 0; j < microservice_number; j++)
                     if_connect[i, j] = 0;
             for(int i = 0; i < microservice_number; i++)
-            {
                 foreach(var call_service in data.microservices[i].call)
                 {
                     int num = 0;
@@ -94,7 +93,6 @@ namespace NET_Framwork48.DataHandle
                     if_connect[i, num] = 1;
                     if_connect[num, i] = 1;
                 }
-            }
             for(int i = 0; i < microservice_number; i++)
             {
                 int num = 0;
@@ -148,7 +146,56 @@ namespace NET_Framwork48.DataHandle
         //设置WISL()
         public void SetWISL()
         {
+            int microservice_number = data.microservices.Count;
+            int[,] graph = new int[microservice_number, microservice_number];
+            for (int i = 0; i < microservice_number; i++)
+                for (int j = 0; j < microservice_number; j++)
+                    graph[i, j] = int.MaxValue;
+            for (int i = 0; i < microservice_number; i++)
+                foreach (var call_service in data.microservices[i].call)
+                {
+                    int num = 0;
+                    modelValue.Dic_ServiceName_NO.TryGetValue(call_service.serviceName, out num);
+                    graph[num, i] = 1;
+                }
 
+            int[] visit = new int[microservice_number];
+            int[] father = new int[microservice_number];
+            for(int i = 0; i < microservice_number; i++)
+            {
+                visit[i] = 0;
+                father[i] = -1;
+            }
+            for (int i = 0; i < microservice_number; i++)
+                if (visit[i] == 0)
+                    SetWISL_dfsVisit(graph, i, visit, father, microservice_number);
+        }
+
+        //WISL()中的dfsVisit
+        public void SetWISL_dfsVisit(int[,] graph, int node, int[] visit, int[] father, int microservice_number)
+        {
+            visit[node] = 1;
+            for(int i=0;i<microservice_number;i++)
+                //不遍历自己
+                if (i != node && graph[node, i] != int.MaxValue)
+                {
+                    //不遍历上一个遍历的节点
+                    if (visit[i] == 1 && i != father[node])
+                    {
+                        int tmp = node;
+                        while (tmp != i)
+                        {
+                            modelValue.WISL_NO_VALUE.Add(tmp, 1);
+                            tmp = father[tmp];
+                        }
+                    }
+                    else if (visit[i] == 0)
+                    {
+                        father[i] = node;
+                        SetWISL_dfsVisit(graph, i, visit, father, microservice_number);
+                    }
+                }
+            visit[node] = 2;
         }
     }
 }
