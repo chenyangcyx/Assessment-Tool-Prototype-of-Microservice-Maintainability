@@ -42,6 +42,45 @@ namespace NET_Framwork48.DataHandle
             modelValue.NM = data.messages.Count;
         }
 
+        //设置NDCS()
+        public void SetNDCS()
+        {
+            int microservice_number = data.microservices.Count;
+            List<List<int>> microservice_graph = new List<List<int>>();
+            for (int i = 0; i < microservice_number; i++)
+                microservice_graph.Add(new List<int>());
+            //构造邻接表
+            for(int i = 0; i < microservice_number; i++)
+            {
+                foreach(var node in data.microservices[i].call)
+                {
+                    int out_service_no = 0;
+                    modelValue.Dic_ServiceName_NO.TryGetValue(node.serviceName, out out_service_no);
+                    microservice_graph[out_service_no].Add(i);
+                }
+            }
+            //构造关联关系表
+            int[,] if_connect = new int[microservice_number, microservice_number];
+            for (int i = 0; i < microservice_number; i++)
+                for (int j = 0; j < microservice_number; j++)
+                    if_connect[i, j] = 0;
+            for (int i = 0; i < microservice_graph.Count; i++)
+            {
+                var node = microservice_graph[i];
+                foreach (var link_node in node)
+                    if_connect[i, link_node] = 1;
+            }
+            //写入NDCS()字典
+            for(int i = 0; i < microservice_number; i++)
+            {
+                int num = 0;
+                foreach (var node in microservice_graph[i])
+                    if (node == 1)
+                        num++;
+                modelValue.NDCS_NO_VALUE.Add(i, num);
+            }
+        }
+
         //设置NIS()
         public void SetNIS()
         {
