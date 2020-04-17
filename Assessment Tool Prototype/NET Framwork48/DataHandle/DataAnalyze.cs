@@ -166,13 +166,21 @@ namespace NET_Framwork48.DataHandle
                 visit[i] = 0;
                 father[i] = -1;
             }
+            bool[] if_in_loopback = new bool[microservice_number];
+            for (int i = 0; i < microservice_number; i++)
+                if_in_loopback[i] = false;
             for (int i = 0; i < microservice_number; i++)
                 if (visit[i] == 0)
-                    SetWISL_dfsVisit(graph, i, visit, father, microservice_number);
+                    SetWISL_dfsVisit(graph, i, visit, father, microservice_number, if_in_loopback);
+            for (int i = 0; i < microservice_number; i++)
+                if (if_in_loopback[i] == true)
+                    modelValue.WISL_NO_VALUE.Add(i, 1);
+                else
+                    modelValue.WISL_NO_VALUE.Add(i, 0);
         }
 
         //WISL()中的dfsVisit
-        public void SetWISL_dfsVisit(int[,] graph, int node, int[] visit, int[] father, int microservice_number)
+        public void SetWISL_dfsVisit(int[,] graph, int node, int[] visit, int[] father, int microservice_number,bool[] if_in_loopback)
         {
             visit[node] = 1;
             for(int i=0;i<microservice_number;i++)
@@ -185,14 +193,14 @@ namespace NET_Framwork48.DataHandle
                         int tmp = node;
                         while (tmp != i)
                         {
-                            modelValue.WISL_NO_VALUE.Add(tmp, 1);
+                            if_in_loopback[tmp] = true;
                             tmp = father[tmp];
                         }
                     }
                     else if (visit[i] == 0)
                     {
                         father[i] = node;
-                        SetWISL_dfsVisit(graph, i, visit, father, microservice_number);
+                        SetWISL_dfsVisit(graph, i, visit, father, microservice_number, if_in_loopback);
                     }
                 }
             visit[node] = 2;
