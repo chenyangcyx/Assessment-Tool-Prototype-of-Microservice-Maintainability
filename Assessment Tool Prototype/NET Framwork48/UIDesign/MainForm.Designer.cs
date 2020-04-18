@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+修改了            this.textBox_inputdata = new System.Windows.Forms.TextBox();
+            this.label_input_data_info = new System.Windows.Forms.Label();
+            this.button_input_data = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBox_assessment_result = new System.Windows.Forms.TextBox();
             this.button_assess_start = new System.Windows.Forms.Button();
             this.button_reset = new System.Windows.Forms.Button();
-            this.button_input_data = new System.Windows.Forms.Button();
-            this.label_input_data_info = new System.Windows.Forms.Label();
-            this.textBox_inputdata = new System.Windows.Forms.TextBox();
-            this.textBox_assessment_result = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -52,35 +52,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "DataInput";
             // 
-            // groupBox2
+            // textBox_inputdata
             // 
-            this.groupBox2.Controls.Add(this.textBox_assessment_result);
-            this.groupBox2.Location = new System.Drawing.Point(13, 241);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(710, 262);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Assessment Result";
+            this.textBox_inputdata.AcceptsReturn = true;
+            this.textBox_inputdata.Location = new System.Drawing.Point(7, 58);
+            this.textBox_inputdata.Multiline = true;
+            this.textBox_inputdata.Name = "textBox_inputdata";
+            this.textBox_inputdata.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_inputdata.Size = new System.Drawing.Size(697, 157);
+            this.textBox_inputdata.TabIndex = 2;
             // 
-            // button_assess_start
+            // label_input_data_info
             // 
-            this.button_assess_start.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_assess_start.Location = new System.Drawing.Point(632, 510);
-            this.button_assess_start.Name = "button_assess_start";
-            this.button_assess_start.Size = new System.Drawing.Size(90, 38);
-            this.button_assess_start.TabIndex = 2;
-            this.button_assess_start.Text = "Assess";
-            this.button_assess_start.UseVisualStyleBackColor = true;
-            // 
-            // button_reset
-            // 
-            this.button_reset.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button_reset.Location = new System.Drawing.Point(542, 510);
-            this.button_reset.Name = "button_reset";
-            this.button_reset.Size = new System.Drawing.Size(84, 38);
-            this.button_reset.TabIndex = 3;
-            this.button_reset.Text = "Reset";
-            this.button_reset.UseVisualStyleBackColor = true;
+            this.label_input_data_info.AutoSize = true;
+            this.label_input_data_info.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_input_data_info.Location = new System.Drawing.Point(101, 27);
+            this.label_input_data_info.Name = "label_input_data_info";
+            this.label_input_data_info.Size = new System.Drawing.Size(136, 16);
+            this.label_input_data_info.TabIndex = 1;
+            this.label_input_data_info.Text = "还未打开json文件";
             // 
             // button_input_data
             // 
@@ -93,24 +83,15 @@
             this.button_input_data.UseVisualStyleBackColor = true;
             this.button_input_data.Click += new System.EventHandler(this.button_input_data_Click);
             // 
-            // label_input_data_info
+            // groupBox2
             // 
-            this.label_input_data_info.AutoSize = true;
-            this.label_input_data_info.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_input_data_info.Location = new System.Drawing.Point(101, 27);
-            this.label_input_data_info.Name = "label_input_data_info";
-            this.label_input_data_info.Size = new System.Drawing.Size(136, 16);
-            this.label_input_data_info.TabIndex = 1;
-            this.label_input_data_info.Text = "还未打开json文件";
-            // 
-            // textBox_inputdata
-            // 
-            this.textBox_inputdata.AcceptsReturn = true;
-            this.textBox_inputdata.Location = new System.Drawing.Point(7, 58);
-            this.textBox_inputdata.Multiline = true;
-            this.textBox_inputdata.Name = "textBox_inputdata";
-            this.textBox_inputdata.Size = new System.Drawing.Size(697, 157);
-            this.textBox_inputdata.TabIndex = 2;
+            this.groupBox2.Controls.Add(this.textBox_assessment_result);
+            this.groupBox2.Location = new System.Drawing.Point(13, 241);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(710, 262);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Assessment Result";
             // 
             // textBox_assessment_result
             // 
@@ -118,8 +99,30 @@
             this.textBox_assessment_result.Location = new System.Drawing.Point(7, 21);
             this.textBox_assessment_result.Multiline = true;
             this.textBox_assessment_result.Name = "textBox_assessment_result";
+            this.textBox_assessment_result.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBox_assessment_result.Size = new System.Drawing.Size(697, 235);
             this.textBox_assessment_result.TabIndex = 0;
+            // 
+            // button_assess_start
+            // 
+            this.button_assess_start.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button_assess_start.Location = new System.Drawing.Point(632, 510);
+            this.button_assess_start.Name = "button_assess_start";
+            this.button_assess_start.Size = new System.Drawing.Size(90, 38);
+            this.button_assess_start.TabIndex = 2;
+            this.button_assess_start.Text = "Assess";
+            this.button_assess_start.UseVisualStyleBackColor = true;
+            this.button_assess_start.Click += new System.EventHandler(this.button_assess_start_Click);
+            // 
+            // button_reset
+            // 
+            this.button_reset.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button_reset.Location = new System.Drawing.Point(542, 510);
+            this.button_reset.Name = "button_reset";
+            this.button_reset.Size = new System.Drawing.Size(84, 38);
+            this.button_reset.TabIndex = 3;
+            this.button_reset.Text = "Reset";
+            this.button_reset.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

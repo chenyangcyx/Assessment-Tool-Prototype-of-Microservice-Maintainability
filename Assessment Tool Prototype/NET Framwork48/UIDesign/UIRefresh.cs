@@ -32,29 +32,24 @@ namespace NET_Framwork48.UIDesign
                                     + "--interface个数：" + node.interfaces.Count
                                     + "--interface信息："
                                     + Environment.NewLine);
-                int num2 = 0;
                 foreach (var node2 in node.interfaces)
                 {
-                    textBox.AppendText(num + "--" + num2 + "interfaceName:" + node2.interfaceName
-                                        + num + "--" + num2 + "message个数："
+                    textBox.AppendText(num + "--" + "interfaceName:" + node2.interfaceName
+                                        + num + "--" + "message个数："
                                         + "message信息："
                                         + Environment.NewLine);
-                    int num3 = 0;
                     foreach (var node3 in node2.messageName)
-                        textBox.AppendText(num + "--" + num2 + "--" + (num3++) + "--" + node3 + Environment.NewLine);
-                    num2++;
+                        textBox.AppendText(num + "--" + "--" + "--" + node3 + Environment.NewLine);
                 }
-                num2 = 0;
                 textBox.AppendText(num + "--call信息：" + Environment.NewLine);
                 foreach(var node2 in node.call)
                 {
-                    textBox.AppendText(num + "--" + num2 + "serviceName：" + node2.serviceName
+                    textBox.AppendText(num + "--" +  "serviceName：" + node2.serviceName
                                         + "callInterface个数：" + node2.callInterface.Count
                                         + Environment.NewLine);
                     int num3 = 0;
                     foreach (var node3 in node2.callInterface)
-                        textBox.AppendText(num + "--" + num2 + "--" + (num3++) + "--" + node3 + Environment.NewLine);
-                    num2++;
+                        textBox.AppendText(num + "--" +  "--" + (num3++) + "--" + node3 + Environment.NewLine);
                 }
                 num++;
             }
@@ -65,6 +60,7 @@ namespace NET_Framwork48.UIDesign
                                     + "--parameterNumber：" + node.parameterNumber
                                     + "--messageContent：" + node.messageContent
                                     + Environment.NewLine);
+                num++;
             }
         }
     }

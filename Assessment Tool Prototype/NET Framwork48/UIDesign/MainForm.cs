@@ -44,5 +44,10 @@ namespace NET_Framwork48
             DataHandle.JSONDataStruct.Root root = jsonDecoder.GetJSONObject(file_content);
             new UIRefresh().RefreshTextBoxInputDataByDataPath(root, textBox_inputdata);
         }
+
+        private void button_assess_start_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
