@@ -13,9 +13,10 @@ namespace NET_Framwork48.GlobalData
 
         //是否评估 Modularity
         public bool if_assess_modularity = true;
-
         //程序使用的模型
-        Model model_uncut = new Model();        //未经修剪的模型
-        Model model_cut = new Model();          //经过修剪的模型
+        public Model model = new Model();        //使用的模型
+
+        //UI中的全局参数
+        public string open_file_path = "";      //打开的文件路径
     }
 }

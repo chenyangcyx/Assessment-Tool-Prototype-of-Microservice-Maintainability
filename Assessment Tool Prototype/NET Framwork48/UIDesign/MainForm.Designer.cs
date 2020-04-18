@@ -91,6 +91,7 @@
             this.button_input_data.TabIndex = 0;
             this.button_input_data.Text = "Input Data";
             this.button_input_data.UseVisualStyleBackColor = true;
+            this.button_input_data.Click += new System.EventHandler(this.button_input_data_Click);
             // 
             // label_input_data_info
             // 
@@ -104,6 +105,7 @@
             // 
             // textBox_inputdata
             // 
+            this.textBox_inputdata.AcceptsReturn = true;
             this.textBox_inputdata.Location = new System.Drawing.Point(7, 58);
             this.textBox_inputdata.Multiline = true;
             this.textBox_inputdata.Name = "textBox_inputdata";
@@ -112,6 +114,7 @@
             // 
             // textBox_assessment_result
             // 
+            this.textBox_assessment_result.AcceptsReturn = true;
             this.textBox_assessment_result.Location = new System.Drawing.Point(7, 21);
             this.textBox_assessment_result.Multiline = true;
             this.textBox_assessment_result.Name = "textBox_assessment_result";
