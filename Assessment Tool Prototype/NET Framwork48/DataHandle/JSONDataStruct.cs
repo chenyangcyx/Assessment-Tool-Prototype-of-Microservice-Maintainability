@@ -42,7 +42,7 @@ namespace NET_Framwork48.DataHandle.JSONDataStruct
     {
         public string messageName { get; set; }
         public int parameterNumber { get; set; }
-        public List<string> elements { get; set; }
+        public string messageContent { get; set; }
     }
 
     public class Root

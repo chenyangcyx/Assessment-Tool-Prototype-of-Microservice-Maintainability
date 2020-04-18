@@ -63,11 +63,8 @@ namespace NET_Framwork48.UIDesign
             {
                 textBox.AppendText(num + "--messageName：" + node.messageName
                                     + "--parameterNumber：" + node.parameterNumber
-                                    + "--elements个数：" + node.elements.Count
+                                    + "--messageContent：" + node.messageContent
                                     + Environment.NewLine);
-                int num2 = 0;
-                foreach (var node2 in node.elements)
-                    textBox.AppendText(num + "--" + (num2++) + "--" + node2 + Environment.NewLine);
             }
         }
     }
