@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NET_Framwork48.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,6 +63,87 @@ namespace NET_Framwork48.UIDesign
                                     + Environment.NewLine);
                 num++;
             }
+        }
+
+        //根据评估结果显示相关信息
+        public void RefreshTextBoxAssessResult(TextBox textBox,Model model,DataHandle.JSONDataStruct.Root root)
+        {
+            textBox.AppendText("第一层节点：" + Environment.NewLine);
+            foreach(var node1 in model.level1_nodes)
+            {
+                textBox.AppendText("节点名称：" + node1.NodeName + Environment.NewLine
+                                    + "节点详细：" + node1.NodeName_Detail + Environment.NewLine
+                                    + "节点层级：" + node1.NodeLevel + Environment.NewLine
+                                    + "层级名称：" + node1.NodeLevelName + Environment.NewLine
+                                    + "节点权值：" + node1.weight + Environment.NewLine
+                                    + "是否增益：" + node1.gain_or_damage + Environment.NewLine
+                                    + "值：" + node1.value + Environment.NewLine);
+            }
+            textBox.AppendText(Environment.NewLine + "第二层节点：" + Environment.NewLine);
+            foreach (var node2 in model.level2_nodes)
+            {
+                textBox.AppendText("节点名称：" + node2.NodeName + Environment.NewLine
+                                    + "节点详细：" + node2.NodeName_Detail + Environment.NewLine
+                                    + "节点层级：" + node2.NodeLevel + Environment.NewLine
+                                    + "层级名称：" + node2.NodeLevelName + Environment.NewLine
+                                    + "节点权值：" + node2.weight + Environment.NewLine
+                                    + "是否增益：" + node2.gain_or_damage + Environment.NewLine
+                                    + "值：" + node2.value + Environment.NewLine);
+            }
+            textBox.AppendText(Environment.NewLine + "第三层节点：" + Environment.NewLine);
+            foreach (var node3 in model.level3_nodes)
+            {
+                textBox.AppendText("节点名称：" + node3.NodeName + Environment.NewLine
+                                    + "节点详细：" + node3.NodeName_Detail + Environment.NewLine
+                                    + "节点层级：" + node3.NodeLevel + Environment.NewLine
+                                    + "层级名称：" + node3.NodeLevelName + Environment.NewLine
+                                    + "节点权值：" + node3.weight + Environment.NewLine
+                                    + "是否增益：" + node3.gain_or_damage + Environment.NewLine
+                                    + "值：" + node3.value + Environment.NewLine);
+            }
+            textBox.AppendText(Environment.NewLine + "第四层节点：" + Environment.NewLine);
+            foreach (var node4 in model.level4_nodes)
+            {
+                textBox.AppendText("节点名称：" + node4.NodeName + Environment.NewLine
+                                    + "节点详细：" + node4.NodeName_Detail + Environment.NewLine
+                                    + "节点层级：" + node4.NodeLevel + Environment.NewLine
+                                    + "层级名称：" + node4.NodeLevelName + Environment.NewLine
+                                    + "节点权值：" + node4.weight + Environment.NewLine
+                                    + "是否增益：" + node4.gain_or_damage + Environment.NewLine
+                                    + "值：" + node4.value + Environment.NewLine);
+            }
+
+            //输出每一个Metric的数值            
+            textBox.AppendText(Environment.NewLine + "DIC：" + Environment.NewLine);
+            foreach (var node in model.modelValue.Dic_NO_ServiceName)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            foreach (var node in model.modelValue.Dic_ServiceName_NO)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            foreach (var node in model.modelValue.Dic_NO_MessageName)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            foreach (var node in model.modelValue.Dic_MessageName_NO)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText(Environment.NewLine + "Metric数值：" + Environment.NewLine);
+            textBox.AppendText("NS：" + model.modelValue.NS + Environment.NewLine
+                                + "NM：" + model.modelValue.NM + Environment.NewLine);
+            textBox.AppendText("NDCS：" + Environment.NewLine);
+            foreach (var node in model.modelValue.NDCS_NO_VALUE)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("NIS：" + Environment.NewLine);
+            foreach (var node in model.modelValue.NIS_NO_VALUE)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("NPI：" + Environment.NewLine);
+            foreach (var node in model.modelValue.NPI_NO_VALUE)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("NII：" + Environment.NewLine);
+            foreach (var node in model.modelValue.NII_NO_VALUE)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("NMP：" + Environment.NewLine);
+            foreach (var node in model.modelValue.NMP_NO_VALUE)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("WISL：" + Environment.NewLine);
+            foreach (var node in model.modelValue.WISL_NO_VALUE)
+                textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
         }
     }
 }

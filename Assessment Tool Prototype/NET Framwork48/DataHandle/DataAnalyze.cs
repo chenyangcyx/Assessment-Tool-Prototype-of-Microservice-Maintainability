@@ -18,6 +18,20 @@ namespace NET_Framwork48.DataHandle
             modelValue = mv;
         }
 
+        //设置Model的所有Metrics
+        public void SetMetrics()
+        {
+            SetServiceNames();
+            SetNS();
+            SetNM();
+            SetNDCS();
+            SetNIS();
+            SetNPI();
+            SetNII();
+            SetNMP();
+            SetWISL();
+        }
+
         //设置所有的服务的名称列表
         public void SetServiceNames()
         {

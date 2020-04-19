@@ -15,6 +15,7 @@ namespace NET_Framwork48.GlobalData
         public bool if_assess_modularity = true;
         //程序使用的模型
         public Model model = new Model();        //使用的模型
+        public DataHandle.JSONDataStruct.Root root;      //json文件的root
 
         //UI中的全局参数
         public string open_file_path = "";      //打开的文件路径

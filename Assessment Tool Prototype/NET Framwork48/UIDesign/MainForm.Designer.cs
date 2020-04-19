@@ -123,6 +123,7 @@
             this.button_reset.TabIndex = 3;
             this.button_reset.Text = "Reset";
             this.button_reset.UseVisualStyleBackColor = true;
+            this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
             // 
             // MainForm
             // 

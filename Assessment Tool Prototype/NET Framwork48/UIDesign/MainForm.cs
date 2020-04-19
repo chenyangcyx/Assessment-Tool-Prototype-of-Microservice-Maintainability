@@ -41,15 +41,33 @@ namespace NET_Framwork48
             DataInput dataInput = new DataInput();
             string file_content = dataInput.InputDataFromFile(global.open_file_path);
             JSONDecoder jsonDecoder = new JSONDecoder();
-            DataHandle.JSONDataStruct.Root root = jsonDecoder.GetJSONObject(file_content);
-            new UIRefresh().RefreshTextBoxInputDataByDataPath(root, textBox_inputdata);
+            global.root = jsonDecoder.GetJSONObject(file_content);
+            new UIRefresh().RefreshTextBoxInputDataByDataPath(global.root, textBox_inputdata);
         }
 
         private void button_assess_start_Click(object sender, EventArgs e)
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
-            Model mode = global.model;
+            if (global.open_file_path.Equals(""))
+                return;
 
+            Model model = global.model;
+            model.CreateModel();
+            model.CalculateModelWeight();
+            DataAnalyze dataAnalyze = new DataAnalyze(global.root, model.modelValue);
+            dataAnalyze.SetMetrics();
+            model.CalculateModelValue();
+
+            //显示信息
+            new UIRefresh().RefreshTextBoxAssessResult(textBox_assessment_result, model, global.root);
+        }
+
+        private void button_reset_Click(object sender, EventArgs e)
+        {
+            label_input_data_info.Text = @"还未打开json文件";
+            GlobalData.GlobalData.globalData.open_file_path = "";
+            textBox_inputdata.Clear();
+            textBox_assessment_result.Clear();
         }
     }
 }
