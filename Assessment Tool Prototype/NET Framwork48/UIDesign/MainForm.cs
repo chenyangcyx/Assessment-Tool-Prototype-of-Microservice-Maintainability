@@ -47,6 +47,8 @@ namespace NET_Framwork48
 
         private void button_assess_start_Click(object sender, EventArgs e)
         {
+            GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
+            Model mode = global.model;
 
         }
     }

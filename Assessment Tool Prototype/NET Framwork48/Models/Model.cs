@@ -17,12 +17,14 @@ namespace NET_Framwork48.Models
         GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
         public ModelLink modelLink;
         public ModelName modelName;
+        public ModelValue modelValue;
         public ModelWeight modelWeight;
         //创建模型
         public void CreateModel()
         {
             modelLink = new ModelLink();
             modelName = new ModelName();
+            modelValue = new ModelValue();
             modelWeight = new ModelWeight();
             level1_nodes = new List<ModelNode>();
             level2_nodes = new List<ModelNode>();
@@ -121,6 +123,17 @@ namespace NET_Framwork48.Models
             //计算第四层的权值
             foreach (var node in level4_nodes)
                 modelWeight.CalculateNodeNextLevelWeight(node);
+        }
+
+        //模型的节点值计算
+        public void CalculateModelValue()
+        {
+            modelValue.CalculateLevel4Values();
+            modelValue.CalculateLevel3Values();
+            modelValue.SetLevel4UnitValue(level4_nodes);
+            modelValue.SetLevel3UnitValue(level3_nodes);
+            modelValue.SetLevel2UnitValue(level2_nodes);
+            modelValue.SetLevel1UnitValue(level1_nodes);
         }
     }
 }

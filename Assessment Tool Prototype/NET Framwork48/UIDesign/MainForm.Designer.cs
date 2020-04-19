@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-修改了            this.textBox_inputdata = new System.Windows.Forms.TextBox();
+            this.textBox_inputdata = new System.Windows.Forms.TextBox();
             this.label_input_data_info = new System.Windows.Forms.Label();
             this.button_input_data = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
