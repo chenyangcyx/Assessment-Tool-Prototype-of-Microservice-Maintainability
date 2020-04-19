@@ -129,21 +129,32 @@ namespace NET_Framwork48.UIDesign
             textBox.AppendText("NDCS：" + Environment.NewLine);
             foreach (var node in model.modelValue.NDCS_NO_VALUE)
                 textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("NDCS总数：" + model.modelValue.NDCS_TOTAL + Environment.NewLine + Environment.NewLine);
+
             textBox.AppendText("NIS：" + Environment.NewLine);
             foreach (var node in model.modelValue.NIS_NO_VALUE)
                 textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("NIS总数：" + model.modelValue.NIS_TOTAL + Environment.NewLine + Environment.NewLine);
+
             textBox.AppendText("NPI：" + Environment.NewLine);
             foreach (var node in model.modelValue.NPI_NO_VALUE)
                 textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("NPI总数：" + model.modelValue.NPI_TOTAL + Environment.NewLine + Environment.NewLine);
+
             textBox.AppendText("NII：" + Environment.NewLine);
             foreach (var node in model.modelValue.NII_NO_VALUE)
                 textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("NII总数：" + model.modelValue.NII_TOTAL + Environment.NewLine + Environment.NewLine);
+
             textBox.AppendText("NMP：" + Environment.NewLine);
             foreach (var node in model.modelValue.NMP_NO_VALUE)
                 textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("NMP总数：" + model.modelValue.NMP_TOTAL + Environment.NewLine + Environment.NewLine);
+
             textBox.AppendText("WISL：" + Environment.NewLine);
             foreach (var node in model.modelValue.WISL_NO_VALUE)
                 textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
+            textBox.AppendText("WISL总数：" + model.modelValue.WISL_TOTAL + Environment.NewLine + Environment.NewLine);
         }
     }
 }

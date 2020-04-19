@@ -168,7 +168,7 @@ namespace NET_Framwork48.DataHandle
             for (int i = 0; i < microservice_number; i++)
                 foreach (var call_service in data.microservices[i].call)
                 {
-                    int num = 0;
+                    int num = int.MaxValue;
                     modelValue.Dic_ServiceName_NO.TryGetValue(call_service.serviceName, out num);
                     graph[num, i] = 1;
                 }
@@ -204,6 +204,7 @@ namespace NET_Framwork48.DataHandle
                     //不遍历上一个遍历的节点
                     if (visit[i] == 1 && i != father[node])
                     {
+                        if_in_loopback[i] = true;
                         int tmp = node;
                         while (tmp != i)
                         {

@@ -36,6 +36,7 @@
             this.textBox_assessment_result = new System.Windows.Forms.TextBox();
             this.button_assess_start = new System.Windows.Forms.Button();
             this.button_reset = new System.Windows.Forms.Button();
+            this.button_Exit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -125,11 +126,23 @@
             this.button_reset.UseVisualStyleBackColor = true;
             this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
             // 
+            // button_Exit
+            // 
+            this.button_Exit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button_Exit.Location = new System.Drawing.Point(461, 510);
+            this.button_Exit.Name = "button_Exit";
+            this.button_Exit.Size = new System.Drawing.Size(75, 38);
+            this.button_Exit.TabIndex = 4;
+            this.button_Exit.Text = "Exit";
+            this.button_Exit.UseVisualStyleBackColor = true;
+            this.button_Exit.Click += new System.EventHandler(this.button_ExitProcess);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(735, 560);
+            this.Controls.Add(this.button_Exit);
             this.Controls.Add(this.button_reset);
             this.Controls.Add(this.button_assess_start);
             this.Controls.Add(this.groupBox2);
@@ -154,6 +167,7 @@
         private System.Windows.Forms.Label label_input_data_info;
         private System.Windows.Forms.Button button_input_data;
         private System.Windows.Forms.TextBox textBox_assessment_result;
+        private System.Windows.Forms.Button button_Exit;
     }
 }
 
