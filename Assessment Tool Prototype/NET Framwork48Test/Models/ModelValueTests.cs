@@ -112,8 +112,8 @@ namespace NET_Framwork48.Models.Tests
 
             //未裁剪模型的情况
             model.CreateModel();
-            GlobalData.GlobalData.globalData.if_assess_modularity = true;
-            model.TrimModel();
+            //GlobalData.GlobalData.globalData.if_assess_modularity = true;
+            //model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
             mv.SetLevel4UnitValue(model.level3_nodes);
@@ -161,51 +161,51 @@ namespace NET_Framwork48.Models.Tests
             foreach (var node in model.level1_nodes)
                 Assert.AreEqual(0, node.value);
 
-            //裁剪模型的情况
-            model.CreateModel();
-            GlobalData.GlobalData.globalData.if_assess_modularity = false;
-            model.TrimModel();
-            model.CalculateModelWeight();
-            mv.SetLevel4UnitValue(model.level4_nodes);
-            mv.SetLevel4UnitValue(model.level3_nodes);
-            mv.SetLevel4UnitValue(model.level2_nodes);
-            mv.SetLevel4UnitValue(model.level1_nodes);
-            //验证第4层的值
-            Assert.AreEqual(12.23456m, model.level4_nodes[0].value);
-            Assert.AreEqual(17.28380m, model.level4_nodes[1].value);
-            Assert.AreEqual(12.23456m, model.level4_nodes[2].value);
-            Assert.AreEqual(23.45678m, model.level4_nodes[3].value);
-            Assert.AreEqual(12.23456m, model.level4_nodes[4].value);
-            Assert.AreEqual(42.71615m, model.level4_nodes[5].value);
-            Assert.AreEqual(12.23456m, model.level4_nodes[6].value);
-            Assert.AreEqual(67.28380m, model.level4_nodes[7].value);
-            Assert.AreEqual(92.71615m, model.level4_nodes[8].value);
-            Assert.AreEqual(12.23456m, model.level4_nodes[9].value);
-            Assert.AreEqual(17.28380m, model.level4_nodes[10].value);
-            Assert.AreEqual(12.23456m, model.level4_nodes[11].value);
-            Assert.AreEqual(23.45678m, model.level4_nodes[12].value);
-            Assert.AreEqual(12.23456m, model.level4_nodes[13].value);
-            Assert.AreEqual(23.45678m, model.level4_nodes[14].value);
-            Assert.AreEqual(67.28380m, model.level4_nodes[15].value);
-            Assert.AreEqual(23.45678m, model.level4_nodes[16].value);
-            Assert.AreEqual(117.28380m, model.level4_nodes[17].value);
-            Assert.AreEqual(67.28380m, model.level4_nodes[18].value);
-            Assert.AreEqual(12.23456m, model.level4_nodes[19].value);
-            Assert.AreEqual(3, model.level4_nodes[20].value);
-            Assert.AreEqual(23.45678m, model.level4_nodes[21].value);
-            Assert.AreEqual(117.28380m, model.level4_nodes[22].value);
-            Assert.AreEqual(67.28380m, model.level4_nodes[23].value);
-            Assert.AreEqual(12.23456m, model.level4_nodes[24].value);
-            Assert.AreEqual(3, model.level4_nodes[25].value);
-            //验证第3层的值
-            foreach (var node in model.level3_nodes)
-                Assert.AreEqual(0, node.value);
-            //验证第2层的值
-            foreach (var node in model.level2_nodes)
-                Assert.AreEqual(0, node.value);
-            //验证第1层的值
-            foreach (var node in model.level1_nodes)
-                Assert.AreEqual(0, node.value);
+            ////裁剪模型的情况
+            //model.CreateModel();
+            //GlobalData.GlobalData.globalData.if_assess_modularity = false;
+            //model.TrimModel();
+            //model.CalculateModelWeight();
+            //mv.SetLevel4UnitValue(model.level4_nodes);
+            //mv.SetLevel4UnitValue(model.level3_nodes);
+            //mv.SetLevel4UnitValue(model.level2_nodes);
+            //mv.SetLevel4UnitValue(model.level1_nodes);
+            ////验证第4层的值
+            //Assert.AreEqual(12.23456m, model.level4_nodes[0].value);
+            //Assert.AreEqual(17.28380m, model.level4_nodes[1].value);
+            //Assert.AreEqual(12.23456m, model.level4_nodes[2].value);
+            //Assert.AreEqual(23.45678m, model.level4_nodes[3].value);
+            //Assert.AreEqual(12.23456m, model.level4_nodes[4].value);
+            //Assert.AreEqual(42.71615m, model.level4_nodes[5].value);
+            //Assert.AreEqual(12.23456m, model.level4_nodes[6].value);
+            //Assert.AreEqual(67.28380m, model.level4_nodes[7].value);
+            //Assert.AreEqual(92.71615m, model.level4_nodes[8].value);
+            //Assert.AreEqual(12.23456m, model.level4_nodes[9].value);
+            //Assert.AreEqual(17.28380m, model.level4_nodes[10].value);
+            //Assert.AreEqual(12.23456m, model.level4_nodes[11].value);
+            //Assert.AreEqual(23.45678m, model.level4_nodes[12].value);
+            //Assert.AreEqual(12.23456m, model.level4_nodes[13].value);
+            //Assert.AreEqual(23.45678m, model.level4_nodes[14].value);
+            //Assert.AreEqual(67.28380m, model.level4_nodes[15].value);
+            //Assert.AreEqual(23.45678m, model.level4_nodes[16].value);
+            //Assert.AreEqual(117.28380m, model.level4_nodes[17].value);
+            //Assert.AreEqual(67.28380m, model.level4_nodes[18].value);
+            //Assert.AreEqual(12.23456m, model.level4_nodes[19].value);
+            //Assert.AreEqual(3, model.level4_nodes[20].value);
+            //Assert.AreEqual(23.45678m, model.level4_nodes[21].value);
+            //Assert.AreEqual(117.28380m, model.level4_nodes[22].value);
+            //Assert.AreEqual(67.28380m, model.level4_nodes[23].value);
+            //Assert.AreEqual(12.23456m, model.level4_nodes[24].value);
+            //Assert.AreEqual(3, model.level4_nodes[25].value);
+            ////验证第3层的值
+            //foreach (var node in model.level3_nodes)
+            //    Assert.AreEqual(0, node.value);
+            ////验证第2层的值
+            //foreach (var node in model.level2_nodes)
+            //    Assert.AreEqual(0, node.value);
+            ////验证第1层的值
+            //foreach (var node in model.level1_nodes)
+            //    Assert.AreEqual(0, node.value);
         }
 
         [TestMethod()]
@@ -220,8 +220,8 @@ namespace NET_Framwork48.Models.Tests
             
             //未裁剪模型的情况
             model.CreateModel();
-            GlobalData.GlobalData.globalData.if_assess_modularity = true;
-            model.TrimModel();
+            //GlobalData.GlobalData.globalData.if_assess_modularity = true;
+            //model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
             mv.SetLevel3UnitValue(model.level3_nodes);
@@ -248,33 +248,33 @@ namespace NET_Framwork48.Models.Tests
             foreach (var node in model.level1_nodes)
                 Assert.AreEqual(0, node.value);
 
-            //裁剪模型的情况
-            model.CreateModel();
-            GlobalData.GlobalData.globalData.if_assess_modularity = false;
-            model.TrimModel();
-            model.CalculateModelWeight();
-            mv.SetLevel4UnitValue(model.level4_nodes);
-            mv.SetLevel3UnitValue(model.level3_nodes);
-            mv.SetLevel3UnitValue(model.level2_nodes);
-            mv.SetLevel3UnitValue(model.level1_nodes);
-            //验证第3层的值
-            Assert.AreEqual(17.28380m / 12.23456m, model.level3_nodes[0].value);
-            Assert.AreEqual(12.23456m / 23.45678m, model.level3_nodes[1].value);
-            Assert.AreEqual(42.71615m / (12.23456m * 12.23456m - 12.23456m), model.level3_nodes[2].value);
-            Assert.AreEqual((67.28380m + 92.71615m) / 12.23456m, model.level3_nodes[3].value);
-            Assert.AreEqual(17.28380m / 12.23456m, model.level3_nodes[4].value);
-            Assert.AreEqual(12.23456m / 23.45678m, model.level3_nodes[5].value);
-            Assert.AreEqual((67.28380m * 67.28380m) / (23.45678m * 23.45678m), model.level3_nodes[6].value);
-            Assert.AreEqual((117.28380m * 117.28380m) / (67.28380m * 67.28380m), model.level3_nodes[7].value);
-            Assert.AreEqual(3 / 12.23456m, model.level3_nodes[8].value);
-            Assert.AreEqual((117.28380m * 117.28380m) / (67.28380m * 67.28380m), model.level3_nodes[9].value);
-            Assert.AreEqual(3 / 12.23456m, model.level3_nodes[10].value);
-            //验证第2层的值
-            foreach (var node in model.level2_nodes)
-                Assert.AreEqual(0, node.value);
-            //验证第1层的值
-            foreach (var node in model.level1_nodes)
-                Assert.AreEqual(0, node.value);
+            ////裁剪模型的情况
+            //model.CreateModel();
+            //GlobalData.GlobalData.globalData.if_assess_modularity = false;
+            //model.TrimModel();
+            //model.CalculateModelWeight();
+            //mv.SetLevel4UnitValue(model.level4_nodes);
+            //mv.SetLevel3UnitValue(model.level3_nodes);
+            //mv.SetLevel3UnitValue(model.level2_nodes);
+            //mv.SetLevel3UnitValue(model.level1_nodes);
+            ////验证第3层的值
+            //Assert.AreEqual(17.28380m / 12.23456m, model.level3_nodes[0].value);
+            //Assert.AreEqual(12.23456m / 23.45678m, model.level3_nodes[1].value);
+            //Assert.AreEqual(42.71615m / (12.23456m * 12.23456m - 12.23456m), model.level3_nodes[2].value);
+            //Assert.AreEqual((67.28380m + 92.71615m) / 12.23456m, model.level3_nodes[3].value);
+            //Assert.AreEqual(17.28380m / 12.23456m, model.level3_nodes[4].value);
+            //Assert.AreEqual(12.23456m / 23.45678m, model.level3_nodes[5].value);
+            //Assert.AreEqual((67.28380m * 67.28380m) / (23.45678m * 23.45678m), model.level3_nodes[6].value);
+            //Assert.AreEqual((117.28380m * 117.28380m) / (67.28380m * 67.28380m), model.level3_nodes[7].value);
+            //Assert.AreEqual(3 / 12.23456m, model.level3_nodes[8].value);
+            //Assert.AreEqual((117.28380m * 117.28380m) / (67.28380m * 67.28380m), model.level3_nodes[9].value);
+            //Assert.AreEqual(3 / 12.23456m, model.level3_nodes[10].value);
+            ////验证第2层的值
+            //foreach (var node in model.level2_nodes)
+            //    Assert.AreEqual(0, node.value);
+            ////验证第1层的值
+            //foreach (var node in model.level1_nodes)
+            //    Assert.AreEqual(0, node.value);
         }
 
         [TestMethod()]
@@ -291,8 +291,8 @@ namespace NET_Framwork48.Models.Tests
             mv.CalculateLevel3Values();
             //创建模型
             model.CreateModel();
-            GlobalData.GlobalData.globalData.if_assess_modularity = true;
-            model.TrimModel();
+            //GlobalData.GlobalData.globalData.if_assess_modularity = true;
+            //model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
             mv.SetLevel3UnitValue(model.level3_nodes);
@@ -303,18 +303,18 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual(4.435102352522840320814015528183, (double)model.level2_nodes[2].value, 0.0001);
             Assert.AreEqual(4.37469421809111477997698989807, (double)model.level2_nodes[3].value, 0.0001);
 
-            //修剪模型的情况
-            model.CreateModel();
-            GlobalData.GlobalData.globalData.if_assess_modularity = false;
-            model.TrimModel();
-            model.CalculateModelWeight();
-            mv.SetLevel4UnitValue(model.level4_nodes);
-            mv.SetLevel3UnitValue(model.level3_nodes);
-            mv.SetLevel2UnitValue(model.level2_nodes);
-            //验证数值
-            Assert.AreEqual(-0.5814090208767396425967497017122, (double)model.level2_nodes[0].value, 0.0001);
-            Assert.AreEqual(4.5493525993415009929712588253279, (double)model.level2_nodes[1].value, 0.0001);
-            Assert.AreEqual(4.435102352522840320814015528183, (double)model.level2_nodes[2].value, 0.0001);
+            ////修剪模型的情况
+            //model.CreateModel();
+            //GlobalData.GlobalData.globalData.if_assess_modularity = false;
+            //model.TrimModel();
+            //model.CalculateModelWeight();
+            //mv.SetLevel4UnitValue(model.level4_nodes);
+            //mv.SetLevel3UnitValue(model.level3_nodes);
+            //mv.SetLevel2UnitValue(model.level2_nodes);
+            ////验证数值
+            //Assert.AreEqual(-0.5814090208767396425967497017122, (double)model.level2_nodes[0].value, 0.0001);
+            //Assert.AreEqual(4.5493525993415009929712588253279, (double)model.level2_nodes[1].value, 0.0001);
+            //Assert.AreEqual(4.435102352522840320814015528183, (double)model.level2_nodes[2].value, 0.0001);
         }
 
         [TestMethod()]
@@ -331,8 +331,8 @@ namespace NET_Framwork48.Models.Tests
             mv.CalculateLevel3Values();
             //创建模型
             model.CreateModel();
-            GlobalData.GlobalData.globalData.if_assess_modularity = true;
-            model.TrimModel();
+            //GlobalData.GlobalData.globalData.if_assess_modularity = true;
+            //model.TrimModel();
             model.CalculateModelWeight();
             mv.SetLevel4UnitValue(model.level4_nodes);
             mv.SetLevel3UnitValue(model.level3_nodes);
@@ -341,17 +341,17 @@ namespace NET_Framwork48.Models.Tests
             //验证数值
             Assert.AreEqual(3.1944350372696791127913786374672, (double)model.level1_nodes[0].value, 0.0001);
 
-            //修剪模型的情况
-            model.CreateModel();
-            GlobalData.GlobalData.globalData.if_assess_modularity = false;
-            model.TrimModel();
-            model.CalculateModelWeight();
-            mv.SetLevel4UnitValue(model.level4_nodes);
-            mv.SetLevel3UnitValue(model.level3_nodes);
-            mv.SetLevel2UnitValue(model.level2_nodes);
-            mv.SetLevel1UnitValue(model.level1_nodes);
-            //验证数值
-            Assert.AreEqual(2.8009873001760972650572709221841, (double)model.level1_nodes[0].value, 0.0001);
+            ////修剪模型的情况
+            //model.CreateModel();
+            //GlobalData.GlobalData.globalData.if_assess_modularity = false;
+            //model.TrimModel();
+            //model.CalculateModelWeight();
+            //mv.SetLevel4UnitValue(model.level4_nodes);
+            //mv.SetLevel3UnitValue(model.level3_nodes);
+            //mv.SetLevel2UnitValue(model.level2_nodes);
+            //mv.SetLevel1UnitValue(model.level1_nodes);
+            ////验证数值
+            //Assert.AreEqual(2.8009873001760972650572709221841, (double)model.level1_nodes[0].value, 0.0001);
         }
     }
 }

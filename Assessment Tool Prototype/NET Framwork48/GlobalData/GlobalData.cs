@@ -11,8 +11,8 @@ namespace NET_Framwork48.GlobalData
     {
         public static GlobalData globalData = new GlobalData();
 
-        //是否评估 Modularity
-        public bool if_assess_modularity = true;
+        ////是否评估 Modularity
+        //public bool if_assess_modularity = true;
         //程序使用的模型
         public Model model = new Model();        //使用的模型
         public DataHandle.JSONDataStruct.Root root;      //json文件的root
