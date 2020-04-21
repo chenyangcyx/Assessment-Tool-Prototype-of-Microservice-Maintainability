@@ -69,10 +69,5 @@ namespace NET_Framwork48
             textBox_inputdata.Clear();
             textBox_assessment_result.Clear();
         }
-
-        private void button_ExitProcess(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
     }
 }
