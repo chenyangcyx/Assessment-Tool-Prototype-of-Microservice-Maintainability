@@ -28,14 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox_DataInput = new System.Windows.Forms.GroupBox();
             this.button_DataInput_Reset = new System.Windows.Forms.Button();
             this.textBox_DataInput_FileInfo = new System.Windows.Forms.TextBox();
             this.label_DataInput_InfoText = new System.Windows.Forms.Label();
             this.button_DataInput_Input = new System.Windows.Forms.Button();
             this.groupBox_AssessmentResult = new System.Windows.Forms.GroupBox();
+            this.label_AssessmentResult_Info = new System.Windows.Forms.Label();
+            this.comboBox_AssessmentResult_LevelChoose = new System.Windows.Forms.ComboBox();
+            this.listView_AssessmentResult_NodeList = new System.Windows.Forms.ListView();
             this.textBox_AssessmentResult_NodeDetail = new System.Windows.Forms.TextBox();
             this.groupBox_History = new System.Windows.Forms.GroupBox();
+            this.listView_History_HistoryInfo = new System.Windows.Forms.ListView();
             this.button_History_Details = new System.Windows.Forms.Button();
             this.button_History_ClearAll = new System.Windows.Forms.Button();
             this.groupBox_ModelWeight = new System.Windows.Forms.GroupBox();
@@ -64,10 +69,6 @@
             this.label_ModelWeight_Level2_Stability = new System.Windows.Forms.Label();
             this.label_ModelWeight_Level2_Changeability = new System.Windows.Forms.Label();
             this.label_ModelWeight_Level2_Analyzability = new System.Windows.Forms.Label();
-            this.listView_History_HistoryInfo = new System.Windows.Forms.ListView();
-            this.listView_AssessmentResult_NodeList = new System.Windows.Forms.ListView();
-            this.comboBox_AssessmentResult_LevelChoose = new System.Windows.Forms.ComboBox();
-            this.label_AssessmentResult_Info = new System.Windows.Forms.Label();
             this.groupBox_DataInput.SuspendLayout();
             this.groupBox_AssessmentResult.SuspendLayout();
             this.groupBox_History.SuspendLayout();
@@ -145,6 +146,40 @@
             this.groupBox_AssessmentResult.TabStop = false;
             this.groupBox_AssessmentResult.Text = "Assessment Result";
             // 
+            // label_AssessmentResult_Info
+            // 
+            this.label_AssessmentResult_Info.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_AssessmentResult_Info.Location = new System.Drawing.Point(7, 23);
+            this.label_AssessmentResult_Info.Name = "label_AssessmentResult_Info";
+            this.label_AssessmentResult_Info.Size = new System.Drawing.Size(110, 20);
+            this.label_AssessmentResult_Info.TabIndex = 4;
+            this.label_AssessmentResult_Info.Text = "Level Detail:";
+            this.label_AssessmentResult_Info.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // comboBox_AssessmentResult_LevelChoose
+            // 
+            this.comboBox_AssessmentResult_LevelChoose.FormattingEnabled = true;
+            this.comboBox_AssessmentResult_LevelChoose.Items.AddRange(new object[] {
+            "Level 1 - Design Attribute",
+            "Level 2 - Attribute",
+            "Level 3 - Property",
+            "Level 4 - Metric"});
+            this.comboBox_AssessmentResult_LevelChoose.Location = new System.Drawing.Point(123, 22);
+            this.comboBox_AssessmentResult_LevelChoose.Name = "comboBox_AssessmentResult_LevelChoose";
+            this.comboBox_AssessmentResult_LevelChoose.Size = new System.Drawing.Size(188, 25);
+            this.comboBox_AssessmentResult_LevelChoose.TabIndex = 3;
+            this.comboBox_AssessmentResult_LevelChoose.Text = "Choose One To See Details";
+            // 
+            // listView_AssessmentResult_NodeList
+            // 
+            this.listView_AssessmentResult_NodeList.HideSelection = false;
+            this.listView_AssessmentResult_NodeList.Location = new System.Drawing.Point(7, 53);
+            this.listView_AssessmentResult_NodeList.Name = "listView_AssessmentResult_NodeList";
+            this.listView_AssessmentResult_NodeList.Size = new System.Drawing.Size(370, 124);
+            this.listView_AssessmentResult_NodeList.TabIndex = 1;
+            this.listView_AssessmentResult_NodeList.UseCompatibleStateImageBehavior = false;
+            this.listView_AssessmentResult_NodeList.View = System.Windows.Forms.View.Details;
+            // 
             // textBox_AssessmentResult_NodeDetail
             // 
             this.textBox_AssessmentResult_NodeDetail.AcceptsReturn = true;
@@ -167,6 +202,16 @@
             this.groupBox_History.TabIndex = 5;
             this.groupBox_History.TabStop = false;
             this.groupBox_History.Text = "History";
+            // 
+            // listView_History_HistoryInfo
+            // 
+            this.listView_History_HistoryInfo.HideSelection = false;
+            this.listView_History_HistoryInfo.Location = new System.Drawing.Point(7, 58);
+            this.listView_History_HistoryInfo.Name = "listView_History_HistoryInfo";
+            this.listView_History_HistoryInfo.Size = new System.Drawing.Size(364, 111);
+            this.listView_History_HistoryInfo.TabIndex = 3;
+            this.listView_History_HistoryInfo.UseCompatibleStateImageBehavior = false;
+            this.listView_History_HistoryInfo.View = System.Windows.Forms.View.Details;
             // 
             // button_History_Details
             // 
@@ -343,7 +388,7 @@
             "Modularity"});
             this.comboBox_ModelWeight_Level3_AttributeChoose.Location = new System.Drawing.Point(172, 19);
             this.comboBox_ModelWeight_Level3_AttributeChoose.Name = "comboBox_ModelWeight_Level3_AttributeChoose";
-            this.comboBox_ModelWeight_Level3_AttributeChoose.Size = new System.Drawing.Size(149, 27);
+            this.comboBox_ModelWeight_Level3_AttributeChoose.Size = new System.Drawing.Size(193, 27);
             this.comboBox_ModelWeight_Level3_AttributeChoose.TabIndex = 1;
             this.comboBox_ModelWeight_Level3_AttributeChoose.Text = "Choose One To Edit";
             // 
@@ -380,9 +425,9 @@
             this.label_ModelWeight_Level2_DesignAttributeInfoText.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label_ModelWeight_Level2_DesignAttributeInfoText.Location = new System.Drawing.Point(6, 22);
             this.label_ModelWeight_Level2_DesignAttributeInfoText.Name = "label_ModelWeight_Level2_DesignAttributeInfoText";
-            this.label_ModelWeight_Level2_DesignAttributeInfoText.Size = new System.Drawing.Size(247, 20);
+            this.label_ModelWeight_Level2_DesignAttributeInfoText.Size = new System.Drawing.Size(281, 20);
             this.label_ModelWeight_Level2_DesignAttributeInfoText.TabIndex = 8;
-            this.label_ModelWeight_Level2_DesignAttributeInfoText.Text = "Design Attribute:    Maintainability";
+            this.label_ModelWeight_Level2_DesignAttributeInfoText.Text = "Design Attribute:      Maintainability";
             // 
             // textBox_ModelWeight_Level2_ModularityWeight
             // 
@@ -456,50 +501,6 @@
             this.label_ModelWeight_Level2_Analyzability.Text = "Analyzability:";
             this.label_ModelWeight_Level2_Analyzability.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // listView_History_HistoryInfo
-            // 
-            this.listView_History_HistoryInfo.HideSelection = false;
-            this.listView_History_HistoryInfo.Location = new System.Drawing.Point(7, 58);
-            this.listView_History_HistoryInfo.Name = "listView_History_HistoryInfo";
-            this.listView_History_HistoryInfo.Size = new System.Drawing.Size(364, 111);
-            this.listView_History_HistoryInfo.TabIndex = 3;
-            this.listView_History_HistoryInfo.UseCompatibleStateImageBehavior = false;
-            this.listView_History_HistoryInfo.View = System.Windows.Forms.View.Details;
-            // 
-            // listView_AssessmentResult_NodeList
-            // 
-            this.listView_AssessmentResult_NodeList.HideSelection = false;
-            this.listView_AssessmentResult_NodeList.Location = new System.Drawing.Point(7, 53);
-            this.listView_AssessmentResult_NodeList.Name = "listView_AssessmentResult_NodeList";
-            this.listView_AssessmentResult_NodeList.Size = new System.Drawing.Size(370, 124);
-            this.listView_AssessmentResult_NodeList.TabIndex = 1;
-            this.listView_AssessmentResult_NodeList.UseCompatibleStateImageBehavior = false;
-            this.listView_AssessmentResult_NodeList.View = System.Windows.Forms.View.Details;
-            // 
-            // comboBox_AssessmentResult_LevelChoose
-            // 
-            this.comboBox_AssessmentResult_LevelChoose.FormattingEnabled = true;
-            this.comboBox_AssessmentResult_LevelChoose.Items.AddRange(new object[] {
-            "Level 1 - Design Attribute",
-            "Level 2 - Attribute",
-            "Level 3 - Property",
-            "Level 4 - Metric"});
-            this.comboBox_AssessmentResult_LevelChoose.Location = new System.Drawing.Point(123, 22);
-            this.comboBox_AssessmentResult_LevelChoose.Name = "comboBox_AssessmentResult_LevelChoose";
-            this.comboBox_AssessmentResult_LevelChoose.Size = new System.Drawing.Size(188, 25);
-            this.comboBox_AssessmentResult_LevelChoose.TabIndex = 3;
-            this.comboBox_AssessmentResult_LevelChoose.Text = "Choose One To See Details";
-            // 
-            // label_AssessmentResult_Info
-            // 
-            this.label_AssessmentResult_Info.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_AssessmentResult_Info.Location = new System.Drawing.Point(7, 23);
-            this.label_AssessmentResult_Info.Name = "label_AssessmentResult_Info";
-            this.label_AssessmentResult_Info.Size = new System.Drawing.Size(110, 20);
-            this.label_AssessmentResult_Info.TabIndex = 4;
-            this.label_AssessmentResult_Info.Text = "Level Detail:";
-            this.label_AssessmentResult_Info.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -510,6 +511,7 @@
             this.Controls.Add(this.groupBox_AssessmentResult);
             this.Controls.Add(this.groupBox_DataInput);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
