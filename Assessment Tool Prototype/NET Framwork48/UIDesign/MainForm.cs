@@ -28,6 +28,7 @@ namespace NET_Framwork48
             label_DataInput_InfoText.Text = @"No JSON File Input";
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
             global.model = new Model();
+            global.open_file_path = "";
         }
 
         private void button_DataInput_Input_Click(object sender, EventArgs e)

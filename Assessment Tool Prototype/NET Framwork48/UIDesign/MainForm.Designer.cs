@@ -97,7 +97,7 @@
             this.button_DataInput_Reset.Location = new System.Drawing.Point(108, 22);
             this.button_DataInput_Reset.Name = "button_DataInput_Reset";
             this.button_DataInput_Reset.Size = new System.Drawing.Size(96, 30);
-            this.button_DataInput_Reset.TabIndex = 3;
+            this.button_DataInput_Reset.TabIndex = 1;
             this.button_DataInput_Reset.Text = "Reset";
             this.button_DataInput_Reset.UseVisualStyleBackColor = true;
             // 
@@ -117,7 +117,7 @@
             this.label_DataInput_InfoText.Location = new System.Drawing.Point(207, 22);
             this.label_DataInput_InfoText.Name = "label_DataInput_InfoText";
             this.label_DataInput_InfoText.Size = new System.Drawing.Size(164, 30);
-            this.label_DataInput_InfoText.TabIndex = 1;
+            this.label_DataInput_InfoText.TabIndex = 999;
             this.label_DataInput_InfoText.Text = "No JSON File Input";
             this.label_DataInput_InfoText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -142,7 +142,7 @@
             this.groupBox_AssessmentResult.Location = new System.Drawing.Point(12, 426);
             this.groupBox_AssessmentResult.Name = "groupBox_AssessmentResult";
             this.groupBox_AssessmentResult.Size = new System.Drawing.Size(760, 183);
-            this.groupBox_AssessmentResult.TabIndex = 1;
+            this.groupBox_AssessmentResult.TabIndex = 3;
             this.groupBox_AssessmentResult.TabStop = false;
             this.groupBox_AssessmentResult.Text = "Assessment Result";
             // 
@@ -152,7 +152,7 @@
             this.label_AssessmentResult_Info.Location = new System.Drawing.Point(7, 23);
             this.label_AssessmentResult_Info.Name = "label_AssessmentResult_Info";
             this.label_AssessmentResult_Info.Size = new System.Drawing.Size(110, 20);
-            this.label_AssessmentResult_Info.TabIndex = 4;
+            this.label_AssessmentResult_Info.TabIndex = 999;
             this.label_AssessmentResult_Info.Text = "Level Detail:";
             this.label_AssessmentResult_Info.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -167,7 +167,7 @@
             this.comboBox_AssessmentResult_LevelChoose.Location = new System.Drawing.Point(123, 22);
             this.comboBox_AssessmentResult_LevelChoose.Name = "comboBox_AssessmentResult_LevelChoose";
             this.comboBox_AssessmentResult_LevelChoose.Size = new System.Drawing.Size(188, 25);
-            this.comboBox_AssessmentResult_LevelChoose.TabIndex = 3;
+            this.comboBox_AssessmentResult_LevelChoose.TabIndex = 0;
             this.comboBox_AssessmentResult_LevelChoose.Text = "Choose One To See Details";
             // 
             // listView_AssessmentResult_NodeList
@@ -188,7 +188,7 @@
             this.textBox_AssessmentResult_NodeDetail.Name = "textBox_AssessmentResult_NodeDetail";
             this.textBox_AssessmentResult_NodeDetail.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.textBox_AssessmentResult_NodeDetail.Size = new System.Drawing.Size(371, 155);
-            this.textBox_AssessmentResult_NodeDetail.TabIndex = 0;
+            this.textBox_AssessmentResult_NodeDetail.TabIndex = 2;
             // 
             // groupBox_History
             // 
@@ -199,7 +199,7 @@
             this.groupBox_History.Location = new System.Drawing.Point(395, 12);
             this.groupBox_History.Name = "groupBox_History";
             this.groupBox_History.Size = new System.Drawing.Size(377, 175);
-            this.groupBox_History.TabIndex = 5;
+            this.groupBox_History.TabIndex = 1;
             this.groupBox_History.TabStop = false;
             this.groupBox_History.Text = "History";
             // 
@@ -209,7 +209,7 @@
             this.listView_History_HistoryInfo.Location = new System.Drawing.Point(7, 58);
             this.listView_History_HistoryInfo.Name = "listView_History_HistoryInfo";
             this.listView_History_HistoryInfo.Size = new System.Drawing.Size(364, 111);
-            this.listView_History_HistoryInfo.TabIndex = 3;
+            this.listView_History_HistoryInfo.TabIndex = 2;
             this.listView_History_HistoryInfo.UseCompatibleStateImageBehavior = false;
             this.listView_History_HistoryInfo.View = System.Windows.Forms.View.Details;
             // 
@@ -219,7 +219,7 @@
             this.button_History_Details.Location = new System.Drawing.Point(301, 22);
             this.button_History_Details.Name = "button_History_Details";
             this.button_History_Details.Size = new System.Drawing.Size(70, 30);
-            this.button_History_Details.TabIndex = 2;
+            this.button_History_Details.TabIndex = 0;
             this.button_History_Details.Text = "Details";
             this.button_History_Details.UseVisualStyleBackColor = true;
             // 
@@ -243,7 +243,7 @@
             this.groupBox_ModelWeight.Location = new System.Drawing.Point(12, 193);
             this.groupBox_ModelWeight.Name = "groupBox_ModelWeight";
             this.groupBox_ModelWeight.Size = new System.Drawing.Size(760, 227);
-            this.groupBox_ModelWeight.TabIndex = 6;
+            this.groupBox_ModelWeight.TabIndex = 2;
             this.groupBox_ModelWeight.TabStop = false;
             this.groupBox_ModelWeight.Text = "Model Weight";
             // 
@@ -294,7 +294,7 @@
             this.textBox_ModelWeight_Level3_Property5Weight.Location = new System.Drawing.Point(172, 164);
             this.textBox_ModelWeight_Level3_Property5Weight.Name = "textBox_ModelWeight_Level3_Property5Weight";
             this.textBox_ModelWeight_Level3_Property5Weight.Size = new System.Drawing.Size(193, 25);
-            this.textBox_ModelWeight_Level3_Property5Weight.TabIndex = 11;
+            this.textBox_ModelWeight_Level3_Property5Weight.TabIndex = 5;
             // 
             // textBox_ModelWeight_Level3_Property4Weight
             // 
@@ -302,7 +302,7 @@
             this.textBox_ModelWeight_Level3_Property4Weight.Location = new System.Drawing.Point(172, 136);
             this.textBox_ModelWeight_Level3_Property4Weight.Name = "textBox_ModelWeight_Level3_Property4Weight";
             this.textBox_ModelWeight_Level3_Property4Weight.Size = new System.Drawing.Size(193, 25);
-            this.textBox_ModelWeight_Level3_Property4Weight.TabIndex = 10;
+            this.textBox_ModelWeight_Level3_Property4Weight.TabIndex = 4;
             // 
             // label_ModelWeight_Level3_Property5
             // 
@@ -310,7 +310,7 @@
             this.label_ModelWeight_Level3_Property5.Location = new System.Drawing.Point(6, 166);
             this.label_ModelWeight_Level3_Property5.Name = "label_ModelWeight_Level3_Property5";
             this.label_ModelWeight_Level3_Property5.Size = new System.Drawing.Size(160, 20);
-            this.label_ModelWeight_Level3_Property5.TabIndex = 7;
+            this.label_ModelWeight_Level3_Property5.TabIndex = 999;
             this.label_ModelWeight_Level3_Property5.Text = "Property5";
             this.label_ModelWeight_Level3_Property5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -320,7 +320,7 @@
             this.textBox_ModelWeight_Level3_Property3Weight.Location = new System.Drawing.Point(172, 108);
             this.textBox_ModelWeight_Level3_Property3Weight.Name = "textBox_ModelWeight_Level3_Property3Weight";
             this.textBox_ModelWeight_Level3_Property3Weight.Size = new System.Drawing.Size(193, 25);
-            this.textBox_ModelWeight_Level3_Property3Weight.TabIndex = 9;
+            this.textBox_ModelWeight_Level3_Property3Weight.TabIndex = 3;
             // 
             // label_ModelWeight_Level3_Property4
             // 
@@ -328,7 +328,7 @@
             this.label_ModelWeight_Level3_Property4.Location = new System.Drawing.Point(6, 138);
             this.label_ModelWeight_Level3_Property4.Name = "label_ModelWeight_Level3_Property4";
             this.label_ModelWeight_Level3_Property4.Size = new System.Drawing.Size(160, 20);
-            this.label_ModelWeight_Level3_Property4.TabIndex = 6;
+            this.label_ModelWeight_Level3_Property4.TabIndex = 999;
             this.label_ModelWeight_Level3_Property4.Text = "Property4";
             this.label_ModelWeight_Level3_Property4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -338,7 +338,7 @@
             this.label_ModelWeight_Level3_Property3.Location = new System.Drawing.Point(6, 110);
             this.label_ModelWeight_Level3_Property3.Name = "label_ModelWeight_Level3_Property3";
             this.label_ModelWeight_Level3_Property3.Size = new System.Drawing.Size(160, 20);
-            this.label_ModelWeight_Level3_Property3.TabIndex = 5;
+            this.label_ModelWeight_Level3_Property3.TabIndex = 999;
             this.label_ModelWeight_Level3_Property3.Text = "Property3";
             this.label_ModelWeight_Level3_Property3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -348,7 +348,7 @@
             this.label_ModelWeight_Level3_Property2.Location = new System.Drawing.Point(6, 82);
             this.label_ModelWeight_Level3_Property2.Name = "label_ModelWeight_Level3_Property2";
             this.label_ModelWeight_Level3_Property2.Size = new System.Drawing.Size(160, 20);
-            this.label_ModelWeight_Level3_Property2.TabIndex = 4;
+            this.label_ModelWeight_Level3_Property2.TabIndex = 999;
             this.label_ModelWeight_Level3_Property2.Text = "Property2";
             this.label_ModelWeight_Level3_Property2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -358,7 +358,7 @@
             this.textBox_ModelWeight_Level3_Property2Weight.Location = new System.Drawing.Point(172, 80);
             this.textBox_ModelWeight_Level3_Property2Weight.Name = "textBox_ModelWeight_Level3_Property2Weight";
             this.textBox_ModelWeight_Level3_Property2Weight.Size = new System.Drawing.Size(193, 25);
-            this.textBox_ModelWeight_Level3_Property2Weight.TabIndex = 8;
+            this.textBox_ModelWeight_Level3_Property2Weight.TabIndex = 2;
             // 
             // textBox_ModelWeight_Level3_Property1Weight
             // 
@@ -366,7 +366,7 @@
             this.textBox_ModelWeight_Level3_Property1Weight.Location = new System.Drawing.Point(172, 52);
             this.textBox_ModelWeight_Level3_Property1Weight.Name = "textBox_ModelWeight_Level3_Property1Weight";
             this.textBox_ModelWeight_Level3_Property1Weight.Size = new System.Drawing.Size(193, 25);
-            this.textBox_ModelWeight_Level3_Property1Weight.TabIndex = 3;
+            this.textBox_ModelWeight_Level3_Property1Weight.TabIndex = 1;
             // 
             // label_ModelWeight_Level3_AttributeInfoText
             // 
@@ -374,7 +374,7 @@
             this.label_ModelWeight_Level3_AttributeInfoText.Location = new System.Drawing.Point(6, 22);
             this.label_ModelWeight_Level3_AttributeInfoText.Name = "label_ModelWeight_Level3_AttributeInfoText";
             this.label_ModelWeight_Level3_AttributeInfoText.Size = new System.Drawing.Size(81, 20);
-            this.label_ModelWeight_Level3_AttributeInfoText.TabIndex = 2;
+            this.label_ModelWeight_Level3_AttributeInfoText.TabIndex = 999;
             this.label_ModelWeight_Level3_AttributeInfoText.Text = "Attribute:";
             // 
             // comboBox_ModelWeight_Level3_AttributeChoose
@@ -389,7 +389,7 @@
             this.comboBox_ModelWeight_Level3_AttributeChoose.Location = new System.Drawing.Point(172, 19);
             this.comboBox_ModelWeight_Level3_AttributeChoose.Name = "comboBox_ModelWeight_Level3_AttributeChoose";
             this.comboBox_ModelWeight_Level3_AttributeChoose.Size = new System.Drawing.Size(193, 27);
-            this.comboBox_ModelWeight_Level3_AttributeChoose.TabIndex = 1;
+            this.comboBox_ModelWeight_Level3_AttributeChoose.TabIndex = 0;
             this.comboBox_ModelWeight_Level3_AttributeChoose.Text = "Choose One To Edit";
             // 
             // label_ModelWeight_Level3_Property1
@@ -398,7 +398,7 @@
             this.label_ModelWeight_Level3_Property1.Location = new System.Drawing.Point(6, 54);
             this.label_ModelWeight_Level3_Property1.Name = "label_ModelWeight_Level3_Property1";
             this.label_ModelWeight_Level3_Property1.Size = new System.Drawing.Size(160, 20);
-            this.label_ModelWeight_Level3_Property1.TabIndex = 0;
+            this.label_ModelWeight_Level3_Property1.TabIndex = 999;
             this.label_ModelWeight_Level3_Property1.Text = "Property1";
             this.label_ModelWeight_Level3_Property1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -426,7 +426,7 @@
             this.label_ModelWeight_Level2_DesignAttributeInfoText.Location = new System.Drawing.Point(6, 22);
             this.label_ModelWeight_Level2_DesignAttributeInfoText.Name = "label_ModelWeight_Level2_DesignAttributeInfoText";
             this.label_ModelWeight_Level2_DesignAttributeInfoText.Size = new System.Drawing.Size(281, 20);
-            this.label_ModelWeight_Level2_DesignAttributeInfoText.TabIndex = 8;
+            this.label_ModelWeight_Level2_DesignAttributeInfoText.TabIndex = 999;
             this.label_ModelWeight_Level2_DesignAttributeInfoText.Text = "Design Attribute:      Maintainability";
             // 
             // textBox_ModelWeight_Level2_ModularityWeight
@@ -435,7 +435,7 @@
             this.textBox_ModelWeight_Level2_ModularityWeight.Location = new System.Drawing.Point(145, 130);
             this.textBox_ModelWeight_Level2_ModularityWeight.Name = "textBox_ModelWeight_Level2_ModularityWeight";
             this.textBox_ModelWeight_Level2_ModularityWeight.Size = new System.Drawing.Size(219, 25);
-            this.textBox_ModelWeight_Level2_ModularityWeight.TabIndex = 7;
+            this.textBox_ModelWeight_Level2_ModularityWeight.TabIndex = 3;
             // 
             // textBox_ModelWeight_Level2_StabilityWeight
             // 
@@ -443,7 +443,7 @@
             this.textBox_ModelWeight_Level2_StabilityWeight.Location = new System.Drawing.Point(145, 104);
             this.textBox_ModelWeight_Level2_StabilityWeight.Name = "textBox_ModelWeight_Level2_StabilityWeight";
             this.textBox_ModelWeight_Level2_StabilityWeight.Size = new System.Drawing.Size(219, 25);
-            this.textBox_ModelWeight_Level2_StabilityWeight.TabIndex = 6;
+            this.textBox_ModelWeight_Level2_StabilityWeight.TabIndex = 2;
             // 
             // textBox_ModelWeight_Level2_ChangeabilityWeight
             // 
@@ -451,7 +451,7 @@
             this.textBox_ModelWeight_Level2_ChangeabilityWeight.Location = new System.Drawing.Point(145, 78);
             this.textBox_ModelWeight_Level2_ChangeabilityWeight.Name = "textBox_ModelWeight_Level2_ChangeabilityWeight";
             this.textBox_ModelWeight_Level2_ChangeabilityWeight.Size = new System.Drawing.Size(219, 25);
-            this.textBox_ModelWeight_Level2_ChangeabilityWeight.TabIndex = 5;
+            this.textBox_ModelWeight_Level2_ChangeabilityWeight.TabIndex = 1;
             // 
             // textBox_ModelWeight_Level2_AnalyzabilityWeight
             // 
@@ -459,7 +459,7 @@
             this.textBox_ModelWeight_Level2_AnalyzabilityWeight.Location = new System.Drawing.Point(145, 52);
             this.textBox_ModelWeight_Level2_AnalyzabilityWeight.Name = "textBox_ModelWeight_Level2_AnalyzabilityWeight";
             this.textBox_ModelWeight_Level2_AnalyzabilityWeight.Size = new System.Drawing.Size(219, 25);
-            this.textBox_ModelWeight_Level2_AnalyzabilityWeight.TabIndex = 4;
+            this.textBox_ModelWeight_Level2_AnalyzabilityWeight.TabIndex = 0;
             // 
             // label_ModelWeight_Level2_Modularity
             // 
@@ -467,7 +467,7 @@
             this.label_ModelWeight_Level2_Modularity.Location = new System.Drawing.Point(6, 131);
             this.label_ModelWeight_Level2_Modularity.Name = "label_ModelWeight_Level2_Modularity";
             this.label_ModelWeight_Level2_Modularity.Size = new System.Drawing.Size(133, 22);
-            this.label_ModelWeight_Level2_Modularity.TabIndex = 3;
+            this.label_ModelWeight_Level2_Modularity.TabIndex = 999;
             this.label_ModelWeight_Level2_Modularity.Text = "Modularity:";
             this.label_ModelWeight_Level2_Modularity.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -477,7 +477,7 @@
             this.label_ModelWeight_Level2_Stability.Location = new System.Drawing.Point(6, 105);
             this.label_ModelWeight_Level2_Stability.Name = "label_ModelWeight_Level2_Stability";
             this.label_ModelWeight_Level2_Stability.Size = new System.Drawing.Size(133, 22);
-            this.label_ModelWeight_Level2_Stability.TabIndex = 2;
+            this.label_ModelWeight_Level2_Stability.TabIndex = 999;
             this.label_ModelWeight_Level2_Stability.Text = "Stability:";
             this.label_ModelWeight_Level2_Stability.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -487,7 +487,7 @@
             this.label_ModelWeight_Level2_Changeability.Location = new System.Drawing.Point(6, 79);
             this.label_ModelWeight_Level2_Changeability.Name = "label_ModelWeight_Level2_Changeability";
             this.label_ModelWeight_Level2_Changeability.Size = new System.Drawing.Size(133, 22);
-            this.label_ModelWeight_Level2_Changeability.TabIndex = 1;
+            this.label_ModelWeight_Level2_Changeability.TabIndex = 999;
             this.label_ModelWeight_Level2_Changeability.Text = "Changeability:";
             this.label_ModelWeight_Level2_Changeability.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -497,7 +497,7 @@
             this.label_ModelWeight_Level2_Analyzability.Location = new System.Drawing.Point(6, 53);
             this.label_ModelWeight_Level2_Analyzability.Name = "label_ModelWeight_Level2_Analyzability";
             this.label_ModelWeight_Level2_Analyzability.Size = new System.Drawing.Size(133, 22);
-            this.label_ModelWeight_Level2_Analyzability.TabIndex = 0;
+            this.label_ModelWeight_Level2_Analyzability.TabIndex = 999;
             this.label_ModelWeight_Level2_Analyzability.Text = "Analyzability:";
             this.label_ModelWeight_Level2_Analyzability.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
