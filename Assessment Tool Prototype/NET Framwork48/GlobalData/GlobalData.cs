@@ -11,13 +11,12 @@ namespace NET_Framwork48.GlobalData
     {
         public static GlobalData globalData = new GlobalData();
 
-        ////是否评估 Modularity
-        //public bool if_assess_modularity = true;
         //程序使用的模型
-        public Model model = new Model();        //使用的模型
-        public DataHandle.JSONDataStruct.Root root;      //json文件的root
+        public Model model;                             //使用的模型
+        public DataHandle.JSONDataStruct.Root root;     //从json文件中提取的的root类
 
         //UI中的全局参数
+        public string newline = Environment.NewLine;    //New Line
         public string open_file_path = "";      //打开的文件路径
     }
 }

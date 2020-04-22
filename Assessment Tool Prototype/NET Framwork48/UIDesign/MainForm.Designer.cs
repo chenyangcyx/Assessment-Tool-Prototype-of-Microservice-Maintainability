@@ -103,7 +103,6 @@
             // 
             // textBox_DataInput_FileInfo
             // 
-            this.textBox_DataInput_FileInfo.AcceptsReturn = true;
             this.textBox_DataInput_FileInfo.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_DataInput_FileInfo.Location = new System.Drawing.Point(6, 58);
             this.textBox_DataInput_FileInfo.Multiline = true;
@@ -131,6 +130,7 @@
             this.button_DataInput_Input.TabIndex = 0;
             this.button_DataInput_Input.Text = "Input";
             this.button_DataInput_Input.UseVisualStyleBackColor = true;
+            this.button_DataInput_Input.Click += new System.EventHandler(this.button_DataInput_Input_Click);
             // 
             // groupBox_AssessmentResult
             // 
