@@ -204,17 +204,44 @@ namespace NET_Framwork48.UIDesign
         //更新comboBox选项
         public void RefreshComboBox(ComboBox box, string text, object[] items)
         {
+            box.Items.Clear();
             box.Text = text;
             box.Items.AddRange(items);
+        }
+
+        //更新Model Weight Level3的Label和textBox
+        public void RefreshModelWeightLevel3LabelAndTextBox(Label label1, Label label2, Label label3, Label label4, Label label5,
+                                                            TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
+        {
+            label1.Visible = true;
+            box1.Visible = true;
+            label2.Visible = true;
+            box2.Visible = true;
+            label3.Visible = true;
+            box3.Visible = true;
+            label4.Visible = true;
+            box4.Visible = true;
+            label5.Visible = true;
+            box5.Visible = true;
+            label1.Text = GlobalData.GlobalData.LABEL_MODELWEIGHT_LEVEL3_PROPERTY1;
+            label2.Text = GlobalData.GlobalData.LABEL_MODELWEIGHT_LEVEL3_PROPERTY2;
+            label3.Text = GlobalData.GlobalData.LABEL_MODELWEIGHT_LEVEL3_PROPERTY3;
+            label4.Text = GlobalData.GlobalData.LABEL_MODELWEIGHT_LEVEL3_PROPERTY4;
+            label5.Text = GlobalData.GlobalData.LABEL_MODELWEIGHT_LEVEL3_PROPERTY5;
+            box1.Text = "";
+            box2.Text = "";
+            box3.Text = "";
+            box4.Text = "";
+            box5.Text = "";
         }
 
         //更新Model Weight的Level2 textBox
         public void RefreshModelWeightLevel2TextBox(Model model,TextBox box1, TextBox box2, TextBox box3, TextBox box4)
         {
-            box1.Text = model.level2_nodes[0].weight.ToString();
-            box2.Text = model.level2_nodes[1].weight.ToString();
-            box3.Text = model.level2_nodes[2].weight.ToString();
-            box4.Text = model.level2_nodes[3].weight.ToString();
+            box1.Text = model.level2_nodes[0].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box2.Text = model.level2_nodes[1].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box3.Text = model.level2_nodes[2].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box4.Text = model.level2_nodes[3].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
         //Refresh Model Weight's Property-Analyzability
@@ -235,10 +262,10 @@ namespace NET_Framwork48.UIDesign
             label2.Text = model.modelLink.LEVEL2_LINK_3_UNITS[0][1];
             label3.Text = model.modelLink.LEVEL2_LINK_3_UNITS[0][2];
             label4.Text = model.modelLink.LEVEL2_LINK_3_UNITS[0][3];
-            box1.Text = model.level3_nodes[0].weight.ToString();
-            box2.Text = model.level3_nodes[1].weight.ToString();
-            box3.Text = model.level3_nodes[2].weight.ToString();
-            box4.Text = model.level3_nodes[3].weight.ToString();
+            box1.Text = model.level3_nodes[0].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box2.Text = model.level3_nodes[1].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box3.Text = model.level3_nodes[2].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box4.Text = model.level3_nodes[3].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
         //Refresh Model Weight's Property-Changeability
@@ -260,11 +287,11 @@ namespace NET_Framwork48.UIDesign
             label3.Text = model.modelLink.LEVEL2_LINK_3_UNITS[1][2];
             label4.Text = model.modelLink.LEVEL2_LINK_3_UNITS[1][3];
             label5.Text = model.modelLink.LEVEL2_LINK_3_UNITS[1][4];
-            box1.Text = model.level3_nodes[4].weight.ToString();
-            box2.Text = model.level3_nodes[5].weight.ToString();
-            box3.Text = model.level3_nodes[6].weight.ToString();
-            box4.Text = model.level3_nodes[7].weight.ToString();
-            box5.Text = model.level3_nodes[8].weight.ToString();
+            box1.Text = model.level3_nodes[4].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box2.Text = model.level3_nodes[5].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box3.Text = model.level3_nodes[6].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box4.Text = model.level3_nodes[7].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box5.Text = model.level3_nodes[8].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
         //Refresh Model Weight's Property-Stability
@@ -283,8 +310,8 @@ namespace NET_Framwork48.UIDesign
             box5.Visible = false;
             label1.Text = model.modelLink.LEVEL2_LINK_3_UNITS[2][0];
             label2.Text = model.modelLink.LEVEL2_LINK_3_UNITS[2][1];
-            box1.Text = model.level3_nodes[9].weight.ToString();
-            box2.Text = model.level3_nodes[10].weight.ToString();
+            box1.Text = model.level3_nodes[9].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box2.Text = model.level3_nodes[10].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
         //Refresh Model Weight's Property-Modularity
@@ -303,8 +330,8 @@ namespace NET_Framwork48.UIDesign
             box5.Visible = false;
             label1.Text = model.modelLink.LEVEL2_LINK_3_UNITS[3][0];
             label2.Text = model.modelLink.LEVEL2_LINK_3_UNITS[3][1];
-            box1.Text = model.level3_nodes[11].weight.ToString();
-            box2.Text = model.level3_nodes[12].weight.ToString();
+            box1.Text = model.level3_nodes[11].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            box2.Text = model.level3_nodes[12].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
     }
 }

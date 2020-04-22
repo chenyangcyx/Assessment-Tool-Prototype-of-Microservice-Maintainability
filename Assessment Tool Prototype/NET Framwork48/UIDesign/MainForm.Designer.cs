@@ -118,8 +118,8 @@
             this.label_DataInput_InfoText.Name = "label_DataInput_InfoText";
             this.label_DataInput_InfoText.Size = new System.Drawing.Size(164, 30);
             this.label_DataInput_InfoText.TabIndex = 999;
-            this.label_DataInput_InfoText.Text = "No JSON File Input";
-            this.label_DataInput_InfoText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label_DataInput_InfoText.Text = "Info Label";
+            this.label_DataInput_InfoText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button_DataInput_Input
             // 
@@ -250,6 +250,7 @@
             this.button_ModelWeight_SaveChanges.TabIndex = 3;
             this.button_ModelWeight_SaveChanges.Text = "Save Changes";
             this.button_ModelWeight_SaveChanges.UseVisualStyleBackColor = true;
+            this.button_ModelWeight_SaveChanges.Click += new System.EventHandler(this.button_ModelWeight_SaveChanges_Click);
             // 
             // button_ModelWeight_DefaultSettings
             // 
@@ -260,6 +261,7 @@
             this.button_ModelWeight_DefaultSettings.TabIndex = 2;
             this.button_ModelWeight_DefaultSettings.Text = "Default Settings";
             this.button_ModelWeight_DefaultSettings.UseVisualStyleBackColor = true;
+            this.button_ModelWeight_DefaultSettings.Click += new System.EventHandler(this.button_ModelWeight_DefaultSettings_Click);
             // 
             // groupBox_ModelWeight_Level3
             // 
