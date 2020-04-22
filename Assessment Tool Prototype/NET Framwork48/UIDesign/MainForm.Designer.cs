@@ -379,6 +379,7 @@
             this.comboBox_ModelWeight_Level3_AttributeChoose.Name = "comboBox_ModelWeight_Level3_AttributeChoose";
             this.comboBox_ModelWeight_Level3_AttributeChoose.Size = new System.Drawing.Size(193, 27);
             this.comboBox_ModelWeight_Level3_AttributeChoose.TabIndex = 0;
+            this.comboBox_ModelWeight_Level3_AttributeChoose.SelectedIndexChanged += new System.EventHandler(this.comboBox_ModelWeight_Level3_AttributeChoose_SelectedIndexChanged);
             // 
             // label_ModelWeight_Level3_Property1
             // 
@@ -415,7 +416,7 @@
             this.label_ModelWeight_Level2_DesignAttributeInfoText.Name = "label_ModelWeight_Level2_DesignAttributeInfoText";
             this.label_ModelWeight_Level2_DesignAttributeInfoText.Size = new System.Drawing.Size(281, 20);
             this.label_ModelWeight_Level2_DesignAttributeInfoText.TabIndex = 999;
-            this.label_ModelWeight_Level2_DesignAttributeInfoText.Text = "Design Attribute:      Maintainability";
+            this.label_ModelWeight_Level2_DesignAttributeInfoText.Text = "Quality Attribute:      Maintainability";
             // 
             // textBox_ModelWeight_Level2_ModularityWeight
             // 

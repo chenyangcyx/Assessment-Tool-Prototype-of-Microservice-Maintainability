@@ -157,8 +157,13 @@ namespace NET_Framwork48.UIDesign
         //        textBox.AppendText(node.Key + "--" + node.Value + Environment.NewLine);
         //    textBox.AppendText("WISL总数：" + model.modelValue.WISL_TOTAL + Environment.NewLine + Environment.NewLine);
         //}
+        //Set Label Value
+        public void SetLabelValue(Label label,string str)
+        {
+            label.Text = str;
+        }
 
-        //根据输入文件来更新输入文件的textBox
+        //更新输入文件的textBox
         public void RefreshDataInputTextBox(DataHandle.JSONDataStruct.Root root, TextBox textBox)
         {
             //清空文本框
@@ -194,6 +199,112 @@ namespace NET_Framwork48.UIDesign
             //定位光标
             textBox.Select(0, 0);
             textBox.ScrollToCaret();
+        }
+
+        //更新comboBox选项
+        public void RefreshComboBox(ComboBox box, string text, object[] items)
+        {
+            box.Text = text;
+            box.Items.AddRange(items);
+        }
+
+        //更新Model Weight的Level2 textBox
+        public void RefreshModelWeightLevel2TextBox(Model model,TextBox box1, TextBox box2, TextBox box3, TextBox box4)
+        {
+            box1.Text = model.level2_nodes[0].weight.ToString();
+            box2.Text = model.level2_nodes[1].weight.ToString();
+            box3.Text = model.level2_nodes[2].weight.ToString();
+            box4.Text = model.level2_nodes[3].weight.ToString();
+        }
+
+        //Refresh Model Weight's Property-Analyzability
+        public void RefreshModelWeightPropertyAnalyzability(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
+                                                            TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
+        {
+            label1.Visible = true;
+            box1.Visible = true;
+            label2.Visible = true;
+            box2.Visible = true;
+            label3.Visible = true;
+            box3.Visible = true;
+            label4.Visible = true;
+            box4.Visible = true;
+            label5.Visible = false;
+            box5.Visible = false;
+            label1.Text = model.modelLink.LEVEL2_LINK_3_UNITS[0][0];
+            label2.Text = model.modelLink.LEVEL2_LINK_3_UNITS[0][1];
+            label3.Text = model.modelLink.LEVEL2_LINK_3_UNITS[0][2];
+            label4.Text = model.modelLink.LEVEL2_LINK_3_UNITS[0][3];
+            box1.Text = model.level3_nodes[0].weight.ToString();
+            box2.Text = model.level3_nodes[1].weight.ToString();
+            box3.Text = model.level3_nodes[2].weight.ToString();
+            box4.Text = model.level3_nodes[3].weight.ToString();
+        }
+
+        //Refresh Model Weight's Property-Changeability
+        public void RefreshModelWeightPropertyChangeability(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
+                                                            TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
+        {
+            label1.Visible = true;
+            box1.Visible = true;
+            label2.Visible = true;
+            box2.Visible = true;
+            label3.Visible = true;
+            box3.Visible = true;
+            label4.Visible = true;
+            box4.Visible = true;
+            label5.Visible = true;
+            box5.Visible = true;
+            label1.Text = model.modelLink.LEVEL2_LINK_3_UNITS[1][0];
+            label2.Text = model.modelLink.LEVEL2_LINK_3_UNITS[1][1];
+            label3.Text = model.modelLink.LEVEL2_LINK_3_UNITS[1][2];
+            label4.Text = model.modelLink.LEVEL2_LINK_3_UNITS[1][3];
+            label5.Text = model.modelLink.LEVEL2_LINK_3_UNITS[1][4];
+            box1.Text = model.level3_nodes[4].weight.ToString();
+            box2.Text = model.level3_nodes[5].weight.ToString();
+            box3.Text = model.level3_nodes[6].weight.ToString();
+            box4.Text = model.level3_nodes[7].weight.ToString();
+            box5.Text = model.level3_nodes[8].weight.ToString();
+        }
+
+        //Refresh Model Weight's Property-Stability
+        public void RefreshModelWeightPropertyStability(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
+                                                            TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
+        {
+            label1.Visible = true;
+            box1.Visible = true;
+            label2.Visible = true;
+            box2.Visible = true;
+            label3.Visible = false;
+            box3.Visible = false;
+            label4.Visible = false;
+            box4.Visible = false;
+            label5.Visible = false;
+            box5.Visible = false;
+            label1.Text = model.modelLink.LEVEL2_LINK_3_UNITS[2][0];
+            label2.Text = model.modelLink.LEVEL2_LINK_3_UNITS[2][1];
+            box1.Text = model.level3_nodes[9].weight.ToString();
+            box2.Text = model.level3_nodes[10].weight.ToString();
+        }
+
+        //Refresh Model Weight's Property-Modularity
+        public void RefreshModelWeightPropertyModularity(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
+                                                            TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
+        {
+            label1.Visible = true;
+            box1.Visible = true;
+            label2.Visible = true;
+            box2.Visible = true;
+            label3.Visible = false;
+            box3.Visible = false;
+            label4.Visible = false;
+            box4.Visible = false;
+            label5.Visible = false;
+            box5.Visible = false;
+            label1.Text = model.modelLink.LEVEL2_LINK_3_UNITS[3][0];
+            label2.Text = model.modelLink.LEVEL2_LINK_3_UNITS[3][1];
+            box1.Text = model.level3_nodes[11].weight.ToString();
+            box2.Text = model.level3_nodes[12].weight.ToString();
         }
     }
 }
