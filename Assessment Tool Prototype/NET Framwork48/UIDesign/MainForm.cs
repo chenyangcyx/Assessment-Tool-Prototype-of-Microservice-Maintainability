@@ -27,8 +27,31 @@ namespace NET_Framwork48
         {
             label_DataInput_InfoText.Text = @"No JSON File Input";
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
-            global.model = new Model();
             global.open_file_path = "";
+
+            //comboBox Init
+            comboBox_ModelWeight_Level3_AttributeChoose.Text = GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_TEXT;
+            comboBox_ModelWeight_Level3_AttributeChoose.Items.AddRange(new object[] {
+                GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE1,
+                GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE2,
+                GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE3,
+                GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE4
+            });
+            comboBox_AssessmentResult_LevelChoose.Text = GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_TEXT;
+            comboBox_AssessmentResult_LevelChoose.Items.AddRange(new object[]
+            {
+                GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE1,
+                GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE2,
+                GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE3,
+                GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE4
+            });
+
+            //初始化Model Weight
+            Model model = global.model;
+            model = new Model();
+            model.CreateModel();
+            model.CalculateModelWeight();
+
         }
 
         private void button_DataInput_Input_Click(object sender, EventArgs e)

@@ -159,16 +159,10 @@
             // comboBox_AssessmentResult_LevelChoose
             // 
             this.comboBox_AssessmentResult_LevelChoose.FormattingEnabled = true;
-            this.comboBox_AssessmentResult_LevelChoose.Items.AddRange(new object[] {
-            "Level 1 - Design Attribute",
-            "Level 2 - Attribute",
-            "Level 3 - Property",
-            "Level 4 - Metric"});
             this.comboBox_AssessmentResult_LevelChoose.Location = new System.Drawing.Point(123, 22);
             this.comboBox_AssessmentResult_LevelChoose.Name = "comboBox_AssessmentResult_LevelChoose";
             this.comboBox_AssessmentResult_LevelChoose.Size = new System.Drawing.Size(188, 25);
             this.comboBox_AssessmentResult_LevelChoose.TabIndex = 0;
-            this.comboBox_AssessmentResult_LevelChoose.Text = "Choose One To See Details";
             // 
             // listView_AssessmentResult_NodeList
             // 
@@ -381,16 +375,10 @@
             // 
             this.comboBox_ModelWeight_Level3_AttributeChoose.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.comboBox_ModelWeight_Level3_AttributeChoose.FormattingEnabled = true;
-            this.comboBox_ModelWeight_Level3_AttributeChoose.Items.AddRange(new object[] {
-            "Analyzability",
-            "Changeability",
-            "Stability",
-            "Modularity"});
             this.comboBox_ModelWeight_Level3_AttributeChoose.Location = new System.Drawing.Point(172, 19);
             this.comboBox_ModelWeight_Level3_AttributeChoose.Name = "comboBox_ModelWeight_Level3_AttributeChoose";
             this.comboBox_ModelWeight_Level3_AttributeChoose.Size = new System.Drawing.Size(193, 27);
             this.comboBox_ModelWeight_Level3_AttributeChoose.TabIndex = 0;
-            this.comboBox_ModelWeight_Level3_AttributeChoose.Text = "Choose One To Edit";
             // 
             // label_ModelWeight_Level3_Property1
             // 
