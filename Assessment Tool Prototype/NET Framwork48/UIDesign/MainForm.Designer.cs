@@ -37,8 +37,8 @@
             this.groupBox_AssessmentResult = new System.Windows.Forms.GroupBox();
             this.label_AssessmentResult_Info = new System.Windows.Forms.Label();
             this.comboBox_AssessmentResult_LevelChoose = new System.Windows.Forms.ComboBox();
-            this.listView_AssessmentResult_NodeList = new System.Windows.Forms.ListView();
-            this.textBox_AssessmentResult_NodeDetail = new System.Windows.Forms.TextBox();
+            this.listView_AssessmentResult_NodeInfo = new System.Windows.Forms.ListView();
+            this.textBox_AssessmentResult_NodeInfoDetail = new System.Windows.Forms.TextBox();
             this.groupBox_History = new System.Windows.Forms.GroupBox();
             this.listView_History_HistoryInfo = new System.Windows.Forms.ListView();
             this.button_History_Details = new System.Windows.Forms.Button();
@@ -100,6 +100,7 @@
             this.button_DataInput_Reset.TabIndex = 1;
             this.button_DataInput_Reset.Text = "Reset";
             this.button_DataInput_Reset.UseVisualStyleBackColor = true;
+            this.button_DataInput_Reset.Click += new System.EventHandler(this.button_DataInput_Reset_Click);
             // 
             // textBox_DataInput_FileInfo
             // 
@@ -136,8 +137,8 @@
             // 
             this.groupBox_AssessmentResult.Controls.Add(this.label_AssessmentResult_Info);
             this.groupBox_AssessmentResult.Controls.Add(this.comboBox_AssessmentResult_LevelChoose);
-            this.groupBox_AssessmentResult.Controls.Add(this.listView_AssessmentResult_NodeList);
-            this.groupBox_AssessmentResult.Controls.Add(this.textBox_AssessmentResult_NodeDetail);
+            this.groupBox_AssessmentResult.Controls.Add(this.listView_AssessmentResult_NodeInfo);
+            this.groupBox_AssessmentResult.Controls.Add(this.textBox_AssessmentResult_NodeInfoDetail);
             this.groupBox_AssessmentResult.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBox_AssessmentResult.Location = new System.Drawing.Point(12, 426);
             this.groupBox_AssessmentResult.Name = "groupBox_AssessmentResult";
@@ -163,26 +164,30 @@
             this.comboBox_AssessmentResult_LevelChoose.Name = "comboBox_AssessmentResult_LevelChoose";
             this.comboBox_AssessmentResult_LevelChoose.Size = new System.Drawing.Size(188, 25);
             this.comboBox_AssessmentResult_LevelChoose.TabIndex = 0;
+            this.comboBox_AssessmentResult_LevelChoose.SelectedIndexChanged += new System.EventHandler(this.comboBox_AssessmentResult_LevelChoose_SelectedIndexChanged);
             // 
-            // listView_AssessmentResult_NodeList
+            // listView_AssessmentResult_NodeInfo
             // 
-            this.listView_AssessmentResult_NodeList.HideSelection = false;
-            this.listView_AssessmentResult_NodeList.Location = new System.Drawing.Point(7, 53);
-            this.listView_AssessmentResult_NodeList.Name = "listView_AssessmentResult_NodeList";
-            this.listView_AssessmentResult_NodeList.Size = new System.Drawing.Size(370, 124);
-            this.listView_AssessmentResult_NodeList.TabIndex = 1;
-            this.listView_AssessmentResult_NodeList.UseCompatibleStateImageBehavior = false;
-            this.listView_AssessmentResult_NodeList.View = System.Windows.Forms.View.Details;
+            this.listView_AssessmentResult_NodeInfo.FullRowSelect = true;
+            this.listView_AssessmentResult_NodeInfo.HideSelection = false;
+            this.listView_AssessmentResult_NodeInfo.Location = new System.Drawing.Point(7, 53);
+            this.listView_AssessmentResult_NodeInfo.MultiSelect = false;
+            this.listView_AssessmentResult_NodeInfo.Name = "listView_AssessmentResult_NodeInfo";
+            this.listView_AssessmentResult_NodeInfo.Size = new System.Drawing.Size(370, 124);
+            this.listView_AssessmentResult_NodeInfo.TabIndex = 1;
+            this.listView_AssessmentResult_NodeInfo.UseCompatibleStateImageBehavior = false;
+            this.listView_AssessmentResult_NodeInfo.View = System.Windows.Forms.View.Details;
+            this.listView_AssessmentResult_NodeInfo.SelectedIndexChanged += new System.EventHandler(this.listView_AssessmentResult_NodeInfo_SelectedIndexChanged);
             // 
-            // textBox_AssessmentResult_NodeDetail
+            // textBox_AssessmentResult_NodeInfoDetail
             // 
-            this.textBox_AssessmentResult_NodeDetail.AcceptsReturn = true;
-            this.textBox_AssessmentResult_NodeDetail.Location = new System.Drawing.Point(383, 22);
-            this.textBox_AssessmentResult_NodeDetail.Multiline = true;
-            this.textBox_AssessmentResult_NodeDetail.Name = "textBox_AssessmentResult_NodeDetail";
-            this.textBox_AssessmentResult_NodeDetail.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox_AssessmentResult_NodeDetail.Size = new System.Drawing.Size(371, 155);
-            this.textBox_AssessmentResult_NodeDetail.TabIndex = 2;
+            this.textBox_AssessmentResult_NodeInfoDetail.AcceptsReturn = true;
+            this.textBox_AssessmentResult_NodeInfoDetail.Location = new System.Drawing.Point(383, 22);
+            this.textBox_AssessmentResult_NodeInfoDetail.Multiline = true;
+            this.textBox_AssessmentResult_NodeInfoDetail.Name = "textBox_AssessmentResult_NodeInfoDetail";
+            this.textBox_AssessmentResult_NodeInfoDetail.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox_AssessmentResult_NodeInfoDetail.Size = new System.Drawing.Size(371, 155);
+            this.textBox_AssessmentResult_NodeInfoDetail.TabIndex = 2;
             // 
             // groupBox_History
             // 
@@ -528,7 +533,7 @@
         private System.Windows.Forms.TextBox textBox_DataInput_FileInfo;
         private System.Windows.Forms.Label label_DataInput_InfoText;
         private System.Windows.Forms.Button button_DataInput_Input;
-        private System.Windows.Forms.TextBox textBox_AssessmentResult_NodeDetail;
+        private System.Windows.Forms.TextBox textBox_AssessmentResult_NodeInfoDetail;
         private System.Windows.Forms.GroupBox groupBox_History;
         private System.Windows.Forms.Button button_History_ClearAll;
         private System.Windows.Forms.Button button_History_Details;
@@ -560,7 +565,7 @@
         private System.Windows.Forms.Label label_ModelWeight_Level2_Analyzability;
         private System.Windows.Forms.Button button_DataInput_Reset;
         private System.Windows.Forms.ListView listView_History_HistoryInfo;
-        private System.Windows.Forms.ListView listView_AssessmentResult_NodeList;
+        private System.Windows.Forms.ListView listView_AssessmentResult_NodeInfo;
         private System.Windows.Forms.Label label_AssessmentResult_Info;
         private System.Windows.Forms.ComboBox comboBox_AssessmentResult_LevelChoose;
     }

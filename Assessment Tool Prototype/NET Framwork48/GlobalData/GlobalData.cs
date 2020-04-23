@@ -43,10 +43,19 @@ namespace NET_Framwork48.GlobalData
         public const string COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE2 = @"Level 2 - " + ModelName.LEVEL2_NAME;
         public const string COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE3 = @"Level 3 - " + ModelName.LEVEL3_NAME;
         public const string COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE4 = @"Level 4 - " + ModelName.LEVEL4_NAME;
+        public const string COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE = @"No Choose";
         //Decimal Number Format
         public bool DECIMAL_CHANGE_CHECK_SUCCESS = true;
         public const string DECIMAL_FORMAT = @"#0.00000000000000";
-
+        //Assessment Result ListView
+        public const string LISTVIEW_ASSESSMENTRESULT_COLUMN1_STRING = @"No";
+        public const string LISTVIEW_ASSESSMENTRESULT_COLUMN2_STRING = @"Level";
+        public const string LISTVIEW_ASSESSMENTRESULT_COLUMN3_STRING = @"Name";
+        public const string LISTVIEW_ASSESSMENTRESULT_COLUMN4_STRING = @"Value";
+        public const int LISTVIEW_ASSESSMENTRESULT_COLUMN1_WIDTH = 40;
+        public const int LISTVIEW_ASSESSMENTRESULT_COLUMN2_WIDTH = 50;
+        public const int LISTVIEW_ASSESSMENTRESULT_COLUMN3_WIDTH = 139;
+        public const int LISTVIEW_ASSESSMENTRESULT_COLUMN4_WIDTH = 135;
 
         //从String转换得到Decimal数值
         public bool ConvertFromStringToDecimal(string value_str,out decimal value)

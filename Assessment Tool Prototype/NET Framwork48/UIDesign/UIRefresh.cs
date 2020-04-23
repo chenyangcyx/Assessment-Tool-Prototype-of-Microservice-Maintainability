@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace NET_Framwork48.UIDesign
 {
@@ -332,6 +333,76 @@ namespace NET_Framwork48.UIDesign
             label2.Text = model.modelLink.LEVEL2_LINK_3_UNITS[3][1];
             box1.Text = model.level3_nodes[11].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
             box2.Text = model.level3_nodes[12].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+        }
+
+        //Set Assessment Result ListView Column
+        public void SetAssessmentResultListViewColumn(ListView lv)
+        {
+            lv.Clear();
+            lv.BeginUpdate();
+            //Add ListView's Column
+            lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN1_STRING, GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN1_WIDTH, HorizontalAlignment.Left);
+            lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN2_STRING, GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN2_WIDTH, HorizontalAlignment.Left);
+            lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN3_STRING, GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN3_WIDTH, HorizontalAlignment.Left);
+            lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN4_STRING, GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN4_WIDTH, HorizontalAlignment.Left);
+            lv.EndUpdate();
+        }
+
+        //Refresh Assessment Result ListView Data
+        public void RefreshAssessmentResultListViewData(ListView lv,Model model,string levelname)
+        {
+            lv.BeginUpdate();
+            lv.Items.Clear();
+            switch (levelname)
+            {
+                case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE1:
+                    for (int i = 0; i < ModelLink.LEVEL1_TOTAL_NUM; i++)
+                    {
+                        ListViewItem it = new ListViewItem();
+                        it.Text = "" + (i + 1);
+                        it.SubItems.Add("" + model.level1_nodes[i].NodeLevel);
+                        it.SubItems.Add(model.level1_nodes[i].NodeName);
+                        it.SubItems.Add(model.level1_nodes[i].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT));
+                        lv.Items.Add(it);
+                    }
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE2:
+                    for (int i = 0; i < ModelLink.LEVEL2_TOTAL_NUM; i++)
+                    {
+                        ListViewItem it = new ListViewItem();
+                        it.Text = "" + (i + 1);
+                        it.SubItems.Add("" + model.level2_nodes[i].NodeLevel);
+                        it.SubItems.Add(model.level2_nodes[i].NodeName);
+                        it.SubItems.Add(model.level2_nodes[i].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT));
+                        lv.Items.Add(it);
+                    }
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE3:
+                    for (int i = 0; i < ModelLink.LEVEL3_TOTAL_NUM; i++)
+                    {
+                        ListViewItem it = new ListViewItem();
+                        it.Text = "" + (i + 1);
+                        it.SubItems.Add("" + model.level3_nodes[i].NodeLevel);
+                        it.SubItems.Add(model.level3_nodes[i].NodeName);
+                        it.SubItems.Add(model.level3_nodes[i].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT));
+                        lv.Items.Add(it);
+                    }
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE4:
+                    for (int i = 0; i < ModelLink.LEVEL4_TOTAL_NUM; i++)
+                    {
+                        ListViewItem it = new ListViewItem();
+                        it.Text = "" + (i + 1);
+                        it.SubItems.Add("" + model.level4_nodes[i].NodeLevel);
+                        it.SubItems.Add(model.level4_nodes[i].NodeName);
+                        it.SubItems.Add(model.level4_nodes[i].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT));
+                        lv.Items.Add(it);
+                    }
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE:
+                    break;
+            }
+            lv.EndUpdate();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using NET_Framwork48.DataHandle;
+﻿using Microsoft.Win32.SafeHandles;
+using NET_Framwork48.DataHandle;
 using NET_Framwork48.GlobalData;
 using NET_Framwork48.Models;
 using NET_Framwork48.UIDesign;
@@ -43,10 +44,10 @@ namespace NET_Framwork48
             refresh.RefreshComboBox(comboBox_AssessmentResult_LevelChoose,
                                     GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_TEXT,
                                     new object[] {
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE1,
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE2,
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE3,
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE4
+                                        GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE1,
+                                        GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE2,
+                                        GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE3,
+                                        GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE4
                                     });
             //Label and textBox Init
             refresh.RefreshModelWeightLevel3LabelAndTextBox(    label_ModelWeight_Level3_Property1,
@@ -69,6 +70,8 @@ namespace NET_Framwork48
                                                             textBox_ModelWeight_Level2_ChangeabilityWeight,
                                                             textBox_ModelWeight_Level2_StabilityWeight,
                                                             textBox_ModelWeight_Level2_ModularityWeight);
+            //Init Assessment Result ListView Column
+            refresh.SetAssessmentResultListViewColumn(listView_AssessmentResult_NodeInfo);
         }
 
         private void button_DataInput_Input_Click(object sender, EventArgs e)
@@ -97,6 +100,23 @@ namespace NET_Framwork48
 
                 //将文件的概要输出
                 refresh.RefreshDataInputTextBox(global.root, textBox_DataInput_FileInfo);
+
+                //提取json文件数据
+                DataAnalyze dataAnalyze = new DataAnalyze(global.root, global.model.modelValue);
+                dataAnalyze.SetMetrics();
+                global.model.CalculateModelValue();
+
+                //设置ListView的显示项目
+                try
+                {
+                    string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
+                    refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, comboBox_AssessmentResult_LevelChoose_string);
+                }
+                catch (Exception)
+                {
+                    //if the comboBox is not selected
+                    refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE);
+                }
             }
         }
 
@@ -376,6 +396,44 @@ namespace NET_Framwork48
             }
             //Refresh label
             label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_CHANGESUCCESS;
+        }
+
+        private void button_DataInput_Reset_Click(object sender, EventArgs e)
+        {
+            InitAllUI();
+        }
+
+        private void comboBox_AssessmentResult_LevelChoose_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UIRefresh refresh = new UIRefresh();
+            GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
+            //设置ListView的显示项目
+            try
+            {
+                string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
+                refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, comboBox_AssessmentResult_LevelChoose_string);
+            }
+            catch (Exception)
+            {
+                //if the comboBox is not selected
+                refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE);
+            }
+        }
+
+        private void listView_AssessmentResult_NodeInfo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView_AssessmentResult_NodeInfo.SelectedItems.Count == 0)
+            {
+                textBox_AssessmentResult_NodeInfoDetail.AppendText("No Choose!" + Environment.NewLine);
+            }
+            else
+            {
+                textBox_AssessmentResult_NodeInfoDetail.AppendText(listView_AssessmentResult_NodeInfo.SelectedItems[0].Text + Environment.NewLine
+                                                + listView_AssessmentResult_NodeInfo.SelectedItems[0].Name + Environment.NewLine
+                                                + listView_AssessmentResult_NodeInfo.SelectedItems[0].Tag + Environment.NewLine
+                                                + listView_AssessmentResult_NodeInfo.SelectedItems[0].Checked + Environment.NewLine
+                                                + listView_AssessmentResult_NodeInfo.SelectedItems[0].Selected + Environment.NewLine);
+            }
         }
     }
 }
