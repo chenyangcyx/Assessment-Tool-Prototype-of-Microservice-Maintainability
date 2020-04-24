@@ -404,5 +404,26 @@ namespace NET_Framwork48.UIDesign
             }
             lv.EndUpdate();
         }
+
+        //refresh the Assessment Result textBox Content
+        public void RefreshAssessmentResultTextBoxContent(TextBox box,Model model,string level,string choice)
+        {
+            //clear all the text in textBox
+            box.Clear();
+            string new_line = GlobalData.GlobalData.globalData.newline;
+            box.AppendText("Level: " + level + new_line
+                            + "Choice: " + choice + new_line);
+            switch (level)
+            {
+                case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE1:
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE2:
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE3:
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE4:
+                    break;
+            }
+        }
     }
 }

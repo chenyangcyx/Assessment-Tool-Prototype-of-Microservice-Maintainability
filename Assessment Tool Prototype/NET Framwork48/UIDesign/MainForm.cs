@@ -422,18 +422,13 @@ namespace NET_Framwork48
 
         private void listView_AssessmentResult_NodeInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView_AssessmentResult_NodeInfo.SelectedItems.Count == 0)
+            //ListView Item is chosed
+            if (listView_AssessmentResult_NodeInfo.SelectedItems.Count>0)
             {
-                textBox_AssessmentResult_NodeInfoDetail.AppendText("No Choose!" + Environment.NewLine);
+                //print the detail info
+                new UIRefresh().RefreshAssessmentResultTextBoxContent(textBox_AssessmentResult_NodeInfoDetail, GlobalData.GlobalData.globalData.model, comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString(), listView_AssessmentResult_NodeInfo.SelectedItems[0].Text);
             }
-            else
-            {
-                textBox_AssessmentResult_NodeInfoDetail.AppendText(listView_AssessmentResult_NodeInfo.SelectedItems[0].Text + Environment.NewLine
-                                                + listView_AssessmentResult_NodeInfo.SelectedItems[0].Name + Environment.NewLine
-                                                + listView_AssessmentResult_NodeInfo.SelectedItems[0].Tag + Environment.NewLine
-                                                + listView_AssessmentResult_NodeInfo.SelectedItems[0].Checked + Environment.NewLine
-                                                + listView_AssessmentResult_NodeInfo.SelectedItems[0].Selected + Environment.NewLine);
-            }
+            //else ListView has no choose
         }
     }
 }
