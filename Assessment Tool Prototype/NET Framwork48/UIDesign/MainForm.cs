@@ -257,7 +257,7 @@ namespace NET_Framwork48
         private void button_ModelWeight_DefaultSettings_Click(object sender, EventArgs e)
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
-            Model model = GlobalData.GlobalData.globalData.model;
+            Model model = global.model;
             UIRefresh refresh = new UIRefresh();
             model.CalculateModelWeight();
             refresh.RefreshModelWeightLevel2TextBox(model,  textBox_ModelWeight_Level2_AnalyzabilityWeight,
@@ -322,10 +322,12 @@ namespace NET_Framwork48
 
             label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_DEFAULTSETTINGS;
 
+            //check if open json data
+            if (!global.if_open_data)
+                return;
             //re-calculate model value
             global.model.CalculateModelValue();
             //show new value in Assessment Result ListView
-            //设置ListView的显示项目
             try
             {
                 string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
@@ -518,10 +520,12 @@ namespace NET_Framwork48
             //Refresh label
             label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_CHANGESUCCESS;
 
+            //check if open json data
+            if (!global.if_open_data)
+                return;
             //re-calculate model value
             global.model.CalculateModelValue();
             //show new value in Assessment Result ListView
-            //设置ListView的显示项目
             try
             {
                 string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
