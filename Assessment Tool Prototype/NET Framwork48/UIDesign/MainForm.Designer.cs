@@ -224,6 +224,7 @@
             this.button_History_Details.TabIndex = 0;
             this.button_History_Details.Text = "Details";
             this.button_History_Details.UseVisualStyleBackColor = true;
+            this.button_History_Details.Click += new System.EventHandler(this.button_History_Details_Click);
             // 
             // button_History_ClearAll
             // 

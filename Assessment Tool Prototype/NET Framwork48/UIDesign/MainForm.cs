@@ -50,6 +50,9 @@ namespace NET_Framwork48
                                         GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE3,
                                         GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE4
                                     });
+            //init ouput textBox
+            textBox_DataInput_FileInfo.Text = "";
+            textBox_AssessmentResult_NodeInfoDetail.Text = "";
             //Label and textBox Init
             refresh.RefreshModelWeightLevel3LabelAndTextBox(    label_ModelWeight_Level3_Property1,
                                                                 label_ModelWeight_Level3_Property2,
@@ -100,7 +103,10 @@ namespace NET_Framwork48
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
             if (!global.open_file_path.Equals(""))
-                InitAllUI();
+            {
+                MessageBox.Show(GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT, GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION);
+                return;
+            }
             OpenFileDialog open_file = new OpenFileDialog();
             open_file.Title = "Choose the JSON File";
             open_file.RestoreDirectory = false;
@@ -499,6 +505,11 @@ namespace NET_Framwork48
             DataInputOutput dataInputOutput = new DataInputOutput();
             dataInputOutput.OutputDataToFile(global.history_file_path, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
             ReadAndShowHistoryJSONData();
+        }
+
+        private void button_History_Details_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

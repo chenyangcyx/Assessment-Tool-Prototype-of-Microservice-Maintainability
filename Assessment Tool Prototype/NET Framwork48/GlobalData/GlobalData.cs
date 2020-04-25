@@ -1,5 +1,6 @@
 ﻿using NET_Framwork48.Models;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,11 @@ namespace NET_Framwork48.GlobalData
         public string history_file_path = "history.json";   //history file path
 
         ///UI中的常量
+        //Already Open JSON File
+        public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION = @"Error Message";
+        public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT 
+= @"You have already opened a JSON data!
+Please click the Reset Button!";
         //Label Text
         public const string LABEL_DATAINPUT_INFOTEXT= @"No JSON File Input!";
         public const string LABEL_DATAINPUT_INPUTNEWFILE = @"New JSON File!";
