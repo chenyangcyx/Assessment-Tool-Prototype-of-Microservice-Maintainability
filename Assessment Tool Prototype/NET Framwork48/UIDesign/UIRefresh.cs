@@ -1,4 +1,5 @@
-﻿using NET_Framwork48.GlobalData;
+﻿using NET_Framwork48.DataHandle;
+using NET_Framwork48.GlobalData;
 using NET_Framwork48.Models;
 using System;
 using System.Collections.Generic;
@@ -335,9 +336,8 @@ namespace NET_Framwork48.UIDesign
         //Set Assessment Result ListView Column
         public void SetAssessmentResultListViewColumn(ListView lv)
         {
-            lv.Clear();
             lv.BeginUpdate();
-            //Add ListView's Column
+            lv.Clear();
             lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN1_STRING, GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN1_WIDTH, HorizontalAlignment.Left);
             lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN2_STRING, GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN2_WIDTH, HorizontalAlignment.Left);
             lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN3_STRING, GlobalData.GlobalData.LISTVIEW_ASSESSMENTRESULT_COLUMN3_WIDTH, HorizontalAlignment.Left);
@@ -469,6 +469,34 @@ namespace NET_Framwork48.UIDesign
                     PrintNodeDetailInfo(box, model.level4_nodes[choice_num]);
                     break;
             }
+        }
+
+        //Set Assessment Result ListView Column
+        public void SetHistoryListViewColumn(ListView lv)
+        {
+            lv.BeginUpdate();
+            lv.Clear();
+            lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_HISTORY_COLUMN1_STRING, GlobalData.GlobalData.LISTVIEW_HISTORY_COLUMN1_WIDTH, HorizontalAlignment.Left);
+            lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_HISTORY_COLUMN2_STRING, GlobalData.GlobalData.LISTVIEW_HISTORY_COLUMN2_WIDTH, HorizontalAlignment.Left);
+            lv.Columns.Add(GlobalData.GlobalData.LISTVIEW_HISTORY_COLUMN3_STRING, GlobalData.GlobalData.LISTVIEW_HISTORY_COLUMN3_WIDTH, HorizontalAlignment.Left);
+            lv.EndUpdate();
+        }
+
+        //Refresh History ListView Data
+        public void RefreshHistoryListViewData(ListView lv, DataHandle.JSONHistoryDataStruct.Root root)
+        {
+            lv.BeginUpdate();
+            lv.Items.Clear();
+            int no = 1;
+            foreach(var node in root.HistoryData)
+            {
+                ListViewItem it = new ListViewItem();
+                it.Text = "" + (no++);
+                it.SubItems.Add(node.AssessTime);
+                it.SubItems.Add(node.ResultValue);
+                lv.Items.Add(it);
+            }
+            lv.EndUpdate();
         }
     }
 }

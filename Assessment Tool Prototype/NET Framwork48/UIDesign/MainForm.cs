@@ -3,11 +3,13 @@ using NET_Framwork48.DataHandle;
 using NET_Framwork48.GlobalData;
 using NET_Framwork48.Models;
 using NET_Framwork48.UIDesign;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,7 +62,7 @@ namespace NET_Framwork48
                                                                 textBox_ModelWeight_Level3_Property4Weight,
                                                                 textBox_ModelWeight_Level3_Property5Weight);
 
-            //Init Model_Weight_Level2_textBox
+            //init Model_Weight_Level2_textBox
             global.model = new Model();
             Model model = global.model;
             model.CreateModel();
@@ -69,13 +71,36 @@ namespace NET_Framwork48
                                                             textBox_ModelWeight_Level2_ChangeabilityWeight,
                                                             textBox_ModelWeight_Level2_StabilityWeight,
                                                             textBox_ModelWeight_Level2_ModularityWeight);
-            //Init Assessment Result ListView Column
+            //init Assessment Result ListView Column
             refresh.SetAssessmentResultListViewColumn(listView_AssessmentResult_NodeInfo);
+
+            //init History ListView Column
+            refresh.SetHistoryListViewColumn(listView_History_HistoryInfo);
+            //refresh History ListView Data
+            ReadAndShowHistoryJSONData();
+        }
+
+        //read history json file data and show in the ListView
+        private void ReadAndShowHistoryJSONData()
+        {
+            GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
+            if (!global.history_file_path.Equals("") && File.Exists(global.history_file_path))
+            {
+                DataInputOutput dataInput = new DataInputOutput();
+                string history_file_content = dataInput.InputDataFromFile(global.history_file_path);
+                JSONDecoder jsonDecoder = new JSONDecoder();
+                global.history_root = jsonDecoder.GetHistoryJSONDataObject(history_file_content);
+                new UIRefresh().RefreshHistoryListViewData(listView_History_HistoryInfo, global.history_root);
+            }
+            else
+                global.history_root = null;
         }
 
         private void button_DataInput_Input_Click(object sender, EventArgs e)
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
+            if (!global.open_file_path.Equals(""))
+                InitAllUI();
             OpenFileDialog open_file = new OpenFileDialog();
             open_file.Title = "Choose the JSON File";
             open_file.RestoreDirectory = false;
@@ -92,16 +117,16 @@ namespace NET_Framwork48
                 label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_INPUTNEWFILE;
 
                 //解析文件内容
-                DataInputOutput dataInput = new DataInputOutput();
-                string file_content = dataInput.InputDataFromFile(global.open_file_path);
+                DataInputOutput dataInputOutput = new DataInputOutput();
+                string file_content = dataInputOutput.InputDataFromFile(global.open_file_path);
                 JSONDecoder jsonDecoder = new JSONDecoder();
-                global.root = jsonDecoder.GetJSONObject(file_content);
+                global.new_root = jsonDecoder.GetNewJSONDataObject(file_content);
 
                 //将文件的概要输出
-                refresh.RefreshDataInputTextBox(global.root, textBox_DataInput_FileInfo);
+                refresh.RefreshDataInputTextBox(global.new_root, textBox_DataInput_FileInfo);
 
                 //提取json文件数据
-                DataAnalyze dataAnalyze = new DataAnalyze(global.root, global.model.modelValue);
+                DataAnalyze dataAnalyze = new DataAnalyze(global.new_root, global.model.modelValue);
                 dataAnalyze.SetMetrics();
                 global.model.CalculateModelValue();
 
@@ -116,7 +141,46 @@ namespace NET_Framwork48
                     //if the comboBox is not selected
                     refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE);
                 }
+
+                //write the new json file to history data
+                //case 1: history root entity not null
+                if (global.history_root != null)
+                {
+                    string now_time_string= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    global.history_root.LastAssessTime = now_time_string;
+                    global.history_root.CommitTimeHistory.Add(now_time_string);
+                    DataHandle.JSONHistoryDataStruct.HistoryData history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.HistoryData();
+                    history_add_new_historydata.AssessTime = now_time_string;
+                    history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+                    history_add_new_historydata.JSONContent= JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
+                    global.history_root.HistoryData.Add(history_add_new_historydata);
+                    dataInputOutput.OutputDataToFile(global.history_file_path, JsonConvert.SerializeObject(global.history_root,Formatting.Indented));
+                }
+                //case 2: history root is null
+                else
+                {
+                    string now_time_string = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    global.history_root = new DataHandle.JSONHistoryDataStruct.Root();
+                    global.history_root.CommitTimeHistory = new List<string>();
+                    global.history_root.HistoryData = new List<DataHandle.JSONHistoryDataStruct.HistoryData>();
+                    global.history_root.LastAssessTime = now_time_string;
+                    global.history_root.CommitTimeHistory.Add(now_time_string);
+                    DataHandle.JSONHistoryDataStruct.HistoryData history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.HistoryData();
+                    history_add_new_historydata.AssessTime = now_time_string;
+                    history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+                    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
+                    global.history_root.HistoryData.Add(history_add_new_historydata);
+                    dataInputOutput.OutputDataToFile(global.history_file_path, JsonConvert.SerializeObject(global.history_root,Formatting.Indented));
+                }
+
+                //refresh History ListView Data
+                ReadAndShowHistoryJSONData();
             }
+        }
+
+        private void button_DataInput_Reset_Click(object sender, EventArgs e)
+        {
+            InitAllUI();
         }
 
         private void comboBox_ModelWeight_Level3_AttributeChoose_SelectedIndexChanged(object sender, EventArgs e)
@@ -397,11 +461,6 @@ namespace NET_Framwork48
             label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_CHANGESUCCESS;
         }
 
-        private void button_DataInput_Reset_Click(object sender, EventArgs e)
-        {
-            InitAllUI();
-        }
-
         private void comboBox_AssessmentResult_LevelChoose_SelectedIndexChanged(object sender, EventArgs e)
         {
             UIRefresh refresh = new UIRefresh();
@@ -428,6 +487,18 @@ namespace NET_Framwork48
                 new UIRefresh().RefreshAssessmentResultTextBoxContent(textBox_AssessmentResult_NodeInfoDetail, GlobalData.GlobalData.globalData.model, comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString(), listView_AssessmentResult_NodeInfo.SelectedItems[0].Text);
             }
             //else ListView has no choose
+        }
+
+        private void button_History_ClearAll_Click(object sender, EventArgs e)
+        {
+            GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
+            global.history_root = new DataHandle.JSONHistoryDataStruct.Root();
+            global.history_root.LastAssessTime = "";
+            global.history_root.CommitTimeHistory = new List<string>();
+            global.history_root.HistoryData = new List<DataHandle.JSONHistoryDataStruct.HistoryData>();
+            DataInputOutput dataInputOutput = new DataInputOutput();
+            dataInputOutput.OutputDataToFile(global.history_file_path, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
+            ReadAndShowHistoryJSONData();
         }
     }
 }

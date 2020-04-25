@@ -13,11 +13,13 @@ namespace NET_Framwork48.GlobalData
 
         //程序使用的模型
         public Model model;                             //使用的模型
-        public DataHandle.JSONDataStruct.Root root;     //从json文件中提取的的root类
+        public DataHandle.JSONDataStruct.Root new_root;                 //Root entity from new json file
+        public DataHandle.JSONHistoryDataStruct.Root history_root;      //Root entity from history json file
 
         //UI中的全局参数
-        public string newline = Environment.NewLine;    //New Line
-        public string open_file_path = "";      //打开的文件路径
+        public string newline = Environment.NewLine;        //new line string
+        public string open_file_path = "";                  //open file path
+        public string history_file_path = "history.json";   //history file path
 
         ///UI中的常量
         //Label Text
@@ -48,6 +50,13 @@ namespace NET_Framwork48.GlobalData
         public const string COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE = @"No Choose";
         //Decimal Number Format
         public const string DECIMAL_FORMAT = @"#0.00000000000000";
+        //History ListView
+        public const string LISTVIEW_HISTORY_COLUMN1_STRING = @"No";
+        public const string LISTVIEW_HISTORY_COLUMN2_STRING = @"AssessTime";
+        public const string LISTVIEW_HISTORY_COLUMN3_STRING = @"ResultValue";
+        public const int LISTVIEW_HISTORY_COLUMN1_WIDTH = 50;
+        public const int LISTVIEW_HISTORY_COLUMN2_WIDTH = 140;
+        public const int LISTVIEW_HISTORY_COLUMN3_WIDTH = 170;
         //Assessment Result ListView
         public const string LISTVIEW_ASSESSMENTRESULT_COLUMN1_STRING = @"No";
         public const string LISTVIEW_ASSESSMENTRESULT_COLUMN2_STRING = @"Level";

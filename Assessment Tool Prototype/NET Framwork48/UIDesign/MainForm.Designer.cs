@@ -205,8 +205,10 @@
             // 
             // listView_History_HistoryInfo
             // 
+            this.listView_History_HistoryInfo.FullRowSelect = true;
             this.listView_History_HistoryInfo.HideSelection = false;
             this.listView_History_HistoryInfo.Location = new System.Drawing.Point(7, 58);
+            this.listView_History_HistoryInfo.MultiSelect = false;
             this.listView_History_HistoryInfo.Name = "listView_History_HistoryInfo";
             this.listView_History_HistoryInfo.Size = new System.Drawing.Size(364, 111);
             this.listView_History_HistoryInfo.TabIndex = 2;
@@ -232,6 +234,7 @@
             this.button_History_ClearAll.TabIndex = 1;
             this.button_History_ClearAll.Text = "Clear All";
             this.button_History_ClearAll.UseVisualStyleBackColor = true;
+            this.button_History_ClearAll.Click += new System.EventHandler(this.button_History_ClearAll_Click);
             // 
             // groupBox_ModelWeight
             // 
