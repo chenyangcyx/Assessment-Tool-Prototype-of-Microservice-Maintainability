@@ -21,7 +21,9 @@ namespace NET_Framwork48.GlobalData
 
         ///UI中的常量
         //Label Text
-        public const string LABEL_DATAINPUT_INFOTEXT= @"No JSON File Input";
+        public const string LABEL_DATAINPUT_INFOTEXT= @"No JSON File Input!";
+        public const string LABEL_DATAINPUT_INPUTNEWFILE = @"New JSON File!";
+        public const string LABEL_DATAINPUT_HISTORYDATA = @"History Data!";
         public const string LABEL_DATAINPUT_INVALIDVALUE = @"Invalid Value!";
         public const string LABEL_DATAINPUT_CHANGESUCCESS = @"Change Successful!";
         public const string LABEL_DATAINPUT_DEFAULTSETTINGS = @"Default Settings!";

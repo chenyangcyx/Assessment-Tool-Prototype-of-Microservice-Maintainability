@@ -89,7 +89,7 @@ namespace NET_Framwork48
                 //设置打开的文件路径
                 global.open_file_path = open_file.FileName;
                 //设置ui界面的提示信息
-                label_DataInput_InfoText.Text = "";
+                label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_INPUTNEWFILE;
 
                 //解析文件内容
                 DataInputOutput dataInput = new DataInputOutput();
