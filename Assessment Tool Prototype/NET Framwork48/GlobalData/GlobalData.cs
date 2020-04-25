@@ -45,7 +45,6 @@ namespace NET_Framwork48.GlobalData
         public const string COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE4 = @"Level 4 - " + ModelName.LEVEL4_NAME;
         public const string COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE = @"No Choose";
         //Decimal Number Format
-        public bool DECIMAL_CHANGE_CHECK_SUCCESS = true;
         public const string DECIMAL_FORMAT = @"#0.00000000000000";
         //Assessment Result ListView
         public const string LISTVIEW_ASSESSMENTRESULT_COLUMN1_STRING = @"No";

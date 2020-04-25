@@ -405,23 +405,71 @@ namespace NET_Framwork48.UIDesign
             lv.EndUpdate();
         }
 
+        //print node's detail info
+        public void PrintNodeDetailInfo(TextBox box,ModelNode node)
+        {
+            string new_line = GlobalData.GlobalData.globalData.newline;
+            box.AppendText("NodeName: " + node.NodeName + new_line);
+            //print node's NodeName Detail
+            box.AppendText("NodeName Detail: ");
+            if (node.NodeName_Detail.Equals(""))
+                box.AppendText("No Detail" + new_line);
+            else
+                box.AppendText(node.NodeName_Detail + new_line);
+            box.AppendText("NodeLevel: " + node.NodeLevel + new_line
+                            + "NextLevelNodes: ");
+            //node's nextlevel nodes names
+            bool if_print_first = true;
+            foreach (var node2 in node.nextlevel)
+            {
+                if (if_print_first)
+                {
+                    box.AppendText(node2.NodeName);
+                    if_print_first = false;
+                }
+                else
+                    box.AppendText(", " + node2.NodeName);
+            }
+            //print node's fathernode's nodename
+            if (node.prelevel == null)
+                box.AppendText(new_line + "FatherNode: " + new_line);
+            else
+                box.AppendText(new_line + "FatherNode: " + node.prelevel.NodeName + new_line);
+            //print node's weight
+            box.AppendText("Weight: " + node.weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT) + new_line);
+            //print node's value
+            box.AppendText("Value: " + node.value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT) + new_line);
+            //print node's gain_or_damage
+            box.AppendText("Gain Or Damage: ");
+            if (node.gain_or_damage == ModelWeight.NODE_AFFECT_GAIN)
+                box.AppendText("Gain");
+            else if (node.gain_or_damage == ModelWeight.NODE_AFFECT_DAMAGE)
+                box.AppendText("Damage");
+            else
+                box.AppendText("Unknown");
+            box.Select(0, 0);
+            box.ScrollToCaret();
+        }
+
         //refresh the Assessment Result textBox Content
         public void RefreshAssessmentResultTextBoxContent(TextBox box,Model model,string level,string choice)
         {
             //clear all the text in textBox
             box.Clear();
-            string new_line = GlobalData.GlobalData.globalData.newline;
-            box.AppendText("Level: " + level + new_line
-                            + "Choice: " + choice + new_line);
+            int choice_num = int.Parse(choice) - 1;
             switch (level)
             {
                 case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE1:
+                    PrintNodeDetailInfo(box, model.level1_nodes[choice_num]);
                     break;
                 case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE2:
+                    PrintNodeDetailInfo(box, model.level2_nodes[choice_num]);
                     break;
                 case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE3:
+                    PrintNodeDetailInfo(box, model.level3_nodes[choice_num]);
                     break;
                 case GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE4:
+                    PrintNodeDetailInfo(box, model.level4_nodes[choice_num]);
                     break;
             }
         }

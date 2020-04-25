@@ -30,7 +30,6 @@ namespace NET_Framwork48
             UIRefresh refresh = new UIRefresh();
             refresh.SetLabelValue(label_DataInput_InfoText, GlobalData.GlobalData.LABEL_DATAINPUT_INFOTEXT);
             global.open_file_path = "";
-            global.DECIMAL_CHANGE_CHECK_SUCCESS = true;
 
             //comboBox Init
             refresh.RefreshComboBox(comboBox_ModelWeight_Level3_AttributeChoose,

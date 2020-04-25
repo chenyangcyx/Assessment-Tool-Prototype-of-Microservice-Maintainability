@@ -182,6 +182,7 @@
             // textBox_AssessmentResult_NodeInfoDetail
             // 
             this.textBox_AssessmentResult_NodeInfoDetail.AcceptsReturn = true;
+            this.textBox_AssessmentResult_NodeInfoDetail.Font = new System.Drawing.Font("微软雅黑", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.textBox_AssessmentResult_NodeInfoDetail.Location = new System.Drawing.Point(383, 22);
             this.textBox_AssessmentResult_NodeInfoDetail.Multiline = true;
             this.textBox_AssessmentResult_NodeInfoDetail.Name = "textBox_AssessmentResult_NodeInfoDetail";
