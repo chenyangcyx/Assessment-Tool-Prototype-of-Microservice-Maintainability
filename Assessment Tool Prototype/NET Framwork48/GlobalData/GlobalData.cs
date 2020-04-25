@@ -20,9 +20,14 @@ namespace NET_Framwork48.GlobalData
         //UI中的全局参数
         public string newline = Environment.NewLine;        //new line string
         public string open_file_path = "";                  //open file path
-        public string history_file_path = "history.json";   //history file path
+        public const string History_FILE_PATH = "history.json";   //history file path
 
         ///UI中的常量
+        //if already open a JSON data
+        public bool if_open_data;
+        //Assessment Result ListView Last Choose
+        public string assessment_result_last_choose_level;
+        public string assessment_result_last_choose_num;
         //Already Open JSON File
         public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION = @"Error Message";
         public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT 
@@ -62,7 +67,7 @@ Please click the Reset Button!";
         public const string LISTVIEW_HISTORY_COLUMN3_STRING = @"ResultValue";
         public const int LISTVIEW_HISTORY_COLUMN1_WIDTH = 50;
         public const int LISTVIEW_HISTORY_COLUMN2_WIDTH = 140;
-        public const int LISTVIEW_HISTORY_COLUMN3_WIDTH = 170;
+        public const int LISTVIEW_HISTORY_COLUMN3_WIDTH = 152;
         //Assessment Result ListView
         public const string LISTVIEW_ASSESSMENTRESULT_COLUMN1_STRING = @"No";
         public const string LISTVIEW_ASSESSMENTRESULT_COLUMN2_STRING = @"Level";

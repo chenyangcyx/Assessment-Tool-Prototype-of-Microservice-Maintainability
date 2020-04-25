@@ -32,6 +32,9 @@ namespace NET_Framwork48
             UIRefresh refresh = new UIRefresh();
             label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_INFOTEXT;
             global.open_file_path = "";
+            global.if_open_data = false;
+            global.assessment_result_last_choose_level = "null";
+            global.assessment_result_last_choose_num = "null";
 
             //comboBox Init
             refresh.RefreshComboBox(comboBox_ModelWeight_Level3_AttributeChoose,
@@ -87,10 +90,10 @@ namespace NET_Framwork48
         private void ReadAndShowHistoryJSONData()
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
-            if (!global.history_file_path.Equals("") && File.Exists(global.history_file_path))
+            if (File.Exists(GlobalData.GlobalData.History_FILE_PATH))
             {
                 DataInputOutput dataInput = new DataInputOutput();
-                string history_file_content = dataInput.InputDataFromFile(global.history_file_path);
+                string history_file_content = dataInput.InputDataFromFile(GlobalData.GlobalData.History_FILE_PATH);
                 JSONDecoder jsonDecoder = new JSONDecoder();
                 global.history_root = jsonDecoder.GetHistoryJSONDataObject(history_file_content);
                 new UIRefresh().RefreshHistoryListViewData(listView_History_HistoryInfo, global.history_root);
@@ -102,7 +105,7 @@ namespace NET_Framwork48
         private void button_DataInput_Input_Click(object sender, EventArgs e)
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
-            if (!global.open_file_path.Equals(""))
+            if (global.if_open_data)
             {
                 MessageBox.Show(GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT, GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION);
                 return;
@@ -117,6 +120,7 @@ namespace NET_Framwork48
             //选择文件
             if (open_file.ShowDialog() == DialogResult.OK)
             {
+                global.if_open_data = true;
                 //设置打开的文件路径
                 global.open_file_path = open_file.FileName;
                 //设置ui界面的提示信息
@@ -160,7 +164,7 @@ namespace NET_Framwork48
                     history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
                     history_add_new_historydata.JSONContent= JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
                     global.history_root.HistoryData.Add(history_add_new_historydata);
-                    dataInputOutput.OutputDataToFile(global.history_file_path, JsonConvert.SerializeObject(global.history_root,Formatting.Indented));
+                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root,Formatting.Indented));
                 }
                 //case 2: history root is null
                 else
@@ -176,7 +180,7 @@ namespace NET_Framwork48
                     history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
                     history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
                     global.history_root.HistoryData.Add(history_add_new_historydata);
-                    dataInputOutput.OutputDataToFile(global.history_file_path, JsonConvert.SerializeObject(global.history_root,Formatting.Indented));
+                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root,Formatting.Indented));
                 }
 
                 //refresh History ListView Data
@@ -252,6 +256,7 @@ namespace NET_Framwork48
         //Model Weight Button_DefaultSettings
         private void button_ModelWeight_DefaultSettings_Click(object sender, EventArgs e)
         {
+            GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
             Model model = GlobalData.GlobalData.globalData.model;
             UIRefresh refresh = new UIRefresh();
             model.CalculateModelWeight();
@@ -259,35 +264,82 @@ namespace NET_Framwork48
                                                             textBox_ModelWeight_Level2_ChangeabilityWeight,
                                                             textBox_ModelWeight_Level2_StabilityWeight,
                                                             textBox_ModelWeight_Level2_ModularityWeight);
-            //comboBox Init
-            refresh.RefreshComboBox(comboBox_ModelWeight_Level3_AttributeChoose,
-                                    GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_TEXT,
-                                    new object[] {
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE1,
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE2,
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE3,
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE4
-                                    });
-            refresh.RefreshComboBox(comboBox_AssessmentResult_LevelChoose,
-                                    GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_TEXT,
-                                    new object[] {
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE1,
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE2,
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE3,
-                                        GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE4
-                                    });
-            //Label and textBox Init
-            refresh.RefreshModelWeightLevel3LabelAndTextBox(    label_ModelWeight_Level3_Property1,
-                                                                label_ModelWeight_Level3_Property2,
-                                                                label_ModelWeight_Level3_Property3,
-                                                                label_ModelWeight_Level3_Property4,
-                                                                label_ModelWeight_Level3_Property5,
-                                                                textBox_ModelWeight_Level3_Property1Weight,
-                                                                textBox_ModelWeight_Level3_Property2Weight,
-                                                                textBox_ModelWeight_Level3_Property3Weight,
-                                                                textBox_ModelWeight_Level3_Property4Weight,
-                                                                textBox_ModelWeight_Level3_Property5Weight);
+            switch (comboBox_ModelWeight_Level3_AttributeChoose.SelectedItem)
+            {
+                case GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE1:
+                    refresh.RefreshModelWeightPropertyAnalyzability(GlobalData.GlobalData.globalData.model,
+                                                                    label_ModelWeight_Level3_Property1,
+                                                                    label_ModelWeight_Level3_Property2,
+                                                                    label_ModelWeight_Level3_Property3,
+                                                                    label_ModelWeight_Level3_Property4,
+                                                                    label_ModelWeight_Level3_Property5,
+                                                                    textBox_ModelWeight_Level3_Property1Weight,
+                                                                    textBox_ModelWeight_Level3_Property2Weight,
+                                                                    textBox_ModelWeight_Level3_Property3Weight,
+                                                                    textBox_ModelWeight_Level3_Property4Weight,
+                                                                    textBox_ModelWeight_Level3_Property5Weight);
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE2:
+                    refresh.RefreshModelWeightPropertyChangeability(GlobalData.GlobalData.globalData.model,
+                                                                    label_ModelWeight_Level3_Property1,
+                                                                    label_ModelWeight_Level3_Property2,
+                                                                    label_ModelWeight_Level3_Property3,
+                                                                    label_ModelWeight_Level3_Property4,
+                                                                    label_ModelWeight_Level3_Property5,
+                                                                    textBox_ModelWeight_Level3_Property1Weight,
+                                                                    textBox_ModelWeight_Level3_Property2Weight,
+                                                                    textBox_ModelWeight_Level3_Property3Weight,
+                                                                    textBox_ModelWeight_Level3_Property4Weight,
+                                                                    textBox_ModelWeight_Level3_Property5Weight);
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE3:
+                    refresh.RefreshModelWeightPropertyStability(GlobalData.GlobalData.globalData.model,
+                                                                    label_ModelWeight_Level3_Property1,
+                                                                    label_ModelWeight_Level3_Property2,
+                                                                    label_ModelWeight_Level3_Property3,
+                                                                    label_ModelWeight_Level3_Property4,
+                                                                    label_ModelWeight_Level3_Property5,
+                                                                    textBox_ModelWeight_Level3_Property1Weight,
+                                                                    textBox_ModelWeight_Level3_Property2Weight,
+                                                                    textBox_ModelWeight_Level3_Property3Weight,
+                                                                    textBox_ModelWeight_Level3_Property4Weight,
+                                                                    textBox_ModelWeight_Level3_Property5Weight);
+                    break;
+                case GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE4:
+                    refresh.RefreshModelWeightPropertyModularity(GlobalData.GlobalData.globalData.model,
+                                                                    label_ModelWeight_Level3_Property1,
+                                                                    label_ModelWeight_Level3_Property2,
+                                                                    label_ModelWeight_Level3_Property3,
+                                                                    label_ModelWeight_Level3_Property4,
+                                                                    label_ModelWeight_Level3_Property5,
+                                                                    textBox_ModelWeight_Level3_Property1Weight,
+                                                                    textBox_ModelWeight_Level3_Property2Weight,
+                                                                    textBox_ModelWeight_Level3_Property3Weight,
+                                                                    textBox_ModelWeight_Level3_Property4Weight,
+                                                                    textBox_ModelWeight_Level3_Property5Weight);
+                    break;
+            }
+
             label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_DEFAULTSETTINGS;
+
+            //re-calculate model value
+            global.model.CalculateModelValue();
+            //show new value in Assessment Result ListView
+            //设置ListView的显示项目
+            try
+            {
+                string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
+                refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, comboBox_AssessmentResult_LevelChoose_string);
+            }
+            catch (Exception)
+            {
+                //if the comboBox is not selected
+                refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE);
+            }
+            //refresh Assessment Result textBox
+            if (!global.assessment_result_last_choose_num.Equals("null"))
+                //print the detail info
+                new UIRefresh().RefreshAssessmentResultTextBoxContent(textBox_AssessmentResult_NodeInfoDetail, global.model, global.assessment_result_last_choose_level, global.assessment_result_last_choose_num);
         }
 
         //Check Convert String To Decimal If Success
@@ -364,7 +416,7 @@ namespace NET_Framwork48
             model.level2_nodes[2].weight = level2_value[2];
             global.ConvertFromStringToDecimal(textBox_ModelWeight_Level2_ModularityWeight.Text, out level2_value[3]);
             model.level2_nodes[3].weight = level2_value[3];
-            //Conver Level 3 Values
+            //Convert Level 3 Values
             switch (comboBox_ModelWeight_Level3_AttributeChoose.SelectedItem)
             {
                 case GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE1:
@@ -465,6 +517,25 @@ namespace NET_Framwork48
             }
             //Refresh label
             label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_CHANGESUCCESS;
+
+            //re-calculate model value
+            global.model.CalculateModelValue();
+            //show new value in Assessment Result ListView
+            //设置ListView的显示项目
+            try
+            {
+                string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
+                refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, comboBox_AssessmentResult_LevelChoose_string);
+            }
+            catch (Exception)
+            {
+                //if the comboBox is not selected
+                refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE);
+            }
+            //refresh Assessment Result textBox
+            if (!global.assessment_result_last_choose_num.Equals("null"))
+                //print the detail info
+                new UIRefresh().RefreshAssessmentResultTextBoxContent(textBox_AssessmentResult_NodeInfoDetail, global.model, global.assessment_result_last_choose_level, global.assessment_result_last_choose_num);
         }
 
         private void comboBox_AssessmentResult_LevelChoose_SelectedIndexChanged(object sender, EventArgs e)
@@ -489,6 +560,9 @@ namespace NET_Framwork48
             //ListView Item is chosed
             if (listView_AssessmentResult_NodeInfo.SelectedItems.Count>0)
             {
+                //record the last choose
+                GlobalData.GlobalData.globalData.assessment_result_last_choose_level = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
+                GlobalData.GlobalData.globalData.assessment_result_last_choose_num = listView_AssessmentResult_NodeInfo.SelectedItems[0].Text;
                 //print the detail info
                 new UIRefresh().RefreshAssessmentResultTextBoxContent(textBox_AssessmentResult_NodeInfoDetail, GlobalData.GlobalData.globalData.model, comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString(), listView_AssessmentResult_NodeInfo.SelectedItems[0].Text);
             }
@@ -503,13 +577,82 @@ namespace NET_Framwork48
             global.history_root.CommitTimeHistory = new List<string>();
             global.history_root.HistoryData = new List<DataHandle.JSONHistoryDataStruct.HistoryData>();
             DataInputOutput dataInputOutput = new DataInputOutput();
-            dataInputOutput.OutputDataToFile(global.history_file_path, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
+            dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
             ReadAndShowHistoryJSONData();
         }
 
         private void button_History_Details_Click(object sender, EventArgs e)
         {
+            GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
+            if (global.if_open_data)
+            {
+                MessageBox.Show(GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT, GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION);
+                return;
+            }
+            if (listView_History_HistoryInfo.SelectedItems.Count > 0)
+            {
+                global.if_open_data = true;
 
+                int choose_num = int.Parse(listView_History_HistoryInfo.SelectedItems[0].Text) - 1;
+                UIRefresh refresh = new UIRefresh();
+                //设置ui界面的提示信息
+                label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_HISTORYDATA;
+                //解析文件内容
+                DataInputOutput dataInputOutput = new DataInputOutput();
+                global.new_root = JsonConvert.DeserializeObject<DataHandle.JSONDataStruct.Root>(JsonConvert.SerializeObject(global.history_root.HistoryData[choose_num].JSONContent));
+                //将文件的概要输出
+                refresh.RefreshDataInputTextBox(global.new_root, textBox_DataInput_FileInfo);
+                //提取json文件数据
+                DataAnalyze dataAnalyze = new DataAnalyze(global.new_root, global.model.modelValue);
+                dataAnalyze.SetMetrics();
+                global.model.CalculateModelValue();
+
+                //设置ListView的显示项目
+                try
+                {
+                    string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
+                    refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, comboBox_AssessmentResult_LevelChoose_string);
+                }
+                catch (Exception)
+                {
+                    //if the comboBox is not selected
+                    refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE);
+                }
+
+                //write the new json file to history data
+                //case 1: history root entity not null
+                if (global.history_root != null)
+                {
+                    string now_time_string = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    global.history_root.LastAssessTime = now_time_string;
+                    global.history_root.CommitTimeHistory.Add(now_time_string);
+                    DataHandle.JSONHistoryDataStruct.HistoryData history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.HistoryData();
+                    history_add_new_historydata.AssessTime = now_time_string;
+                    history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+                    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
+                    global.history_root.HistoryData.Add(history_add_new_historydata);
+                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
+                }
+                //case 2: history root is null
+                else
+                {
+                    string now_time_string = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    global.history_root = new DataHandle.JSONHistoryDataStruct.Root();
+                    global.history_root.CommitTimeHistory = new List<string>();
+                    global.history_root.HistoryData = new List<DataHandle.JSONHistoryDataStruct.HistoryData>();
+                    global.history_root.LastAssessTime = now_time_string;
+                    global.history_root.CommitTimeHistory.Add(now_time_string);
+                    DataHandle.JSONHistoryDataStruct.HistoryData history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.HistoryData();
+                    history_add_new_historydata.AssessTime = now_time_string;
+                    history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+                    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
+                    global.history_root.HistoryData.Add(history_add_new_historydata);
+                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
+                }
+
+                //refresh History ListView Data
+                ReadAndShowHistoryJSONData();
+            }
         }
     }
 }
