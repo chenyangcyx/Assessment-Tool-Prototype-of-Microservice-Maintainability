@@ -28,7 +28,7 @@ namespace NET_Framwork48
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
             UIRefresh refresh = new UIRefresh();
-            refresh.SetLabelValue(label_DataInput_InfoText, GlobalData.GlobalData.LABEL_DATAINPUT_INFOTEXT);
+            label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_INFOTEXT;
             global.open_file_path = "";
 
             //comboBox Init
@@ -89,7 +89,7 @@ namespace NET_Framwork48
                 //设置打开的文件路径
                 global.open_file_path = open_file.FileName;
                 //设置ui界面的提示信息
-                refresh.SetLabelValue(label_DataInput_InfoText, "");
+                label_DataInput_InfoText.Text = "";
 
                 //解析文件内容
                 DataInput dataInput = new DataInput();
