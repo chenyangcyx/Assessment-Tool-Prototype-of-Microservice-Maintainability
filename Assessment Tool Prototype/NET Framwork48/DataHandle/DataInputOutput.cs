@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NET_Framwork48.DataHandle
 {
-    public class DataInput
+    public class DataInputOutput
     {
         Encoding FILE_ENCODING = Encoding.UTF8;
         public string InputDataFromFile(string path)
@@ -16,6 +16,14 @@ namespace NET_Framwork48.DataHandle
             string content = sr.ReadToEnd();
             sr.Close();
             return content;
+        }
+
+        public void OutputDataToFile(string path,string content)
+        {
+            StreamWriter sw = new StreamWriter(path, false, FILE_ENCODING);
+            sw.Write(content);
+            sw.Flush();
+            sw.Close();
         }
     }
 }

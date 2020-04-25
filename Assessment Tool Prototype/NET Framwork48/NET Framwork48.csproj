@@ -73,9 +73,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataHandle\DataAnalyze.cs" />
-    <Compile Include="DataHandle\DataInput.cs" />
+    <Compile Include="DataHandle\DataInputOutput.cs" />
     <Compile Include="DataHandle\JSONDataStruct.cs" />
     <Compile Include="DataHandle\JSONDecoder.cs" />
+    <Compile Include="DataHandle\JSONHistoryDataStruct.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Models\ModelLink.cs" />
     <Compile Include="Models\ModelName.cs" />

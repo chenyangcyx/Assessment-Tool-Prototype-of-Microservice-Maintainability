@@ -92,7 +92,7 @@ namespace NET_Framwork48
                 label_DataInput_InfoText.Text = "";
 
                 //解析文件内容
-                DataInput dataInput = new DataInput();
+                DataInputOutput dataInput = new DataInputOutput();
                 string file_content = dataInput.InputDataFromFile(global.open_file_path);
                 JSONDecoder jsonDecoder = new JSONDecoder();
                 global.root = jsonDecoder.GetJSONObject(file_content);
