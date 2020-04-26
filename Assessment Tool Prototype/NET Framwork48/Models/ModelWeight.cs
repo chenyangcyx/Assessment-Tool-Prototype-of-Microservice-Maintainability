@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace NET_Framwork48.Models
 {
@@ -97,7 +93,7 @@ namespace NET_Framwork48.Models
                 gew = (ten + 1) / (ten * gen);
                 dew = -1 / (ten * den);
             }
-            foreach(ModelNode tmp in node.nextlevel)
+            foreach (ModelNode tmp in node.nextlevel)
             {
                 if (tmp.gain_or_damage == NODE_AFFECT_GAIN)
                     tmp.weight = gew;

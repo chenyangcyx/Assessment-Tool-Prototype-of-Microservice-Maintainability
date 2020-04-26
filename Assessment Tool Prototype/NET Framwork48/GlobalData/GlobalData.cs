@@ -1,10 +1,5 @@
 ﻿using NET_Framwork48.Models;
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NET_Framwork48.GlobalData
 {
@@ -33,7 +28,7 @@ namespace NET_Framwork48.GlobalData
         public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT1 = @"You have already opened a JSON data!";
         public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT2 = @"Please click the Reset Button!";
         //Label Text
-        public const string LABEL_DATAINPUT_INFOTEXT= @"No JSON File Input!";
+        public const string LABEL_DATAINPUT_INFOTEXT = @"No JSON File Input!";
         public const string LABEL_DATAINPUT_INPUTNEWFILE = @"New JSON File!";
         public const string LABEL_DATAINPUT_HISTORYDATA = @"History Data!";
         public const string LABEL_DATAINPUT_INVALIDVALUE = @"Invalid Value!";
@@ -78,7 +73,7 @@ namespace NET_Framwork48.GlobalData
         public const int LISTVIEW_ASSESSMENTRESULT_COLUMN4_WIDTH = 135;
 
         //convert from String to get Decimal value
-        public bool ConvertFromStringToDecimal(string value_str,out decimal value)
+        public bool ConvertFromStringToDecimal(string value_str, out decimal value)
         {
             try
             {

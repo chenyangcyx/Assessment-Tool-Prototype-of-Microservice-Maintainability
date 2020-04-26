@@ -1,9 +1,4 @@
-﻿using NET_Framwork48.GlobalData;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace NET_Framwork48.Models
 {
@@ -84,7 +79,7 @@ namespace NET_Framwork48.Models
             level4_metric_detail.Add(LEVELNAME_METRIC_8, LEVELNAME_METRIC_8_DETAIL);
         }
 
-        public void SetNodeName(ModelNode mn,string name)
+        public void SetNodeName(ModelNode mn, string name)
         {
             switch (name)
             {

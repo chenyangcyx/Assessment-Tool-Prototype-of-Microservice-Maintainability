@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NET_Framwork48.DataHandle
 {
     public class DataInputOutput
     {
-        Encoding FILE_ENCODING = Encoding.UTF8;
+        private Encoding FILE_ENCODING = Encoding.UTF8;
         public string InputDataFromFile(string path)
         {
             StreamReader sr = new StreamReader(path, FILE_ENCODING);
@@ -18,7 +14,7 @@ namespace NET_Framwork48.DataHandle
             return content;
         }
 
-        public void OutputDataToFile(string path,string content)
+        public void OutputDataToFile(string path, string content)
         {
             StreamWriter sw = new StreamWriter(path, false, FILE_ENCODING);
             sw.Write(content);

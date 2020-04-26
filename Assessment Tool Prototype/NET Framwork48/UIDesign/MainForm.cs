@@ -1,18 +1,10 @@
-﻿using Microsoft.Win32.SafeHandles;
-using NET_Framwork48.DataHandle;
-using NET_Framwork48.GlobalData;
+﻿using NET_Framwork48.DataHandle;
 using NET_Framwork48.Models;
 using NET_Framwork48.UIDesign;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NET_Framwork48
@@ -57,7 +49,7 @@ namespace NET_Framwork48
             textBox_DataInput_FileInfo.Text = "";
             textBox_AssessmentResult_NodeInfoDetail.Text = "";
             //Label and textBox initialization
-            refresh.RefreshModelWeightLevel3LabelAndTextBox(    label_ModelWeight_Level3_Property1,
+            refresh.RefreshModelWeightLevel3LabelAndTextBox(label_ModelWeight_Level3_Property1,
                                                                 label_ModelWeight_Level3_Property2,
                                                                 label_ModelWeight_Level3_Property3,
                                                                 label_ModelWeight_Level3_Property4,
@@ -73,7 +65,7 @@ namespace NET_Framwork48
             Model model = global.model;
             model.CreateModel();
             model.CalculateModelWeight();
-            refresh.RefreshModelWeightLevel2TextBox(model,  textBox_ModelWeight_Level2_AnalyzabilityWeight,
+            refresh.RefreshModelWeightLevel2TextBox(model, textBox_ModelWeight_Level2_AnalyzabilityWeight,
                                                             textBox_ModelWeight_Level2_ChangeabilityWeight,
                                                             textBox_ModelWeight_Level2_StabilityWeight,
                                                             textBox_ModelWeight_Level2_ModularityWeight);
@@ -156,15 +148,15 @@ namespace NET_Framwork48
                 //case 1: history root entity not null
                 if (global.history_root != null)
                 {
-                    string now_time_string= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    string now_time_string = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     global.history_root.LastAssessTime = now_time_string;
                     global.history_root.CommitTimeHistory.Add(now_time_string);
                     DataHandle.JSONHistoryDataStruct.HistoryData history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.HistoryData();
                     history_add_new_historydata.AssessTime = now_time_string;
                     history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
-                    history_add_new_historydata.JSONContent= JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
+                    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
                     global.history_root.HistoryData.Add(history_add_new_historydata);
-                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root,Formatting.Indented));
+                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
                 }
                 //case 2: history root is null
                 else
@@ -180,7 +172,7 @@ namespace NET_Framwork48
                     history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
                     history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
                     global.history_root.HistoryData.Add(history_add_new_historydata);
-                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root,Formatting.Indented));
+                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
                 }
 
                 //refresh History ListView Data
@@ -225,7 +217,7 @@ namespace NET_Framwork48
                                                                     textBox_ModelWeight_Level3_Property5Weight);
                     break;
                 case GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE3:
-                    refresh.RefreshModelWeightPropertyStability(    GlobalData.GlobalData.globalData.model,
+                    refresh.RefreshModelWeightPropertyStability(GlobalData.GlobalData.globalData.model,
                                                                     label_ModelWeight_Level3_Property1,
                                                                     label_ModelWeight_Level3_Property2,
                                                                     label_ModelWeight_Level3_Property3,
@@ -238,7 +230,7 @@ namespace NET_Framwork48
                                                                     textBox_ModelWeight_Level3_Property5Weight);
                     break;
                 case GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_CHOICE4:
-                    refresh.RefreshModelWeightPropertyModularity(   GlobalData.GlobalData.globalData.model,
+                    refresh.RefreshModelWeightPropertyModularity(GlobalData.GlobalData.globalData.model,
                                                                     label_ModelWeight_Level3_Property1,
                                                                     label_ModelWeight_Level3_Property2,
                                                                     label_ModelWeight_Level3_Property3,
@@ -260,7 +252,7 @@ namespace NET_Framwork48
             Model model = global.model;
             UIRefresh refresh = new UIRefresh();
             model.CalculateModelWeight();
-            refresh.RefreshModelWeightLevel2TextBox(model,  textBox_ModelWeight_Level2_AnalyzabilityWeight,
+            refresh.RefreshModelWeightLevel2TextBox(model, textBox_ModelWeight_Level2_AnalyzabilityWeight,
                                                             textBox_ModelWeight_Level2_ChangeabilityWeight,
                                                             textBox_ModelWeight_Level2_StabilityWeight,
                                                             textBox_ModelWeight_Level2_ModularityWeight);
@@ -562,7 +554,7 @@ namespace NET_Framwork48
         private void listView_AssessmentResult_NodeInfo_SelectedIndexChanged(object sender, EventArgs e)
         {
             //ListView Item is chosed
-            if (listView_AssessmentResult_NodeInfo.SelectedItems.Count>0)
+            if (listView_AssessmentResult_NodeInfo.SelectedItems.Count > 0)
             {
                 //record the last choose
                 GlobalData.GlobalData.globalData.assessment_result_last_choose_level = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();

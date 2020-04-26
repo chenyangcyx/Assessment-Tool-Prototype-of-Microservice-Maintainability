@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace NET_Framwork48.Models
 {
@@ -18,10 +14,10 @@ namespace NET_Framwork48.Models
         //number of elements connected from Level 1 to Level 2
         public int LEVEL1_LINK_2_NUM = 4;
         //number of elements connected from Level 2 to Level 3
-        public int[] LEVEL2_LINK_3_NUM = new int[4]{ 4, 5, 2, 2 };
+        public int[] LEVEL2_LINK_3_NUM = new int[4] { 4, 5, 2, 2 };
         //number of elements connected from Level 3 to Level 4
-        public int[][] LEVEL3_LINK_4_NUM = { 
-            new int[4]{ 2, 2, 2, 3 }, 
+        public int[][] LEVEL3_LINK_4_NUM = {
+            new int[4]{ 2, 2, 2, 3 },
             new int[5]{ 2, 2, 3, 3, 2 },
             new int[2]{ 3, 2 },
             new int[2]{ 2, 3 } };

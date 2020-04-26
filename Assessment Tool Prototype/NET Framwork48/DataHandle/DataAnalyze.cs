@@ -1,18 +1,13 @@
 ﻿using NET_Framwork48.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NET_Framwork48.DataHandle
 {
     public class DataAnalyze
     {
-        JSONDataStruct.Root data;
-        ModelValue modelValue;
+        private JSONDataStruct.Root data;
+        private ModelValue modelValue;
 
-        public DataAnalyze(JSONDataStruct.Root datasource,ModelValue mv)
+        public DataAnalyze(JSONDataStruct.Root datasource, ModelValue mv)
         {
             data = datasource;
             modelValue = mv;
@@ -36,7 +31,7 @@ namespace NET_Framwork48.DataHandle
         public void SetServiceNames()
         {
             int number = 0;
-            foreach(var service in data.microservices)
+            foreach (var service in data.microservices)
             {
                 modelValue.Dic_NO_ServiceName.Add(number, service.serviceName);
                 modelValue.Dic_ServiceName_NO.Add(service.serviceName, number);
@@ -99,15 +94,15 @@ namespace NET_Framwork48.DataHandle
             for (int i = 0; i < microservice_number; i++)
                 for (int j = 0; j < microservice_number; j++)
                     if_connect[i, j] = 0;
-            for(int i = 0; i < microservice_number; i++)
-                foreach(var call_service in data.microservices[i].call)
+            for (int i = 0; i < microservice_number; i++)
+                foreach (var call_service in data.microservices[i].call)
                 {
                     int num = 0;
                     modelValue.Dic_ServiceName_NO.TryGetValue(call_service.serviceName, out num);
                     if_connect[i, num] = 1;
                     if_connect[num, i] = 1;
                 }
-            for(int i = 0; i < microservice_number; i++)
+            for (int i = 0; i < microservice_number; i++)
             {
                 int num = 0;
                 for (int j = 0; j < microservice_number; j++)
@@ -120,7 +115,7 @@ namespace NET_Framwork48.DataHandle
         //set NIS()
         public void SetNIS()
         {
-            for(int i = 0; i < data.microservices.Count; i++)
+            for (int i = 0; i < data.microservices.Count; i++)
                 modelValue.NIS_NO_VALUE.Add(i, data.microservices[i].call.Count);
         }
 
@@ -134,7 +129,7 @@ namespace NET_Framwork48.DataHandle
         //set NII()
         public void SetNII()
         {
-            for(int i = 0; i < data.microservices.Count; i++)
+            for (int i = 0; i < data.microservices.Count; i++)
             {
                 int sum = 0;
                 foreach (var call_node in data.microservices[i].call)
@@ -147,13 +142,13 @@ namespace NET_Framwork48.DataHandle
         public void SetNMP()
         {
             int number = 0;
-            foreach(var message_node in data.messages)
+            foreach (var message_node in data.messages)
             {
                 modelValue.Dic_NO_MessageName.Add(number, message_node.messageName);
                 modelValue.Dic_MessageName_NO.Add(message_node.messageName, number);
                 number++;
             }
-            for(int i = 0; i < data.messages.Count; i++)
+            for (int i = 0; i < data.messages.Count; i++)
                 modelValue.NMP_NO_VALUE.Add(i, data.messages[i].parameterNumber);
         }
 
@@ -175,7 +170,7 @@ namespace NET_Framwork48.DataHandle
 
             int[] visit = new int[microservice_number];
             int[] father = new int[microservice_number];
-            for(int i = 0; i < microservice_number; i++)
+            for (int i = 0; i < microservice_number; i++)
             {
                 visit[i] = 0;
                 father[i] = -1;
@@ -194,10 +189,10 @@ namespace NET_Framwork48.DataHandle
         }
 
         //dfsVisit operation in WISL()
-        public void SetWISL_dfsVisit(int[,] graph, int node, int[] visit, int[] father, int microservice_number,bool[] if_in_loopback)
+        public void SetWISL_dfsVisit(int[,] graph, int node, int[] visit, int[] father, int microservice_number, bool[] if_in_loopback)
         {
             visit[node] = 1;
-            for(int i=0;i<microservice_number;i++)
+            for (int i = 0; i < microservice_number; i++)
                 //not traverse itself
                 if (i != node && graph[node, i] != int.MaxValue)
                 {

@@ -1,17 +1,9 @@
-﻿using NET_Framwork48.DataHandle;
-using NET_Framwork48.GlobalData;
-using NET_Framwork48.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NET_Framwork48.Models;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace NET_Framwork48.UIDesign
 {
-    class UIRefresh
+    internal class UIRefresh
     {
         ////update textBox_inputdata according to the input file
         //public void RefreshTextBoxInputDataByDataPath(DataHandle.JSONDataStruct.Root root, TextBox textBox)
@@ -235,7 +227,7 @@ namespace NET_Framwork48.UIDesign
         }
 
         //refresh Model Weight Level2's textBox
-        public void RefreshModelWeightLevel2TextBox(Model model,TextBox box1, TextBox box2, TextBox box3, TextBox box4)
+        public void RefreshModelWeightLevel2TextBox(Model model, TextBox box1, TextBox box2, TextBox box3, TextBox box4)
         {
             box1.Text = model.level2_nodes[0].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
             box2.Text = model.level2_nodes[1].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
@@ -346,7 +338,7 @@ namespace NET_Framwork48.UIDesign
         }
 
         //refresh Assessment Result ListView Data
-        public void RefreshAssessmentResultListViewData(ListView lv,Model model,string levelname)
+        public void RefreshAssessmentResultListViewData(ListView lv, Model model, string levelname)
         {
             lv.BeginUpdate();
             lv.Items.Clear();
@@ -403,7 +395,7 @@ namespace NET_Framwork48.UIDesign
         }
 
         //print node's detail info
-        public void PrintNodeDetailInfo(TextBox box,ModelNode node)
+        public void PrintNodeDetailInfo(TextBox box, ModelNode node)
         {
             string new_line = GlobalData.GlobalData.globalData.newline;
             box.AppendText("NodeName: " + node.NodeName + new_line);
@@ -449,7 +441,7 @@ namespace NET_Framwork48.UIDesign
         }
 
         //refresh the Assessment Result textBox Content
-        public void RefreshAssessmentResultTextBoxContent(TextBox box,Model model,string level,string choice)
+        public void RefreshAssessmentResultTextBoxContent(TextBox box, Model model, string level, string choice)
         {
             //clear all the text in textBox
             box.Clear();
@@ -488,7 +480,7 @@ namespace NET_Framwork48.UIDesign
             lv.BeginUpdate();
             lv.Items.Clear();
             int no = 1;
-            foreach(var node in root.HistoryData)
+            foreach (var node in root.HistoryData)
             {
                 ListViewItem it = new ListViewItem();
                 it.Text = "" + (no++);
