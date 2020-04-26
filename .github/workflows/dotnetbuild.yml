@@ -5,8 +5,9 @@ on:
     branches: 
         - master
 env:
-  APP_NAME: "Assessment Tool Prototype.sln"
-  PACKAGE_PATH: "published"
+  APP_NAME: "Assessment Tool Prototype"
+  APP_FULL_NAME: "Assessment Tool Prototype\\Assessment Tool Prototype.sln"
+  APP_OUTPUT_FOLDER: "Assessment Tool Prototype\\NET Framwork48\bin\\Release"
 
 jobs:
   build:
@@ -24,10 +25,10 @@ jobs:
         vs-version: "16.5"
     
     - name: Build .NET 4.8
-      run: msbuild "${{ env.APP_NAME }}" /p:Configuration=Release /p:DeployOnBuild=true /p:publishUrl=${{ env.PACKAGE_PATH }}
+      run: msbuild "${{ env.APP_FULL_NAME }}" /p:Configuration=Release
     
     - name: Upload .NET 4.8
       uses: actions/upload-artifact@v1.0.0
       with:
         name: ${{ env.APP_NAME }}
-        path: NET Framwork48\bin\Release
+        path: ${{ APP_OUTPUT_FOLDER }}
