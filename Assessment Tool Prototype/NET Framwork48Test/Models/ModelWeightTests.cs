@@ -1,11 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NET_Framwork48.Models;
-using NET_Framwork48.GlobalData;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NET_Framwork48.Models.Tests
 {
@@ -158,7 +152,6 @@ namespace NET_Framwork48.Models.Tests
             //GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
             int gain_num, damage_num;
             ModelWeight mw = new ModelWeight();
-            //未经过修剪的模型
             Model model1 = new Model();
             model1.CreateModel();
             //all.if_assess_modularity = true;
@@ -295,7 +288,6 @@ namespace NET_Framwork48.Models.Tests
         {
             //GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
             ModelWeight mw = new ModelWeight();
-            //未经过修剪的模型
             Model model1 = new Model();
             model1.CreateModel();
             //all.if_assess_modularity = true;

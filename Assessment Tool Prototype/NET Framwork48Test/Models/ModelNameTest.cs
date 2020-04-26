@@ -1,8 +1,5 @@
-﻿using NET_Framwork48.Models;
-using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NET_Framwork48.GlobalData;
 
 namespace NET_Framwork48.Models.Tests
 {
@@ -91,7 +88,7 @@ namespace NET_Framwork48.Models.Tests
             ModelNode[] node2 = new ModelNode[ModelLink.LEVEL2_UNITNUM];
             ModelNode[] node3 = new ModelNode[ModelLink.LEVEL3_UNITNUM];
             ModelNode[] node4 = new ModelNode[ModelLink.LEVEL4_UNITNUM];
-            //第一层
+            //Level 1
             for (int i = 0; i < ModelLink.LEVEL1_UNITNUM; i++)
             {
                 node1[i] = new ModelNode();
@@ -101,7 +98,7 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual("", node1[0].NodeName_Detail);
             Assert.AreEqual(1, node1[0].NodeLevel);
             Assert.AreEqual(ModelName.LEVEL1_NAME, node1[0].NodeLevelName);
-            //第二层
+            //Level 2
             for (int i = 0; i < ModelLink.LEVEL2_UNITNUM; i++)
             {
                 node2[i] = new ModelNode();
@@ -123,7 +120,7 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual("", node2[3].NodeName_Detail);
             Assert.AreEqual(2, node2[3].NodeLevel);
             Assert.AreEqual(ModelName.LEVEL2_NAME, node2[3].NodeLevelName);
-            //第三层
+            //Level 3
             for (int i = 0; i < ModelLink.LEVEL3_UNITNUM; i++)
             {
                 node3[i] = new ModelNode();
@@ -157,7 +154,7 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual("", node3[6].NodeName_Detail);
             Assert.AreEqual(3, node3[6].NodeLevel);
             Assert.AreEqual(ModelName.LEVEL3_NAME, node3[6].NodeLevelName);
-            //第四层
+            //Level 4
             for (int i = 0; i < ModelLink.LEVEL4_UNITNUM; i++)
             {
                 node4[i] = new ModelNode();

@@ -1,11 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NET_Framwork48.Models;
-using NET_Framwork48.GlobalData;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NET_Framwork48.Models.Tests
 {
@@ -15,7 +10,7 @@ namespace NET_Framwork48.Models.Tests
         [TestMethod()]
         public void CreateModelTest()
         {
-            //测试模型层级数量
+            //test model's level number
             Model model = new Model();
             model.CreateModel();
             string model_str1 = "";
@@ -30,7 +25,7 @@ namespace NET_Framwork48.Models.Tests
             }
             Assert.AreEqual("1" + "2222" + "3333333333333" + "4444444444444444444444444444444", model_str1);
 
-            //测试模型的层级命名
+            //test model's level name
             string model_str2 = "";
             node_queue.Clear();
             node_queue.Enqueue(model.root_node);
@@ -47,7 +42,7 @@ namespace NET_Framwork48.Models.Tests
                 + "MetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetric"
                 , model_str2);
 
-            //测试模型的节点名称
+            //test model's node name
             string model_str3 = "";
             node_queue.Clear();
             node_queue.Enqueue(model.root_node);
@@ -64,7 +59,7 @@ namespace NET_Framwork48.Models.Tests
                             + "NSNDCS()NSNMNSNIS()NSNPI()NII()NSNDCS()NSNMNSNMNPI()NMNMP()NPI()NSWISL()NMNMP()NPI()NSWISL()NSNMNSNMNPI()"
                             , model_str3);
 
-            //测试level1_nodes,level2_nodes,level3_nodes,level4_nodes
+            //test level1_nodes,level2_nodes,level3_nodes,level4_nodes
             string level1_nodes_str = "";
             string level2_nodes_str = "";
             string level3_nodes_str = "";
@@ -82,7 +77,7 @@ namespace NET_Framwork48.Models.Tests
             Assert.AreEqual("CouplingCohesionDesign ComplexitySystem SizeCouplingCohesionService GranularityParameter GranularityService LoopbackParameter GranularityService LoopbackCohesionService Granularity", level3_nodes_str);
             Assert.AreEqual("NSNDCS()NSNMNSNIS()NSNPI()NII()NSNDCS()NSNMNSNMNPI()NMNMP()NPI()NSWISL()NMNMP()NPI()NSWISL()NSNMNSNMNPI()", level4_nodes_str);
 
-            //测试节点的上层节点
+            //test node's upper nodes
             foreach (ModelNode node1 in model.level1_nodes)
             {
                 foreach (ModelNode node2 in node1.nextlevel)
@@ -98,7 +93,7 @@ namespace NET_Framwork48.Models.Tests
                 Assert.AreEqual(null, node1.prelevel);
             }
 
-            //测试节点的上层节点 方法2
+            //test node's upper nodes - Method 2
             ModelLink ml = new ModelLink();
             for (int i = 0; i < ml.LEVEL1_LINK_1_NUM; i++)
                 Assert.AreEqual(model.root_node.prelevel, model.level1_nodes[i].prelevel);
@@ -329,7 +324,7 @@ namespace NET_Framwork48.Models.Tests
         //    GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
         //    all.if_assess_modularity = false;
 
-        //    //测试模型层级数量
+        //    //test model's level number
         //    Model model = new Model();
         //    model.CreateModel();
         //    model.TrimModel();
@@ -345,7 +340,7 @@ namespace NET_Framwork48.Models.Tests
         //    }
         //    Assert.AreEqual("1" + "222" + "33333333333" + "44444444444444444444444444", model_str1);
 
-        //    //测试模型的层级命名
+        //    //test model's level name
         //    string model_str2 = "";
         //    node_queue.Clear();
         //    node_queue.Enqueue(model.root_node);
@@ -362,7 +357,7 @@ namespace NET_Framwork48.Models.Tests
         //        + "MetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetricMetric"
         //        , model_str2);
 
-        //    //测试模型的节点名称
+        //    //test model's node name
         //    string model_str3 = "";
         //    node_queue.Clear();
         //    node_queue.Enqueue(model.root_node);
@@ -379,7 +374,7 @@ namespace NET_Framwork48.Models.Tests
         //                    + "NSNDCS()NSNMNSNIS()NSNPI()NII()NSNDCS()NSNMNSNMNPI()NMNMP()NPI()NSWISL()NMNMP()NPI()NSWISL()"
         //                    , model_str3);
 
-        //    //测试level1_nodes,level2_nodes,level3_nodes,level4_nodes
+        //    //test level1_nodes,level2_nodes,level3_nodes,level4_nodes
         //    string level1_nodes_str = "";
         //    string level2_nodes_str = "";
         //    string level3_nodes_str = "";
@@ -403,7 +398,6 @@ namespace NET_Framwork48.Models.Tests
         {
             //GlobalData.GlobalData all = GlobalData.GlobalData.globalData;
             ModelWeight mw = new ModelWeight();
-            //未经过修剪的模型
             Model model1 = new Model();
             model1.CreateModel();
             //all.if_assess_modularity = true;
@@ -492,7 +486,7 @@ namespace NET_Framwork48.Models.Tests
             for (int i = 0; i < ModelLink.LEVEL4_TOTAL_NUM; i++)
                 Assert.AreEqual(ModelNode.WEIGHT_NONE, model1.level4_nodes[i].weight);
 
-            ////经过修剪的模型
+            ////trimed model
             //Model model2 = new Model();
             //model2.CreateModel();
             //all.if_assess_modularity = false;
