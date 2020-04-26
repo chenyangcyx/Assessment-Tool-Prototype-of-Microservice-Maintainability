@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Delete Comment", "Delete Comment\Delete Comment.csproj", "{27CE4223-E1A4-4DE3-A66C-DFB3F52FD5FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Convert JSON Data", "Convert JSON Data\Convert JSON Data.csproj", "{6D9E29AD-51B8-4575-90C5-84C14C223EE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{27CE4223-E1A4-4DE3-A66C-DFB3F52FD5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27CE4223-E1A4-4DE3-A66C-DFB3F52FD5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27CE4223-E1A4-4DE3-A66C-DFB3F52FD5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D9E29AD-51B8-4575-90C5-84C14C223EE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D9E29AD-51B8-4575-90C5-84C14C223EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D9E29AD-51B8-4575-90C5-84C14C223EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D9E29AD-51B8-4575-90C5-84C14C223EE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

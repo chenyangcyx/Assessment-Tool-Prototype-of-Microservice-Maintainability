@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Delete_Comment
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
@@ -56,21 +56,6 @@ namespace Delete_Comment
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    ////fine a comment line
-                    //if (line.Contains("//") && !line.Contains("http") && !line.Contains("\"name\"") && !line.Contains("\"interfaceName\""))
-                    //{
-                    //    textBox.AppendText(line + Environment.NewLine);
-                    //    textBox.AppendText("更改后是否空行：");
-                    //    string new_line = line.Substring(0, line.IndexOf(@"//"));
-                    //    bool if_empty = if_empty_line(new_line);
-                    //    textBox.AppendText(if_empty + Environment.NewLine);
-                    //    if (!if_empty)
-                    //        sw.WriteLine(new_line);
-                    //}
-                    ////normal line without comment
-                    //else
-                    //    sw.WriteLine(line);
-
                     if (line.Contains("//"))
                     {
                         List<int> list = new List<int>();

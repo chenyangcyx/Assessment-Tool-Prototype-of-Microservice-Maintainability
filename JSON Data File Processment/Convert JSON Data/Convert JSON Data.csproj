@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{27CE4223-E1A4-4DE3-A66C-DFB3F52FD5FB}</ProjectGuid>
+    <ProjectGuid>{6D9E29AD-51B8-4575-90C5-84C14C223EE9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Delete_Comment</RootNamespace>
-    <AssemblyName>Delete Comment</AssemblyName>
+    <RootNamespace>Convert_JSON_Data</RootNamespace>
+    <AssemblyName>Convert JSON Data</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JSONDataStruct\Version1_guoqixin_108879.cs" />
+    <Compile Include="JSONDataStruct\Version1_guxueshan_108875.cs" />
+    <Compile Include="JSONDataStruct\Version1_jiaokun_108862.cs" />
+    <Compile Include="JSONDataStruct\Version1_wanghongkai_108867.cs" />
+    <Compile Include="JSONDataStruct\Version1_zhangyaowei_108850.cs" />
+    <Compile Include="JSONDataStruct\Version2_guoqixin_108879.cs" />
+    <Compile Include="JSONDataStruct\Version2_guxueshan_108875.cs" />
+    <Compile Include="JSONDataStruct\Version2_jiaokun_108862.cs" />
+    <Compile Include="JSONDataStruct\Version2_jiaruju_109281.cs" />
+    <Compile Include="JSONDataStruct\Version2_wanghongkai_108867.cs" />
+    <Compile Include="JSONDataStruct\Version2_wangyue_109261.cs" />
+    <Compile Include="JSONDataStruct\Version2_zhangyaowei_108850.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,5 +91,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
