@@ -30,7 +30,7 @@
         {
             this.button_inputdata = new System.Windows.Forms.Button();
             this.button_reset = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button_inputdata
@@ -42,6 +42,7 @@
             this.button_inputdata.TabIndex = 0;
             this.button_inputdata.Text = "Input Data";
             this.button_inputdata.UseVisualStyleBackColor = true;
+            this.button_inputdata.Click += new System.EventHandler(this.button_inputdata_Click);
             // 
             // button_reset
             // 
@@ -52,21 +53,22 @@
             this.button_reset.TabIndex = 1;
             this.button_reset.Text = "Reset";
             this.button_reset.UseVisualStyleBackColor = true;
+            this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
             // 
-            // textBox1
+            // textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 57);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(743, 432);
-            this.textBox1.TabIndex = 2;
+            this.textBox.Location = new System.Drawing.Point(13, 57);
+            this.textBox.Multiline = true;
+            this.textBox.Name = "textBox";
+            this.textBox.Size = new System.Drawing.Size(743, 432);
+            this.textBox.TabIndex = 2;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 501);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox);
             this.Controls.Add(this.button_reset);
             this.Controls.Add(this.button_inputdata);
             this.Name = "Main";
@@ -80,7 +82,7 @@
 
         private System.Windows.Forms.Button button_inputdata;
         private System.Windows.Forms.Button button_reset;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox;
     }
 }
 

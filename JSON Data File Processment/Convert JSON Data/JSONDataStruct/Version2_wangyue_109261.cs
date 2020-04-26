@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Convert_JSON_Data.JSONDataStruct.Version2_wangyue_109261
 {
-
     public class Rootobject
     {
         public string projectName { get; set; }
