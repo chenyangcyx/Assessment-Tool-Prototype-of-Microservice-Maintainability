@@ -5,7 +5,7 @@ on:
     branches: 
         - master
 env:
-  APP_NAME: Assessment Tool Prototype.sln
+  APP_NAME: "Assessment Tool Prototype.sln"
   PACKAGE_PATH: 'published'
 
 jobs:
@@ -15,17 +15,19 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Setup MSBuild path
-      uses: microsoft/setup-msbuild@v1.0.0
+    - name: Setup Nuget.exe
+      uses: warrenbuckley/Setup-Nuget@v1
     
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild
+      with:
+        vs-version: "16.5"
     
-    - name: Build
-      run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release
-
-    - name: Publish artifacts
+    - name: Build .NET 4.8
+      run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release /p:DeployOnBuild=true /p:publishUrl=${{ env.PACKAGE_PATH }}
+    
+    - name: Upload .NET 4.8
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: Microservice Maintainability Assess Tool
-        path: ${{ env.PACKAGE_PATH }}
+        name: ${{ env.APP_NAME }}
+        path: NET Framwork48\bin\Release
