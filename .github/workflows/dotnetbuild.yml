@@ -6,7 +6,7 @@ on:
         - master
 env:
   APP_NAME: "Assessment Tool Prototype.sln"
-  PACKAGE_PATH: 'published'
+  PACKAGE_PATH: "published"
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
         vs-version: "16.5"
     
     - name: Build .NET 4.8
-      run: msbuild ${{ env.APP_NAME }} /p:Configuration=Release /p:DeployOnBuild=true /p:publishUrl=${{ env.PACKAGE_PATH }}
+      run: msbuild "${{ env.APP_NAME }}" /p:Configuration=Release /p:DeployOnBuild=true /p:publishUrl=${{ env.PACKAGE_PATH }}
     
     - name: Upload .NET 4.8
       uses: actions/upload-artifact@v1.0.0
