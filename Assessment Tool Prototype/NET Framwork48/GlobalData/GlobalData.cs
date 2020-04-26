@@ -12,17 +12,17 @@ namespace NET_Framwork48.GlobalData
     {
         public static GlobalData globalData = new GlobalData();
 
-        //程序使用的模型
-        public Model model;                             //使用的模型
+        //the model used by the program
+        public Model model;                                             //used Model
         public DataHandle.JSONDataStruct.Root new_root;                 //Root entity from new json file
         public DataHandle.JSONHistoryDataStruct.Root history_root;      //Root entity from history json file
 
-        //UI中的全局参数
-        public string newline = Environment.NewLine;        //new line string
-        public string open_file_path = "";                  //open file path
-        public const string History_FILE_PATH = "history.json";   //history file path
+        //global parameters in the UI
+        public string newline = Environment.NewLine;                    //new line string
+        public string open_file_path = "";                              //open file path
+        public const string History_FILE_PATH = "history.json";         //history file path
 
-        ///UI中的常量
+        ///constants in the UI
         //if already open a JSON data
         public bool if_open_data;
         //Assessment Result ListView Last Choose
@@ -77,7 +77,7 @@ namespace NET_Framwork48.GlobalData
         public const int LISTVIEW_ASSESSMENTRESULT_COLUMN3_WIDTH = 139;
         public const int LISTVIEW_ASSESSMENTRESULT_COLUMN4_WIDTH = 135;
 
-        //从String转换得到Decimal数值
+        //convert from String to get Decimal value
         public bool ConvertFromStringToDecimal(string value_str,out decimal value)
         {
             try

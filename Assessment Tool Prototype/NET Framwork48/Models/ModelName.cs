@@ -10,42 +10,40 @@ namespace NET_Framwork48.Models
     public class ModelName
     {
         /*
-         * 模型说明：
-         * 层1：Quality Attribute
-         * 层2：Attribute
-         * 层3：Property
-         * 层4：Metric
+         * Model description:
+         * Level 1：Quality Attribute
+         * Level 2：Attribute
+         * Level 3：Property
+         * Level 4：Metric
          * 
-         * 层1：Maintainability
-         * 层2：Analyzability、Changeability、Stability、Modularity
-         * 层3：Coupling、Cohesion、Design Complexity、System Size
+         * Level 1：Maintainability
+         * Level 2：Analyzability、Changeability、Stability、Modularity
+         * Level 3：Coupling、Cohesion、Design Complexity、System Size
          *      Coupling、Cohesion、Service Granularity、Parameter Granularity、Service Loopback
          *      Parameter Granularity、Service Loopback
          *      Cohesion、Service Granularity
          */
 
-        /*层名字定义*/
+        //level name definition
         public const string LEVEL1_NAME = "Quality Attribute";
         public const string LEVEL2_NAME = "Attribute";
         public const string LEVEL3_NAME = "Property";
         public const string LEVEL4_NAME = "Metric";
 
-        public const string LEVELNAME_QUALITYATTRIBUTE_1 = "Maintainability";        //可维护性
+        public const string LEVELNAME_QUALITYATTRIBUTE_1 = "Maintainability";           //Maintainability
 
-        public const string LEVELNAME_ATTRIBUTE_1 = "Analyzability";                 //可分析性
-        public const string LEVELNAME_ATTRIBUTE_2 = "Changeability";                 //可修改性
-        public const string LEVELNAME_ATTRIBUTE_3 = "Stability";                     //稳定性
-        public const string LEVELNAME_ATTRIBUTE_4 = "Modularity";                    //模块化
+        public const string LEVELNAME_ATTRIBUTE_1 = "Analyzability";                    //Analyzability
+        public const string LEVELNAME_ATTRIBUTE_2 = "Changeability";                    //Changeability
+        public const string LEVELNAME_ATTRIBUTE_3 = "Stability";                        //Stability
+        public const string LEVELNAME_ATTRIBUTE_4 = "Modularity";                       //Modularity
 
-        public const string LEVELNAME_ATTRIBUTE_OPTIONAL= "Modularity";             //可选择评估项目名称
-
-        public const string LEVELNAME_PROPERTY_1 = "Coupling";                      //耦合
-        public const string LEVELNAME_PROPERTY_2 = "Cohesion";                      //内聚
-        public const string LEVELNAME_PROPERTY_3 = "Design Complexity";             //设计复杂度
-        public const string LEVELNAME_PROPERTY_4 = "System Size";                   //系统大小
-        public const string LEVELNAME_PROPERTY_5 = "Service Granularity";           //服务粒度
-        public const string LEVELNAME_PROPERTY_6 = "Parameter Granularity";         //参数粒度
-        public const string LEVELNAME_PROPERTY_7 = "Service Loopback";              //服务调用回环
+        public const string LEVELNAME_PROPERTY_1 = "Coupling";                          //Coupling
+        public const string LEVELNAME_PROPERTY_2 = "Cohesion";                          //Cohesion
+        public const string LEVELNAME_PROPERTY_3 = "Design Complexity";                 //Design Complexity
+        public const string LEVELNAME_PROPERTY_4 = "System Size";                       //System Size
+        public const string LEVELNAME_PROPERTY_5 = "Service Granularity";               //Service Granularity
+        public const string LEVELNAME_PROPERTY_6 = "Parameter Granularity";             //Parameter Granularity
+        public const string LEVELNAME_PROPERTY_7 = "Service Loopback";                  //Service Loopback
 
         public const string LEVELNAME_METRIC_1 = "NS";
         public const string LEVELNAME_METRIC_1_DETAIL = "Number of Services";
@@ -64,7 +62,7 @@ namespace NET_Framwork48.Models
         public const string LEVELNAME_METRIC_8 = "WISL()";
         public const string LEVELNAME_METRIC_8_DETAIL = "Whether Service s In a Service Loopback";
 
-        //Level4的Metric备注字典
+        //Level4 Metric Remarks Dictionary
         public Dictionary<string, string> level4_metric_detail;
 
         public ModelName()
@@ -72,7 +70,7 @@ namespace NET_Framwork48.Models
             CreateModelDictionary();
         }
 
-        //创建模型Metric层的名字-描述对应细节
+        //create a model Metric Level name-describe the corresponding details
         public void CreateModelDictionary()
         {
             level4_metric_detail = new Dictionary<string, string>();
@@ -90,14 +88,14 @@ namespace NET_Framwork48.Models
         {
             switch (name)
             {
-                //第一层
+                //Level 1
                 case LEVELNAME_QUALITYATTRIBUTE_1:
                     mn.NodeName = LEVELNAME_QUALITYATTRIBUTE_1;
                     mn.NodeName_Detail = "";
                     mn.NodeLevel = 1;
                     mn.NodeLevelName = LEVEL1_NAME;
                     break;
-                //第二层
+                //Level 2
                 case LEVELNAME_ATTRIBUTE_1:
                     mn.NodeName = LEVELNAME_ATTRIBUTE_1;
                     mn.NodeName_Detail = "";
@@ -122,7 +120,7 @@ namespace NET_Framwork48.Models
                     mn.NodeLevel = 2;
                     mn.NodeLevelName = LEVEL2_NAME;
                     break;
-                //第三层
+                //Level 3
                 case LEVELNAME_PROPERTY_1:
                     mn.NodeName = LEVELNAME_PROPERTY_1;
                     mn.NodeName_Detail = "";
@@ -165,7 +163,7 @@ namespace NET_Framwork48.Models
                     mn.NodeLevel = 3;
                     mn.NodeLevelName = LEVEL3_NAME;
                     break;
-                //第四层
+                //Level 4
                 case LEVELNAME_METRIC_1:
                     mn.NodeName = LEVELNAME_METRIC_1;
                     mn.NodeName_Detail = LEVELNAME_METRIC_1_DETAIL;

@@ -18,7 +18,7 @@ namespace NET_Framwork48.DataHandle
             modelValue = mv;
         }
 
-        //设置Model的所有Metrics
+        //set all Metrics of Model
         public void SetMetrics()
         {
             SetServiceNames();
@@ -32,7 +32,7 @@ namespace NET_Framwork48.DataHandle
             SetWISL();
         }
 
-        //设置所有的服务的名称列表
+        //set the name list of all services
         public void SetServiceNames()
         {
             int number = 0;
@@ -44,26 +44,26 @@ namespace NET_Framwork48.DataHandle
             }
         }
 
-        //设置NS
+        //set NS
         public void SetNS()
         {
             modelValue.NS = data.microservices.Count;
         }
 
-        //设置NM
+        //set NM
         public void SetNM()
         {
             modelValue.NM = data.messages.Count;
         }
 
-        //设置NDCS()
+        //set NDCS()
         public void SetNDCS()
         {
             //int microservice_number = data.microservices.Count;
             //List<List<int>> microservice_graph = new List<List<int>>();
             //for (int i = 0; i < microservice_number; i++)
             //    microservice_graph.Add(new List<int>());
-            ////构造邻接表
+            ////construct adjacency list
             //for (int i = 0; i < microservice_number; i++)
             //{
             //    foreach (var node in data.microservices[i].call)
@@ -73,7 +73,7 @@ namespace NET_Framwork48.DataHandle
             //        microservice_graph[out_service_no].Add(i);
             //    }
             //}
-            ////构造关联关系表
+            ////construct association table
             //int[,] if_connect = new int[microservice_number, microservice_number];
             //for (int i = 0; i < microservice_number; i++)
             //    for (int j = 0; j < microservice_number; j++)
@@ -84,7 +84,7 @@ namespace NET_Framwork48.DataHandle
             //    foreach (var link_node in node)
             //        if_connect[i, link_node] = 1;
             //}
-            ////写入NDCS()字典
+            ////write to NDCS () dictionary
             //for (int i = 0; i < microservice_number; i++)
             //{
             //    int num = 0;
@@ -117,21 +117,21 @@ namespace NET_Framwork48.DataHandle
             }
         }
 
-        //设置NIS()
+        //set NIS()
         public void SetNIS()
         {
             for(int i = 0; i < data.microservices.Count; i++)
                 modelValue.NIS_NO_VALUE.Add(i, data.microservices[i].call.Count);
         }
 
-        //设置NPI()
+        //set NPI()
         public void SetNPI()
         {
             for (int i = 0; i < data.microservices.Count; i++)
                 modelValue.NPI_NO_VALUE.Add(i, data.microservices[i].interfaces.Count);
         }
 
-        //设置NII()
+        //set NII()
         public void SetNII()
         {
             for(int i = 0; i < data.microservices.Count; i++)
@@ -143,7 +143,7 @@ namespace NET_Framwork48.DataHandle
             }
         }
 
-        //设置NMP()
+        //set NMP()
         public void SetNMP()
         {
             int number = 0;
@@ -157,7 +157,7 @@ namespace NET_Framwork48.DataHandle
                 modelValue.NMP_NO_VALUE.Add(i, data.messages[i].parameterNumber);
         }
 
-        //设置WISL()
+        //set WISL()
         public void SetWISL()
         {
             int microservice_number = data.microservices.Count;
@@ -193,15 +193,15 @@ namespace NET_Framwork48.DataHandle
                     modelValue.WISL_NO_VALUE.Add(i, 0);
         }
 
-        //WISL()中的dfsVisit
+        //dfsVisit operation in WISL()
         public void SetWISL_dfsVisit(int[,] graph, int node, int[] visit, int[] father, int microservice_number,bool[] if_in_loopback)
         {
             visit[node] = 1;
             for(int i=0;i<microservice_number;i++)
-                //不遍历自己
+                //not traverse itself
                 if (i != node && graph[node, i] != int.MaxValue)
                 {
-                    //不遍历上一个遍历的节点
+                    //do not traverse the previous node traversed
                     if (visit[i] == 1 && i != father[node])
                     {
                         if_in_loopback[i] = true;

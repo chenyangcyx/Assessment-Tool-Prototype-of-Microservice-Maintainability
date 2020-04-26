@@ -5,16 +5,16 @@ namespace NET_Framwork48.Models
 {
     public class ModelNode
     {
-        public string NodeName { get; set; }                            //节点名称
-        public string NodeName_Detail { get; set; }                     //节点名称注释
-        public int NodeLevel { get; set; }                              //节点层级
-        public string NodeLevelName { get; set; }                       //节点层级名称
-        public List<ModelNode> nextlevel;                               //下一层的节点引用
-        public ModelNode prelevel;                                      //上一层的相连节点
-        public decimal weight { get; set; }                             //权值
-        public const int WEIGHT_NONE = 1;                               //初始化权值数值
-        public decimal value { get; set; }                              //计算数值
-        public int gain_or_damage { get; set; }                         //增益/损害属性
+        public string NodeName { get; set; }                            //Node Name
+        public string NodeName_Detail { get; set; }                     //Node Name Detail
+        public int NodeLevel { get; set; }                              //Node Level
+        public string NodeLevelName { get; set; }                       //Node Level Name
+        public List<ModelNode> nextlevel;                               //Node reference of next level
+        public ModelNode prelevel;                                      //the connected node of the previous level
+        public decimal weight { get; set; }                             //weight
+        public const int WEIGHT_NONE = 1;                               //initial weight value
+        public decimal value { get; set; }                              //calculated value
+        public int gain_or_damage { get; set; }                         //gain or damage attribute
 
         public ModelNode()
         {

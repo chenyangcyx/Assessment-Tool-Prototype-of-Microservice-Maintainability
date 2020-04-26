@@ -9,7 +9,7 @@ namespace NET_Framwork48
     static class Program
     {
         /// <summary>
-        /// 应用程序的主入口点。
+        /// the main entry point for the application
         /// </summary>
         [STAThread]
         static void Main()

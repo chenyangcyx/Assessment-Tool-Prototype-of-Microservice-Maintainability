@@ -13,7 +13,7 @@ namespace NET_Framwork48.UIDesign
 {
     class UIRefresh
     {
-        ////根据输入文件来更新textBox_inputdata
+        ////update textBox_inputdata according to the input file
         //public void RefreshTextBoxInputDataByDataPath(DataHandle.JSONDataStruct.Root root, TextBox textBox)
         //{
         //    textBox.Clear();
@@ -162,12 +162,12 @@ namespace NET_Framwork48.UIDesign
         //    textBox.AppendText("WISL总数：" + model.modelValue.WISL_TOTAL + new_line + new_line);
         //}
 
-        //更新输入文件的textBox
+        //refresh textBox of input file
         public void RefreshDataInputTextBox(DataHandle.JSONDataStruct.Root root, TextBox textBox)
         {
-            //清空文本框
+            //clear text box
             textBox.Clear();
-            //输出概要
+            //output summary
             string newline = GlobalData.GlobalData.globalData.newline;
             textBox.AppendText("File Path: " + GlobalData.GlobalData.globalData.open_file_path + newline);
             textBox.AppendText("projectName: " + root.projectName + newline);
@@ -195,12 +195,12 @@ namespace NET_Framwork48.UIDesign
                 textBox.AppendText("messageName-" + num + ": " + node.messageName + newline
                                     + "parameterNumber-" + (num++) + ": " + node.parameterNumber);
             }
-            //定位光标
+            //position the cursor
             textBox.Select(0, 0);
             textBox.ScrollToCaret();
         }
 
-        //更新comboBox选项
+        //refresh comboBox options
         public void RefreshComboBox(ComboBox box, string text, object[] items)
         {
             box.Items.Clear();
@@ -208,7 +208,7 @@ namespace NET_Framwork48.UIDesign
             box.Items.AddRange(items);
         }
 
-        //更新Model Weight Level3的Label和textBox
+        //refresh Model Weight Level3's Label and textBox
         public void RefreshModelWeightLevel3LabelAndTextBox(Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -234,7 +234,7 @@ namespace NET_Framwork48.UIDesign
             box5.Text = "";
         }
 
-        //更新Model Weight的Level2 textBox
+        //refresh Model Weight Level2's textBox
         public void RefreshModelWeightLevel2TextBox(Model model,TextBox box1, TextBox box2, TextBox box3, TextBox box4)
         {
             box1.Text = model.level2_nodes[0].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
@@ -243,7 +243,7 @@ namespace NET_Framwork48.UIDesign
             box4.Text = model.level2_nodes[3].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //Refresh Model Weight's Property-Analyzability
+        //refresh Model Weight's Property-Analyzability
         public void RefreshModelWeightPropertyAnalyzability(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -267,7 +267,7 @@ namespace NET_Framwork48.UIDesign
             box4.Text = model.level3_nodes[3].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //Refresh Model Weight's Property-Changeability
+        //refresh Model Weight's Property-Changeability
         public void RefreshModelWeightPropertyChangeability(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -293,7 +293,7 @@ namespace NET_Framwork48.UIDesign
             box5.Text = model.level3_nodes[8].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //Refresh Model Weight's Property-Stability
+        //refresh Model Weight's Property-Stability
         public void RefreshModelWeightPropertyStability(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -313,7 +313,7 @@ namespace NET_Framwork48.UIDesign
             box2.Text = model.level3_nodes[10].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //Refresh Model Weight's Property-Modularity
+        //refresh Model Weight's Property-Modularity
         public void RefreshModelWeightPropertyModularity(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -333,7 +333,7 @@ namespace NET_Framwork48.UIDesign
             box2.Text = model.level3_nodes[12].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //Set Assessment Result ListView Column
+        //set Assessment Result ListView Column
         public void SetAssessmentResultListViewColumn(ListView lv)
         {
             lv.BeginUpdate();
@@ -345,7 +345,7 @@ namespace NET_Framwork48.UIDesign
             lv.EndUpdate();
         }
 
-        //Refresh Assessment Result ListView Data
+        //refresh Assessment Result ListView Data
         public void RefreshAssessmentResultListViewData(ListView lv,Model model,string levelname)
         {
             lv.BeginUpdate();
@@ -471,7 +471,7 @@ namespace NET_Framwork48.UIDesign
             }
         }
 
-        //Set Assessment Result ListView Column
+        //set Assessment Result ListView Column
         public void SetHistoryListViewColumn(ListView lv)
         {
             lv.BeginUpdate();
@@ -482,7 +482,7 @@ namespace NET_Framwork48.UIDesign
             lv.EndUpdate();
         }
 
-        //Refresh History ListView Data
+        //refresh History ListView Data
         public void RefreshHistoryListViewData(ListView lv, DataHandle.JSONHistoryDataStruct.Root root)
         {
             lv.BeginUpdate();

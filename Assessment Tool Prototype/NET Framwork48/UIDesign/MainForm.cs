@@ -25,7 +25,7 @@ namespace NET_Framwork48
             InitAllUI();
         }
 
-        //init all the component in UI Design System
+        //initialize all the component in UI Design System
         private void InitAllUI()
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
@@ -36,7 +36,7 @@ namespace NET_Framwork48
             global.assessment_result_last_choose_level = "null";
             global.assessment_result_last_choose_num = "null";
 
-            //comboBox Init
+            //comboBox initialization
             refresh.RefreshComboBox(comboBox_ModelWeight_Level3_AttributeChoose,
                                     GlobalData.GlobalData.COMBOBOX_MODELWEIGHT_LEVEL3_ATTRIBUTECHOOSE_TEXT,
                                     new object[] {
@@ -53,10 +53,10 @@ namespace NET_Framwork48
                                         GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE3,
                                         GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_CHOICE4
                                     });
-            //init ouput textBox
+            //initialize ouput textBox
             textBox_DataInput_FileInfo.Text = "";
             textBox_AssessmentResult_NodeInfoDetail.Text = "";
-            //Label and textBox Init
+            //Label and textBox initialization
             refresh.RefreshModelWeightLevel3LabelAndTextBox(    label_ModelWeight_Level3_Property1,
                                                                 label_ModelWeight_Level3_Property2,
                                                                 label_ModelWeight_Level3_Property3,
@@ -68,7 +68,7 @@ namespace NET_Framwork48
                                                                 textBox_ModelWeight_Level3_Property4Weight,
                                                                 textBox_ModelWeight_Level3_Property5Weight);
 
-            //init Model_Weight_Level2_textBox
+            //initialize Model_Weight_Level2_textBox
             global.model = new Model();
             Model model = global.model;
             model.CreateModel();
@@ -77,10 +77,10 @@ namespace NET_Framwork48
                                                             textBox_ModelWeight_Level2_ChangeabilityWeight,
                                                             textBox_ModelWeight_Level2_StabilityWeight,
                                                             textBox_ModelWeight_Level2_ModularityWeight);
-            //init Assessment Result ListView Column
+            //initialize Assessment Result ListView Column
             refresh.SetAssessmentResultListViewColumn(listView_AssessmentResult_NodeInfo);
 
-            //init History ListView Column
+            //initialize History ListView Column
             refresh.SetHistoryListViewColumn(listView_History_HistoryInfo);
             //refresh History ListView Data
             ReadAndShowHistoryJSONData();
@@ -117,30 +117,30 @@ namespace NET_Framwork48
             open_file.FilterIndex = 0;
             open_file.Multiselect = false;
             UIRefresh refresh = new UIRefresh();
-            //选择文件
+            //choose a file
             if (open_file.ShowDialog() == DialogResult.OK)
             {
                 global.if_open_data = true;
-                //设置打开的文件路径
+                //set the open file path
                 global.open_file_path = open_file.FileName;
-                //设置ui界面的提示信息
+                //set the prompt information of the UI interface
                 label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_INPUTNEWFILE;
 
-                //解析文件内容
+                //parsing file content
                 DataInputOutput dataInputOutput = new DataInputOutput();
                 string file_content = dataInputOutput.InputDataFromFile(global.open_file_path);
                 JSONDecoder jsonDecoder = new JSONDecoder();
                 global.new_root = jsonDecoder.GetNewJSONDataObject(file_content);
 
-                //将文件的概要输出
+                //output summary of file
                 refresh.RefreshDataInputTextBox(global.new_root, textBox_DataInput_FileInfo);
 
-                //提取json文件数据
+                //extract json file data
                 DataAnalyze dataAnalyze = new DataAnalyze(global.new_root, global.model.modelValue);
                 dataAnalyze.SetMetrics();
                 global.model.CalculateModelValue();
 
-                //设置ListView的显示项目
+                //set ListView display items
                 try
                 {
                     string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
@@ -456,7 +456,7 @@ namespace NET_Framwork48
                     model.level3_nodes[12].weight = level3_value[12];
                     break;
             }
-            //Refresh textBox
+            //refresh textBox
             UIRefresh refresh = new UIRefresh();
             refresh.RefreshModelWeightLevel2TextBox(model, textBox_ModelWeight_Level2_AnalyzabilityWeight,
                                                     textBox_ModelWeight_Level2_ChangeabilityWeight,
@@ -517,7 +517,7 @@ namespace NET_Framwork48
                                                                     textBox_ModelWeight_Level3_Property5Weight);
                     break;
             }
-            //Refresh label
+            //refresh label
             label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_CHANGESUCCESS;
 
             //check if open json data
@@ -546,7 +546,7 @@ namespace NET_Framwork48
         {
             UIRefresh refresh = new UIRefresh();
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
-            //设置ListView的显示项目
+            //set ListView display items
             try
             {
                 string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();
@@ -599,19 +599,19 @@ namespace NET_Framwork48
 
                 int choose_num = int.Parse(listView_History_HistoryInfo.SelectedItems[0].Text) - 1;
                 UIRefresh refresh = new UIRefresh();
-                //设置ui界面的提示信息
+                //set the prompt information of the UI interface
                 label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_HISTORYDATA;
-                //解析文件内容
+                //parsing file content
                 DataInputOutput dataInputOutput = new DataInputOutput();
                 global.new_root = JsonConvert.DeserializeObject<DataHandle.JSONDataStruct.Root>(JsonConvert.SerializeObject(global.history_root.HistoryData[choose_num].JSONContent));
-                //将文件的概要输出
+                //output summary of file
                 refresh.RefreshDataInputTextBox(global.new_root, textBox_DataInput_FileInfo);
-                //提取json文件数据
+                //extract json file data
                 DataAnalyze dataAnalyze = new DataAnalyze(global.new_root, global.model.modelValue);
                 dataAnalyze.SetMetrics();
                 global.model.CalculateModelValue();
 
-                //设置ListView的显示项目
+                //set ListView display items
                 try
                 {
                     string comboBox_AssessmentResult_LevelChoose_string = comboBox_AssessmentResult_LevelChoose.SelectedItem.ToString();

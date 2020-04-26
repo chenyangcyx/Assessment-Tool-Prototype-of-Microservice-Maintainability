@@ -9,16 +9,16 @@ namespace NET_Framwork48.Models
 {
     public class Model
     {
-        //模型的根节点
+        //the root node of the model
         public ModelNode root_node;
-        //模型的各层节点列表
+        //list of nodes in each level of the model
         public List<ModelNode> level1_nodes, level2_nodes, level3_nodes, level4_nodes;
-        //模型的必用操作项
+        //required operation items of the model
         public ModelLink modelLink;
         public ModelName modelName;
         public ModelValue modelValue;
         public ModelWeight modelWeight;
-        //创建模型
+        //create model
         public void CreateModel()
         {
             modelLink = new ModelLink();
@@ -29,27 +29,27 @@ namespace NET_Framwork48.Models
             level2_nodes = new List<ModelNode>();
             level3_nodes = new List<ModelNode>();
             level4_nodes = new List<ModelNode>();
-            //创建第一层
-            root_node = new ModelNode();     //第1层节点
+            //create Level 1
+            root_node = new ModelNode();                                    //level 1 nodes
             level1_nodes.Add(root_node);
-            modelName.SetNodeName(root_node, modelLink.LEVEL1_UNITS);     //设置节点名称
+            modelName.SetNodeName(root_node, modelLink.LEVEL1_UNITS);       //set node names
             modelWeight.SetNodeGainORDamage(root_node);
-            //创建第二层
+            //create Level 2
             for(int i=0;i<modelLink.LEVEL1_LINK_2_NUM;i++)
             {
-                ModelNode node_temp2 = new ModelNode();     //第2层节点
+                ModelNode node_temp2 = new ModelNode();                     //level 2 nodes
                 level2_nodes.Add(node_temp2);
                 modelName.SetNodeName(node_temp2, modelLink.LEVEL1_LINK_2_UNITS[i]);
                 modelWeight.SetNodeGainORDamage(node_temp2);
                 for(int j = 0; j < modelLink.LEVEL2_LINK_3_NUM[i]; j++)
                 {
-                    ModelNode node_temp3 = new ModelNode();     //第3层节点
+                    ModelNode node_temp3 = new ModelNode();                 //level 3 nodes
                     level3_nodes.Add(node_temp3);
                     modelName.SetNodeName(node_temp3, modelLink.LEVEL2_LINK_3_UNITS[i][j]);
                     modelWeight.SetNodeGainORDamage(node_temp3);
                     for(int k=0;k<modelLink.LEVEL3_LINK_4_NUM[i][j];k++)
                     {
-                        ModelNode node_temp4 = new ModelNode();     //第4层节点
+                        ModelNode node_temp4 = new ModelNode();             //level 4 nodes
                         level4_nodes.Add(node_temp4);
                         modelName.SetNodeName(node_temp4, modelLink.LEVEL3_LINK_4_UNITS[i][j][k]);
                         modelWeight.SetNodeGainORDamage(node_temp4);
@@ -64,28 +64,28 @@ namespace NET_Framwork48.Models
             }
         }
 
-        ////模型的修剪
+        ////trim model
         //public void TrimModel()
         //{
-        //    //判断是否评估Modularity
-        //    //如果不评估
+        //    //check if assess Modularity
+        //    //if not assess
         //    if (!global.if_assess_modularity)
         //    {
         //        List<ModelNode> delete_level2_nodes = new List<ModelNode>();
         //        List<ModelNode> delete_level3_nodes = new List<ModelNode>();
         //        List<ModelNode> delete_level4_nodes = new List<ModelNode>();
         //        Queue<ModelNode> all_delete_nodes_queue = new Queue<ModelNode>();
-        //        //寻找level2的可选attribute
+        //        //find optional attributes for level 2
         //        ModelNode delete2 = null;
         //        foreach (ModelNode node in level2_nodes)
         //            if (node.NodeName.Equals(ModelName.LEVELNAME_ATTRIBUTE_OPTIONAL))
         //                delete2 = node;
-        //        //记录所有的与删除节点相关的节点
+        //        //record all nodes related to the deleted node
         //        all_delete_nodes_queue.Enqueue(delete2);
         //        while (all_delete_nodes_queue.Count > 0)
         //        {
         //            ModelNode tmp = all_delete_nodes_queue.Dequeue();
-        //            //将相关的节点的引用放入相应的列表
+        //            //put the references of related nodes into the corresponding list
         //            if (tmp.NodeLevel == 2)
         //                delete_level2_nodes.Add(tmp);
         //            if (tmp.NodeLevel == 3)
@@ -95,7 +95,7 @@ namespace NET_Framwork48.Models
         //            foreach (ModelNode node in tmp.nextlevel)
         //                all_delete_nodes_queue.Enqueue(node);
         //        }
-        //        //从模型中删除相应的节点
+        //        //remove the corresponding node from the model
         //        root_node.nextlevel.Remove(delete2);
         //        foreach (ModelNode node in delete_level2_nodes)
         //            level2_nodes.Remove(node);
@@ -106,25 +106,25 @@ namespace NET_Framwork48.Models
         //    }
         //}
 
-        //模型的权值计算
+        //model weight calculation
         public void CalculateModelWeight()
         {
             modelWeight = new ModelWeight();
-            //计算第一层的权值
+            //calculate the weight of Level 1
             foreach (var node in level1_nodes)
                 modelWeight.CalculateNodeNextLevelWeight(node);
-            //计算第二层的权值
+            //calculate the weight of Level 2
             foreach (var node in level2_nodes)
                 modelWeight.CalculateNodeNextLevelWeight(node);
-            //计算第三层的权值
+            //calculate the weight of Level 3
             foreach (var node in level3_nodes)
                 modelWeight.CalculateNodeNextLevelWeight(node);
-            //计算第四层的权值
+            //calculate the weight of Level 4
             foreach (var node in level4_nodes)
                 modelWeight.CalculateNodeNextLevelWeight(node);
         }
 
-        //模型的节点值计算
+        //model node value calculation
         public void CalculateModelValue()
         {
             modelValue.CalculateLevel4Values();
