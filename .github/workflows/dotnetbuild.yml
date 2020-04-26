@@ -5,9 +5,12 @@ on:
     branches: 
         - master
 env:
-  APP_NAME: "Assessment Tool Prototype"
-  APP_FULL_NAME: "Assessment Tool Prototype\\Assessment Tool Prototype.sln"
-  APP_OUTPUT_FOLDER: "Assessment Tool Prototype\\NET Framwork48\\bin\\Release"
+  APP_ASSESSMENTTOOL_NAME: "Assessment Tool Prototype"
+  APP_ASSESSMENTTOOL_FULL_NAME: "Assessment Tool Prototype\\Assessment Tool Prototype.sln"
+  APP_ASSESSMENTTOOL_OUTPUT_FOLDER: "Assessment Tool Prototype\\NET Framwork48\\bin\\Release"
+  APP_JSONDATAFILEPROCESS_NAME: "JSON Data File Processment"
+  APP_JSONDATAFILEPROCESS_FULL_NAME: "JSON Data File Processment\\JSON Data File Processment.sln"
+  APP_JSONDATAFILEPROCESS_OUTPUT_FOLDER: "JSON Data File Processment\\Delete Comment\\bin\\Release"
 
 jobs:
   build:
@@ -18,20 +21,29 @@ jobs:
     
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
-
+    
     - name: Restore NuGet packages
-      run: nuget restore "${{ env.APP_FULL_NAME }}"
+      run: nuget restore "${{ env.APP_ASSESSMENTTOOL_FULL_NAME }}"
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.0
       with:
         vs-version: "16.5"
     
-    - name: Build .NET 4.8
-      run: msbuild "${{ env.APP_FULL_NAME }}" /p:Configuration=Release
+    - name: Build Assessment Tool Prototype
+      run: msbuild "${{ env.APP_ASSESSMENTTOOL_FULL_NAME }}" /p:Configuration=Release
+
+    - name: Build JSON Data File Processment
+      run: msbuild "${{ env.APP_JSONDATAFILEPROCESS_FULL_NAME }}" /p:Configuration=Release
     
-    - name: Upload .NET 4.8
+    - name: Upload Assessment Tool Prototype
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: ${{ env.APP_NAME }}
-        path: "${{ env.APP_OUTPUT_FOLDER }}"
+        name: ${{ env.APP_ASSESSMENTTOOL_NAME }}
+        path: "${{ env.APP_ASSESSMENTTOOL_OUTPUT_FOLDER }}"
+
+    - name: Upload JSON Data File Processment
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: ${{ env.APP_JSONDATAFILEPROCESS_NAME }}
+        path: "${{ env.APP_JSONDATAFILEPROCESS_OUTPUT_FOLDER }}"
