@@ -7,7 +7,7 @@ on:
 env:
   APP_NAME: "Assessment Tool Prototype"
   APP_FULL_NAME: "Assessment Tool Prototype\\Assessment Tool Prototype.sln"
-  APP_OUTPUT_FOLDER: "Assessment Tool Prototype\\NET Framwork48\bin\\Release"
+  APP_OUTPUT_FOLDER: "Assessment Tool Prototype\\NET Framwork48\\bin\\Release"
 
 jobs:
   build:
