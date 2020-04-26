@@ -30,9 +30,8 @@ namespace NET_Framwork48.GlobalData
         public string assessment_result_last_choose_num;
         //Already Open JSON File
         public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION = @"Error Message";
-        public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT 
-= @"You have already opened a JSON data!
-Please click the Reset Button!";
+        public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT1 = @"You have already opened a JSON data!";
+        public const string MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT2 = @"Please click the Reset Button!";
         //Label Text
         public const string LABEL_DATAINPUT_INFOTEXT= @"No JSON File Input!";
         public const string LABEL_DATAINPUT_INPUTNEWFILE = @"New JSON File!";

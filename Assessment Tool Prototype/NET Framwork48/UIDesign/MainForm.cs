@@ -107,7 +107,7 @@ namespace NET_Framwork48
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
             if (global.if_open_data)
             {
-                MessageBox.Show(GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT, GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION);
+                MessageBox.Show(GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT1 + GlobalData.GlobalData.globalData.newline + GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT2, GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION);
                 return;
             }
             OpenFileDialog open_file = new OpenFileDialog();
@@ -590,7 +590,7 @@ namespace NET_Framwork48
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
             if (global.if_open_data)
             {
-                MessageBox.Show(GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT, GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION);
+                MessageBox.Show(GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT1 + GlobalData.GlobalData.globalData.newline + GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_TEXT2, GlobalData.GlobalData.MESSAGEBOX_ERROR_OPEN_JSON_FILE_CAPTION);
                 return;
             }
             if (listView_History_HistoryInfo.SelectedItems.Count > 0)
