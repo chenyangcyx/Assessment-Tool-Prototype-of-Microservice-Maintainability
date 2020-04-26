@@ -72,7 +72,7 @@ namespace NET_Framwork48.Models
         //        Queue<ModelNode> all_delete_nodes_queue = new Queue<ModelNode>();
         //        //find optional attributes for level 2
         //        ModelNode delete2 = null;
-        //        foreach (ModelNode node in level2_nodes)
+        //        foreach (var node in level2_nodes)
         //            if (node.NodeName.Equals(ModelName.LEVELNAME_ATTRIBUTE_OPTIONAL))
         //                delete2 = node;
         //        //record all nodes related to the deleted node
@@ -87,16 +87,16 @@ namespace NET_Framwork48.Models
         //                delete_level3_nodes.Add(tmp);
         //            if (tmp.NodeLevel == 4)
         //                delete_level4_nodes.Add(tmp);
-        //            foreach (ModelNode node in tmp.nextlevel)
+        //            foreach (var node in tmp.nextlevel)
         //                all_delete_nodes_queue.Enqueue(node);
         //        }
         //        //remove the corresponding node from the model
         //        root_node.nextlevel.Remove(delete2);
-        //        foreach (ModelNode node in delete_level2_nodes)
+        //        foreach (var node in delete_level2_nodes)
         //            level2_nodes.Remove(node);
-        //        foreach (ModelNode node in delete_level3_nodes)
+        //        foreach (var node in delete_level3_nodes)
         //            level3_nodes.Remove(node);
-        //        foreach (ModelNode node in delete_level4_nodes)
+        //        foreach (var node in delete_level4_nodes)
         //            level4_nodes.Remove(node);
         //    }
         //}

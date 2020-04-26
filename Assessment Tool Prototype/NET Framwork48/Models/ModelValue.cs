@@ -180,7 +180,7 @@ namespace NET_Framwork48.Models
         {
             if (level_nodes[0].NodeLevel != 4)
                 return;
-            foreach (ModelNode node in level_nodes)
+            foreach (var node in level_nodes)
             {
                 switch (node.NodeName)
                 {
@@ -217,7 +217,7 @@ namespace NET_Framwork48.Models
         {
             if (level_nodes[0].NodeLevel != 3)
                 return;
-            foreach (ModelNode node in level_nodes)
+            foreach (var node in level_nodes)
             {
                 switch (node.NodeName)
                 {
@@ -252,10 +252,10 @@ namespace NET_Framwork48.Models
         {
             if (level_node[0].NodeLevel != 2)
                 return;
-            foreach (ModelNode node in level_node)
+            foreach (var node in level_node)
             {
                 decimal sum = 0;
-                foreach (ModelNode node_next in node.nextlevel)
+                foreach (var node_next in node.nextlevel)
                     sum += node_next.weight * node_next.value;
                 node.value = sum;
             }
@@ -268,7 +268,7 @@ namespace NET_Framwork48.Models
             if (level_node[0].NodeLevel != 1)
                 return;
             decimal sum = 0;
-            foreach (ModelNode node_next in level_node[0].nextlevel)
+            foreach (var node_next in level_node[0].nextlevel)
                 sum += node_next.weight * node_next.value;
             level_node[0].value = sum;
         }

@@ -52,7 +52,7 @@ namespace NET_Framwork48.Models
         {
             gain_num = 0;
             damage_num = 0;
-            foreach (ModelNode no in node.nextlevel)
+            foreach (var no in node.nextlevel)
             {
                 if (no.gain_or_damage == NODE_AFFECT_GAIN)
                     gain_num++;
@@ -93,7 +93,7 @@ namespace NET_Framwork48.Models
                 gew = (ten + 1) / (ten * gen);
                 dew = -1 / (ten * den);
             }
-            foreach (ModelNode tmp in node.nextlevel)
+            foreach (var tmp in node.nextlevel)
             {
                 if (tmp.gain_or_damage == NODE_AFFECT_GAIN)
                     tmp.weight = gew;
