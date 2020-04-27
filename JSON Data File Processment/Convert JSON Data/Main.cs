@@ -15,12 +15,12 @@ namespace Convert_JSON_Data
             InitializeComponent();
         }
 
-        private long CalculateParameterNum(string str)
+        private long CalculateParameterNum(string str, string substr)
         {
-            if (str.Contains("\":"))
+            if (str.Contains(substr))
             {
-                string temp = str.Replace("\":", "");
-                return (str.Length - temp.Length) / ("\":".Length);
+                string temp = str.Replace(substr, "");
+                return (str.Length - temp.Length) / (substr.Length);
             }
             return 0;
         }
@@ -88,10 +88,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -191,10 +191,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -294,10 +294,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -397,10 +397,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -500,10 +500,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -604,10 +604,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -707,10 +707,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -810,10 +810,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -913,10 +913,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -1016,10 +1016,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -1119,10 +1119,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
@@ -1222,10 +1222,10 @@ namespace Convert_JSON_Data
                             // add message info to message list
                             JSONDataStruct.MyNode.Message mess_temp = new JSONDataStruct.MyNode.Message();
                             mess_temp.messageName = mynode.microservices[microservice_no].interfaces[interface_no].messageName[0];
-                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct)
-                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct);
+                            mess_temp.messageContent = JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].inputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore })
+                                                        + JsonConvert.SerializeObject(rootobject.repositories[0].arcs[0].microservices[microservice_no].interfaces[interface_no].outputParamStruct, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
                             // parameterNumber
-                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent);
+                            mess_temp.parameterNumber = "" + CalculateParameterNum(mess_temp.messageContent, "\"type\":");
                             message_list.Add(mess_temp);
                         }
                         // calculate microservice's call
