@@ -13,7 +13,7 @@ namespace NET_Framwork48.DataHandle
             modelValue = mv;
         }
 
-        //set all Metrics of Model
+        // set all Metrics of Model
         public void SetMetrics()
         {
             SetServiceNames();
@@ -27,7 +27,7 @@ namespace NET_Framwork48.DataHandle
             SetWISL();
         }
 
-        //set the name list of all services
+        // set the name list of all services
         public void SetServiceNames()
         {
             int number = 0;
@@ -39,55 +39,55 @@ namespace NET_Framwork48.DataHandle
             }
         }
 
-        //set NS
+        // set NS
         public void SetNS()
         {
             modelValue.NS = data.microservices.Count;
         }
 
-        //set NM
+        // set NM
         public void SetNM()
         {
             modelValue.NM = data.messages.Count;
         }
 
-        //set NDCS()
+        // set NDCS()
         public void SetNDCS()
         {
-            //int microservice_number = data.microservices.Count;
-            //List<List<int>> microservice_graph = new List<List<int>>();
-            //for (int i = 0; i < microservice_number; i++)
-            //    microservice_graph.Add(new List<int>());
-            ////construct adjacency list
-            //for (int i = 0; i < microservice_number; i++)
-            //{
-            //    foreach (var node in data.microservices[i].call)
-            //    {
-            //        int out_service_no = 0;
-            //        modelValue.Dic_ServiceName_NO.TryGetValue(node.serviceName, out out_service_no);
-            //        microservice_graph[out_service_no].Add(i);
-            //    }
-            //}
-            ////construct association table
-            //int[,] if_connect = new int[microservice_number, microservice_number];
-            //for (int i = 0; i < microservice_number; i++)
-            //    for (int j = 0; j < microservice_number; j++)
-            //        if_connect[i, j] = 0;
-            //for (int i = 0; i < microservice_graph.Count; i++)
-            //{
-            //    var node = microservice_graph[i];
-            //    foreach (var link_node in node)
-            //        if_connect[i, link_node] = 1;
-            //}
-            ////write to NDCS () dictionary
-            //for (int i = 0; i < microservice_number; i++)
-            //{
-            //    int num = 0;
-            //    for (int j = 0; j < microservice_number; j++)
-            //        if (if_connect[i, j] == 1)
-            //            num++;
-            //    modelValue.NDCS_NO_VALUE.Add(i, num);
-            //}
+            // int microservice_number = data.microservices.Count;
+            // List<List<int>> microservice_graph = new List<List<int>>();
+            // for (int i = 0; i < microservice_number; i++)
+            //     microservice_graph.Add(new List<int>());
+            // //construct adjacency list
+            // for (int i = 0; i < microservice_number; i++)
+            // {
+            //     foreach (var node in data.microservices[i].call)
+            //     {
+            //         int out_service_no = 0;
+            //         modelValue.Dic_ServiceName_NO.TryGetValue(node.serviceName, out out_service_no);
+            //         microservice_graph[out_service_no].Add(i);
+            //     }
+            // }
+            // //construct association table
+            // int[,] if_connect = new int[microservice_number, microservice_number];
+            // for (int i = 0; i < microservice_number; i++)
+            //     for (int j = 0; j < microservice_number; j++)
+            //         if_connect[i, j] = 0;
+            // for (int i = 0; i < microservice_graph.Count; i++)
+            // {
+            //     var node = microservice_graph[i];
+            //     foreach (var link_node in node)
+            //         if_connect[i, link_node] = 1;
+            // }
+            // //write to NDCS () dictionary
+            // for (int i = 0; i < microservice_number; i++)
+            // {
+            //     int num = 0;
+            //     for (int j = 0; j < microservice_number; j++)
+            //         if (if_connect[i, j] == 1)
+            //             num++;
+            //     modelValue.NDCS_NO_VALUE.Add(i, num);
+            // }
 
             int microservice_number = data.microservices.Count;
             int[,] if_connect = new int[microservice_number, microservice_number];
@@ -112,21 +112,21 @@ namespace NET_Framwork48.DataHandle
             }
         }
 
-        //set NIS()
+        // set NIS()
         public void SetNIS()
         {
             for (int i = 0; i < data.microservices.Count; i++)
                 modelValue.NIS_NO_VALUE.Add(i, data.microservices[i].call.Count);
         }
 
-        //set NPI()
+        // set NPI()
         public void SetNPI()
         {
             for (int i = 0; i < data.microservices.Count; i++)
                 modelValue.NPI_NO_VALUE.Add(i, data.microservices[i].interfaces.Count);
         }
 
-        //set NII()
+        // set NII()
         public void SetNII()
         {
             for (int i = 0; i < data.microservices.Count; i++)
@@ -138,7 +138,7 @@ namespace NET_Framwork48.DataHandle
             }
         }
 
-        //set NMP()
+        // set NMP()
         public void SetNMP()
         {
             int number = 0;
@@ -152,7 +152,7 @@ namespace NET_Framwork48.DataHandle
                 modelValue.NMP_NO_VALUE.Add(i, data.messages[i].parameterNumber);
         }
 
-        //set WISL()
+        // set WISL()
         public void SetWISL()
         {
             int microservice_number = data.microservices.Count;
@@ -188,15 +188,15 @@ namespace NET_Framwork48.DataHandle
                     modelValue.WISL_NO_VALUE.Add(i, 0);
         }
 
-        //dfsVisit operation in WISL()
+        // dfsVisit operation in WISL()
         public void SetWISL_dfsVisit(int[,] graph, int node, int[] visit, int[] father, int microservice_number, bool[] if_in_loopback)
         {
             visit[node] = 1;
             for (int i = 0; i < microservice_number; i++)
-                //not traverse itself
+                // not traverse itself
                 if (i != node && graph[node, i] != int.MaxValue)
                 {
-                    //do not traverse the previous node traversed
+                    // do not traverse the previous node traversed
                     if (visit[i] == 1 && i != father[node])
                     {
                         if_in_loopback[i] = true;

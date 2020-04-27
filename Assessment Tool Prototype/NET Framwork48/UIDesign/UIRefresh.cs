@@ -5,161 +5,161 @@ namespace NET_Framwork48.UIDesign
 {
     internal class UIRefresh
     {
-        ////update textBox_inputdata according to the input file
-        //public void RefreshTextBoxInputDataByDataPath(DataHandle.JSONDataStruct.Root root, TextBox textBox)
-        //{
-        //    textBox.Clear();
-        //    string new_line = GlobalData.GlobalData.globalData.newline;
-        //    textBox.AppendText("文件路径：" + GlobalData.GlobalData.globalData.open_file_path + new_line);
-        //    textBox.AppendText("projectName：" + root.projectName + new_line);
-        //    textBox.AppendText("repositoryInfo个数：" + root.repositoryInfo.Count + new_line);
-        //    textBox.AppendText("repository信息：" + new_line);
-        //    int num = 0;
-        //    foreach (var node in root.repositoryInfo)
-        //        textBox.AppendText((num++) + "--repositoryURL：" + node.repositoryURL
-        //                            + "--gitURL：" + node.gitURL
-        //                            + "--version sha1hash：" + node.version.sha1hash
-        //                            + "--version tag:" + node.version.tag
-        //                            + new_line);
-        //    textBox.AppendText("microservice个数：" + root.microservices.Count + new_line);
-        //    num = 0;
-        //    foreach (var node in root.microservices)
-        //    {
-        //        textBox.AppendText(num + "--serviceName：" + node.serviceName
-        //                            + "--interface个数：" + node.interfaces.Count
-        //                            + "--interface信息："
-        //                            + new_line);
-        //        foreach (var node2 in node.interfaces)
-        //        {
-        //            textBox.AppendText(num + "--" + "interfaceName:" + node2.interfaceName
-        //                                + num + "--" + "message个数："
-        //                                + "message信息："
-        //                                + new_line);
-        //            foreach (var node3 in node2.messageName)
-        //                textBox.AppendText(num + "--" + "--" + "--" + node3 + new_line);
-        //        }
-        //        textBox.AppendText(num + "--call信息：" + new_line);
-        //        foreach (var node2 in node.call)
-        //        {
-        //            textBox.AppendText(num + "--" + "serviceName：" + node2.serviceName
-        //                                + "callInterface个数：" + node2.callInterface.Count
-        //                                + new_line);
-        //            int num3 = 0;
-        //            foreach (var node3 in node2.callInterface)
-        //                textBox.AppendText(num + "--" + "--" + (num3++) + "--" + node3 + new_line);
-        //        }
-        //        num++;
-        //    }
-        //    num = 0;
-        //    foreach (var node in root.messages)
-        //    {
-        //        textBox.AppendText(num + "--messageName：" + node.messageName
-        //                            + "--parameterNumber：" + node.parameterNumber
-        //                            + "--messageContent：" + node.messageContent
-        //                            + new_line);
-        //        num++;
-        //    }
-        //}
+        // //update textBox_inputdata according to the input file
+        // public void RefreshTextBoxInputDataByDataPath(DataHandle.JSONDataStruct.Root root, TextBox textBox)
+        // {
+        //     textBox.Clear();
+        //     string new_line = GlobalData.GlobalData.globalData.newline;
+        //     textBox.AppendText("文件路径：" + GlobalData.GlobalData.globalData.open_file_path + new_line);
+        //     textBox.AppendText("projectName：" + root.projectName + new_line);
+        //     textBox.AppendText("repositoryInfo个数：" + root.repositoryInfo.Count + new_line);
+        //     textBox.AppendText("repository信息：" + new_line);
+        //     int num = 0;
+        //     foreach (var node in root.repositoryInfo)
+        //         textBox.AppendText((num++) + "--repositoryURL：" + node.repositoryURL
+        //                             + "--gitURL：" + node.gitURL
+        //                             + "--version sha1hash：" + node.version.sha1hash
+        //                             + "--version tag:" + node.version.tag
+        //                             + new_line);
+        //     textBox.AppendText("microservice个数：" + root.microservices.Count + new_line);
+        //     num = 0;
+        //     foreach (var node in root.microservices)
+        //     {
+        //         textBox.AppendText(num + "--serviceName：" + node.serviceName
+        //                             + "--interface个数：" + node.interfaces.Count
+        //                             + "--interface信息："
+        //                             + new_line);
+        //         foreach (var node2 in node.interfaces)
+        //         {
+        //             textBox.AppendText(num + "--" + "interfaceName:" + node2.interfaceName
+        //                                 + num + "--" + "message个数："
+        //                                 + "message信息："
+        //                                 + new_line);
+        //             foreach (var node3 in node2.messageName)
+        //                 textBox.AppendText(num + "--" + "--" + "--" + node3 + new_line);
+        //         }
+        //         textBox.AppendText(num + "--call信息：" + new_line);
+        //         foreach (var node2 in node.call)
+        //         {
+        //             textBox.AppendText(num + "--" + "serviceName：" + node2.serviceName
+        //                                 + "callInterface个数：" + node2.callInterface.Count
+        //                                 + new_line);
+        //             int num3 = 0;
+        //             foreach (var node3 in node2.callInterface)
+        //                 textBox.AppendText(num + "--" + "--" + (num3++) + "--" + node3 + new_line);
+        //         }
+        //         num++;
+        //     }
+        //     num = 0;
+        //     foreach (var node in root.messages)
+        //     {
+        //         textBox.AppendText(num + "--messageName：" + node.messageName
+        //                             + "--parameterNumber：" + node.parameterNumber
+        //                             + "--messageContent：" + node.messageContent
+        //                             + new_line);
+        //         num++;
+        //     }
+        // }
 
-        ////根据评估结果显示相关信息
-        //public void RefreshTextBoxAssessResult(TextBox textBox, Model model, DataHandle.JSONDataStruct.Root root)
-        //{
-        //    string new_line = GlobalData.GlobalData.globalData.newline;
-        //    textBox.AppendText("第一层节点：" + new_line);
-        //    foreach (var node1 in model.level1_nodes)
-        //    {
-        //        textBox.AppendText("节点名称：" + node1.NodeName + new_line
-        //                            + "节点详细：" + node1.NodeName_Detail + new_line
-        //                            + "节点层级：" + node1.NodeLevel + new_line
-        //                            + "层级名称：" + node1.NodeLevelName + new_line
-        //                            + "节点权值：" + node1.weight + new_line
-        //                            + "是否增益：" + node1.gain_or_damage + new_line
-        //                            + "值：" + node1.value + new_line);
-        //    }
-        //    textBox.AppendText(new_line + "第二层节点：" + new_line);
-        //    foreach (var node2 in model.level2_nodes)
-        //    {
-        //        textBox.AppendText("节点名称：" + node2.NodeName + new_line
-        //                            + "节点详细：" + node2.NodeName_Detail + new_line
-        //                            + "节点层级：" + node2.NodeLevel + new_line
-        //                            + "层级名称：" + node2.NodeLevelName + new_line
-        //                            + "节点权值：" + node2.weight + new_line
-        //                            + "是否增益：" + node2.gain_or_damage + new_line
-        //                            + "值：" + node2.value + new_line);
-        //    }
-        //    textBox.AppendText(new_line + "第三层节点：" + new_line);
-        //    foreach (var node3 in model.level3_nodes)
-        //    {
-        //        textBox.AppendText("节点名称：" + node3.NodeName + new_line
-        //                            + "节点详细：" + node3.NodeName_Detail + new_line
-        //                            + "节点层级：" + node3.NodeLevel + new_line
-        //                            + "层级名称：" + node3.NodeLevelName + new_line
-        //                            + "节点权值：" + node3.weight + new_line
-        //                            + "是否增益：" + node3.gain_or_damage + new_line
-        //                            + "值：" + node3.value + new_line);
-        //    }
-        //    textBox.AppendText(new_line + "第四层节点：" + new_line);
-        //    foreach (var node4 in model.level4_nodes)
-        //    {
-        //        textBox.AppendText("节点名称：" + node4.NodeName + new_line
-        //                            + "节点详细：" + node4.NodeName_Detail + new_line
-        //                            + "节点层级：" + node4.NodeLevel + new_line
-        //                            + "层级名称：" + node4.NodeLevelName + new_line
-        //                            + "节点权值：" + node4.weight + new_line
-        //                            + "是否增益：" + node4.gain_or_damage + new_line
-        //                            + "值：" + node4.value + new_line);
-        //    }
+        // //根据评估结果显示相关信息
+        // public void RefreshTextBoxAssessResult(TextBox textBox, Model model, DataHandle.JSONDataStruct.Root root)
+        // {
+        //     string new_line = GlobalData.GlobalData.globalData.newline;
+        //     textBox.AppendText("第一层节点：" + new_line);
+        //     foreach (var node1 in model.level1_nodes)
+        //     {
+        //         textBox.AppendText("节点名称：" + node1.NodeName + new_line
+        //                             + "节点详细：" + node1.NodeName_Detail + new_line
+        //                             + "节点层级：" + node1.NodeLevel + new_line
+        //                             + "层级名称：" + node1.NodeLevelName + new_line
+        //                             + "节点权值：" + node1.weight + new_line
+        //                             + "是否增益：" + node1.gain_or_damage + new_line
+        //                             + "值：" + node1.value + new_line);
+        //     }
+        //     textBox.AppendText(new_line + "第二层节点：" + new_line);
+        //     foreach (var node2 in model.level2_nodes)
+        //     {
+        //         textBox.AppendText("节点名称：" + node2.NodeName + new_line
+        //                             + "节点详细：" + node2.NodeName_Detail + new_line
+        //                             + "节点层级：" + node2.NodeLevel + new_line
+        //                             + "层级名称：" + node2.NodeLevelName + new_line
+        //                             + "节点权值：" + node2.weight + new_line
+        //                             + "是否增益：" + node2.gain_or_damage + new_line
+        //                             + "值：" + node2.value + new_line);
+        //     }
+        //     textBox.AppendText(new_line + "第三层节点：" + new_line);
+        //     foreach (var node3 in model.level3_nodes)
+        //     {
+        //         textBox.AppendText("节点名称：" + node3.NodeName + new_line
+        //                             + "节点详细：" + node3.NodeName_Detail + new_line
+        //                             + "节点层级：" + node3.NodeLevel + new_line
+        //                             + "层级名称：" + node3.NodeLevelName + new_line
+        //                             + "节点权值：" + node3.weight + new_line
+        //                             + "是否增益：" + node3.gain_or_damage + new_line
+        //                             + "值：" + node3.value + new_line);
+        //     }
+        //     textBox.AppendText(new_line + "第四层节点：" + new_line);
+        //     foreach (var node4 in model.level4_nodes)
+        //     {
+        //         textBox.AppendText("节点名称：" + node4.NodeName + new_line
+        //                             + "节点详细：" + node4.NodeName_Detail + new_line
+        //                             + "节点层级：" + node4.NodeLevel + new_line
+        //                             + "层级名称：" + node4.NodeLevelName + new_line
+        //                             + "节点权值：" + node4.weight + new_line
+        //                             + "是否增益：" + node4.gain_or_damage + new_line
+        //                             + "值：" + node4.value + new_line);
+        //     }
 
-        //    //输出每一个Metric的数值            
-        //    textBox.AppendText(new_line + "DIC：" + new_line);
-        //    foreach (var node in model.modelValue.Dic_NO_ServiceName)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    foreach (var node in model.modelValue.Dic_ServiceName_NO)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    foreach (var node in model.modelValue.Dic_NO_MessageName)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    foreach (var node in model.modelValue.Dic_MessageName_NO)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    textBox.AppendText(new_line + "Metric数值：" + new_line);
-        //    textBox.AppendText("NS：" + model.modelValue.NS + new_line
-        //                        + "NM：" + model.modelValue.NM + new_line);
-        //    textBox.AppendText("NDCS：" + new_line);
-        //    foreach (var node in model.modelValue.NDCS_NO_VALUE)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    textBox.AppendText("NDCS总数：" + model.modelValue.NDCS_TOTAL + new_line + new_line);
+        //     // 输出每一个Metric的数值            
+        //     textBox.AppendText(new_line + "DIC：" + new_line);
+        //     foreach (var node in model.modelValue.Dic_NO_ServiceName)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     foreach (var node in model.modelValue.Dic_ServiceName_NO)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     foreach (var node in model.modelValue.Dic_NO_MessageName)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     foreach (var node in model.modelValue.Dic_MessageName_NO)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     textBox.AppendText(new_line + "Metric数值：" + new_line);
+        //     textBox.AppendText("NS：" + model.modelValue.NS + new_line
+        //                         + "NM：" + model.modelValue.NM + new_line);
+        //     textBox.AppendText("NDCS：" + new_line);
+        //     foreach (var node in model.modelValue.NDCS_NO_VALUE)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     textBox.AppendText("NDCS总数：" + model.modelValue.NDCS_TOTAL + new_line + new_line);
 
-        //    textBox.AppendText("NIS：" + new_line);
-        //    foreach (var node in model.modelValue.NIS_NO_VALUE)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    textBox.AppendText("NIS总数：" + model.modelValue.NIS_TOTAL + new_line + new_line);
+        //     textBox.AppendText("NIS：" + new_line);
+        //     foreach (var node in model.modelValue.NIS_NO_VALUE)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     textBox.AppendText("NIS总数：" + model.modelValue.NIS_TOTAL + new_line + new_line);
 
-        //    textBox.AppendText("NPI：" + new_line);
-        //    foreach (var node in model.modelValue.NPI_NO_VALUE)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    textBox.AppendText("NPI总数：" + model.modelValue.NPI_TOTAL + new_line + new_line);
+        //     textBox.AppendText("NPI：" + new_line);
+        //     foreach (var node in model.modelValue.NPI_NO_VALUE)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     textBox.AppendText("NPI总数：" + model.modelValue.NPI_TOTAL + new_line + new_line);
 
-        //    textBox.AppendText("NII：" + new_line);
-        //    foreach (var node in model.modelValue.NII_NO_VALUE)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    textBox.AppendText("NII总数：" + model.modelValue.NII_TOTAL + new_line + new_line);
+        //     textBox.AppendText("NII：" + new_line);
+        //     foreach (var node in model.modelValue.NII_NO_VALUE)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     textBox.AppendText("NII总数：" + model.modelValue.NII_TOTAL + new_line + new_line);
 
-        //    textBox.AppendText("NMP：" + new_line);
-        //    foreach (var node in model.modelValue.NMP_NO_VALUE)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    textBox.AppendText("NMP总数：" + model.modelValue.NMP_TOTAL + new_line + new_line);
+        //     textBox.AppendText("NMP：" + new_line);
+        //     foreach (var node in model.modelValue.NMP_NO_VALUE)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     textBox.AppendText("NMP总数：" + model.modelValue.NMP_TOTAL + new_line + new_line);
 
-        //    textBox.AppendText("WISL：" + new_line);
-        //    foreach (var node in model.modelValue.WISL_NO_VALUE)
-        //        textBox.AppendText(node.Key + "--" + node.Value + new_line);
-        //    textBox.AppendText("WISL总数：" + model.modelValue.WISL_TOTAL + new_line + new_line);
-        //}
+        //     textBox.AppendText("WISL：" + new_line);
+        //     foreach (var node in model.modelValue.WISL_NO_VALUE)
+        //         textBox.AppendText(node.Key + "--" + node.Value + new_line);
+        //     textBox.AppendText("WISL总数：" + model.modelValue.WISL_TOTAL + new_line + new_line);
+        // }
 
-        //refresh textBox of input file
+        // refresh textBox of input file
         public void RefreshDataInputTextBox(DataHandle.JSONDataStruct.Root root, TextBox textBox)
         {
-            //clear text box
+            // clear text box
             textBox.Clear();
-            //output summary
+            // output summary
             string newline = GlobalData.GlobalData.globalData.newline;
             textBox.AppendText("File Path: " + GlobalData.GlobalData.globalData.open_file_path + newline);
             textBox.AppendText("projectName: " + root.projectName + newline);
@@ -187,12 +187,12 @@ namespace NET_Framwork48.UIDesign
                 textBox.AppendText("messageName-" + num + ": " + node.messageName + newline
                                     + "parameterNumber-" + (num++) + ": " + node.parameterNumber + newline);
             }
-            //position the cursor
+            // position the cursor
             textBox.Select(0, 0);
             textBox.ScrollToCaret();
         }
 
-        //refresh comboBox options
+        // refresh comboBox options
         public void RefreshComboBox(ComboBox box, string text, object[] items)
         {
             box.Items.Clear();
@@ -200,7 +200,7 @@ namespace NET_Framwork48.UIDesign
             box.Items.AddRange(items);
         }
 
-        //refresh Model Weight Level3's Label and textBox
+        // refresh Model Weight Level3's Label and textBox
         public void RefreshModelWeightLevel3LabelAndTextBox(Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -226,7 +226,7 @@ namespace NET_Framwork48.UIDesign
             box5.Text = "";
         }
 
-        //refresh Model Weight Level2's textBox
+        // refresh Model Weight Level2's textBox
         public void RefreshModelWeightLevel2TextBox(Model model, TextBox box1, TextBox box2, TextBox box3, TextBox box4)
         {
             box1.Text = model.level2_nodes[0].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
@@ -235,7 +235,7 @@ namespace NET_Framwork48.UIDesign
             box4.Text = model.level2_nodes[3].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //refresh Model Weight's Property-Analyzability
+        // refresh Model Weight's Property-Analyzability
         public void RefreshModelWeightPropertyAnalyzability(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -259,7 +259,7 @@ namespace NET_Framwork48.UIDesign
             box4.Text = model.level3_nodes[3].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //refresh Model Weight's Property-Changeability
+        // refresh Model Weight's Property-Changeability
         public void RefreshModelWeightPropertyChangeability(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -285,7 +285,7 @@ namespace NET_Framwork48.UIDesign
             box5.Text = model.level3_nodes[8].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //refresh Model Weight's Property-Stability
+        // refresh Model Weight's Property-Stability
         public void RefreshModelWeightPropertyStability(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -305,7 +305,7 @@ namespace NET_Framwork48.UIDesign
             box2.Text = model.level3_nodes[10].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //refresh Model Weight's Property-Modularity
+        // refresh Model Weight's Property-Modularity
         public void RefreshModelWeightPropertyModularity(Model model, Label label1, Label label2, Label label3, Label label4, Label label5,
                                                             TextBox box1, TextBox box2, TextBox box3, TextBox box4, TextBox box5)
         {
@@ -325,7 +325,7 @@ namespace NET_Framwork48.UIDesign
             box2.Text = model.level3_nodes[12].weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
         }
 
-        //set Assessment Result ListView Column
+        // set Assessment Result ListView Column
         public void SetAssessmentResultListViewColumn(ListView lv)
         {
             lv.BeginUpdate();
@@ -337,7 +337,7 @@ namespace NET_Framwork48.UIDesign
             lv.EndUpdate();
         }
 
-        //refresh Assessment Result ListView Data
+        // refresh Assessment Result ListView Data
         public void RefreshAssessmentResultListViewData(ListView lv, Model model, string levelname)
         {
             lv.BeginUpdate();
@@ -394,12 +394,12 @@ namespace NET_Framwork48.UIDesign
             lv.EndUpdate();
         }
 
-        //print node's detail info
+        // print node's detail info
         public void PrintNodeDetailInfo(TextBox box, ModelNode node)
         {
             string new_line = GlobalData.GlobalData.globalData.newline;
             box.AppendText("NodeName: " + node.NodeName + new_line);
-            //print node's NodeName Detail
+            // print node's NodeName Detail
             box.AppendText("NodeName Detail: ");
             if (node.NodeName_Detail.Equals(""))
                 box.AppendText("No Detail" + new_line);
@@ -407,7 +407,7 @@ namespace NET_Framwork48.UIDesign
                 box.AppendText(node.NodeName_Detail + new_line);
             box.AppendText("NodeLevel: " + node.NodeLevel + new_line
                             + "NextLevelNodes: ");
-            //node's nextlevel nodes names
+            // node's nextlevel nodes names
             bool if_print_first = true;
             foreach (var node2 in node.nextlevel)
             {
@@ -419,16 +419,16 @@ namespace NET_Framwork48.UIDesign
                 else
                     box.AppendText(", " + node2.NodeName);
             }
-            //print node's fathernode's nodename
+            // print node's fathernode's nodename
             if (node.prelevel == null)
                 box.AppendText(new_line + "FatherNode: " + new_line);
             else
                 box.AppendText(new_line + "FatherNode: " + node.prelevel.NodeName + new_line);
-            //print node's weight
+            // print node's weight
             box.AppendText("Weight: " + node.weight.ToString(GlobalData.GlobalData.DECIMAL_FORMAT) + new_line);
-            //print node's value
+            // print node's value
             box.AppendText("Value: " + node.value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT) + new_line);
-            //print node's gain_or_damage
+            // print node's gain_or_damage
             box.AppendText("Gain Or Damage: ");
             if (node.gain_or_damage == ModelWeight.NODE_AFFECT_GAIN)
                 box.AppendText("Gain");
@@ -440,10 +440,10 @@ namespace NET_Framwork48.UIDesign
             box.ScrollToCaret();
         }
 
-        //refresh the Assessment Result textBox Content
+        // refresh the Assessment Result textBox Content
         public void RefreshAssessmentResultTextBoxContent(TextBox box, Model model, string level, string choice)
         {
-            //clear all the text in textBox
+            // clear all the text in textBox
             box.Clear();
             int choice_num = int.Parse(choice) - 1;
             switch (level)
@@ -463,7 +463,7 @@ namespace NET_Framwork48.UIDesign
             }
         }
 
-        //set Assessment Result ListView Column
+        // set Assessment Result ListView Column
         public void SetHistoryListViewColumn(ListView lv)
         {
             lv.BeginUpdate();
@@ -474,7 +474,7 @@ namespace NET_Framwork48.UIDesign
             lv.EndUpdate();
         }
 
-        //refresh History ListView Data
+        // refresh History ListView Data
         public void RefreshHistoryListViewData(ListView lv, DataHandle.JSONHistoryDataStruct.Root root)
         {
             lv.BeginUpdate();

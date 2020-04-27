@@ -19,26 +19,26 @@ namespace NET_Framwork48.Models
          *      Cohesion、Service Granularity
          */
 
-        //level name definition
+        // level name definition
         public const string LEVEL1_NAME = "Quality Attribute";
         public const string LEVEL2_NAME = "Attribute";
         public const string LEVEL3_NAME = "Property";
         public const string LEVEL4_NAME = "Metric";
 
-        public const string LEVELNAME_QUALITYATTRIBUTE_1 = "Maintainability";           //Maintainability
+        public const string LEVELNAME_QUALITYATTRIBUTE_1 = "Maintainability";           // Maintainability
 
-        public const string LEVELNAME_ATTRIBUTE_1 = "Analyzability";                    //Analyzability
-        public const string LEVELNAME_ATTRIBUTE_2 = "Changeability";                    //Changeability
-        public const string LEVELNAME_ATTRIBUTE_3 = "Stability";                        //Stability
-        public const string LEVELNAME_ATTRIBUTE_4 = "Modularity";                       //Modularity
+        public const string LEVELNAME_ATTRIBUTE_1 = "Analyzability";                    // Analyzability
+        public const string LEVELNAME_ATTRIBUTE_2 = "Changeability";                    // Changeability
+        public const string LEVELNAME_ATTRIBUTE_3 = "Stability";                        // Stability
+        public const string LEVELNAME_ATTRIBUTE_4 = "Modularity";                       // Modularity
 
-        public const string LEVELNAME_PROPERTY_1 = "Coupling";                          //Coupling
-        public const string LEVELNAME_PROPERTY_2 = "Cohesion";                          //Cohesion
-        public const string LEVELNAME_PROPERTY_3 = "Design Complexity";                 //Design Complexity
-        public const string LEVELNAME_PROPERTY_4 = "System Size";                       //System Size
-        public const string LEVELNAME_PROPERTY_5 = "Service Granularity";               //Service Granularity
-        public const string LEVELNAME_PROPERTY_6 = "Parameter Granularity";             //Parameter Granularity
-        public const string LEVELNAME_PROPERTY_7 = "Service Loopback";                  //Service Loopback
+        public const string LEVELNAME_PROPERTY_1 = "Coupling";                          // Coupling
+        public const string LEVELNAME_PROPERTY_2 = "Cohesion";                          // Cohesion
+        public const string LEVELNAME_PROPERTY_3 = "Design Complexity";                 // Design Complexity
+        public const string LEVELNAME_PROPERTY_4 = "System Size";                       // System Size
+        public const string LEVELNAME_PROPERTY_5 = "Service Granularity";               // Service Granularity
+        public const string LEVELNAME_PROPERTY_6 = "Parameter Granularity";             // Parameter Granularity
+        public const string LEVELNAME_PROPERTY_7 = "Service Loopback";                  // Service Loopback
 
         public const string LEVELNAME_METRIC_1 = "NS";
         public const string LEVELNAME_METRIC_1_DETAIL = "Number of Services";
@@ -57,7 +57,7 @@ namespace NET_Framwork48.Models
         public const string LEVELNAME_METRIC_8 = "WISL()";
         public const string LEVELNAME_METRIC_8_DETAIL = "Whether Service s In a Service Loopback";
 
-        //Level4 Metric Remarks Dictionary
+        // Level4 Metric Remarks Dictionary
         public Dictionary<string, string> level4_metric_detail;
 
         public ModelName()
@@ -65,7 +65,7 @@ namespace NET_Framwork48.Models
             CreateModelDictionary();
         }
 
-        //create a model Metric Level name-describe the corresponding details
+        // create a model Metric Level name-describe the corresponding details
         public void CreateModelDictionary()
         {
             level4_metric_detail = new Dictionary<string, string>();
@@ -83,14 +83,14 @@ namespace NET_Framwork48.Models
         {
             switch (name)
             {
-                //Level 1
+                // Level 1
                 case LEVELNAME_QUALITYATTRIBUTE_1:
                     mn.NodeName = LEVELNAME_QUALITYATTRIBUTE_1;
                     mn.NodeName_Detail = "";
                     mn.NodeLevel = 1;
                     mn.NodeLevelName = LEVEL1_NAME;
                     break;
-                //Level 2
+                // Level 2
                 case LEVELNAME_ATTRIBUTE_1:
                     mn.NodeName = LEVELNAME_ATTRIBUTE_1;
                     mn.NodeName_Detail = "";
@@ -115,7 +115,7 @@ namespace NET_Framwork48.Models
                     mn.NodeLevel = 2;
                     mn.NodeLevelName = LEVEL2_NAME;
                     break;
-                //Level 3
+                // Level 3
                 case LEVELNAME_PROPERTY_1:
                     mn.NodeName = LEVELNAME_PROPERTY_1;
                     mn.NodeName_Detail = "";
@@ -158,7 +158,7 @@ namespace NET_Framwork48.Models
                     mn.NodeLevel = 3;
                     mn.NodeLevelName = LEVEL3_NAME;
                     break;
-                //Level 4
+                // Level 4
                 case LEVELNAME_METRIC_1:
                     mn.NodeName = LEVELNAME_METRIC_1;
                     mn.NodeName_Detail = LEVELNAME_METRIC_1_DETAIL;
