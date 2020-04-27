@@ -5,12 +5,19 @@ on:
     branches: 
         - master
 env:
+  # Assessment Tool Prototype
   APP_ASSESSMENTTOOL_NAME: "Assessment Tool Prototype"
   APP_ASSESSMENTTOOL_FULL_NAME: "Assessment Tool Prototype\\Assessment Tool Prototype.sln"
   APP_ASSESSMENTTOOL_OUTPUT_FOLDER: "Assessment Tool Prototype\\NET Framwork48\\bin\\Release"
+  # JSON Data File Processment
   APP_JSONDATAFILEPROCESS_NAME: "JSON Data File Processment"
   APP_JSONDATAFILEPROCESS_FULL_NAME: "JSON Data File Processment\\JSON Data File Processment.sln"
-  APP_JSONDATAFILEPROCESS_OUTPUT_FOLDER: "JSON Data File Processment\\Delete Comment\\bin\\Release"
+  # JSON Data File Processment - Delete Comment
+  APP_JSONDATAFILEPROCESS_DELETECOMMENT_NAME: "Delete Comment"
+  APP_JSONDATAFILEPROCESS_DELETECOMMENT_OUTPUT_FOLDER: "JSON Data File Processment\\Delete Comment\\bin\\Release"
+  # JSON Data File Processment - Convert JSON Data
+  APP_JSONDATAFILEPROCESS_CONVERTJSONDATA_NAME: "Convert JSON Data"
+  APP_JSONDATAFILEPROCESS_CONVERTJSONDATA_OUTPUT_FOLDER: "JSON Data File Processment\\Convert JSON Data\\bin\\Release"
 
 jobs:
   build:
@@ -19,11 +26,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - name: Setup NuGet
+    - name: Setup NuGet of Assessment Tool Prototype
       uses: NuGet/setup-nuget@v1.0.2
     
-    - name: Restore NuGet packages
+    - name: Restore NuGet packages of Assessment Tool Prototype
       run: nuget restore "${{ env.APP_ASSESSMENTTOOL_FULL_NAME }}"
+      
+    - name: Restore NuGet packages of JSON Data File Processment
+      run: nuget restore "${{ env.APP_JSONDATAFILEPROCESS_FULL_NAME }}"
     
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.0.0
@@ -42,8 +52,14 @@ jobs:
         name: ${{ env.APP_ASSESSMENTTOOL_NAME }}
         path: "${{ env.APP_ASSESSMENTTOOL_OUTPUT_FOLDER }}"
 
-    - name: Upload JSON Data File Processment
+    - name: Upload Delete Comment
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: ${{ env.APP_JSONDATAFILEPROCESS_NAME }}
-        path: "${{ env.APP_JSONDATAFILEPROCESS_OUTPUT_FOLDER }}"
+        name: ${{ env.APP_JSONDATAFILEPROCESS_DELETECOMMENT_NAME }}
+        path: "${{ env.APP_JSONDATAFILEPROCESS_DELETECOMMENT_OUTPUT_FOLDER }}"
+        
+    - name: Upload Convert JSON Data
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: ${{ env.APP_JSONDATAFILEPROCESS_CONVERTJSONDATA_NAME }}
+        path: "${{ env.APP_JSONDATAFILEPROCESS_CONVERTJSONDATA_OUTPUT_FOLDER }}"
