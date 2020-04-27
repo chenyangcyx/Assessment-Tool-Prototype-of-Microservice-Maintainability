@@ -121,8 +121,16 @@ namespace Convert_JSON_Data
                     for (int message_no = 0; message_no < message_list.Count; message_no++)
                         mynode.messages[message_no] = message_list[message_no];
 
-                    //out put
-                    textBox.AppendText(JsonConvert.SerializeObject(mynode));
+                    //output
+                    textBox.AppendText("转换完毕！"+Environment.NewLine);
+                    FileInfo fi = new FileInfo(file_path);
+                    string out_path = fi.DirectoryName + "\\" + fi.Name.Replace(fi.Extension, "") + "_format" + fi.Extension;
+                    StreamWriter sw = new StreamWriter(out_path, false, Encoding.UTF8);
+                    sw.Write(JsonConvert.SerializeObject(mynode, Formatting.Indented));
+                    sw.Flush();
+                    sr.Close();
+                    sw.Close();
+                    textBox.AppendText("写入文件：" + out_path + Environment.NewLine);
                 }
                 if (file_path.Contains("Version1") && file_path.Contains("郭其鑫_108879"))
                 {
