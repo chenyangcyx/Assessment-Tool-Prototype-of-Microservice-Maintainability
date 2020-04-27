@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Convert_JSON_Data.JSONDataStruct.Version1_guoqixin_108879;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -63,6 +64,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -118,16 +120,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach(var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！"+Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -162,6 +167,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     //mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -217,16 +223,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -261,6 +270,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -316,16 +326,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -360,6 +373,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     //mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -415,16 +429,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -459,6 +476,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -514,16 +532,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -559,6 +580,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -614,16 +636,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -658,6 +683,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     //mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -713,16 +739,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -757,6 +786,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -812,16 +842,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -856,6 +889,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -911,16 +945,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -955,6 +992,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     //mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -1010,16 +1048,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -1054,6 +1095,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     //mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -1109,16 +1151,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
@@ -1153,6 +1198,7 @@ namespace Convert_JSON_Data
                     mynode.repositoryInfo[0].version = new JSONDataStruct.MyNode.Version();
                     mynode.repositoryInfo[0].version.sha1hash = rootobject.repositories[0].arcs[0].version.sha;
                     // tag
+                    mynode.repositoryInfo[0].version.tag = "";
                     mynode.repositoryInfo[0].version.tag = rootobject.repositories[0].arcs[0].version.tag;
                     // message
                     List<JSONDataStruct.MyNode.Message> message_list = new List<JSONDataStruct.MyNode.Message>();
@@ -1208,16 +1254,19 @@ namespace Convert_JSON_Data
                     }
                     // message
                     // message remove duplicates
-                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
-                    for (int i = 0; i < message_list.Count; i++)
-                        if (dic_message_list.ContainsKey(message_list[i].messageName))
-                            message_list.Remove(message_list[i]);
-                        else
-                            dic_message_list.Add(message_list[i].messageName, true);
-                    mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
-                    for (int message_no = 0; message_no < message_list.Count; message_no++)
-                        mynode.messages[message_no] = message_list[message_no];
-
+                    HashSet<string> set_message_list = new HashSet<string>();
+                    foreach (var node in message_list)
+                        set_message_list.Add(node.messageName);
+                    mynode.messages = new JSONDataStruct.MyNode.Message[set_message_list.Count];
+                    int message_no = 0;
+                    foreach (var node in message_list)
+                    {
+                        if (set_message_list.Contains(node.messageName))
+                        {
+                            mynode.messages[message_no++] = node;
+                            set_message_list.Remove(node.messageName);
+                        }
+                    }
                     //output
                     textBox.AppendText("转换完毕！" + Environment.NewLine);
                     FileInfo fi = new FileInfo(file_path);
