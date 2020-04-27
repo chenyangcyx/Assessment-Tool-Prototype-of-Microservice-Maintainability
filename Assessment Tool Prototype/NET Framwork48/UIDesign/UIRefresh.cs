@@ -185,7 +185,7 @@ namespace NET_Framwork48.UIDesign
             foreach (var node in root.messages)
             {
                 textBox.AppendText("messageName-" + num + ": " + node.messageName + newline
-                                    + "parameterNumber-" + (num++) + ": " + node.parameterNumber);
+                                    + "parameterNumber-" + (num++) + ": " + node.parameterNumber + newline);
             }
             //position the cursor
             textBox.Select(0, 0);
