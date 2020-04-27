@@ -117,6 +117,13 @@ namespace Convert_JSON_Data
                         }
                     }
                     // message
+                    // message remove duplicates
+                    Dictionary<string, bool> dic_message_list = new Dictionary<string, bool>();
+                    for (int i = 0; i < message_list.Count; i++)
+                        if (dic_message_list.ContainsKey(message_list[i].messageName))
+                            message_list.Remove(message_list[i]);
+                        else
+                            dic_message_list.Add(message_list[i].messageName, true);
                     mynode.messages = new JSONDataStruct.MyNode.Message[message_list.Count];
                     for (int message_no = 0; message_no < message_list.Count; message_no++)
                         mynode.messages[message_no] = message_list[message_no];
