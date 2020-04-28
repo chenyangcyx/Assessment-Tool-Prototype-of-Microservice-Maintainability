@@ -11,9 +11,9 @@ namespace NET_Framwork48.DataHandle
         }
 
         // get the old json file's object entity
-        public JSONHistoryDataStruct.Root GetHistoryJSONDataObject(string content)
+        public JSONHistoryDataStruct.Rootobject GetHistoryJSONDataObject(string content)
         {
-            return JsonConvert.DeserializeObject<JSONHistoryDataStruct.Root>(content);
+            return JsonConvert.DeserializeObject<JSONHistoryDataStruct.Rootobject>(content);
         }
     }
 }

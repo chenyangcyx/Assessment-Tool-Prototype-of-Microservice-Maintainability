@@ -475,17 +475,17 @@ namespace NET_Framwork48.UIDesign
         }
 
         // refresh History ListView Data
-        public void RefreshHistoryListViewData(ListView lv, DataHandle.JSONHistoryDataStruct.Root root)
+        public void RefreshHistoryListViewData(ListView lv, DataHandle.JSONHistoryDataStruct.Rootobject root)
         {
             lv.BeginUpdate();
             lv.Items.Clear();
             int no = 1;
-            foreach (var node in root.HistoryData)
+            foreach (var node in root.historyData)
             {
                 ListViewItem it = new ListViewItem();
                 it.Text = "" + (no++);
-                it.SubItems.Add(node.AssessTime);
-                it.SubItems.Add(node.ResultValue);
+                it.SubItems.Add(node.assessTime);
+                it.SubItems.Add(node.resultValue.Level1.Maintainability);
                 lv.Items.Add(it);
             }
             lv.EndUpdate();

@@ -10,6 +10,8 @@ namespace NET_Framwork48.Models
         public Dictionary<string, int> Dic_ServiceName_NO;          // Dictionary: microservice name-serial number
         public Dictionary<int, string> Dic_NO_MessageName;          // Dictionary: serial number-message name
         public Dictionary<string, int> Dic_MessageName_NO;          // Dictionary: message name-serial number
+        public List<string> connectionRelationship;                 // list of connection relationship
+        public List<string> callRelationship;                       // list of call relationship
 
         public decimal NS { get; set; }
         public decimal NDCS_TOTAL { get; set; }
@@ -32,6 +34,8 @@ namespace NET_Framwork48.Models
             Dic_ServiceName_NO = new Dictionary<string, int>();
             Dic_NO_MessageName = new Dictionary<int, string>();
             Dic_MessageName_NO = new Dictionary<string, int>();
+            connectionRelationship = new List<string>();
+            callRelationship = new List<string>();
             NDCS_NO_VALUE = new Dictionary<int, decimal>();
             NIS_NO_VALUE = new Dictionary<int, decimal>();
             NPI_NO_VALUE = new Dictionary<int, decimal>();

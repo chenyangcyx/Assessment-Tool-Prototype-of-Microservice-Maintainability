@@ -48,5 +48,4 @@ namespace NET_Framwork48.DataHandle.JSONDataStruct
         public string parameterNumber { get; set; }
         public string messageContent { get; set; }
     }
-
 }

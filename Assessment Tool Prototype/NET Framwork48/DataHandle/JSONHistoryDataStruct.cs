@@ -2,65 +2,118 @@
 
 namespace NET_Framwork48.DataHandle.JSONHistoryDataStruct
 {
+    public class Rootobject
+    {
+        public string lastAssessTime;
+        public List<string> commitTimeHistory;
+        public List<Historydata> historyData;
+    }
+
+    public class Historydata
+    {
+        public string assessTime;
+        public Resultvalue resultValue;
+        public Metricdetail metricDetail;
+        public Jsoncontent JSONContent;
+    }
+
+    public class Resultvalue
+    {
+        public Level1 Level1;
+        public Level2 Level2;
+        public List<Level3> Level3;
+    }
+
+    public class Level1
+    {
+        public string Maintainability;
+    }
+
+    public class Level2
+    {
+        public string Analyzability;
+        public string Changeability;
+        public string Stability;
+        public string Modularity;
+    }
+
+    public class Level3
+    {
+        public string Coupling;
+        public string Cohesion;
+        public string DesignComplexity;
+        public string SystemSize;
+        public string ServiceGranularity;
+        public string ParameterGranularity;
+        public string ServiceLoopback;
+    }
+
+    public class Metricdetail
+    {
+        public List<string> ServiceName;
+        public List<string> MessageName;
+        public string NS;
+        public List<string> NDCS;
+        public string NDCS_TOTAL;
+        public string NM;
+        public List<string> NIS;
+        public string NIS_TOTAL;
+        public List<string> NPI;
+        public string NPI_TOTAL;
+        public List<string> NII;
+        public string NII_TOTAL;
+        public List<string> NMP;
+        public string NMP_TOTAL;
+        public List<string> WISL;
+        public string WISL_TOTAL;
+        public List<string> connectionRelationship;
+        public List<string> callRelationship;
+    }
+
+    public class Jsoncontent
+    {
+        public string projectName;
+        public List<Repositoryinfo> repositoryInfo;
+        public List<Microservice> microservices;
+        public List<Message> messages;
+    }
+
+    public class Repositoryinfo
+    {
+        public string repositoryURL;
+        public string gitURL;
+        public Version version;
+    }
+
     public class Version
     {
-        public string sha1hash { get; set; }
-        public string tag { get; set; }
+        public string sha1hash;
+        public string tag;
     }
 
-    public class RepositoryInfo
+    public class Microservice
     {
-        public string repositoryURL { get; set; }
-        public string gitURL { get; set; }
-        public Version version { get; set; }
+        public string serviceName;
+        public List<Interface> interfaces;
+        public List<Call> call;
     }
 
-    public class Interfaces
+    public class Interface
     {
-        public string interfaceName { get; set; }
-        public List<string> messageName { get; set; }
+        public string interfaceName;
+        public List<string> messageName;
     }
 
     public class Call
     {
-        public string serviceName { get; set; }
-        public List<string> callInterface { get; set; }
+        public string serviceName;
+        public List<string> callInterface;
     }
 
-    public class Microservices
+    public class Message
     {
-        public string serviceName { get; set; }
-        public List<Interfaces> interfaces { get; set; }
-        public List<Call> call { get; set; }
+        public string messageName;
+        public string parameterNumber;
+        public string messageContent;
     }
-
-    public class Messages
-    {
-        public string messageName { get; set; }
-        public string parameterNumber { get; set; }
-        public string messageContent { get; set; }
-    }
-
-    public class JSONContent
-    {
-        public string projectName { get; set; }
-        public List<RepositoryInfo> repositoryInfo { get; set; }
-        public List<Microservices> microservices { get; set; }
-        public List<Messages> messages { get; set; }
-    }
-
-    public class HistoryData
-    {
-        public string AssessTime { get; set; }
-        public string ResultValue { get; set; }
-        public JSONContent JSONContent { get; set; }
-    }
-
-    public class Root
-    {
-        public string LastAssessTime { get; set; }
-        public List<string> CommitTimeHistory { get; set; }
-        public List<HistoryData> HistoryData { get; set; }
-    }
-
 }

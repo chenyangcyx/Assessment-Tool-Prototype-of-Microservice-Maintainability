@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http.Headers;
 using System.Windows.Forms;
 
 namespace NET_Framwork48
@@ -148,36 +149,107 @@ namespace NET_Framwork48
                 // case 1: history root entity not null
                 if (global.history_root != null)
                 {
-                    string now_time_string = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    global.history_root.LastAssessTime = now_time_string;
-                    global.history_root.CommitTimeHistory.Add(now_time_string);
-                    DataHandle.JSONHistoryDataStruct.HistoryData history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.HistoryData();
-                    history_add_new_historydata.AssessTime = now_time_string;
-                    history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
-                    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
-                    global.history_root.HistoryData.Add(history_add_new_historydata);
-                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
+                    AddNewJsonDataToHistoryRoot(true);
+                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                 }
                 // case 2: history root is null
                 else
                 {
-                    string now_time_string = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    global.history_root = new DataHandle.JSONHistoryDataStruct.Root();
-                    global.history_root.CommitTimeHistory = new List<string>();
-                    global.history_root.HistoryData = new List<DataHandle.JSONHistoryDataStruct.HistoryData>();
-                    global.history_root.LastAssessTime = now_time_string;
-                    global.history_root.CommitTimeHistory.Add(now_time_string);
-                    DataHandle.JSONHistoryDataStruct.HistoryData history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.HistoryData();
-                    history_add_new_historydata.AssessTime = now_time_string;
-                    history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
-                    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
-                    global.history_root.HistoryData.Add(history_add_new_historydata);
-                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
+                    AddNewJsonDataToHistoryRoot(false);
+                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                 }
-
                 // refresh History ListView Data
                 ReadAndShowHistoryJSONData();
             }
+        }
+
+        private void AddNewJsonDataToHistoryRoot(bool if_exist)
+        {
+            GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
+
+            string now_time_string = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+            if (!if_exist)
+            {
+                global.history_root = new DataHandle.JSONHistoryDataStruct.Rootobject();
+                global.history_root.commitTimeHistory = new List<string>();
+                global.history_root.historyData = new List<DataHandle.JSONHistoryDataStruct.Historydata>();
+            }
+            global.history_root.lastAssessTime = now_time_string;
+            global.history_root.commitTimeHistory.Add(now_time_string);
+            DataHandle.JSONHistoryDataStruct.Historydata history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.Historydata();
+            history_add_new_historydata.assessTime = now_time_string;
+            history_add_new_historydata.resultValue = new DataHandle.JSONHistoryDataStruct.Resultvalue();
+            history_add_new_historydata.resultValue.Level1 = new DataHandle.JSONHistoryDataStruct.Level1();
+            history_add_new_historydata.resultValue.Level1.Maintainability = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            history_add_new_historydata.resultValue.Level2 = new DataHandle.JSONHistoryDataStruct.Level2();
+            history_add_new_historydata.resultValue.Level2.Analyzability = global.model.level2_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            history_add_new_historydata.resultValue.Level2.Changeability = global.model.level2_nodes[1].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            history_add_new_historydata.resultValue.Level2.Stability = global.model.level2_nodes[2].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            history_add_new_historydata.resultValue.Level2.Modularity = global.model.level2_nodes[3].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            DataHandle.JSONHistoryDataStruct.Level3 level3_1 = new DataHandle.JSONHistoryDataStruct.Level3();
+            DataHandle.JSONHistoryDataStruct.Level3 level3_2 = new DataHandle.JSONHistoryDataStruct.Level3();
+            DataHandle.JSONHistoryDataStruct.Level3 level3_3 = new DataHandle.JSONHistoryDataStruct.Level3();
+            DataHandle.JSONHistoryDataStruct.Level3 level3_4 = new DataHandle.JSONHistoryDataStruct.Level3();
+            level3_1.Coupling = global.model.level3_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_1.Cohesion = global.model.level3_nodes[1].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_1.DesignComplexity = global.model.level3_nodes[2].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_1.SystemSize = global.model.level3_nodes[3].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_2.Coupling = global.model.level3_nodes[4].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_2.Cohesion = global.model.level3_nodes[5].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_2.ServiceGranularity = global.model.level3_nodes[6].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_2.ParameterGranularity = global.model.level3_nodes[7].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_2.ServiceLoopback = global.model.level3_nodes[8].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_3.ParameterGranularity = global.model.level3_nodes[9].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_3.ServiceLoopback = global.model.level3_nodes[10].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_4.Cohesion = global.model.level3_nodes[11].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            level3_4.ServiceGranularity = global.model.level3_nodes[12].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            history_add_new_historydata.resultValue.Level3 = new List<DataHandle.JSONHistoryDataStruct.Level3>();
+            history_add_new_historydata.resultValue.Level3.Add(level3_1);
+            history_add_new_historydata.resultValue.Level3.Add(level3_2);
+            history_add_new_historydata.resultValue.Level3.Add(level3_3);
+            history_add_new_historydata.resultValue.Level3.Add(level3_4);
+            history_add_new_historydata.metricDetail = new DataHandle.JSONHistoryDataStruct.Metricdetail();
+            history_add_new_historydata.metricDetail.ServiceName = new List<string>();
+            history_add_new_historydata.metricDetail.MessageName = new List<string>();
+            history_add_new_historydata.metricDetail.NDCS = new List<string>();
+            history_add_new_historydata.metricDetail.NIS = new List<string>();
+            history_add_new_historydata.metricDetail.NPI = new List<string>();
+            history_add_new_historydata.metricDetail.NII = new List<string>();
+            history_add_new_historydata.metricDetail.NMP = new List<string>();
+            history_add_new_historydata.metricDetail.WISL = new List<string>();
+            history_add_new_historydata.metricDetail.connectionRelationship = new List<string>();
+            history_add_new_historydata.metricDetail.callRelationship = new List<string>();
+            foreach (var node in global.model.modelValue.Dic_NO_ServiceName)
+                history_add_new_historydata.metricDetail.ServiceName.Add(node.Key + " -- " + node.Value);
+            foreach (var node in global.model.modelValue.Dic_NO_MessageName)
+                history_add_new_historydata.metricDetail.MessageName.Add(node.Key + " -- " + node.Value);
+            history_add_new_historydata.metricDetail.NS = global.model.modelValue.NS.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            foreach (var node in global.model.modelValue.NDCS_NO_VALUE)
+                history_add_new_historydata.metricDetail.NDCS.Add(node.Key + " -- " + node.Value);
+            history_add_new_historydata.metricDetail.NDCS_TOTAL = global.model.modelValue.NDCS_TOTAL.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            history_add_new_historydata.metricDetail.NM = global.model.modelValue.NM.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            foreach (var node in global.model.modelValue.NIS_NO_VALUE)
+                history_add_new_historydata.metricDetail.NIS.Add(node.Key + " -- " + node.Value);
+            history_add_new_historydata.metricDetail.NIS_TOTAL = global.model.modelValue.NIS_TOTAL.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            foreach (var node in global.model.modelValue.NPI_NO_VALUE)
+                history_add_new_historydata.metricDetail.NPI.Add(node.Key + " -- " + node.Value);
+            history_add_new_historydata.metricDetail.NPI_TOTAL = global.model.modelValue.NPI_TOTAL.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            foreach (var node in global.model.modelValue.NII_NO_VALUE)
+                history_add_new_historydata.metricDetail.NII.Add(node.Key + " -- " + node.Value);
+            history_add_new_historydata.metricDetail.NII_TOTAL = global.model.modelValue.NII_TOTAL.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            foreach (var node in global.model.modelValue.NMP_NO_VALUE)
+                history_add_new_historydata.metricDetail.NMP.Add(node.Key + " -- " + node.Value);
+            history_add_new_historydata.metricDetail.NMP_TOTAL = global.model.modelValue.NMP_TOTAL.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            foreach (var node in global.model.modelValue.WISL_NO_VALUE)
+                history_add_new_historydata.metricDetail.WISL.Add(node.Key + " -- " + node.Value);
+            history_add_new_historydata.metricDetail.WISL_TOTAL = global.model.modelValue.WISL_TOTAL.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+            // connection relationship
+            history_add_new_historydata.metricDetail.connectionRelationship = global.model.modelValue.connectionRelationship;
+            // call relationship
+            history_add_new_historydata.metricDetail.callRelationship = global.model.modelValue.callRelationship;
+
+            history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.Jsoncontent>(JsonConvert.SerializeObject(global.new_root));
+            global.history_root.historyData.Add(history_add_new_historydata);
         }
 
         private void button_DataInput_Reset_Click(object sender, EventArgs e)
@@ -568,10 +640,10 @@ namespace NET_Framwork48
         private void button_History_ClearAll_Click(object sender, EventArgs e)
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
-            global.history_root = new DataHandle.JSONHistoryDataStruct.Root();
-            global.history_root.LastAssessTime = "";
-            global.history_root.CommitTimeHistory = new List<string>();
-            global.history_root.HistoryData = new List<DataHandle.JSONHistoryDataStruct.HistoryData>();
+            global.history_root = new DataHandle.JSONHistoryDataStruct.Rootobject();
+            global.history_root.lastAssessTime = "";
+            global.history_root.commitTimeHistory = new List<string>();
+            global.history_root.historyData = new List<DataHandle.JSONHistoryDataStruct.Historydata>();
             DataInputOutput dataInputOutput = new DataInputOutput();
             dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
             ReadAndShowHistoryJSONData();
@@ -595,7 +667,7 @@ namespace NET_Framwork48
                 label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_HISTORYDATA;
                 // parsing file content
                 DataInputOutput dataInputOutput = new DataInputOutput();
-                global.new_root = JsonConvert.DeserializeObject<DataHandle.JSONDataStruct.Rootobject>(JsonConvert.SerializeObject(global.history_root.HistoryData[choose_num].JSONContent));
+                global.new_root = JsonConvert.DeserializeObject<DataHandle.JSONDataStruct.Rootobject>(JsonConvert.SerializeObject(global.history_root.historyData[choose_num].JSONContent));
                 // output summary of file
                 refresh.RefreshDataInputTextBox(global.new_root, textBox_DataInput_FileInfo);
                 // extract json file data
@@ -617,34 +689,34 @@ namespace NET_Framwork48
 
                 // write the new json file to history data
                 // case 1: history root entity not null
-                if (global.history_root != null)
-                {
-                    string now_time_string = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    global.history_root.LastAssessTime = now_time_string;
-                    global.history_root.CommitTimeHistory.Add(now_time_string);
-                    DataHandle.JSONHistoryDataStruct.HistoryData history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.HistoryData();
-                    history_add_new_historydata.AssessTime = now_time_string;
-                    history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
-                    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
-                    global.history_root.HistoryData.Add(history_add_new_historydata);
-                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
-                }
-                // case 2: history root is null
-                else
-                {
-                    string now_time_string = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    global.history_root = new DataHandle.JSONHistoryDataStruct.Root();
-                    global.history_root.CommitTimeHistory = new List<string>();
-                    global.history_root.HistoryData = new List<DataHandle.JSONHistoryDataStruct.HistoryData>();
-                    global.history_root.LastAssessTime = now_time_string;
-                    global.history_root.CommitTimeHistory.Add(now_time_string);
-                    DataHandle.JSONHistoryDataStruct.HistoryData history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.HistoryData();
-                    history_add_new_historydata.AssessTime = now_time_string;
-                    history_add_new_historydata.ResultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
-                    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.JSONContent>(JsonConvert.SerializeObject(global.new_root));
-                    global.history_root.HistoryData.Add(history_add_new_historydata);
-                    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
-                }
+                //if (global.history_root != null)
+                //{
+                //    string now_time_string = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                //    global.history_root.lastAssessTime = now_time_string;
+                //    global.history_root.commitTimeHistory.Add(now_time_string);
+                //    DataHandle.JSONHistoryDataStruct.Historydata history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.Historydata();
+                //    history_add_new_historydata.assessTime = now_time_string;
+                //    history_add_new_historydata.resultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+                //    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.Jsoncontent>(JsonConvert.SerializeObject(global.new_root));
+                //    global.history_root.historyData.Add(history_add_new_historydata);
+                //    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
+                //}
+                //// case 2: history root is null
+                //else
+                //{
+                //    string now_time_string = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                //    global.history_root = new DataHandle.JSONHistoryDataStruct.Rootobject();
+                //    global.history_root.commitTimeHistory = new List<string>();
+                //    global.history_root.historyData = new List<DataHandle.JSONHistoryDataStruct.Historydata>();
+                //    global.history_root.lastAssessTime = now_time_string;
+                //    global.history_root.commitTimeHistory.Add(now_time_string);
+                //    DataHandle.JSONHistoryDataStruct.Historydata history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.Historydata();
+                //    history_add_new_historydata.assessTime = now_time_string;
+                //    history_add_new_historydata.resultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
+                //    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.Jsoncontent>(JsonConvert.SerializeObject(global.new_root));
+                //    global.history_root.historyData.Add(history_add_new_historydata);
+                //    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
+                //}
 
                 // refresh History ListView Data
                 ReadAndShowHistoryJSONData();

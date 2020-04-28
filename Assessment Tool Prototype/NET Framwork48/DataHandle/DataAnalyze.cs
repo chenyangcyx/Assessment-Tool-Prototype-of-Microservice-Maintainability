@@ -110,6 +110,11 @@ namespace NET_Framwork48.DataHandle
                         num++;
                 modelValue.NDCS_NO_VALUE.Add(i, num);
             }
+            // write into the list of connection relationship
+            for (int i = 0; i < microservice_number; i++)
+                for (int j = 0; j < microservice_number; j++)
+                    if (if_connect[i, j] == 1)
+                        modelValue.connectionRelationship.Add(i + " -- " + j);
         }
 
         // set NIS()
@@ -167,6 +172,11 @@ namespace NET_Framwork48.DataHandle
                     modelValue.Dic_ServiceName_NO.TryGetValue(call_service.serviceName, out num);
                     graph[num, i] = 1;
                 }
+            // write into the list of call relationship
+            for (int j = 0; j < microservice_number; j++)
+                for (int i = 0; i < microservice_number; i++)
+                    if (graph[i, j] == 1)
+                        modelValue.callRelationship.Add(j + " <-- " + i);
 
             int[] visit = new int[microservice_number];
             int[] father = new int[microservice_number];
