@@ -5,9 +5,9 @@ namespace NET_Framwork48.DataHandle.JSONDataStruct
     public class Rootobject
     {
         public string projectName { get; set; }
-        public Repositoryinfo[] repositoryInfo { get; set; }
-        public Microservice[] microservices { get; set; }
-        public Message[] messages { get; set; }
+        public List<Repositoryinfo> repositoryInfo { get; set; }
+        public List<Microservice> microservices { get; set; }
+        public List<Message> messages { get; set; }
     }
 
     public class Repositoryinfo
@@ -26,20 +26,20 @@ namespace NET_Framwork48.DataHandle.JSONDataStruct
     public class Microservice
     {
         public string serviceName { get; set; }
-        public Interface[] interfaces { get; set; }
-        public Call[] call { get; set; }
+        public List<Interface> interfaces { get; set; }
+        public List<Call> call { get; set; }
     }
 
     public class Interface
     {
         public string interfaceName { get; set; }
-        public string[] messageName { get; set; }
+        public List<string> messageName { get; set; }
     }
 
     public class Call
     {
         public string serviceName { get; set; }
-        public string[] callInterface { get; set; }
+        public List<string> callInterface { get; set; }
     }
 
     public class Message

@@ -163,7 +163,7 @@ namespace NET_Framwork48.UIDesign
             string newline = GlobalData.GlobalData.globalData.newline;
             textBox.AppendText("File Path: " + GlobalData.GlobalData.globalData.open_file_path + newline);
             textBox.AppendText("projectName: " + root.projectName + newline);
-            textBox.AppendText("repositoryInfo Number: " + root.repositoryInfo.Length + newline);
+            textBox.AppendText("repositoryInfo Number: " + root.repositoryInfo.Count + newline);
             textBox.AppendText("------------repository Info------------" + newline);
             int num = 0;
             foreach (var node in root.repositoryInfo)
@@ -171,17 +171,17 @@ namespace NET_Framwork48.UIDesign
                                     + "gitURL-" + (num++) + ": " + node.gitURL + newline);
 
             textBox.AppendText("------------microservice Info------------" + newline);
-            textBox.AppendText("microservice Number: " + root.microservices.Length + newline);
+            textBox.AppendText("microservice Number: " + root.microservices.Count + newline);
             num = 0;
             foreach (var node in root.microservices)
             {
                 textBox.AppendText("serviceName-" + num + ": " + node.serviceName + newline
-                                    + "interface Number-" + num + ": " + node.interfaces.Length + newline
-                                    + "call Number-" + (num++) + ": " + node.call.Length + newline);
+                                    + "interface Number-" + num + ": " + node.interfaces.Count + newline
+                                    + "call Number-" + (num++) + ": " + node.call.Count + newline);
             }
             num = 0;
             textBox.AppendText("------------message Info------------" + newline);
-            textBox.AppendText("message Number: " + root.messages.Length + newline);
+            textBox.AppendText("message Number: " + root.messages.Count + newline);
             foreach (var node in root.messages)
             {
                 textBox.AppendText("messageName-" + num + ": " + node.messageName + newline

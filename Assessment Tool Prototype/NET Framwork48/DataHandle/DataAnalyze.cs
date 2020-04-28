@@ -42,13 +42,13 @@ namespace NET_Framwork48.DataHandle
         // set NS
         public void SetNS()
         {
-            modelValue.NS = data.microservices.Length;
+            modelValue.NS = data.microservices.Count;
         }
 
         // set NM
         public void SetNM()
         {
-            modelValue.NM = data.messages.Length;
+            modelValue.NM = data.messages.Count;
         }
 
         // set NDCS()
@@ -89,7 +89,7 @@ namespace NET_Framwork48.DataHandle
             //     modelValue.NDCS_NO_VALUE.Add(i, num);
             // }
 
-            int microservice_number = data.microservices.Length;
+            int microservice_number = data.microservices.Count;
             int[,] if_connect = new int[microservice_number, microservice_number];
             for (int i = 0; i < microservice_number; i++)
                 for (int j = 0; j < microservice_number; j++)
@@ -115,25 +115,25 @@ namespace NET_Framwork48.DataHandle
         // set NIS()
         public void SetNIS()
         {
-            for (int i = 0; i < data.microservices.Length; i++)
-                modelValue.NIS_NO_VALUE.Add(i, data.microservices[i].call.Length);
+            for (int i = 0; i < data.microservices.Count; i++)
+                modelValue.NIS_NO_VALUE.Add(i, data.microservices[i].call.Count);
         }
 
         // set NPI()
         public void SetNPI()
         {
-            for (int i = 0; i < data.microservices.Length; i++)
-                modelValue.NPI_NO_VALUE.Add(i, data.microservices[i].interfaces.Length);
+            for (int i = 0; i < data.microservices.Count; i++)
+                modelValue.NPI_NO_VALUE.Add(i, data.microservices[i].interfaces.Count);
         }
 
         // set NII()
         public void SetNII()
         {
-            for (int i = 0; i < data.microservices.Length; i++)
+            for (int i = 0; i < data.microservices.Count; i++)
             {
                 int sum = 0;
                 foreach (var call_node in data.microservices[i].call)
-                    sum += call_node.callInterface.Length;
+                    sum += call_node.callInterface.Count;
                 modelValue.NII_NO_VALUE.Add(i, sum);
             }
         }
@@ -148,14 +148,14 @@ namespace NET_Framwork48.DataHandle
                 modelValue.Dic_MessageName_NO.Add(message_node.messageName, number);
                 number++;
             }
-            for (int i = 0; i < data.messages.Length; i++)
+            for (int i = 0; i < data.messages.Count; i++)
                 modelValue.NMP_NO_VALUE.Add(i, decimal.Parse(data.messages[i].parameterNumber));
         }
 
         // set WISL()
         public void SetWISL()
         {
-            int microservice_number = data.microservices.Length;
+            int microservice_number = data.microservices.Count;
             int[,] graph = new int[microservice_number, microservice_number];
             for (int i = 0; i < microservice_number; i++)
                 for (int j = 0; j < microservice_number; j++)
