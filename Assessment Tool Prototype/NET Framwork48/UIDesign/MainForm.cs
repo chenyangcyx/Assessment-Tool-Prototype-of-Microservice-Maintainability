@@ -595,7 +595,7 @@ namespace NET_Framwork48
                 label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_HISTORYDATA;
                 // parsing file content
                 DataInputOutput dataInputOutput = new DataInputOutput();
-                global.new_root = JsonConvert.DeserializeObject<DataHandle.JSONDataStruct.Root>(JsonConvert.SerializeObject(global.history_root.HistoryData[choose_num].JSONContent));
+                global.new_root = JsonConvert.DeserializeObject<DataHandle.JSONDataStruct.Rootobject>(JsonConvert.SerializeObject(global.history_root.HistoryData[choose_num].JSONContent));
                 // output summary of file
                 refresh.RefreshDataInputTextBox(global.new_root, textBox_DataInput_FileInfo);
                 // extract json file data

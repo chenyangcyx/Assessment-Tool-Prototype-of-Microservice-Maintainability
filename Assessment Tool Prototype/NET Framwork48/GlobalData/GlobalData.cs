@@ -9,7 +9,7 @@ namespace NET_Framwork48.GlobalData
 
         // the model used by the program
         public Model model;                                             // used Model
-        public DataHandle.JSONDataStruct.Root new_root;                 // Root entity from new json file
+        public DataHandle.JSONDataStruct.Rootobject new_root;                 // Root entity from new json file
         public DataHandle.JSONHistoryDataStruct.Root history_root;      // Root entity from history json file
 
         // global parameters in the UI
