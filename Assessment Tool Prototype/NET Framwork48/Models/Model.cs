@@ -59,48 +59,6 @@ namespace NET_Framwork48.Models
             }
         }
 
-        // //trim model
-        // public void TrimModel()
-        // {
-        //     // check if assess Modularity
-        //     // if not assess
-        //     if (!global.if_assess_modularity)
-        //     {
-        //         List<ModelNode> delete_level2_nodes = new List<ModelNode>();
-        //         List<ModelNode> delete_level3_nodes = new List<ModelNode>();
-        //         List<ModelNode> delete_level4_nodes = new List<ModelNode>();
-        //         Queue<ModelNode> all_delete_nodes_queue = new Queue<ModelNode>();
-        //         // find optional attributes for level 2
-        //         ModelNode delete2 = null;
-        //         foreach (var node in level2_nodes)
-        //             if (node.NodeName.Equals(ModelName.LEVELNAME_ATTRIBUTE_OPTIONAL))
-        //                 delete2 = node;
-        //         // record all nodes related to the deleted node
-        //         all_delete_nodes_queue.Enqueue(delete2);
-        //         while (all_delete_nodes_queue.Count > 0)
-        //         {
-        //             ModelNode tmp = all_delete_nodes_queue.Dequeue();
-        //             // put the references of related nodes into the corresponding list
-        //             if (tmp.NodeLevel == 2)
-        //                 delete_level2_nodes.Add(tmp);
-        //             if (tmp.NodeLevel == 3)
-        //                 delete_level3_nodes.Add(tmp);
-        //             if (tmp.NodeLevel == 4)
-        //                 delete_level4_nodes.Add(tmp);
-        //             foreach (var node in tmp.nextlevel)
-        //                 all_delete_nodes_queue.Enqueue(node);
-        //         }
-        //         // remove the corresponding node from the model
-        //         root_node.nextlevel.Remove(delete2);
-        //         foreach (var node in delete_level2_nodes)
-        //             level2_nodes.Remove(node);
-        //         foreach (var node in delete_level3_nodes)
-        //             level3_nodes.Remove(node);
-        //         foreach (var node in delete_level4_nodes)
-        //             level4_nodes.Remove(node);
-        //     }
-        // }
-
         // model weight calculation
         public void CalculateModelWeight()
         {

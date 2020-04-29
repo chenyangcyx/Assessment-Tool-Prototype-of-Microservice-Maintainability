@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http.Headers;
 using System.Windows.Forms;
 
 namespace NET_Framwork48
@@ -666,7 +665,6 @@ namespace NET_Framwork48
                 // set the prompt information of the UI interface
                 label_DataInput_InfoText.Text = GlobalData.GlobalData.LABEL_DATAINPUT_HISTORYDATA;
                 // parsing file content
-                DataInputOutput dataInputOutput = new DataInputOutput();
                 global.new_root = JsonConvert.DeserializeObject<DataHandle.JSONDataStruct.Rootobject>(JsonConvert.SerializeObject(global.history_root.historyData[choose_num].JSONContent));
                 // output summary of file
                 refresh.RefreshDataInputTextBox(global.new_root, textBox_DataInput_FileInfo);
@@ -686,37 +684,6 @@ namespace NET_Framwork48
                     // if the comboBox is not selected
                     refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE);
                 }
-
-                // write the new json file to history data
-                // case 1: history root entity not null
-                //if (global.history_root != null)
-                //{
-                //    string now_time_string = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-                //    global.history_root.lastAssessTime = now_time_string;
-                //    global.history_root.commitTimeHistory.Add(now_time_string);
-                //    DataHandle.JSONHistoryDataStruct.Historydata history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.Historydata();
-                //    history_add_new_historydata.assessTime = now_time_string;
-                //    history_add_new_historydata.resultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
-                //    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.Jsoncontent>(JsonConvert.SerializeObject(global.new_root));
-                //    global.history_root.historyData.Add(history_add_new_historydata);
-                //    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
-                //}
-                //// case 2: history root is null
-                //else
-                //{
-                //    string now_time_string = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-                //    global.history_root = new DataHandle.JSONHistoryDataStruct.Rootobject();
-                //    global.history_root.commitTimeHistory = new List<string>();
-                //    global.history_root.historyData = new List<DataHandle.JSONHistoryDataStruct.Historydata>();
-                //    global.history_root.lastAssessTime = now_time_string;
-                //    global.history_root.commitTimeHistory.Add(now_time_string);
-                //    DataHandle.JSONHistoryDataStruct.Historydata history_add_new_historydata = new DataHandle.JSONHistoryDataStruct.Historydata();
-                //    history_add_new_historydata.assessTime = now_time_string;
-                //    history_add_new_historydata.resultValue = global.model.level1_nodes[0].value.ToString(GlobalData.GlobalData.DECIMAL_FORMAT);
-                //    history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.Jsoncontent>(JsonConvert.SerializeObject(global.new_root));
-                //    global.history_root.historyData.Add(history_add_new_historydata);
-                //    dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented));
-                //}
 
                 // refresh History ListView Data
                 ReadAndShowHistoryJSONData();

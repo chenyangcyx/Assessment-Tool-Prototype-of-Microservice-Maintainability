@@ -8,9 +8,9 @@ namespace NET_Framwork48.GlobalData
         public static GlobalData globalData = new GlobalData();
 
         // the model used by the program
-        public Model model;                                             // used Model
-        public DataHandle.JSONDataStruct.Rootobject new_root;                 // Root entity from new json file
-        public DataHandle.JSONHistoryDataStruct.Rootobject history_root;      // Root entity from history json file
+        public Model model;                                                     // used Model
+        public DataHandle.JSONDataStruct.Rootobject new_root;                   // Root entity from new json file
+        public DataHandle.JSONHistoryDataStruct.Rootobject history_root;        // Root entity from history json file
 
         // global parameters in the UI
         public string newline = Environment.NewLine;                    // new line string
