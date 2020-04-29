@@ -143,26 +143,32 @@ namespace NET_Framwork48
                     // if the comboBox is not selected
                     refresh.RefreshAssessmentResultListViewData(listView_AssessmentResult_NodeInfo, global.model, GlobalData.GlobalData.COMBOBOX_ASSESSMENTRESULT_LEVELCHOOSE_NOCHOOSE);
                 }
+                // define the DataHandle.JSONHistoryDataStruct.Historydata
+                DataHandle.JSONHistoryDataStruct.Historydata historydata;
 
                 // write the new json file to history data
                 // case 1: history root entity not null
                 if (global.history_root != null)
                 {
-                    AddNewJsonDataToHistoryRoot(true);
+                    historydata = AddNewJsonDataToHistoryRoot(true);
                     dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                 }
                 // case 2: history root is null
                 else
                 {
-                    AddNewJsonDataToHistoryRoot(false);
+                    historydata = AddNewJsonDataToHistoryRoot(false);
                     dataInputOutput.OutputDataToFile(GlobalData.GlobalData.History_FILE_PATH, JsonConvert.SerializeObject(global.history_root, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                 }
+                // write the history data into new file
+                FileInfo fi = new FileInfo(global.open_file_path);
+                dataInputOutput.OutputDataToFile(fi.DirectoryName + "\\" + fi.Name.Replace(fi.Extension, "") + "_assessmentresult" + fi.Extension, JsonConvert.SerializeObject(historydata, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+
                 // refresh History ListView Data
                 ReadAndShowHistoryJSONData();
             }
         }
 
-        private void AddNewJsonDataToHistoryRoot(bool if_exist)
+        private DataHandle.JSONHistoryDataStruct.Historydata AddNewJsonDataToHistoryRoot(bool if_exist)
         {
             GlobalData.GlobalData global = GlobalData.GlobalData.globalData;
 
@@ -249,6 +255,8 @@ namespace NET_Framwork48
 
             history_add_new_historydata.JSONContent = JsonConvert.DeserializeObject<DataHandle.JSONHistoryDataStruct.Jsoncontent>(JsonConvert.SerializeObject(global.new_root));
             global.history_root.historyData.Add(history_add_new_historydata);
+
+            return history_add_new_historydata;
         }
 
         private void button_DataInput_Reset_Click(object sender, EventArgs e)
