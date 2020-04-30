@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NET_Framwork48.Models
@@ -144,7 +145,7 @@ namespace NET_Framwork48.Models
         // calculate the value of System Size
         public void CalculateSystem_Size()
         {
-            System_Size = (NPI_TOTAL + NII_TOTAL) / NS;
+            System_Size = Convert.ToDecimal(Math.Log(Convert.ToDouble((NPI_TOTAL + NII_TOTAL) / NS)));
         }
 
         // calculate the value of Service Granularity
