@@ -64,42 +64,50 @@ namespace NET_Framwork48.Models
         // set the weight of a subordinate node of a node
         public void CalculateNodeNextLevelWeight(ModelNode node)
         {
-            if (node.NodeLevel >= 3)
+            if (node.NodeLevel == 1)
+            {
+                decimal number_of_all_property = ModelLink.LEVEL3_TOTAL_NUM;
+                foreach(var attribute_node in node.nextlevel)
+                    attribute_node.weight = attribute_node.nextlevel.Count / number_of_all_property;
+            }
+            else if (node.NodeLevel == 2)
+            {
+                int gain_num, damage_num;
+                CollectNodeNextLevelGainORDamageNum(node, out gain_num, out damage_num);
+                decimal ten = gain_num + damage_num;
+                decimal gen = gain_num;
+                decimal den = damage_num;
+                decimal gew = 0, dew = 0;
+                if (gain_num == 0 && damage_num == 0)
+                {
+                    gew = 0;
+                    dew = 0;
+                }
+                if (gain_num != 0 && damage_num == 0)
+                {
+                    gew = 1 / gen;
+                    dew = -0;
+                }
+                if (gain_num == 0 && damage_num != 0)
+                {
+                    gew = 0;
+                    dew = -1 / (2 * den);
+                }
+                if (gain_num != 0 && damage_num != 0)
+                {
+                    gew = (ten + 1) / (ten * gen);
+                    dew = -1 / (ten * den);
+                }
+                foreach (var tmp in node.nextlevel)
+                {
+                    if (tmp.gain_or_damage == NODE_AFFECT_GAIN)
+                        tmp.weight = gew;
+                    else
+                        tmp.weight = dew;
+                }
+            }
+            else
                 return;
-
-            int gain_num, damage_num;
-            CollectNodeNextLevelGainORDamageNum(node, out gain_num, out damage_num);
-            decimal ten = gain_num + damage_num;
-            decimal gen = gain_num;
-            decimal den = damage_num;
-            decimal gew = 0, dew = 0;
-            if (gain_num == 0 && damage_num == 0)
-            {
-                gew = 0;
-                dew = 0;
-            }
-            if (gain_num != 0 && damage_num == 0)
-            {
-                gew = 1 / gen;
-                dew = -0;
-            }
-            if (gain_num == 0 && damage_num != 0)
-            {
-                gew = 0;
-                dew = -1 / (2 * den);
-            }
-            if (gain_num != 0 && damage_num != 0)
-            {
-                gew = (ten + 1) / (ten * gen);
-                dew = -1 / (ten * den);
-            }
-            foreach (var tmp in node.nextlevel)
-            {
-                if (tmp.gain_or_damage == NODE_AFFECT_GAIN)
-                    tmp.weight = gew;
-                else
-                    tmp.weight = dew;
-            }
         }
     }
 }
