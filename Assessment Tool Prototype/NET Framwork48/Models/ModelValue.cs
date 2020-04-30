@@ -156,7 +156,7 @@ namespace NET_Framwork48.Models
         // calculate the value of Parameter Granularity
         public void CalculateParameter_Granularity()
         {
-            Parameter_Granularity = (NMP_TOTAL * NMP_TOTAL) / (NPI_TOTAL * NPI_TOTAL);
+            Parameter_Granularity = NMP_TOTAL / NPI_TOTAL;
         }
 
         // calculate the value of Service Loopback
