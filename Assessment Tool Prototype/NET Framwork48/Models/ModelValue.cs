@@ -150,7 +150,7 @@ namespace NET_Framwork48.Models
         // calculate the value of Service Granularity
         public void CalculateService_Granularity()
         {
-            Service_Granularity = (NPI_TOTAL * NPI_TOTAL) / (NM * NM);
+            Service_Granularity = NPI_TOTAL / NM;
         }
 
         // calculate the value of Parameter Granularity
