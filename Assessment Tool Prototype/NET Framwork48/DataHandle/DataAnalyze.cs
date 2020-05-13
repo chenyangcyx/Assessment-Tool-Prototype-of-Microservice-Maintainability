@@ -145,14 +145,13 @@ namespace NET_Framwork48.DataHandle
 
             int[] visit = new int[microservice_number];
             int[] father = new int[microservice_number];
+            bool[] if_in_loopback = new bool[microservice_number];
             for (int i = 0; i < microservice_number; i++)
             {
                 visit[i] = 0;
                 father[i] = -1;
-            }
-            bool[] if_in_loopback = new bool[microservice_number];
-            for (int i = 0; i < microservice_number; i++)
                 if_in_loopback[i] = false;
+            }
             for (int i = 0; i < microservice_number; i++)
                 if (visit[i] == 0)
                     SetWISL_dfsVisit(graph, i, visit, father, microservice_number, if_in_loopback);
